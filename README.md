@@ -1,11 +1,17 @@
 # TeslaJS
 An unofficial Tesla API for NodeJS.
 
-There area already several Javascript libraries available for the Tesla.  I created this library for two main reasons:
+It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  
+I created this library for two main reasons:
 
 * First, because I needed some small but important features that existing libraries did not provide
 * And second, as a personal opportunity to learn more about the Tesla REST API, Node.js and Github
 
+The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
+REST API documentation can be found at:
+
+    http://docs.timdorr.apiary.io/
+	
 # Warranty Disclaimer
 
 You may use this library with the understanding that doing so is AT YOUR OWN RISK.  No warranty, express or implied, is made with regards to the fitness or safety 
@@ -17,7 +23,10 @@ or affecting the charge level or battery health of your vehicle.
 # Samples
 
 Several samples are provided in the Examples directory.  These demonstrate some basic usage scenarios for 
-the library.
+the library.  To use the samples:
+
+    cd Examples
+	
 
 ## Login.js
 
@@ -25,7 +34,7 @@ This sample demonstrates the basic login process which returns the Auth token re
 
 Usage:
 
-    node login.js \<username\> \<password\>
+    node login.js <username> <password>
 
 ## flash_lights.js
 

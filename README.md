@@ -39,7 +39,7 @@ the library.  To use the samples first:
 
     cd Examples
 	
-## Login.js
+## login.js
 
 This sample demonstrates the basic login process which returns the Auth token required for other API calls.
 

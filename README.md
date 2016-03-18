@@ -4,8 +4,8 @@ An unofficial Tesla API for NodeJS.
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  
 I created this library for two main reasons:
 
-* First, because I needed some small but important features that existing libraries did not provide
-* And second, as a personal opportunity to learn more about the Tesla REST API, Node.js and Github
+1. The anticipated need for a few small but important features that existing libraries did not provide
+2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Github
 
 The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
 REST API documentation can be found at:
@@ -19,12 +19,12 @@ is made with regards to the fitness or safety of this code for any purpose.  If 
 on your car you understand that it is possible to make changes that could inadvertently lower the security of, or 
 potentially damage, your vehicle through actions including but not limited to:
 
-* unlocking the vehicle
-* remotely starting the vehicle
-* opening the sunroof
-* opening the frunk or trunk
-* affecting the battery charge level
-* impacting the battery health of your vehicle
+* Unlocking the vehicle
+* Remotely starting the vehicle
+* Opening the sunroof
+* Opening the frunk or trunk
+* Lowering the battery charge level
+* Impacting the health of your battery
 
 # Installation
 

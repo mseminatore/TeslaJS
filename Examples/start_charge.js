@@ -1,5 +1,5 @@
 //=====================================================================
-// This sample demonstrates the Start Charging feature using TeslaJS
+// This sample demonstrates using TeslaJS
 //
 // https://github.com/mseminatore/TeslaJS
 //
@@ -9,6 +9,7 @@
 //=====================================================================
 
 var tms = require('../TeslaJS');
+var fs = require('fs');
 
 //
 //
@@ -51,10 +52,23 @@ function usage() {
 //
 // Sample starts here
 //
-if (process.argv.length < 3) {
-    usage();
-    process.exit(1);
+var tokenFound = false;
+
+try {
+    tokenFound = fs.statSync('.token').isFile();
+} catch (e) {
 }
 
-var options = { email: process.argv[2], password: process.argv[3] };
-tms.login(options.email, options.password, login_cb);
+if (tokenFound) {
+    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+    login_cb({ error: false, authToken: token });
+} else {
+    // no saved token found, expect username and password on command line
+    if (process.argv.length < 3) {
+        usage();
+        process.exit(1);
+    }
+
+    var options = { email: process.argv[2], password: process.argv[3] };
+    tms.login(options.email, options.password, login_cb);
+}

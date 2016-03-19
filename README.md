@@ -76,7 +76,7 @@ Usage:
 
 ## soc.js
 
-This sample retrieves and displays the current vehicle charge level and rated miles.
+This sample retrieves and displays the charge limit, the current vehicle charge level, and the ideal, rated and projected range.
 
 Usage:
 

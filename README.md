@@ -41,7 +41,10 @@ the library.  To use the samples first:
 	
 ## login.js
 
-This sample demonstrates the basic login process which returns the Auth token required for other API calls.
+This sample demonstrates the basic login process which returns the Auth token required for other API calls.  The sample
+writes out a file called **.token** which stores the Auth token.  Other samples will use this token if present to avoid the need
+to enter the **username** and **password**.  If you prefer not to have your Auth token stored locally you can run the samples and provide
+the **username** and **password** on the command line.
 
 Usage:
 

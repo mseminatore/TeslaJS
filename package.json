@@ -1,5 +1,5 @@
 {
-  "name": "TeslaJS",
+  "name": "teslajs-pkg",
   "version": "1.0.0",
   "description": "Unofficial Tesla Model S NodeJS package",
   "dependencies": {

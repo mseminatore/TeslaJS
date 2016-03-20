@@ -11,6 +11,13 @@
 var tms = require('../TeslaJS');
 var fs = require('fs');
 
+//
+//
+//
+function usage() {
+    console.log("\nUsage: node logout <email> <password>\n");
+}
+
 // attempt to delete the locally cached Auth token
 try {
     fs.unlinkSync('.token');
@@ -18,4 +25,11 @@ try {
 } catch (e) {
 }
 
-tms.logout();
+// no parameters found, expect username and password on command line
+if (process.argv.length < 3) {
+    usage();
+    process.exit(1);
+}
+
+var options = { email: process.argv[2], password: process.argv[3] };
+tms.logout(options);

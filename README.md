@@ -50,6 +50,14 @@ Usage:
 
     node login.js <username> <password>
 
+## logout.js
+
+This sample deletes the **.token** file if present and signs the given account out on the server.
+
+Usage:
+
+    node logout.js <username> <password>
+
 ## climate_start.js
 
 This sample demonstrates turning on the HVAC system of the vehicle.

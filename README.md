@@ -50,6 +50,31 @@ Usage:
 
     node login.js <username> <password>
 
+## climate_start.js
+
+This sample demonstrates turning on the HVAC system of the vehicle.
+
+Usage:
+
+    node climate_start.js <username> <password>
+
+
+## climate_state.js
+
+This sample retrieves and displays data on the HVAC system of the vehicle.
+
+Usage:
+
+    node climate_state.js <username> <password>
+
+## climate_stop.js
+
+This sample demonstrates turning off the HVAC system of the vehicle.
+
+Usage:
+
+    node climate_stop.js <username> <password>
+
 ## flash_lights.js
 
 This sample demonstrates flashing the headlights of the vehicle.

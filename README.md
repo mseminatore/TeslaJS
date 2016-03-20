@@ -8,9 +8,10 @@ I created this library for two main reasons:
 2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Github
 
 With the introduction of the new OAuth-based owner API, one of the features I wanted was the ability to make API calls
-without having to login each time.  This is important if you want to use the library to do server-based data logging.  It
-is safer to store an auth token on the server than logon credentials.  Another feature that I wanted was stateless-ness 
-(via the **options** parameter) so that it was possible to use the library to make overlapping async calls for different vehicles.
+without having to login each time.  This is important for moderating load on the Tesla login servers.  This is also important 
+if you want to use the library to do server-based data logging.  It is safer to store an auth token on the server than 
+logon credentials.  Another feature that I wanted was stateless-ness (achieved via an **options** parameter) so that it was 
+possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
 
 # API Documentation
 
@@ -51,39 +52,38 @@ The TeslaJS library provides the following methods:
 **General API calls**
 
     setLogLevel() - sets the level of debug logging
-	login() - authenticate with Tesla servers and retrieve the OAuth token
-	logout() - invalidate the OAuth tokens for the given credentials
-	vehicles() - retrieve a list of the vehicles and option data associated with the OAuth token
+	login() 	  - authenticate with Tesla servers and retrieve the OAuth token
+	logout() 	  - invalidate the OAuth tokens for the given credentials
+	vehicles() 	  - retrieve a list of the vehicles and option data associated with the OAuth token
 	
 **API calls for a given vehicle id**
 	
-	vehicleState() - retrieve the vehicle_state data
-	climateState() - retrieve the climate_state data
-	driveState() - retrieve the drive_state data
-	chargeState() - retrieve the charge_state data
-	guiSettings() - retrieves the GUI settings
-	mobileEnabled() - returns whether mobile access is enabled
-	honkHorn() - honks the horn
-	flashLights() - flashes the headlights
-	startCharge() - initiates a charging session
-	stopCharge() - terminates a charging session
-	openChargePort() - opens the charge port
-	setChargeLimit() - sets the charge limit to a specific amount
-	chargeStandard() - set the charge limit to 90%
-	chargeMaxRange() - sets the charge limit to 100%
-	doorLock() - locks the doors
-	doorUnlock() - unlocks the doors
-	climateStart() - turn on the HVAC system
-	climateStop() - turn off the HVAC system
-	sunRoofControl() - put the sunroof into a specific state
-	sunRoofMove() - open the sunroof to a specific percent
-	setTemps() - set the driver and passenger temperature set points
+	vehicleState()     - retrieve the vehicle_state data
+	climateState()     - retrieve the climate_state data
+	driveState()       - retrieve the drive_state data
+	chargeState()      - retrieve the charge_state data
+	guiSettings()      - retrieves the GUI settings
+	mobileEnabled()    - returns whether mobile access is enabled
+	honkHorn() 		   - honks the horn
+	flashLights()      - flashes the headlights
+	startCharge()      - initiates a charging session
+	stopCharge()       - terminates a charging session
+	openChargePort()   - opens the charge port
+	setChargeLimit()   - sets the charge limit to a specific amount
+	chargeStandard()   - set the charge limit to 90%
+	chargeMaxRange()   - sets the charge limit to 100%
+	doorLock() 		   - locks the doors
+	doorUnlock() 	   - unlocks the doors
+	climateStart()     - turn on the HVAC system
+	climateStop()      - turn off the HVAC system
+	sunRoofControl()   - put the sunroof into a specific state
+	sunRoofMove()      - open the sunroof to a specific percent
+	setTemps() 		   - set the driver and passenger temperature set points
 	remoteStartDrive() - enables remote starting of the car
-	openTrunk() - open the trunk or frunk
-	wakeUp() - attempt to wake a sleeping vehicle
-	setValetMode() - set/reset valet mode
-	startStreaming() - initiate a streaming data session
-	
+	openTrunk() 	   - open the trunk or frunk
+	wakeUp() 		   - attempt to wake a sleeping vehicle
+	setValetMode() 	   - set/reset valet mode
+	startStreaming()   - initiate a streaming data session
 
 The library also exports the following constants:
 

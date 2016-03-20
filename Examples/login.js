@@ -29,5 +29,18 @@ function login_cb(result) {
     console.log('Auth token saved!');
 }
 
+//
+//
+//
+function usage() {
+    console.log("\nUsage: node login <email> <password>\n");
+}
+
+// no parameters found, expect username and password on command line
+if (process.argv.length < 3) {
+    usage();
+    process.exit(1);
+}
+
 var options = { email: process.argv[2], password: process.argv[3] };
 tms.login(options.email, options.password, login_cb);

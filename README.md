@@ -42,10 +42,16 @@ potentially damage, your vehicle through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install **Node.js** from http://nodejs.org
 
-An installable module for 'npm' will be provided in the future.
+An installable module for 'npm' is available.  To download and install the library and its dependencies globally:
 
-You can install from the github source.  Either download and unzip the source or clone the repository.  Then from the root
-level of the library directory:
+    npm install -g teslajs-pkg
+	
+Or if you want to install to a local project directly:
+
+    npm install teslajs-pkg
+
+You can also install directly from the github source.  Either download and unzip the source or clone the repository.  
+Then from the root level of the library directory:
 
     npm install
 

@@ -373,19 +373,7 @@ exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
 //=================================
 // Available streaming data options
 //=================================
-exports.streamingColumns = ['speed',
-                           'odometer',
-                           'soc',
-                           'elevation',
-                           'est_heading',
-                           'est_lat',
-                           'est_lng',
-                           'power',
-                           'shift_state',
-                           'range',
-                           'est_range',
-                           'heading'
-];
+exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc'];
 
 //=====================================================
 // Options = {username, password, vehicle_id, values[]}

@@ -39,6 +39,63 @@ In order to use the library and/or samples you must first download and install *
 
 An installable module for 'npm' will be provided in the future.
 
+You can install from the github source.  Either download and unzip the source or clone the repository.  Then from the root
+level of the library directory
+
+    npm install
+
+# Interfaces
+
+The TeslaJS library provides the following methods:
+
+    setLogLevel() - sets the level of debug logging
+	login() - authenticate with Tesla servers and retrieve the OAuth token
+	logout() - invalidate the OAuth tokens for the given credentials
+	vehicles() - retrieve a list of the vehicles and option data associated with the OAuth token
+	
+	** Calls for a given vehicle id **
+	
+	vehicleState() - retrieve the vehicle_state data
+	climateState() - retrieve the climate_state data
+	driveState() - retrieve the drive_state data
+	chargeState() - retrieve the charge_state data
+	guiSettings() - retrieves the GUI settings
+	mobileEnabled() - returns whether mobile access is enabled
+	honkHorn() - honks the horn
+	flashLights() - flashes the headlights
+	startCharge() - initiates a charging session
+	stopCharge() - terminates a charging session
+	openChargePort() - opens the charge port
+	setChargeLimit() - sets the charge limit to a specific amount
+	chargeStandard() - set the charge limit to 90%
+	chargeMaxRange() - sets the charge limit to 100%
+	doorLock() - locks the doors
+	doorUnlock() - unlocks the doors
+	climateStart() - turn on the HVAC system
+	climateStop() - turn off the HVAC system
+	sunRoofControl() - put the sunroof into a specific state
+	sunRoofMove() - open the sunroof to a specific percent
+	setTemps() - set the driver and passenger temperature set points
+	remoteStartDrive() - enables remote starting of the car
+	openTrunk() - open the trunk or frunk
+	wakeUp() - attempt to wake a sleeping vehicle
+	setValetMode() - set/reset valet mode
+	startStreaming() - initiate a streaming data session
+	
+
+The library also exports the following constants:
+
+	streamingPortal - the URI for the streaming API portal
+	portal - the URI for the OAuth-based API portal
+	API_CALL_LEVEL - log all API calls
+	API_RETURN_LEVEL - log all API calls and completions
+	API_LOG_ALL - highest level of logging
+
+Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
+contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that act on 
+a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned
+from a successful call to **vehicles()**. 
+	
 # Samples
 
 Several samples are provided in the Examples directory.  These demonstrate some basic usage scenarios for 

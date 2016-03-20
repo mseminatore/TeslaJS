@@ -48,12 +48,14 @@ level of the library directory:
 
 The TeslaJS library provides the following methods:
 
+**General API calls**
+
     setLogLevel() - sets the level of debug logging
 	login() - authenticate with Tesla servers and retrieve the OAuth token
 	logout() - invalidate the OAuth tokens for the given credentials
 	vehicles() - retrieve a list of the vehicles and option data associated with the OAuth token
 	
-	**Calls for a given vehicle id**
+**API calls for a given vehicle id**
 	
 	vehicleState() - retrieve the vehicle_state data
 	climateState() - retrieve the climate_state data
@@ -85,12 +87,12 @@ The TeslaJS library provides the following methods:
 
 The library also exports the following constants:
 
-	**streamingPortal**  - the URI for the streaming API portal
-	**portal** 			 - the URI for the OAuth-based API portal
-	**API_CALL_LEVEL** 	 - log all API calls
-	**API_RETURN_LEVEL** - log all API calls and completions
-	**API_LOG_ALL** 	 - the highest level of logging
-	**streamingColumns** - an array of the available streaming columns
+	streamingPortal  - the URI for the streaming API portal
+	portal 			 - the URI for the OAuth-based API portal
+	API_CALL_LEVEL 	 - log all API calls
+	API_RETURN_LEVEL - log all API calls and completions
+	API_LOG_ALL 	 - the highest level of logging
+	streamingColumns - an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
 contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 

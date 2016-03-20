@@ -5,6 +5,10 @@
   "dependencies": {
     "request": ">=2.14.0"
   },
+  "repository": {
+     "type": "git",
+     "url": "https://github.com/mseminatore/TeslaJS.git"
+  },
   "main": "TeslaJS.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +16,9 @@
   "keywords": [
     "Tesla"
   ],
-  "author": "Mark Seminatore",
+  "author": {
+    "name": "Mark Seminatore",
+    "url": "https://github.com/mseminatore/TeslaJS"
+  },
   "license": "MIT"
 }

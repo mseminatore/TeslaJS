@@ -37,8 +37,14 @@ function sampleMain(options) {
     tms.vehicleState(options, function (vehicle_state) {
         var str = vehicle_state.locked ? "locked." : "unlocked.";
 
+        console.log("\nCar name: " + vehicle_state.vehicle_name);
+
         console.log("\nDoors: " + str);
         console.log("Firmware: " + vehicle_state.car_version + ".");
+
+        str = vehicle_state.valet_mode ? "ON" : "OFF";
+        console.log("Valet mode: " + str);
+
     });
 }
 

@@ -7,6 +7,13 @@ I created this library for two main reasons:
 1. The anticipated need for a few small but important features that existing libraries did not provide
 2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Github
 
+With the introduction of the new OAuth-based owner API, one of the features I wanted was the ability to make API calls
+without having to login each time.  This is important if you want to use the library to do server-based data logging.  It
+is safer to store an auth token on the server than logon credentials.  Another feature that I wanted was stateless-ness 
+(via the **options** parameter) so that it was possible to use the library to make overlapping async calls for different vehicles.
+
+# API Documentation
+
 The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
 REST API documentation can be found at:
 

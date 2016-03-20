@@ -1,13 +1,13 @@
 {
   "name": "teslajs-pkg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial Tesla Model S NodeJS package",
   "dependencies": {
     "request": ">=2.14.0"
   },
   "repository": {
-     "type": "git",
-     "url": "https://github.com/mseminatore/TeslaJS.git"
+    "type": "git",
+    "url": "https://github.com/mseminatore/TeslaJS.git"
   },
   "main": "TeslaJS.js",
   "scripts": {

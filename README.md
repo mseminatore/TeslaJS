@@ -40,7 +40,7 @@ In order to use the library and/or samples you must first download and install *
 An installable module for 'npm' will be provided in the future.
 
 You can install from the github source.  Either download and unzip the source or clone the repository.  Then from the root
-level of the library directory
+level of the library directory:
 
     npm install
 
@@ -53,7 +53,7 @@ The TeslaJS library provides the following methods:
 	logout() - invalidate the OAuth tokens for the given credentials
 	vehicles() - retrieve a list of the vehicles and option data associated with the OAuth token
 	
-	** Calls for a given vehicle id **
+	**Calls for a given vehicle id**
 	
 	vehicleState() - retrieve the vehicle_state data
 	climateState() - retrieve the climate_state data
@@ -85,16 +85,20 @@ The TeslaJS library provides the following methods:
 
 The library also exports the following constants:
 
-	streamingPortal - the URI for the streaming API portal
-	portal - the URI for the OAuth-based API portal
-	API_CALL_LEVEL - log all API calls
-	API_RETURN_LEVEL - log all API calls and completions
-	API_LOG_ALL - highest level of logging
+	**streamingPortal**  - the URI for the streaming API portal
+	**portal** 			 - the URI for the OAuth-based API portal
+	**API_CALL_LEVEL** 	 - log all API calls
+	**API_RETURN_LEVEL** - log all API calls and completions
+	**API_LOG_ALL** 	 - the highest level of logging
+	**streamingColumns** - an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
-contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that act on 
-a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned
-from a successful call to **vehicles()**. 
+contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 
+act on a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned
+from a successful call to **vehicles()**.
+
+By default the **vehicles()** API returns information on the first vehicle returned.  By providing a **carIndex** member in the
+**options** parameter information on a specific vehicle can be queried.
 	
 # Samples
 

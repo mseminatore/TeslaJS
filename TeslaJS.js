@@ -267,11 +267,12 @@ exports.openChargePort = function openChargePort(options, callback) {
     post_command(options, "command/charge_port_door_open", null, callback);
 }
 
+exports.CHARGE_STORAGE = 50;
+
 //=====================
 // Set the charge limit
 //=====================
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
-    // TODO - clamp charge limit?
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
 }
 

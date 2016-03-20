@@ -44,11 +44,11 @@ In order to use the library and/or samples you must first download and install *
 
 An installable module for 'npm' is available.  To download and install the library and its dependencies globally:
 
-    npm install -g teslajs-pkg
+    npm install -g teslajs
 	
 Or if you want to install to a local project directly:
 
-    npm install teslajs-pkg
+    npm install teslajs
 
 You can also install directly from the github source.  Either download and unzip the source or clone the repository.  
 Then from the root level of the library directory:

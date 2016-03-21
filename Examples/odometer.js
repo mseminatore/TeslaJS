@@ -35,7 +35,7 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tms.vehicleState(options, function (vehicle_state) {
-        console.log("Odometer: " + Math.round(vehicle_state.odometer) + " miles");
+        console.log("\nOdometer: " + Math.round(vehicle_state.odometer) + " miles");
     });
 }
 

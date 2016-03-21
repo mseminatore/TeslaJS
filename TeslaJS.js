@@ -29,6 +29,9 @@ exports.API_CALL_LEVEL = API_CALL_LEVEL;
 var API_RETURN_LEVEL = 2;
 exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 
+var API_BODY_LEVEL = 3;
+exports.API_BODY_LEVEL = API_BODY_LEVEL;
+
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
@@ -169,6 +172,8 @@ function post_command(options, command, body, callback) {
 
     if (!callback)
         callback = function (data) { /* do nothing! */ }
+
+    log(API_BODY_LEVEL, body ? JSON.stringify(body) : null);
 
     request({
         method: "POST",
@@ -367,7 +372,7 @@ exports.wakeUp = function wakeUp(options, callback) {
 // Turn valet mode on/off
 //=======================
 exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
-    post_command(options, "command/set_valet_mode", { "on": onoff, "password": pin }, callback);
+    post_command(options, "command/set_valet_mode", { on : onoff, password : pin }, callback);
 }
 
 //=================================

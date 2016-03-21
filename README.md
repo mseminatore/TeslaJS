@@ -27,9 +27,9 @@ REST API documentation can be found at:
 # Warranty Disclaimer
 
 You may use this library with the understanding that doing so is **AT YOUR OWN RISK**.  No warranty, express or implied, 
-is made with regards to the fitness or safety of this code for any purpose.  If you use this library to change settings 
-on your car you understand that it is possible to make changes that could inadvertently lower the security of, or 
-potentially damage, your vehicle through actions including but not limited to:
+is made with regards to the fitness or safety of this code for any purpose.  If you use this library to query or change 
+settings of your vehicle you understand that it is possible to make changes that could inadvertently lower the security 
+of your vehicle, or cause damage, through actions including but not limited to:
 
 * Unlocking the vehicle
 * Remotely starting the vehicle
@@ -42,15 +42,15 @@ potentially damage, your vehicle through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install **Node.js** from http://nodejs.org
 
-An installable module for 'npm' is available.  To download and install the library and its dependencies globally:
+An installable module for 'npm' is now available.  To download and install the library and its dependencies globally:
 
     npm install -g teslajs
 	
-Or if you want to install to a local project directly:
+Or if you want to install only to a local project directory:
 
     npm install teslajs
 
-You can also install directly from the github source.  Either download and unzip the source or clone the repository.  
+You may also install directly from the github source.  Either download and unzip the source, or clone the repository.  
 Then from the root level of the library directory:
 
     npm install
@@ -101,6 +101,7 @@ The library also exports the following constants:
 	portal 			 - the URI for the OAuth-based API portal
 	API_CALL_LEVEL 	 - log all API calls
 	API_RETURN_LEVEL - log all API calls and completions
+	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
 	API_LOG_ALL 	 - the highest level of logging
 	streamingColumns - an array of the available streaming columns
 

@@ -14,10 +14,10 @@ without having to login each time.  Once an auth token is retrieved it can be us
 is important for moderating load on the Tesla login servers.  This is also important if you want to use the library 
 to do server-based data logging.  It is safer to store an auth token on the server than logon credentials.  
 
-Another feature that I wanted was stateless-ness (achieved via an **options** parameter to API calls) so that it was 
+Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
 
-# API Documentation
+# Tesla API Documentation
 
 The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
 REST API documentation can be found at:
@@ -42,11 +42,11 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install **Node.js** from http://nodejs.org
 
-An installable module for 'npm' is now available.  To download and install the library and its dependencies globally:
+An installable module for 'npm' is now available.  To download and install the library and all of its dependencies globally:
 
     npm install -g teslajs
 	
-Or if you want to install only to a local project directory:
+Or if you want to install only to the local project directory use the following:
 
     npm install teslajs
 

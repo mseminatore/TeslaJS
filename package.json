@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Unofficial Tesla Model S NodeJS package",
   "dependencies": {
     "request": ">=2.14.0"

@@ -34,11 +34,29 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.stopCharge(options, function (result) {
-        if (result.result)
-            console.log("\nCommand completed successfully!");
+    var modeIndex = 2;
+    var pinIndex = 3;
+
+    if (process.argv.length > 4) {
+        modeIndex = 4;
+        pinIndex = 5;
+    }
+
+    var mode = process.argv[modeIndex];
+    var pin = process.argv[pinIndex];
+
+    if (mode == "on" || mode == "ON")
+        mode = true;
+    else
+        mode = false;
+
+    tjs.setValetMode(options, mode, pin, function (response) {
+        if (response.result) {
+            var str = mode ? "ENABLED" : "DISABLED";
+            console.log("\nValet mode " + str + "!");
+        }
         else
-            console.log(result.reason);
+            console.error(response.reason);
     });
 }
 
@@ -46,7 +64,7 @@ function sampleMain(options) {
 //
 //
 function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password>\n");
+    console.log("\nUsage: node <sample_name> <email> <password> ON|OFF pin\n");
 }
 
 //
@@ -69,6 +87,5 @@ if (tokenFound) {
         process.exit(1);
     }
 
-    var options = { email: process.argv[2], password: process.argv[3] };
-    tjs.login(options.email, options.password, login_cb);
+    tjs.login(process.argv[2], process.argv[3], login_cb);
 }

@@ -62,6 +62,7 @@ The TeslaJS library provides the following methods:
 **General API calls**
 
     setLogLevel() - sets the level of debug logging
+	getLogLevel() - gets the level of debug logging
 	login() 	  - authenticate with Tesla servers and retrieve the OAuth token
 	logout() 	  - invalidate the OAuth tokens for the given credentials
 	vehicles() 	  - retrieve a list of the vehicles and option data associated with the OAuth token
@@ -219,3 +220,11 @@ This sample retrives and displays several elements of data returned from the **v
 Usage:
 
     node vehicle_state.js <username> <password>
+
+## valet.js
+
+This sample enables or disables valet mode. 
+
+Usage:
+
+    node valet.js <username> <password> ON|OFF pincode

@@ -8,7 +8,7 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tms = require('../TeslaJS');
+var tjs = require('../TeslaJS');
 var fs = require('fs');
 
 //
@@ -43,4 +43,4 @@ if (process.argv.length < 3) {
 }
 
 var options = { email: process.argv[2], password: process.argv[3] };
-tms.login(options.email, options.password, login_cb);
+tjs.login(options.email, options.password, login_cb);

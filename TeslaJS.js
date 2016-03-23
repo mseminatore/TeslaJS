@@ -21,7 +21,7 @@ var portal = "https://owner-api.teslamotors.com/";
 exports.portal = portal;
 
 //=======================
-// Set the log level
+// Log levels
 //=======================
 var API_CALL_LEVEL = 1;
 exports.API_CALL_LEVEL = API_CALL_LEVEL;
@@ -47,10 +47,14 @@ function log(level, str) {
 }
 
 //======================
-// Set the logging level
+// Set/get the logging level
 //======================
 exports.setLogLevel = function setLogLevel(level) {
     logLevel = level;
+}
+
+exports.getLogLevel = function getLogLevel(level) {
+    return logLevel;
 }
 
 //==================================
@@ -99,12 +103,22 @@ exports.login = function login(username, password, callback) {
 //==================================
 // Invalidate the current auth token
 //==================================
-exports.logout = function logout(options) {
+exports.logout = function logout(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.logout()");
 
-    // TODO - implement true logout
+    if (!callback)
+        callback = function (result) { /* do nothing! */ }
 
-    log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
+    request({
+        method: 'DELETE',
+        url: portal + 'logout',
+        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+    }, function (error, response, body) {
+
+        callback({ error: error, response: response, body: body, authToken: authToken });
+
+        log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
+    });
 }
 
 //====================================================
@@ -173,14 +187,16 @@ function post_command(options, command, body, callback) {
     if (!callback)
         callback = function (data) { /* do nothing! */ }
 
-    log(API_BODY_LEVEL, body ? JSON.stringify(body) : null);
-
-    request({
+    var cmd = {
         method: "POST",
         url: portal + "/api/1/vehicles/" + options.vehicleID + "/" + command,
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'},
-        form: body ? JSON.stringify(body) : null
-    }, function (error, response, body) {
+        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' },
+        form: body || null
+    };
+
+    log(API_BODY_LEVEL, JSON.stringify(cmd));
+
+    request(cmd, function (error, response, body) {
         try {
             var data = JSON.parse(body);
         } catch (e) {

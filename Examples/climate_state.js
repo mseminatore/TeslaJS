@@ -8,7 +8,7 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tms = require('../TeslaJS');
+var tjs = require('../TeslaJS');
 var fs = require('fs');
 
 //
@@ -22,7 +22,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
-    tms.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (vehicle) {
         console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
 
         options.vehicleID = vehicle.id_s;
@@ -38,7 +38,7 @@ function ctof(degc) {
 //
 //
 function sampleMain(options) {
-    tms.climateState(options, function (climate_state) {
+    tjs.climateState(options, function (climate_state) {
         if (climate_state.inside_temp && climate_state.inside_temp != 0)
             console.log("\nInterior: " + ctof(climate_state.inside_temp) + " Deg.F");
 
@@ -84,5 +84,5 @@ if (tokenFound) {
     }
 
     var options = { email: process.argv[2], password: process.argv[3] };
-    tms.login(options.email, options.password, login_cb);
+    tjs.login(options.email, options.password, login_cb);
 }

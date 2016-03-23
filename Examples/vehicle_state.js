@@ -8,7 +8,7 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tms = require('../TeslaJS');
+var tjs = require('../TeslaJS');
 var fs = require('fs');
 
 //
@@ -22,7 +22,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
-    tms.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (vehicle) {
         console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
 
         options.vehicleID = vehicle.id_s;
@@ -34,7 +34,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tms.vehicleState(options, function (vehicle_state) {
+    tjs.vehicleState(options, function (vehicle_state) {
         var str = vehicle_state.locked ? "LOCKED" : "UNLOCKED";
 
         console.log("\nCar name: " + vehicle_state.vehicle_name);
@@ -76,5 +76,5 @@ if (tokenFound) {
     }
 
     var options = { email: process.argv[2], password: process.argv[3] };
-    tms.login(options.email, options.password, login_cb);
+    tjs.login(options.email, options.password, login_cb);
 }

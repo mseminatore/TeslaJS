@@ -140,46 +140,46 @@ Usage:
 
     node logout.js <username> <password>
 
-## climate_start.js
+## climateStart.js
 
 This sample demonstrates turning on the HVAC system of the vehicle.
 
 Usage:
 
-    node climate_start.js <username> <password>
+    node climateStart.js <username> <password>
 
 
-## climate_state.js
+## climate.js
 
 This sample retrieves and displays data on the HVAC system of the vehicle.
 
 Usage:
 
-    node climate_state.js <username> <password>
+    node climate.js <username> <password>
 
-## climate_stop.js
+## climateStop.js
 
 This sample demonstrates turning off the HVAC system of the vehicle.
 
 Usage:
 
-    node climate_stop.js <username> <password>
+    node climateStop.js <username> <password>
 
-## flash_lights.js
+## flashLights.js
 
 This sample demonstrates flashing the headlights of the vehicle.
 
 Usage:
 
-    node flash_lights.js <username> <password>
+    node flashLights.js <username> <password>
 
-## honk_horn.js
+## honkHorn.js
 
 This sample demonstrates honking the horn of the vehicle.
 
 Usage:
 
-    node honk_horn.js <username> <password>
+    node honkHorn.js <username> <password>
 
 ## odometer.js
 
@@ -197,29 +197,29 @@ Usage:
 
     node soc.js <username> <password>
 
-## start_charge.js
+## startCharge.js
 
 This sample demonstrates how to initiate a charging session.
 
 Usage:
 
-    node start_charge.js <username> <password>
+    node startCharge.js <username> <password>
 
-## stop_charge.js
+## stopCharge.js
 
 This sample demonstrates how to terminate a charging session.
 
 Usage:
 
-    node stop_charge.js <username> <password>
+    node stopCharge.js <username> <password>
 
-## vehicle_state.js
+## vehicle.js
 
 This sample retrives and displays several elements of data returned from the **vehicle_state** REST API. 
 
 Usage:
 
-    node vehicle_state.js <username> <password>
+    node vehicle.js <username> <password>
 
 ## valet.js
 

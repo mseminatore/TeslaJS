@@ -42,20 +42,21 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install **Node.js** from http://nodejs.org
 
-An installable module for 'npm' is now available.  To download and install the library and all of its dependencies globally:
-
-    npm install -g teslajs
-	
-Or if you want to install only to the local project directory use the following:
+An installable module for 'npm' is now available.  To download and install the library and all of its dependencies 
+to a local project directory use the following:
 
     npm install teslajs
+
+To download and install the library globally for all node projects use:
+
+    npm install -g teslajs
 
 You may also install directly from the github source.  Either download and unzip the source, or clone the repository.  
 Then from the root level of the library directory:
 
     npm install
 
-# Interfaces
+# Library Interfaces
 
 The TeslaJS library provides the following methods:
 
@@ -64,8 +65,8 @@ The TeslaJS library provides the following methods:
     setLogLevel() - sets the level of debug logging
 	getLogLevel() - gets the level of debug logging
 	login() 	  - authenticate with Tesla servers and retrieve the OAuth token
-	logout() 	  - invalidate the OAuth tokens for the given credentials
-	vehicles() 	  - retrieve a list of the vehicles and option data associated with the OAuth token
+	logout() 	  - delete the current OAuth token
+	vehicles()	  - retrieve a list of the vehicles and option data associated with the OAuth token
 	
 **API calls for a given vehicle id**
 	
@@ -120,6 +121,12 @@ Several samples are provided in the Examples directory.  These demonstrate some 
 the library.  To use the samples first:
 
     cd Examples
+
+After running the **login** sample an auth token will be cached locally.  If you prefer to avoid keeping an auth token on
+your machine, provide login credentials on the command line for each sample.  This will perform a login request and 
+keep the token only for the duration of the sample.  The difference lies in whether you are more comfortable with the security 
+of a file associated with an account in your file system vs. the visibility of your login credentials in the process 
+table for the lifetime of the sample.
 	
 ## login.js
 
@@ -134,7 +141,7 @@ Usage:
 
 ## logout.js
 
-This sample deletes the **.token** file if present and signs the given account out on the server.
+This sample deletes the locally cached **.token** file if present.
 
 Usage:
 

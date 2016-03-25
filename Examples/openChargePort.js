@@ -32,11 +32,11 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.wakeUp(options, function (result) {
+    tjs.openChargePort(options, function (result) {
         if (result)
-            console.log("\nWakeUp command acknowledged.");
+            console.log("\nOpen charge port succeeded.");
         else {
-            console.error("Error waking up vehicle!");
+            console.error("Error!");
         }
     });
 }

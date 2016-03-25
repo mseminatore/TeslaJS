@@ -14,24 +14,25 @@ var fs = require('fs');
 //
 //
 //
-function usage() {
-    console.log("\nUsage: node logout <email> <password>\n");
-}
+var tokenFound = false;
 
-// no parameters found, expect username and password on command line
-if (process.argv.length < 3) {
-    usage();
-    process.exit(1);
-}
-
-var options = { email: process.argv[2], password: process.argv[3] };
-tjs.logout(options, function (result) {
-    console.log(result);
-});
-
-// attempt to delete the locally cached Auth token
 try {
-    fs.unlinkSync('.token');
-    console.log("Token file successfully deleted.");
+    tokenFound = fs.statSync('.token').isFile();
 } catch (e) {
 }
+
+if (tokenFound) {
+    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    // attempt to delete the locally cached Auth token
+    try {
+        fs.unlinkSync('.token');
+        console.log("Token file successfully deleted.");
+    } catch (e) {
+    }
+
+    tjs.logout(token, function (result) {
+        console.log(result);
+    });
+}
+

@@ -42,5 +42,4 @@ if (process.argv.length < 3) {
     process.exit(1);
 }
 
-var options = { email: process.argv[2], password: process.argv[3] };
-tjs.login(options.email, options.password, login_cb);
+tjs.login(process.argv[2], process.argv[3], login_cb);

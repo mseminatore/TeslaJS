@@ -103,22 +103,28 @@ exports.login = function login(username, password, callback) {
 //==================================
 // Invalidate the current auth token
 //==================================
-exports.logout = function logout(options, callback) {
+exports.logout = function logout(authToken, callback) {
     log(API_CALL_LEVEL, "TeslaJS.logout()");
 
     if (!callback)
         callback = function (result) { /* do nothing! */ }
 
+    callback({ error: "Not implemented", response: "Not implemented", body: "Not implemented" });
+
+    log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
+
+/*
     request({
         method: 'DELETE',
         url: portal + 'logout',
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+        headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
-        callback({ error: error, response: response, body: body, authToken: authToken });
+        callback({ error: error, response: response, body: body });
 
         log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
     });
+*/
 }
 
 //====================================================
@@ -288,11 +294,18 @@ exports.openChargePort = function openChargePort(options, callback) {
     post_command(options, "command/charge_port_door_open", null, callback);
 }
 
-exports.CHARGE_STORAGE = 50;
+//=====================
+// Close the charge port
+//=====================
+exports.closeChargePort = function closeChargePort(options, callback) {
+    post_command(options, "command/charge_port_door_close", null, callback);
+}
 
 //=====================
 // Set the charge limit
 //=====================
+exports.CHARGE_STORAGE = 50;
+
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
 }
@@ -389,6 +402,13 @@ exports.wakeUp = function wakeUp(options, callback) {
 //=======================
 exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
     post_command(options, "command/set_valet_mode", { on : onoff, password : pin }, callback);
+}
+
+//=======================
+// Reset the valet pin
+//=======================
+exports.resetValetPin = function resetValetPin(options, callback) {
+    post_command(options, "command/reset_valet_pin", null, callback);
 }
 
 //=================================

@@ -81,6 +81,7 @@ The TeslaJS library provides the following methods:
 	startCharge()      - initiates a charging session
 	stopCharge()       - terminates a charging session
 	openChargePort()   - opens the charge port
+	closeChargePort()  - close the charge port on appropriately equipped vehicles
 	setChargeLimit()   - sets the charge limit to a specific amount
 	chargeStandard()   - set the charge limit to 90%
 	chargeMaxRange()   - sets the charge limit to 100%
@@ -95,6 +96,7 @@ The TeslaJS library provides the following methods:
 	openTrunk() 	   - open the trunk or frunk
 	wakeUp() 		   - attempt to wake a sleeping vehicle
 	setValetMode() 	   - set/reset valet mode
+	resetValetPin()	   - reset the valet pin
 	startStreaming()   - initiate a streaming data session
 
 The library also exports the following constants:

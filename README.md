@@ -206,6 +206,14 @@ Usage:
 
     node openChargePort.js <username> <password>
 
+## resetValetPin.js
+
+This sample attempts to reset the current valet pin.
+
+Usage:
+
+    node resetValetPin.js <username> <password>
+
 ## soc.js
 
 This sample retrieves and displays the charge limit, the current vehicle charge level, and the ideal, rated and projected range.

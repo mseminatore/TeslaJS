@@ -107,6 +107,7 @@ The library also exports the following constants:
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
 	API_LOG_ALL 	 - the highest level of logging
+	CHARGE_STORAGE	 - a charge level of 50%
 	streamingColumns - an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always

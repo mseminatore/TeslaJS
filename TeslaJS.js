@@ -32,6 +32,9 @@ exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 var API_BODY_LEVEL = 3;
 exports.API_BODY_LEVEL = API_BODY_LEVEL;
 
+var API_RESPONSE_LEVEL = 4;
+exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
+
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
@@ -150,6 +153,8 @@ exports.vehicles = function vehicles(options, callback) {
         data = data.response[options.carIndex || 0];
         data.id = data.id_s;
 
+        log(API_RESPONSE_LEVEL, JSON.stringify(data));
+
         callback(data);
 
         log(API_RETURN_LEVEL, "Command: /vehicles completed.");
@@ -170,6 +175,10 @@ function get_command(options, command, callback) {
         url: portal + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     }, function (error, response, body) {
+
+        if (error)
+            console.error(error);
+
         try {
             var data = JSON.parse(body);
         } catch (e) {
@@ -177,6 +186,8 @@ function get_command(options, command, callback) {
         }
 
         data = data.response;
+
+        log(API_RESPONSE_LEVEL, JSON.stringify(data));
 
         callback(data);
 
@@ -203,6 +214,10 @@ function post_command(options, command, body, callback) {
     log(API_BODY_LEVEL, JSON.stringify(cmd));
 
     request(cmd, function (error, response, body) {
+
+        if (error)
+            console.error(error);
+
         try {
             var data = JSON.parse(body);
         } catch (e) {
@@ -210,6 +225,8 @@ function post_command(options, command, body, callback) {
         }
 
         data = data.response;
+
+        log(API_RESPONSE_LEVEL, JSON.stringify(data));
 
         callback(data);
 

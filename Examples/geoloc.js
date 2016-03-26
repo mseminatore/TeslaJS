@@ -58,8 +58,9 @@ function compassDirs(heading) {
 function sampleMain(options) {
     tjs.driveState(options, function (drive_state) {
         if (drive_state) {
+
             var state = drive_state.shift_state || "Parked";
-            console.log("State: " + state);
+            console.log("\nState: " + state);
 
             if (drive_state.speed)
                 console.log("Speed: " + drive_state.speed || 0);

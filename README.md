@@ -183,6 +183,14 @@ Usage:
 
     node flashLights.js <username> <password>
 
+## geoloc.js
+
+This sample retrieves and displays information on the location and driving state of the car using the **drive_state** query.
+
+Usage:
+
+    node geoloc.js <username> <password>
+
 ## honkHorn.js
 
 This sample demonstrates honking the horn of the vehicle.

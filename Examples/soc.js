@@ -35,6 +35,18 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.chargeState(options, function (chargeState) {
+        if (chargeState.charging_state == "Charging") {
+            console.log("\nState: Charging");
+
+            var hours = Math.floor(chargeState.time_to_full_charge);
+            var mins = Math.round((chargeState.time_to_full_charge - hours) * 60);
+            console.log("Time remaining: " + hours + ":" + mins);
+        } else if (chargeState.charging_state == "Disconnected") {
+            console.log("\nState: Unplugged");
+        } else {
+            console.log("\nState: PluggedIn");
+        }
+
         console.log("\nCurrent charge level: " + chargeState.battery_level + '%');
         console.log("Target charge level: " + chargeState.charge_limit_soc + '%');
         console.log("\nIdeal range: " + Math.round(chargeState.ideal_battery_range) + ' miles');

@@ -35,16 +35,30 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.chargeState(options, function (chargeState) {
+
+        var str = chargeState.charge_port_door_open == true ? "OPEN" : "CLOSED";
+        console.log("\nCharge port: " + str);
+
         if (chargeState.charging_state == "Charging") {
-            console.log("\nState: Charging");
+            console.log("Charging state: Charging");
 
             var hours = Math.floor(chargeState.time_to_full_charge);
             var mins = Math.round((chargeState.time_to_full_charge - hours) * 60);
             console.log("Time remaining: " + hours + ":" + mins);
+
+            var mph = chargeState.charge_rate;
+
+            console.log(mph + " mi/hr " + chargeState.charger_voltage + "V / " + chargeState.charger_actual_current + "A");
+
         } else if (chargeState.charging_state == "Disconnected") {
-            console.log("\nState: Unplugged");
+            console.log("Charging State: Unplugged");
         } else {
-            console.log("\nState: PluggedIn");
+            console.log("Charging State: Plugged In");
+        }
+
+        if (chargeState.scheduled_charging_pending) {
+            var scheduledChargeTime = new Date(chargeState.scheduled_charging_start_time * 1000);
+            console.log("Charge scheduled for " + scheduledChargeTime.toLocaleTimeString());
         }
 
         console.log("\nCurrent charge level: " + chargeState.battery_level + '%');
@@ -52,11 +66,6 @@ function sampleMain(options) {
         console.log("\nIdeal range: " + Math.round(chargeState.ideal_battery_range) + ' miles');
         console.log("Rated range: " + Math.round(chargeState.battery_range) + ' miles');
         console.log("Projected range: " + Math.round(chargeState.est_battery_range) + ' miles');
-
-        if (chargeState.scheduled_charging_pending) {
-            var scheduledChargeTime = new Date(chargeState.scheduled_charging_start_time * 1000);
-            console.log("\nCharge scheduled for " + scheduledChargeTime.toLocaleTimeString());
-        }
     });
 }
 

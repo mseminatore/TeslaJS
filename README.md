@@ -120,7 +120,7 @@ By default the **vehicles()** API returns information on the first vehicle retur
 	
 # Samples
 
-Several samples are provided in the Examples directory.  These demonstrate some basic usage scenarios for 
+A number of samples are provided in the Examples directory.  These demonstrate some basic usage scenarios for 
 the library.  To use the samples first:
 
     cd Examples
@@ -130,6 +130,26 @@ your machine, provide login credentials on the command line for each sample.  Th
 keep the token only for the duration of the sample.  The difference lies in whether you are more comfortable with the security 
 of a file associated with an account in your file system vs. the visibility of your login credentials in the process 
 table for the lifetime of the sample.
+
+## List of Samples
+
+    login
+	logout
+	climate
+	climateStart
+	climateStop
+	flashLights
+	geoloc
+	honkHorn
+	odometer
+	openChargePort
+	resetValetPin
+	soc
+	startCharge
+	stopCharge
+	valet
+	vehicle
+	wakeup
 	
 ## login.js
 

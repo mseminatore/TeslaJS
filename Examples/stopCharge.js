@@ -10,6 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
@@ -23,7 +24,7 @@ function login_cb(result) {
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
+        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
@@ -69,6 +70,5 @@ if (tokenFound) {
         process.exit(1);
     }
 
-    var options = { email: process.argv[2], password: process.argv[3] };
-    tjs.login(options.email, options.password, login_cb);
+    tjs.login(process.argv[2], process.argv[3], login_cb);
 }

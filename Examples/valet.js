@@ -10,20 +10,21 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
+        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
@@ -45,7 +46,7 @@ function sampleMain(options) {
     var mode = process.argv[modeIndex];
     var pin = process.argv[pinIndex];
 
-    if (mode == "on" || mode == "ON")
+    if (mode.toUpperCase() == "ON")
         mode = true;
     else
         mode = false;
@@ -53,7 +54,7 @@ function sampleMain(options) {
     tjs.setValetMode(options, mode, pin, function (response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
-            console.log("\nValet mode " + str + "!");
+            console.log("\nValet mode " + str.green + "!");
         }
         else
             console.error(response.reason);

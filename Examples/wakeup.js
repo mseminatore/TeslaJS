@@ -10,13 +10,14 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
@@ -34,9 +35,9 @@ function login_cb(result) {
 function sampleMain(options) {
     tjs.wakeUp(options, function (result) {
         if (result)
-            console.log("\nWakeUp command acknowledged.");
+            console.log("\nWakeUp command: " + "SENT".green);
         else {
-            console.error("Error waking up vehicle!");
+            console.error("Error waking up vehicle!".red);
         }
     });
 }

@@ -10,20 +10,21 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
+        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
@@ -35,15 +36,15 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.vehicleState(options, function (vehicle_state) {
-        var str = vehicle_state.locked ? "LOCKED" : "UNLOCKED";
+        var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
 
-        console.log("\nCar name: " + vehicle_state.vehicle_name);
+        console.log("\nCar name: " + vehicle_state.vehicle_name.green);
 
         console.log("\nDoors: " + str);
-        console.log("Firmware: " + vehicle_state.car_version);
+        console.log("Firmware: " + vehicle_state.car_version.green);
 
         str = vehicle_state.valet_mode ? "ON" : "OFF";
-        console.log("Valet mode: " + str);
+        console.log("Valet mode: " + str.green);
 
     });
 }
@@ -75,6 +76,5 @@ if (tokenFound) {
         process.exit(1);
     }
 
-    var options = { email: process.argv[2], password: process.argv[3] };
-    tjs.login(options.email, options.password, login_cb);
+    tjs.login(process.argv[2], process.argv[3], login_cb);
 }

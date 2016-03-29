@@ -10,13 +10,14 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
@@ -34,7 +35,7 @@ function login_cb(result) {
 function sampleMain(options) {
     tjs.openChargePort(options, function (result) {
         if (result)
-            console.log("\nOpen charge port succeeded.");
+            console.log("\nCharge port: " + "OPEN".green);
         else {
             console.error("Error!");
         }

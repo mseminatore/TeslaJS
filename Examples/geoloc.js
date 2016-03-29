@@ -10,13 +10,14 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
@@ -60,16 +61,16 @@ function sampleMain(options) {
         if (drive_state) {
 
             var state = drive_state.shift_state || "Parked";
-            console.log("\nState: " + state);
+            console.log("\nState: " + state.green);
 
             if (drive_state.speed)
                 console.log("Speed: " + drive_state.speed || 0);
 
-            console.log("Heading: " + compassDirs(drive_state.heading));
+            console.log("Heading: " + compassDirs(drive_state.heading).green);
 
             var lat = drive_state.latitude || 0;
             var long = drive_state.longitude || 0;
-            console.log("GPS: " + lat + ", " + long);
+            console.log("GPS: " + lat.toString().green + ", " + long.toString().green);
         }
         else
             console.log(drive_state.reason);

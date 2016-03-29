@@ -10,20 +10,21 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.log(JSON.stringify(result.error));
+        console.log(JSON.stringify(result.error).red);
         process.exit(1);
     }
 
     var token = JSON.stringify(result.authToken);
 
-    console.log("Login Successfull.");
-    console.log("OAuth token is: " + token);
+    console.log("Login " + "Successfull.".green);
+    console.log("OAuth token is: " + token.green);
 
     fs.writeFileSync('.token', token, 'utf8');
     console.log('Auth token saved!');

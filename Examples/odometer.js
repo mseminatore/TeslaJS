@@ -10,20 +10,21 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
+        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
@@ -35,7 +36,7 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.vehicleState(options, function (vehicle_state) {
-        console.log("\nOdometer: " + Math.round(vehicle_state.odometer) + " miles");
+        console.log("\nOdometer: " + Math.round(vehicle_state.odometer).toString().green + " miles");
     });
 }
 

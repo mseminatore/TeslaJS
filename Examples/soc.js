@@ -10,20 +10,21 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var colors = require('colors');
 
 //
 //
 //
 function login_cb(result) {
     if (result.error) {
-        console.error("Login failed!");
+        console.error("Login failed!".red);
         console.warn(JSON.stringify(result.error));
         return;
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("Vehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state);
+        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
@@ -37,35 +38,35 @@ function sampleMain(options) {
     tjs.chargeState(options, function (chargeState) {
 
         var str = chargeState.charge_port_door_open == true ? "OPEN" : "CLOSED";
-        console.log("\nCharge port: " + str);
+        console.log("\nCharge port: " + str.green);
 
         if (chargeState.charging_state == "Charging") {
-            console.log("Charging state: Charging");
+            console.log("Charging state: " + "Charging".green);
 
             var hours = Math.floor(chargeState.time_to_full_charge);
             var mins = Math.round((chargeState.time_to_full_charge - hours) * 60);
-            console.log("Time remaining: " + hours + ":" + mins);
+            console.log("Time remaining: " + hours.toString().green + ":" + mins.toString().green);
 
             var mph = chargeState.charge_rate;
 
             console.log(mph + " mi/hr " + chargeState.charger_voltage + "V / " + chargeState.charger_actual_current + "A");
 
         } else if (chargeState.charging_state == "Disconnected") {
-            console.log("Charging State: Unplugged");
+            console.log("Charging State: " + "Unplugged".bold.red);
         } else {
-            console.log("Charging State: Plugged In");
+            console.log("Charging State: " + "Plugged In".green);
         }
 
         if (chargeState.scheduled_charging_pending) {
             var scheduledChargeTime = new Date(chargeState.scheduled_charging_start_time * 1000);
-            console.log("Charge scheduled for " + scheduledChargeTime.toLocaleTimeString());
+            console.log("Charge scheduled for " + scheduledChargeTime.toLocaleTimeString().toString().green);
         }
 
-        console.log("\nCurrent charge level: " + chargeState.battery_level + '%');
-        console.log("Target charge level: " + chargeState.charge_limit_soc + '%');
-        console.log("\nIdeal range: " + Math.round(chargeState.ideal_battery_range) + ' miles');
-        console.log("Rated range: " + Math.round(chargeState.battery_range) + ' miles');
-        console.log("Projected range: " + Math.round(chargeState.est_battery_range) + ' miles');
+        console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + '%'.green);
+        console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + '%'.green);
+        console.log("\nIdeal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
+        console.log("Rated range: " + Math.round(chargeState.battery_range).toString().green + ' miles');
+        console.log("Projected range: " + Math.round(chargeState.est_battery_range).toString().green + ' miles');
     });
 }
 

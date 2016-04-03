@@ -47,7 +47,7 @@ to a local project directory use the following:
 
     npm install teslajs
 
-If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in order to update the package.json file for your package as follows:
+If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in order to update the **package.json** file for your package as follows:
 
     npm install teslajs --save
     
@@ -89,24 +89,24 @@ The TeslaJS library provides the following methods:
     setChargeLimit()   - sets the charge limit to a specific amount
     chargeStandard()   - set the charge limit to 90%
     chargeMaxRange()   - sets the charge limit to 100%
-    doorLock() 		   - locks the doors
-    doorUnlock() 	   - unlocks the doors
+    doorLock() 	       - locks the doors
+    doorUnlock()       - unlocks the doors
     climateStart()     - turn on the HVAC system
     climateStop()      - turn off the HVAC system
     sunRoofControl()   - put the sunroof into a specific state
     sunRoofMove()      - open the sunroof to a specific percent
-    setTemps() 		   - set the driver and passenger temperature set points
+    setTemps() 	       - set the driver and passenger temperature set points
     remoteStartDrive() - enables remote starting of the car
-    openTrunk() 	   - open the trunk or frunk
-    wakeUp() 		   - attempt to wake a sleeping vehicle
-    setValetMode() 	   - set/reset valet mode
-    resetValetPin()	   - reset the valet pin
+    openTrunk()        - open the trunk or frunk
+    wakeUp() 	       - attempt to wake a sleeping vehicle
+    setValetMode()     - set/reset valet mode
+    resetValetPin()    - reset the valet pin
     startStreaming()   - initiate a streaming data session
 
 The library also exports the following constants:
 
 	streamingPortal  - the URI for the streaming API portal
-	portal 			 - the URI for the OAuth-based API portal
+	portal 		 - the URI for the OAuth-based API portal
 	API_CALL_LEVEL 	 - log all API calls
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
@@ -116,8 +116,7 @@ The library also exports the following constants:
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
 contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 
-act on a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned
-from a successful call to **vehicles()**.
+act on a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned from a successful call to **vehicles()**.
 
 By default the **vehicles()** API returns information on the first vehicle returned.  By providing a **carIndex** member in the
 **options** parameter information on a specific vehicle can be queried.
@@ -137,23 +136,23 @@ table for the lifetime of the sample.
 
 ## List of Samples
 
-    login
-	logout
-	climate
-	climateStart
-	climateStop
-	flashLights
-	geoloc
-	honkHorn
-	odometer
-	openChargePort
-	resetValetPin
-	soc
-	startCharge
-	stopCharge
-	valet
-	vehicle
-	wakeup
+    login - Calls the Tesla servers to login and acquire an OAuth token.  Cached to the local directory
+    logout - Delete the locally cached OAuth token if present
+    climate - Display the current state of the HVAC system
+    climateStart - Turn on the HVAC system
+    climateStop - Turn off the HVAC system
+    flashLights - Flash the headlights
+    geoloc - Display the current GPS location of the vehicle
+    honkHorn - Honk the horn
+    odometer - Displays the current odometer value
+    openChargePort - Opens the charge port
+    resetValetPin - Resets the valet mode pin
+    soc - Displays information on the current battery State of Charge (SOC) for the vehicle
+    startCharge - Initiate a charging session
+    stopCharge - Terminate a charging session
+    valet - Enable or disable valet mode
+    vehicle - Retrieve and display information on the current vehicle state
+    wakeup - Send a wakeup command to the vehicle
 	
 ## login.js
 

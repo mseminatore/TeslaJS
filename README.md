@@ -1,8 +1,10 @@
 # TeslaJS
-An unofficial NodeJS library that encapsulates the Tesla API.
+An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library should support all existing Tesla
+vehicles.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
-why create another one?  This library was created for two main reasons:
+why create another one?  Rather than contribute to and modify one or more of the existing libraries, this library was 
+created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing libraries did not provide
 2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Git/GitHub
@@ -10,9 +12,11 @@ why create another one?  This library was created for two main reasons:
 ## Notable Features
 
 With the introduction of the new OAuth-based owner API, one of the features I wanted was the ability to make API calls
-without having to login each time.  Once an auth token is retrieved it can be used to make other REST API calls.  This 
-is important for moderating load on the Tesla login servers.  This is also important if you want to use the library 
-to do server-based data logging.  It is safer to store an auth token on the server than logon credentials.  
+without having to login each time.  Most existing libraries require a login transaction with each API call.  With the 
+TeslaJS library, once an auth token is retrieved it can be used to make other REST API calls.  This is important for 
+moderating load on the Tesla login servers.  This is also important if you want to use the library to do server-based 
+data logging.  It is generally safer to store an OAuth token on the server instead of logon credentials.  If the OAuth
+token is compromised all existing tokens can be invalidated by changing the password on the account.
 
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.

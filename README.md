@@ -100,7 +100,7 @@ The TeslaJS library provides the following methods:
     sunRoofControl()   - put the sunroof into a specific state
     sunRoofMove()      - open the sunroof to a specific percent
     setTemps() 	       - set the driver and passenger temperature set points
-    remoteStartDrive() - enables remote starting of the car
+    remoteStart()      - enables remote starting of the car
     openTrunk()        - open the trunk or frunk
     wakeUp() 	       - attempt to wake a sleeping vehicle
     setValetMode()     - set/reset valet mode
@@ -110,12 +110,18 @@ The TeslaJS library provides the following methods:
 The library also exports the following constants:
 
 	streamingPortal  - the URI for the streaming API portal
-	portal 		 - the URI for the OAuth-based API portal
+	portal 		     - the URI for the OAuth-based API portal
 	API_CALL_LEVEL 	 - log all API calls
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
 	API_LOG_ALL 	 - the highest level of logging
 	CHARGE_STORAGE	 - a charge level of 50%
+	CHARGE_STANDARD  - a charge level of 90%
+	CHARGE_RANGE     - a charge level of 100%.  Note frequent use of this is **not** recommended by Tesla for battery health!
+	SUNROOF_OPEN	 - fully opens the sunroof
+	SUNROOF_CLOSED	 - closes the sunroof
+	SUNROOF_VENT	 - open the sunroof to the vent position
+	SUNROOF_COMFORT	 - open the sunroof to the comfort position
 	streamingColumns - an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
@@ -151,6 +157,7 @@ table for the lifetime of the sample.
     odometer - Displays the current odometer value
     openChargePort - Opens the charge port
     resetValetPin - Resets the valet mode pin
+	remoteStart - Enables driving without the key fob present
     soc - Displays information on the current battery State of Charge (SOC) for the vehicle
     startCharge - Initiate a charging session
     stopCharge - Terminate a charging session
@@ -249,6 +256,16 @@ This sample attempts to reset the current valet pin.
 Usage:
 
     node resetValetPin.js <username> <password>
+
+
+## remoteStart.js
+
+This sample enables remotely starting the vehicle without a key fob present.  Note that the password parameter is 
+**required** in this sample.
+
+Usage:
+
+    node remoteStart.js <username> password
 
 ## soc.js
 

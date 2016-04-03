@@ -322,6 +322,8 @@ exports.closeChargePort = function closeChargePort(options, callback) {
 // Set the charge limit
 //=====================
 exports.CHARGE_STORAGE = 50;
+exports.CHARGE_STANDARD = 90;
+exports.CHARGE_RANGE = 100;     // note: using thsi frequently is not recommended for long-term battery health!
 
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
@@ -372,6 +374,11 @@ exports.climateStop = function climateStop(options, callback) {
 //==================================
 // Set the sun roof to specific mode
 //==================================
+exports.SUNROOF_OPEN = "open";
+exports.SUNROOF_VENT = "vent";
+exports.SUNROOF_CLOSED = "close";
+exports.SUNROOF_COMFORT = "comfort";
+
 exports.sunRoofControl = function sunRoofControl(options, state, callback) {
     post_command(options, "command/sun_roof_control", { "state": state }, callback);
 }
@@ -396,8 +403,8 @@ exports.setTemps = function setTemps(options, driver, pass, callback) {
 //=====================
 // Remote start the car
 //=====================
-exports.remoteStartDrive = function remoteStartDrive(vid, password, callback) {
-    post_command(vid, "command/remote_start_drive", { "password": password }, callback);
+exports.remoteStart = function remoteStartDrive(options, password, callback) {
+    post_command(options, "command/remote_start_drive", { "password": password }, callback);
 }
 
 //=====================

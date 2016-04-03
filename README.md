@@ -1,11 +1,11 @@
 # TeslaJS
-An unofficial Tesla API for NodeJS.
+An unofficial NodeJS library that encapsulates the Tesla API.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
-why create another one?  I created this library for two main reasons:
+why create another one?  This library was created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing libraries did not provide
-2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Github
+2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Git/GitHub
 
 ## Notable Features
 
@@ -47,7 +47,11 @@ to a local project directory use the following:
 
     npm install teslajs
 
-To download and install the library globally for all node projects use:
+If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in order to update the package.json file for your package as follows:
+
+    npm install teslajs --save
+    
+If you prefer to download and install the library globally for all future node projects you may use:
 
     npm install -g teslajs
 
@@ -63,41 +67,41 @@ The TeslaJS library provides the following methods:
 **General API calls**
 
     setLogLevel() - sets the level of debug logging
-	getLogLevel() - gets the level of debug logging
-	login() 	  - authenticate with Tesla servers and retrieve the OAuth token
-	logout() 	  - delete the current OAuth token
-	vehicles()	  - retrieve a list of the vehicles and option data associated with the OAuth token
+    getLogLevel() - gets the level of debug logging
+    login() 	  - authenticate with Tesla servers and retrieve the OAuth token
+    logout() 	  - delete the current OAuth token
+    vehicles()	  - retrieve a list of the vehicles and option data associated with the OAuth token
 	
 **API calls for a given vehicle id**
 	
-	vehicleState()     - retrieve the vehicle_state data
-	climateState()     - retrieve the climate_state data
-	driveState()       - retrieve the drive_state data
-	chargeState()      - retrieve the charge_state data
-	guiSettings()      - retrieves the GUI settings
-	mobileEnabled()    - returns whether mobile access is enabled
-	honkHorn() 		   - honks the horn
-	flashLights()      - flashes the headlights
-	startCharge()      - initiates a charging session
-	stopCharge()       - terminates a charging session
-	openChargePort()   - opens the charge port
-	closeChargePort()  - close the charge port on appropriately equipped vehicles
-	setChargeLimit()   - sets the charge limit to a specific amount
-	chargeStandard()   - set the charge limit to 90%
-	chargeMaxRange()   - sets the charge limit to 100%
-	doorLock() 		   - locks the doors
-	doorUnlock() 	   - unlocks the doors
-	climateStart()     - turn on the HVAC system
-	climateStop()      - turn off the HVAC system
-	sunRoofControl()   - put the sunroof into a specific state
-	sunRoofMove()      - open the sunroof to a specific percent
-	setTemps() 		   - set the driver and passenger temperature set points
-	remoteStartDrive() - enables remote starting of the car
-	openTrunk() 	   - open the trunk or frunk
-	wakeUp() 		   - attempt to wake a sleeping vehicle
-	setValetMode() 	   - set/reset valet mode
-	resetValetPin()	   - reset the valet pin
-	startStreaming()   - initiate a streaming data session
+    vehicleState()     - retrieve the vehicle_state data
+    climateState()     - retrieve the climate_state data
+    driveState()       - retrieve the drive_state data
+    chargeState()      - retrieve the charge_state data
+    guiSettings()      - retrieves the GUI settings
+    mobileEnabled()    - returns whether mobile access is enabled
+    honkHorn() 	       - honks the horn
+    flashLights()      - flashes the headlights
+    startCharge()      - initiates a charging session
+    stopCharge()       - terminates a charging session
+    openChargePort()   - opens the charge port
+    closeChargePort()  - close the charge port on appropriately equipped vehicles
+    setChargeLimit()   - sets the charge limit to a specific amount
+    chargeStandard()   - set the charge limit to 90%
+    chargeMaxRange()   - sets the charge limit to 100%
+    doorLock() 		   - locks the doors
+    doorUnlock() 	   - unlocks the doors
+    climateStart()     - turn on the HVAC system
+    climateStop()      - turn off the HVAC system
+    sunRoofControl()   - put the sunroof into a specific state
+    sunRoofMove()      - open the sunroof to a specific percent
+    setTemps() 		   - set the driver and passenger temperature set points
+    remoteStartDrive() - enables remote starting of the car
+    openTrunk() 	   - open the trunk or frunk
+    wakeUp() 		   - attempt to wake a sleeping vehicle
+    setValetMode() 	   - set/reset valet mode
+    resetValetPin()	   - reset the valet pin
+    startStreaming()   - initiate a streaming data session
 
 The library also exports the following constants:
 

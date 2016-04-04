@@ -32,6 +32,13 @@ function login_cb(result) {
 //
 //
 //
+function f2c(degf) {
+    return (degf - 32) * 5 / 9;
+}
+
+//
+//
+//
 function sampleMain(options) {
     var tempIndex = 2;
 
@@ -41,7 +48,7 @@ function sampleMain(options) {
 
     var temp = process.argv[tempIndex];
 
-    tjs.setTemps(options, temp, null, function (result) {
+    tjs.setTemps(options, f2c(temp), null, function (result) {
         if (result.result) {
             var str = (temp + " Deg.F").green;
             console.log("\nTemperature successfully set to: " + str);

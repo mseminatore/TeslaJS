@@ -100,7 +100,7 @@ The TeslaJS library provides the following methods:
     climateStop()      - turn off the HVAC system
     sunRoofControl()   - put the sunroof into a specific state
     sunRoofMove()      - open the sunroof to a specific percent
-    setTemps() 	       - set the driver and passenger temperature set points
+    setTemps() 	       - set the driver and passenger temperature set points (in Deg.C)
     remoteStart()      - enables remote starting of the car
     openTrunk()        - open the trunk or frunk
     wakeUp() 	       - attempt to wake a sleeping vehicle

@@ -1,7 +1,6 @@
 # TeslaJS
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library *should* support all existing Tesla
-vehicles.  If someone could confirm successful usage with Model X that would be helpful.  Alternatively, donation of a
-working Model X would, of course, also enable validation.
+vehicles.  If someone could confirm successful usage with Model X that would be helpful.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
 why create another one?  Rather than contribute to and modify one or more of the existing libraries, this library was 

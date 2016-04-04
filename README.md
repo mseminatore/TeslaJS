@@ -146,25 +146,25 @@ table for the lifetime of the sample.
 
 ## List of Samples
 
-    login - Calls the Tesla servers to login and acquire an OAuth token.  Cached to the local directory
-    logout - Delete the locally cached OAuth token if present
-    climate - Display the current state of the HVAC system
-    climateStart - Turn on the HVAC system
-    climateStop - Turn off the HVAC system
-    flashLights - Flash the headlights
-    geoloc - Display the current GPS location of the vehicle
-    honkHorn - Honk the horn
-    odometer - Displays the current odometer value
+    login         - Calls the Tesla servers to login and acquire an OAuth token.  Cached to the local directory
+    logout        - Delete the locally cached OAuth token if present
+    climate       - Display the current state of the HVAC system
+    climateStart  - Turn on the HVAC system
+    climateStop   - Turn off the HVAC system
+    flashLights   - Flash the headlights
+    geoloc         - Display the current GPS location of the vehicle
+    honkHorn       - Honk the horn
+    odometer       - Displays the current odometer value
     openChargePort - Opens the charge port
-    resetValetPin - Resets the valet mode pin
-    remoteStart - Enables driving without the key fob present
-    setChargeLimit - Set the battery charge limit to the given value
-    soc - Displays information on the current battery State of Charge (SOC) for the vehicle
-    startCharge - Initiate a charging session
-    stopCharge - Terminate a charging session
-    valet - Enable or disable valet mode
-    vehicle - Retrieve and display information on the current vehicle state
-    wakeup - Send a wakeup command to the vehicle
+    resetValetPin  - Resets the valet mode pin
+	remoteStart    - Enables driving without the key fob present
+	setChargeLimit - Set the battery charge limit to the given value
+    soc            - Displays information on the current battery State of Charge (SOC) for the vehicle
+    startCharge    - Initiate a charging session
+    stopCharge     - Terminate a charging session
+    valet          - Enable or disable valet mode
+    vehicle        - Retrieve and display information on the current vehicle state
+    wakeup         - Send a wakeup command to the vehicle
 	
 ## login.js
 
@@ -196,7 +196,7 @@ Usage:
 
 ## climate.js
 
-This sample retrieves the **climate_state** and displays data on the current state of the HVAC system
+This sample retrieves and displays data on the HVAC system of the vehicle.
 
 Usage:
 
@@ -212,7 +212,7 @@ Usage:
 
 ## flashLights.js
 
-This sample flashes the headlights.
+This sample demonstrates flashing the headlights of the vehicle.
 
 Usage:
 

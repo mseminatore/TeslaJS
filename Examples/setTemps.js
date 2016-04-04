@@ -33,25 +33,18 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    var pctIndex = 2;
+    var tempIndex = 2;
 
     if (process.argv.length > 3) {
-        pctIndex = 3;
+        tempIndex = 3;
     }
 
-    var amt = process.argv[pctIndex];
+    var temp = process.argv[tempIndex];
 
-    if (amt.toLowerCase() == "standard")
-        amt = 90;
-    else if (amt.toLowerCase() == "range")
-        amt = 100;
-    else if (amt.toLowerCase() == "storage")
-        amt = 50;
-
-    tjs.setChargeLimit(options, amt, function (result) {
+    tjs.setTemps(options, temp, null, function (result) {
         if (result.result) {
-            var str = (amt + "%").green;
-            console.log("\nCharge limit successfully set to: " + str);
+            var str = (temp + " Deg.F").green;
+            console.log("\nTemperature successfully set to: " + str);
         } else
             console.log(result.reason);
     });
@@ -61,7 +54,7 @@ function sampleMain(options) {
 //
 //
 function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password> percentage\n");
+    console.log("\nUsage: node <sample_name> <email> temperature\n");
 }
 
 //

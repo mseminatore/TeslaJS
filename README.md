@@ -1,6 +1,7 @@
 # TeslaJS
-An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library should support all existing Tesla
-vehicles.
+An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library *should* support all existing Tesla
+vehicles.  If someone could confirm successful usage with Model X that would be helpful.  Alternatively, donation of a
+Model X would allow me to validate.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
 why create another one?  Rather than contribute to and modify one or more of the existing libraries, this library was 
@@ -159,6 +160,7 @@ table for the lifetime of the sample.
     resetValetPin  - Resets the valet mode pin
 	remoteStart    - Enables driving without the key fob present
 	setChargeLimit - Set the battery charge limit to the given value
+	setTemps       - Set the driver and passenger temperatures to the given value
     soc            - Displays information on the current battery State of Charge (SOC) for the vehicle
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
@@ -275,6 +277,14 @@ This sample sets the current battery charge limit to the given value.
 Usage:
 
     node setChargeLimit.js <username> <password> number|standard|storage|range
+
+## setTemps.js
+
+This sample sets the driver and passenger temperature to the given value.
+
+Usage:
+
+    node setTemps.js <username> <password> temperature
 
 ## soc.js
 

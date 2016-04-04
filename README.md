@@ -72,9 +72,9 @@ The TeslaJS library provides the following methods:
 
     setLogLevel() - sets the level of debug logging
     getLogLevel() - gets the level of debug logging
-    login() 	  - authenticate with Tesla servers and retrieve the OAuth token
-    logout() 	  - delete the current OAuth token
-    vehicles()	  - retrieve a list of the vehicles and option data associated with the OAuth token
+    login()       - authenticate with Tesla servers and retrieve the OAuth token
+    logout()      - delete the current OAuth token
+    vehicles()    - retrieve a list of the vehicles and option data associated with the OAuth token
 	
 **API calls for a given vehicle id**
 	
@@ -84,7 +84,7 @@ The TeslaJS library provides the following methods:
     chargeState()      - retrieve the charge_state data
     guiSettings()      - retrieves the GUI settings
     mobileEnabled()    - returns whether mobile access is enabled
-    honkHorn() 	       - honks the horn
+    honkHorn()         - honks the horn
     flashLights()      - flashes the headlights
     startCharge()      - initiates a charging session
     stopCharge()       - terminates a charging session
@@ -110,17 +110,17 @@ The TeslaJS library provides the following methods:
 The library also exports the following constants:
 
 	streamingPortal  - the URI for the streaming API portal
-	portal 		     - the URI for the OAuth-based API portal
+	portal 	         - the URI for the OAuth-based API portal
 	API_CALL_LEVEL 	 - log all API calls
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
-	API_LOG_ALL 	 - the highest level of logging
-	CHARGE_STORAGE	 - a charge level of 50%
+	API_LOG_ALL      - the highest level of logging
+	CHARGE_STORAGE   - a charge level of 50%
 	CHARGE_STANDARD  - a charge level of 90%
 	CHARGE_RANGE     - a charge level of 100%.  Tesla recommends infrequent use for battery health!
-	SUNROOF_OPEN	 - fully opens the sunroof
-	SUNROOF_CLOSED	 - closes the sunroof
-	SUNROOF_VENT	 - open the sunroof to the vent position
+	SUNROOF_OPEN     - fully opens the sunroof
+	SUNROOF_CLOSED   - closes the sunroof
+	SUNROOF_VENT     - open the sunroof to the vent position
 	SUNROOF_COMFORT	 - open the sunroof to the comfort position
 	streamingColumns - an array of the available streaming columns
 
@@ -196,7 +196,7 @@ Usage:
 
 ## climate.js
 
-This sample retrieves and displays data on the HVAC system of the vehicle.
+This sample retrieves and displays the **climate_state** data on the HVAC system of the vehicle.
 
 Usage:
 
@@ -278,7 +278,8 @@ Usage:
 
 ## soc.js
 
-This sample retrieves and displays the charge limit, the current vehicle charge level, and the ideal, rated and projected range.
+This sample retrieves the **charge_state** information and displays the charge limit, the current 
+vehicle charge level, and the ideal, rated and projected range.
 
 Usage:
 

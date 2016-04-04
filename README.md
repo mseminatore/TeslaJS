@@ -157,8 +157,8 @@ table for the lifetime of the sample.
     odometer - Displays the current odometer value
     openChargePort - Opens the charge port
     resetValetPin - Resets the valet mode pin
-	remoteStart - Enables driving without the key fob present
-	setChargeLimit - Set the battery charge limit to the given value
+    remoteStart - Enables driving without the key fob present
+    setChargeLimit - Set the battery charge limit to the given value
     soc - Displays information on the current battery State of Charge (SOC) for the vehicle
     startCharge - Initiate a charging session
     stopCharge - Terminate a charging session
@@ -196,7 +196,7 @@ Usage:
 
 ## climate.js
 
-This sample retrieves and displays data on the HVAC system of the vehicle.
+This sample retrieves the **climate_state** and displays data on the current state of the HVAC system
 
 Usage:
 
@@ -212,7 +212,7 @@ Usage:
 
 ## flashLights.js
 
-This sample demonstrates flashing the headlights of the vehicle.
+This sample flashes the headlights.
 
 Usage:
 

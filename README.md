@@ -163,6 +163,7 @@ table for the lifetime of the sample.
     soc            - Displays information on the current battery State of Charge (SOC) for the vehicle
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
+	sunroof        - Control the sunroof.  Be careful!
     valet          - Enable or disable valet mode
     vehicle        - Retrieve and display information on the current vehicle state
     wakeup         - Send a wakeup command to the vehicle
@@ -309,6 +310,14 @@ This sample demonstrates how to terminate a charging session.
 Usage:
 
     node stopCharge.js <username> <password>
+
+## sunroof.js
+
+This sample demonstrates controlling the panoramic sunroof if present.
+
+Usage:
+
+    node sunroof.js <username> <password> percentag|open|close|vent|comfort
 
 ## vehicle.js
 

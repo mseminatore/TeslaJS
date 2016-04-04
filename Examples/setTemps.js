@@ -61,7 +61,7 @@ function sampleMain(options) {
 //
 //
 function usage() {
-    console.log("\nUsage: node <sample_name> <email> temperature\n");
+    console.log("\nUsage: node <sample_name> <email> <password> temperature\n");
 }
 
 //

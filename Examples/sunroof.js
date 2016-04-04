@@ -24,8 +24,6 @@ function login_cb(result) {
 
     var options = { authToken: result.authToken, carIndex: 0 };
     tjs.vehicles(options, function (vehicle) {
-        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
-
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -35,26 +33,29 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.vehicleState(options, function (vehicle_state) {
-        var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
+    var pctIndex = 2;
 
-        console.log("\nCar name: " + vehicle_state.vehicle_name.green);
+    if (process.argv.length > 3) {
+        pctIndex = 3;
+    }
 
-        console.log("\nDoors: " + str);
-        if (vehicle_state.sun_roof_installed) {
-            var state = "CLOSED";
+    var amt = process.argv[pctIndex];
 
-            if (vehicle_state.sun_roof_state != "unknown")
-                state = vehicle_state.sun_roof_state;
+    if (amt.toLowerCase() == "open")
+        amt = 100;
+    else if (amt.toLowerCase() == "close")
+        amt = 0;
+    else if (amt.toLowerCase() == "vent")
+        amt = 15;
+    else if (amt.toLowerCase() == "comfort")
+        amt = 80;
 
-            console.log("Sunroof: " + state.green);
-        }
-
-        console.log("Firmware: " + vehicle_state.car_version.green);
-
-        str = vehicle_state.valet_mode ? "ON" : "OFF";
-        console.log("Valet mode: " + str.green);
-    
+    tjs.sunRoofMove(options, amt, function (result) {
+        if (result.result) {
+            var str = (amt + "%").green;
+            console.log("\nSunroof successfully moved to : " + str);
+        } else
+            console.log(result.reason);
     });
 }
 
@@ -62,7 +63,7 @@ function sampleMain(options) {
 //
 //
 function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password>\n");
+    console.log("\nUsage: node <sample_name> <email> <password> percentage|open|close|vent|comfort\n");
 }
 
 //
@@ -77,6 +78,12 @@ try {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (process.argv.length < 3) {
+        usage();
+        process.exit(1);
+    }
+
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line

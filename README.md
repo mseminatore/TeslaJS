@@ -74,7 +74,7 @@ The TeslaJS library provides the following methods:
     getLogLevel() - gets the level of debug logging
     login()       - authenticate with Tesla servers and retrieve the OAuth token
     logout()      - delete the current OAuth token
-    vehicles()    - retrieve a list of the vehicles and option data associated with the OAuth token
+    vehicles()    - retrieve list of vehicles and option data
 	
 **API calls for a given vehicle id**
 	
@@ -99,7 +99,7 @@ The TeslaJS library provides the following methods:
     climateStop()      - turn off the HVAC system
     sunRoofControl()   - put the sunroof into a specific state
     sunRoofMove()      - open the sunroof to a specific percent
-    setTemps() 	       - set the driver and passenger temperature set points (in Deg.C)
+    setTemps() 	       - set driver/passenger temp set points (in Deg.C)
     remoteStart()      - enables remote starting of the car
     openTrunk()        - open the trunk or frunk
     wakeUp() 	       - attempt to wake a sleeping vehicle
@@ -107,7 +107,7 @@ The TeslaJS library provides the following methods:
     resetValetPin()    - reset the valet pin
     startStreaming()   - initiate a streaming data session
 
-The library also exports the following constants:
+**Library exported constants**
 
 	streamingPortal  - the URI for the streaming API portal
 	portal 	         - the URI for the OAuth-based API portal

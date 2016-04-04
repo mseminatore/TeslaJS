@@ -158,6 +158,7 @@ table for the lifetime of the sample.
     openChargePort - Opens the charge port
     resetValetPin - Resets the valet mode pin
 	remoteStart - Enables driving without the key fob present
+	setChargeLimit - Set the battery charge limit to the given value
     soc - Displays information on the current battery State of Charge (SOC) for the vehicle
     startCharge - Initiate a charging session
     stopCharge - Terminate a charging session
@@ -260,12 +261,20 @@ Usage:
 
 ## remoteStart.js
 
-This sample enables remotely starting the vehicle without a key fob present.  Note that the password parameter is 
+This sample enables remotely starting the vehicle without a key fob present.  Note that the *password* parameter is 
 **required** in this sample.
 
 Usage:
 
     node remoteStart.js <username> password
+
+## setChargeLimit.js
+
+This sample sets the current battery charge limit to the given value.
+
+Usage:
+
+    node setChargeLimit.js <username> <password> number|standard|storage|range
 
 ## soc.js
 

@@ -117,7 +117,7 @@ The library also exports the following constants:
 	API_LOG_ALL 	 - the highest level of logging
 	CHARGE_STORAGE	 - a charge level of 50%
 	CHARGE_STANDARD  - a charge level of 90%
-	CHARGE_RANGE     - a charge level of 100%.  Note frequent use of this is **not** recommended by Tesla for battery health!
+	CHARGE_RANGE     - a charge level of 100%.  Tesla recommends infrequent use for battery health!
 	SUNROOF_OPEN	 - fully opens the sunroof
 	SUNROOF_CLOSED	 - closes the sunroof
 	SUNROOF_VENT	 - open the sunroof to the vent position

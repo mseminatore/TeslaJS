@@ -59,14 +59,14 @@ If you prefer to download and install the library globally for all future node p
 
     npm install -g teslajs
 
-You may also install directly from the github source.  Either download and unzip the source, or clone the repository.  
+You may also install directly from the GitHub source.  Either download and unzip the source, or clone the repository.  
 Then from the root level of the library directory:
 
     npm install
 
 # Library Interfaces
 
-The TeslaJS library provides the following methods:
+The TeslaJS library provides a number of methods and constants.
 
 **General API calls**
 
@@ -115,9 +115,9 @@ The TeslaJS library provides the following methods:
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
 	API_LOG_ALL      - the highest level of logging
-	CHARGE_STORAGE   - a charge level of 50%
-	CHARGE_STANDARD  - a charge level of 90%
-	CHARGE_RANGE     - a charge level of 100%.  Tesla recommends infrequent use for battery health!
+	CHARGE_STORAGE   - charge to 50%
+	CHARGE_STANDARD  - charge to 90%
+	CHARGE_RANGE     - charge to 100%.  Tesla recommends against frequent usage!
 	SUNROOF_OPEN     - fully opens the sunroof
 	SUNROOF_CLOSED   - closes the sunroof
 	SUNROOF_VENT     - open the sunroof to the vent position
@@ -146,12 +146,12 @@ table for the lifetime of the sample.
 
 ## List of Samples
 
-    login         - Calls the Tesla servers to login and acquire an OAuth token.  Cached to the local directory
-    logout        - Delete the locally cached OAuth token if present
-    climate       - Display the current state of the HVAC system
-    climateStart  - Turn on the HVAC system
-    climateStop   - Turn off the HVAC system
-    flashLights   - Flash the headlights
+    login          - Login via Tesla servers to acquire an OAuth token.  Cached to the local directory
+    logout         - Delete the locally cached OAuth token if present
+    climate        - Display the current state of the HVAC system
+    climateStart   - Turn on the HVAC system
+    climateStop    - Turn off the HVAC system
+    flashLights    - Flash the headlights
     geoloc         - Display the current GPS location of the vehicle
     honkHorn       - Honk the horn
     odometer       - Displays the current odometer value
@@ -160,7 +160,7 @@ table for the lifetime of the sample.
 	remoteStart    - Enables driving without the key fob present
 	setChargeLimit - Set the battery charge limit to the given value
 	setTemps       - Set the driver and passenger temperatures to the given value
-    soc            - Displays information on the current battery State of Charge (SOC) for the vehicle
+    soc            - Displays the current battery State of Charge (SOC) for the vehicle
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
 	sunroof        - Control the sunroof.  Be careful!
@@ -263,7 +263,7 @@ Usage:
 
 ## remoteStart.js
 
-This sample enables remotely starting the vehicle without a key fob present.  Note that the *password* parameter is 
+This sample enables remotely starting the vehicle without a key fob present.  Note that the **password** parameter is 
 **required** in this sample.
 
 Usage:

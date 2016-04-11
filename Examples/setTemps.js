@@ -11,6 +11,16 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
+var program = require('commander');
+
+//
+//
+//
+program
+  .usage('[options] temperature')
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .parse(process.argv);
 
 //
 //
@@ -40,28 +50,15 @@ function f2c(degf) {
 //
 //
 function sampleMain(options) {
-    var tempIndex = 2;
-
-    if (process.argv.length > 3) {
-        tempIndex = 3;
-    }
-
-    var temp = process.argv[tempIndex];
+    var temp = program.args[0];
 
     tjs.setTemps(options, f2c(temp), null, function (result) {
         if (result.result) {
             var str = (temp + " Deg.F").green;
             console.log("\nTemperature successfully set to: " + str);
         } else
-            console.log(result.reason);
+            console.log(result.reason.red);
     });
-}
-
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password> temperature\n");
 }
 
 //
@@ -77,18 +74,17 @@ try {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    if (!token || !program.args[0])
+        program.help();
 
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    var username = program.username;
+    var password = program.password;
 
-    tjs.login(process.argv[2], process.argv[3], login_cb);
+    if (!username || !password || !program.args[0])
+        program.help();
+
+    tjs.login(email, password, login_cb);
 }

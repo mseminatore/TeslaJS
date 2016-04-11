@@ -11,6 +11,15 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
+var program = require('commander');
+
+//
+//
+//
+program
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .parse(process.argv);
 
 //
 //
@@ -54,15 +63,7 @@ function sampleMain(options) {
 
         str = vehicle_state.valet_mode ? "ON" : "OFF";
         console.log("Valet mode: " + str.green);
-    
     });
-}
-
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password>\n");
 }
 
 //
@@ -77,13 +78,18 @@ try {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (!token)
+        program.help();
+
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    var username = program.username;
+    var password = program.password;
 
-    tjs.login(process.argv[2], process.argv[3], login_cb);
+    if (!username || !password)
+        program.help();
+
+    tjs.login(email, password, login_cb);
 }

@@ -11,6 +11,16 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
+var program = require('commander');
+
+//
+//
+//
+program
+  .usage('[options] percentage|open|close|vent|comfort')
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .parse(process.argv);
 
 //
 //
@@ -33,13 +43,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    var pctIndex = 2;
-
-    if (process.argv.length > 3) {
-        pctIndex = 3;
-    }
-
-    var amt = process.argv[pctIndex];
+    var amt = program.args[0];
 
     if (amt.toLowerCase() == "open")
         amt = 100;
@@ -55,15 +59,8 @@ function sampleMain(options) {
             var str = (amt + "%").green;
             console.log("\nSunroof successfully moved to : " + str);
         } else
-            console.log(result.reason);
+            console.log(result.reason.red);
     });
-}
-
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password> percentage|open|close|vent|comfort\n");
 }
 
 //
@@ -79,18 +76,17 @@ try {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    if (!token || !program.args[0])
+        program.help();
 
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    var username = program.username;
+    var password = program.password;
 
-    tjs.login(process.argv[2], process.argv[3], login_cb);
+    if (!username || !password || !program.args[0])
+        program.help();
+
+    tjs.login(email, password, login_cb);
 }

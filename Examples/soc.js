@@ -13,6 +13,9 @@ var fs = require('fs');
 var colors = require('colors');
 var program = require('commander');
 
+//
+//
+//
 program
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')

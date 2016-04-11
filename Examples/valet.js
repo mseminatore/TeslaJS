@@ -11,6 +11,16 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
+var program = require('commander');
+
+//
+//
+//
+program
+  .usage('[options] ON|OFF pin')
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .parse(process.argv);
 
 //
 //
@@ -35,16 +45,8 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    var modeIndex = 2;
-    var pinIndex = 3;
-
-    if (process.argv.length > 4) {
-        modeIndex = 4;
-        pinIndex = 5;
-    }
-
-    var mode = process.argv[modeIndex];
-    var pin = process.argv[pinIndex];
+    var mode = program.args[0];
+    var pin = program.args[1];
 
     if (mode.toUpperCase() == "ON")
         mode = true;
@@ -54,18 +56,11 @@ function sampleMain(options) {
     tjs.setValetMode(options, mode, pin, function (response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
-            console.log("\nValet mode " + str.green + "!");
+            console.log("\nValet mode: " + str.green);
         }
         else
-            console.error(response.reason);
+            console.error(response.reason.red);
     });
-}
-
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password> ON|OFF pin\n");
 }
 
 //
@@ -80,13 +75,18 @@ try {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (!token || program.args.length < 2)
+        program.help();
+
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    var username = program.username;
+    var password = program.password;
 
-    tjs.login(process.argv[2], process.argv[3], login_cb);
+    if (!username || !password || program.args.length < 2)
+        program.help();
+
+    tjs.login(email, password, login_cb);
 }

@@ -10,7 +10,18 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
+var request = require('request');
 var colors = require('colors');
+var program = require('commander');
+
+//
+//
+//
+program
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .option('-g, --geocode', 'geocode the street address')
+  .parse(process.argv);
 
 //
 //
@@ -71,17 +82,25 @@ function sampleMain(options) {
             var lat = drive_state.latitude || 0;
             var long = drive_state.longitude || 0;
             console.log("GPS: " + lat.toString().green + ", " + long.toString().green);
+
+            if (program.geocode) {
+                request({
+                    method: 'GET',
+                    url: "http://api.geonames.org/findNearestAddressJSON?lat=" + lat + "&lng=" + long + "&username=demo",
+                    headers: { 'Content-Type': 'application/json; charset=utf-8' }
+                }, function (error, response, body) {
+                    var res = JSON.parse(body).address;
+
+                    console.log('\nClosest resolved address');
+                    console.log('------------------------');
+                    console.log(res.streetNumber + " " + res.street);
+                    console.log(res.placename + ", " + res.adminCode1 + " " + res.postalcode + " " + res.countryCode);
+                });
+            }
         }
         else
-            console.log(drive_state.reason);
+            console.log(drive_state.reason.red);
     });
-}
-
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node <sample_name> <email> <password>\n");
 }
 
 //
@@ -96,13 +115,18 @@ try {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (!token)
+        program.help();
+
     login_cb({ error: false, authToken: token });
 } else {
     // no saved token found, expect username and password on command line
-    if (process.argv.length < 3) {
-        usage();
-        process.exit(1);
-    }
+    var username = program.username;
+    var password = program.password;
 
-    tjs.login(process.argv[2], process.argv[3], login_cb);
+    if (!username || !password)
+        program.help();
+
+    tjs.login(email, password, login_cb);
 }

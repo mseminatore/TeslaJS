@@ -177,15 +177,21 @@ the **username** and **password** on the command line.
 
 Usage:
 
-    node login.js <username> <password>
-
+    node login.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+	
 ## logout.js
 
 This sample deletes the locally cached **.token** file if present.
 
 Usage:
 
-    node logout.js <username> <password>
+    node logout.js
 
 ## climateStart.js
 
@@ -193,8 +199,13 @@ This sample demonstrates turning on the HVAC system of the vehicle.
 
 Usage:
 
-    node climateStart.js <username> <password>
-
+    node climateStart.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## climate.js
 
@@ -202,7 +213,13 @@ This sample retrieves and displays the **climate_state** data on the HVAC system
 
 Usage:
 
-    node climate.js <username> <password>
+    node climate.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## climateStop.js
 
@@ -210,7 +227,13 @@ This sample demonstrates turning off the HVAC system of the vehicle.
 
 Usage:
 
-    node climateStop.js <username> <password>
+    node climateStop.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## flashLights.js
 
@@ -218,7 +241,13 @@ This sample demonstrates flashing the headlights of the vehicle.
 
 Usage:
 
-    node flashLights.js <username> <password>
+    node flashLights.js [options]
+		
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## geoloc.js
 
@@ -226,15 +255,28 @@ This sample retrieves and displays information on the location and driving state
 
 Usage:
 
-    node geoloc.js <username> <password>
-
+    node geoloc.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+	-g, --geocode            geocode (reverse geocode to nearest address)
+	
 ## honkHorn.js
 
 This sample demonstrates honking the horn of the vehicle.
 
 Usage:
 
-    node honkHorn.js <username> <password>
+    node honkHorn.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## odometer.js
 
@@ -242,7 +284,13 @@ This sample retrieves and displays the current vehicle odometer value.
 
 Usage:
 
-    node odometer.js <username> <password>
+    node odometer.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## openChargePort.js
 
@@ -250,7 +298,13 @@ This sample sends the command to open the charge port.
 
 Usage:
 
-    node openChargePort.js <username> <password>
+    node openChargePort.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## resetValetPin.js
 
@@ -258,8 +312,13 @@ This sample attempts to reset the current valet pin.
 
 Usage:
 
-    node resetValetPin.js <username> <password>
-
+    node resetValetPin.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## remoteStart.js
 
@@ -268,7 +327,12 @@ This sample enables remotely starting the vehicle without a key fob present.  No
 
 Usage:
 
-    node remoteStart.js <username> password
+    node remoteStart.js [options] password
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
 
 ## setChargeLimit.js
 
@@ -276,7 +340,13 @@ This sample sets the current battery charge limit to the given value.
 
 Usage:
 
-    node setChargeLimit.js <username> <password> number|standard|storage|range
+    node setChargeLimit.js [options] number|standard|storage|range
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## setTemps.js
 
@@ -284,7 +354,13 @@ This sample sets the driver and passenger temperature to the given value.
 
 Usage:
 
-    node setTemps.js <username> <password> temperature
+    node setTemps.js [options] temperature
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## soc.js
 
@@ -293,7 +369,13 @@ vehicle charge level, and the ideal, rated and projected range.
 
 Usage:
 
-    node soc.js <username> <password>
+    node soc.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## startCharge.js
 
@@ -301,7 +383,13 @@ This sample demonstrates how to initiate a charging session.
 
 Usage:
 
-    node startCharge.js <username> <password>
+    node startCharge.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## stopCharge.js
 
@@ -309,7 +397,13 @@ This sample demonstrates how to terminate a charging session.
 
 Usage:
 
-    node stopCharge.js <username> <password>
+    node stopCharge.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## sunroof.js
 
@@ -317,7 +411,13 @@ This sample demonstrates controlling the panoramic sunroof if present.
 
 Usage:
 
-    node sunroof.js <username> <password> percentag|open|close|vent|comfort
+    node sunroof.js [options] percentage|open|close|vent|comfort
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## vehicle.js
 
@@ -325,7 +425,14 @@ This sample retrives and displays several elements of data returned from the **v
 
 Usage:
 
-    node vehicle.js <username> <password>
+    node vehicle.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)
+	-i, --index <n>          vehicle index (first car by default)
 
 ## valet.js
 
@@ -333,7 +440,13 @@ This sample enables or disables valet mode.
 
 Usage:
 
-    node valet.js <username> <password> ON|OFF pincode
+    node valet.js [options] ON|OFF pincode
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
 
 ## wakeup.js
 
@@ -341,4 +454,11 @@ This sample sends a wakeup signal to wake a vehicle in sleep mode.
 
 Usage:
 
-    node wakeup.js <username> <password>
+    node wakeup.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+	

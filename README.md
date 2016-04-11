@@ -21,6 +21,11 @@ token is compromised all existing tokens can be invalidated by changing the pass
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
 
+## What's New
+
+With the latest version the samples include enhanced command line processing.  Also, beginning with 1.0.17 the **vehicles** 
+sample now supports querying from specific vehicle for multi-car owners.  Please try it out and report back.
+
 # Tesla API Documentation
 
 The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
@@ -44,7 +49,7 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 # Installation
 
-In order to use the library and/or samples you must first download and install **Node.js** from http://nodejs.org
+In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).
 
 An installable module for 'npm' is now available.  To download and install the library and all of its dependencies 
 to a local project directory use the following:
@@ -59,10 +64,16 @@ If you prefer to download and install the library globally for all future node p
 
     npm install -g teslajs
 
-You may also install directly from the GitHub source.  Either download and unzip the source, or clone the repository.  
+You may also install directly from the GitHub [source](https://github.com/mseminatore/TeslaJS).  Either download and unzip the source, or clone the repository.  
 Then from the root level of the library directory:
 
     npm install
+
+This library and its accomanying samples are under active development.  New features, samples and bug fixes are being added
+regularly.  To ensure that you have the very latest version of TeslaJS and it's dependencies be sure to update frequently.
+To do so, from your project directory type:
+
+    npm update
 
 # Library Interfaces
 

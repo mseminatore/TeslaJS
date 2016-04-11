@@ -7,7 +7,7 @@ why create another one?  Rather than contribute to and modify one or more of the
 created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing libraries did not provide
-2. I was looking for a personal opportunity to learn more about the Tesla REST API, Node.js and Git/GitHub
+2. I was looking for a personal opportunity to learn more about the Tesla REST API, NodeJS and Git/GitHub
 
 ## Notable Features
 
@@ -23,8 +23,14 @@ possible to use the library to make multiple overlapping async calls for differe
 
 ## What's New
 
-With the latest version the samples include enhanced command line processing.  Also, beginning with 1.0.17 the **vehicles** 
-sample now supports querying from specific vehicle for multi-car owners.  Please try it out and report back.
+Here are some of the most recent features and fixes:
+
+1. With the latest version the samples include enhanced command line processing.
+2. Beginning with version **1.0.18** all of the samples support specifying the vehicle for multi-car owners.
+
+## Known Issues
+
+1. Streaming support is still being tested.  Please report any issues.
 
 # Tesla API Documentation
 
@@ -121,7 +127,7 @@ The TeslaJS library exports a number of methods and constants.
 **Library exported constants**
 
 	streamingPortal  - the URI for the streaming API portal
-	portal 	         - the URI for the OAuth-based API portal
+	portal 	         - the base URI for the OAuth-based API portal
 	API_CALL_LEVEL 	 - log all API calls
 	API_RETURN_LEVEL - log all API calls and completions
 	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
@@ -181,10 +187,11 @@ table for the lifetime of the sample.
 	
 ## login.js
 
-This sample demonstrates the basic login process which returns the Auth token required for other API calls.  The sample
-writes out a file called **.token** which stores the Auth token.  Other samples will use this token if present to avoid the need
-to enter the **username** and **password**.  If you prefer not to have your Auth token stored locally you can run the samples and provide
-the **username** and **password** on the command line.
+This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
+writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 
+to avoid the need to enter the **username** and **password** and login via the Tesla servers.  If you prefer not to have 
+your OAuth token stored locally do not run this sample.  Instead you may run the samples and provide 
+the **username** and **password** each time on the command line.
 
 Usage:
 

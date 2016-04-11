@@ -11,6 +11,12 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
+var program = require('commander');
+
+program
+  .option('-u, --username [string]', 'username (needed only if token not cached)')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .parse(process.argv);
 
 //
 //
@@ -23,6 +29,8 @@ function login_cb(result) {
 
     var token = JSON.stringify(result.authToken);
 
+    console.log(token);
+
     console.log("Login " + "Successfull.".green);
     console.log("OAuth token is: " + token.green);
 
@@ -30,17 +38,10 @@ function login_cb(result) {
     console.log('Auth token saved!');
 }
 
-//
-//
-//
-function usage() {
-    console.log("\nUsage: node login <email> <password>\n");
-}
+var username = program.username;
+var password = program.password;
 
-// no parameters found, expect username and password on command line
-if (process.argv.length < 3) {
-    usage();
-    process.exit(1);
-}
+if (!username || !password)
+    program.help();
 
-tjs.login(process.argv[2], process.argv[3], login_cb);
+tjs.login(username, password, login_cb);

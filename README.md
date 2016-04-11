@@ -28,8 +28,8 @@ sample now supports querying from specific vehicle for multi-car owners.  Please
 
 # Tesla API Documentation
 
-The REST API encapusulated by this library was documented through the work of many Tesla Model S owners.  The current
-REST API documentation can be found at:
+The Tesla REST API encapusulated by this library was documented through the collaboration of many Tesla Model S owners.  Please
+thank and support them for their efforts.  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/
 	
@@ -51,7 +51,7 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).
 
-An installable module for 'npm' is now available.  To download and install the library and all of its dependencies 
+An installable module for **npm** is now available.  To download and install the library and all of its dependencies 
 to a local project directory use the following:
 
     npm install teslajs
@@ -77,7 +77,7 @@ To do so, from your project directory type:
 
 # Library Interfaces
 
-The TeslaJS library provides a number of methods and constants.
+The TeslaJS library exports a number of methods and constants.
 
 **General API calls**
 
@@ -203,6 +203,21 @@ This sample deletes the locally cached **.token** file if present.
 Usage:
 
     node logout.js
+	
+## climate.js
+
+This sample retrieves and displays the **climate_state** data on the HVAC system of the vehicle.
+
+Usage:
+
+    node climate.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## climateStart.js
 
@@ -217,20 +232,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
-
-## climate.js
-
-This sample retrieves and displays the **climate_state** data on the HVAC system of the vehicle.
-
-Usage:
-
-    node climate.js [options]
-	
-	Options:
-	
-    -h, --help               output usage information
-	-u, --username [string]  username (needed only if token not cached)
-	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## climateStop.js
 
@@ -245,6 +247,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## flashLights.js
 
@@ -259,6 +262,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## geoloc.js
 
@@ -274,6 +278,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
 	-g, --geocode            geocode (reverse geocode to nearest address)
+    -i, --index <n>          vehicle index (first car by default)
 	
 ## honkHorn.js
 
@@ -288,6 +293,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## odometer.js
 
@@ -302,6 +308,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## openChargePort.js
 
@@ -316,20 +323,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
-
-## resetValetPin.js
-
-This sample attempts to reset the current valet pin.
-
-Usage:
-
-    node resetValetPin.js [options]
-	
-	Options:
-	
-    -h, --help               output usage information
-	-u, --username [string]  username (needed only if token not cached)
-	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## remoteStart.js
 
@@ -344,6 +338,22 @@ Usage:
 	
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
+    -i, --index <n>          vehicle index (first car by default)
+
+## resetValetPin.js
+
+This sample attempts to reset the current valet pin.
+
+Usage:
+
+    node resetValetPin.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## setChargeLimit.js
 
@@ -358,6 +368,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## setTemps.js
 
@@ -372,6 +383,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## soc.js
 
@@ -387,6 +399,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## startCharge.js
 
@@ -401,6 +414,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## stopCharge.js
 
@@ -415,6 +429,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## sunroof.js
 
@@ -429,6 +444,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## vehicle.js
 
@@ -458,6 +474,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 
 ## wakeup.js
 
@@ -472,4 +489,5 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
 	

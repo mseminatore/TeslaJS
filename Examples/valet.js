@@ -20,6 +20,7 @@ program
   .usage('[options] ON|OFF pin')
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
   .parse(process.argv);
 
 //
@@ -32,7 +33,7 @@ function login_cb(result) {
         return;
     }
 
-    var options = { authToken: result.authToken, carIndex: 0 };
+    var options = { authToken: result.authToken, carIndex: program.index || 0 };
     tjs.vehicles(options, function (vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 

@@ -22,6 +22,7 @@ program
   .option('-p, --password [string]', 'password (needed only if token not cached)')
   .option('-g, --geocode', 'geocode the street address')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
+  .option('-U, --uri [string]', 'URI of test server')
   .parse(process.argv);
 
 //
@@ -112,6 +113,11 @@ var tokenFound = false;
 try {
     tokenFound = fs.statSync('.token').isFile();
 } catch (e) {
+}
+
+if (program.uri) {
+    console.log("Setting portal URI to: " + program.uri);
+    tjs.setPortalBaseURI(program.uri);
 }
 
 if (tokenFound) {

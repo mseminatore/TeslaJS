@@ -1,7 +1,7 @@
 {
   "name": "teslajs",
   "version": "1.0.19",
-  "description": "An Unofficial login server and data-logging friendly Tesla REST API NodeJS package",
+  "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "colors": "^1.1.2",
     "commander": "^2.9.0",
@@ -17,7 +17,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Tesla"
+    "Tesla", "Model S", "Model X", "REST"
   ],
   "author": {
     "name": "Mark Seminatore",

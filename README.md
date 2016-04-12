@@ -127,20 +127,21 @@ The TeslaJS library exports a number of methods and constants.
 
 **Library exported constants**
 
-	streamingPortal  - the URI for the streaming API portal
-	portal 	         - the base URI for the OAuth-based API portal
-	API_CALL_LEVEL 	 - log all API calls
-	API_RETURN_LEVEL - log all API calls and completions
-	API_BODY_LEVEL   - log calls and completions as well as the body of POST commands
-	API_LOG_ALL      - the highest level of logging
-	CHARGE_STORAGE   - charge to 50%
-	CHARGE_STANDARD  - charge to 90%
-	CHARGE_RANGE     - charge to 100%.  Tesla recommends against frequent usage!
-	SUNROOF_OPEN     - fully opens the sunroof
-	SUNROOF_CLOSED   - closes the sunroof
-	SUNROOF_VENT     - open the sunroof to the vent position
-	SUNROOF_COMFORT	 - open the sunroof to the comfort position
-	streamingColumns - an array of the available streaming columns
+	streamingPortal   - the URI for the streaming API portal
+	portal 	          - the base URI for the OAuth-based API portal
+	API_CALL_LEVEL 	  - log all API calls
+	API_RETURN_LEVEL  - log all API calls and completions
+	API_REQUEST_LEVEL - log all API requests
+	API_BODY_LEVEL    - log calls and completions as well as the body of POST commands
+	API_LOG_ALL       - the highest level of logging
+	CHARGE_STORAGE    - charge to 50%
+	CHARGE_STANDARD   - charge to 90%
+	CHARGE_RANGE      - charge to 100%.  Tesla recommends against frequent usage!
+	SUNROOF_OPEN      - fully opens the sunroof
+	SUNROOF_CLOSED    - closes the sunroof
+	SUNROOF_VENT      - open the sunroof to the vent position
+	SUNROOF_COMFORT	  - open the sunroof to the comfort position
+	streamingColumns  - an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
 contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 

@@ -29,13 +29,13 @@ function login_cb(result) {
 
     var token = JSON.stringify(result.authToken);
 
-    console.log(token);
+    if (token) {
+        console.log("Login " + "Successfull.".green);
+        //    console.log("OAuth token is: " + token.green);
 
-    console.log("Login " + "Successfull.".green);
-    console.log("OAuth token is: " + token.green);
-
-    fs.writeFileSync('.token', token, 'utf8');
-    console.log('Auth token saved!');
+        fs.writeFileSync('.token', token, 'utf8');
+        console.log('Auth token saved!');
+    }
 }
 
 var username = program.username;

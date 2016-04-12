@@ -37,7 +37,10 @@ exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 var API_BODY_LEVEL = 3;
 exports.API_BODY_LEVEL = API_BODY_LEVEL;
 
-var API_RESPONSE_LEVEL = 4;
+var API_REQUEST_LEVEL = 4;
+exports.API_REQUEST_LEVEL = API_REQUEST_LEVEL;
+
+var API_RESPONSE_LEVEL = 5;
 exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 
 var API_LOG_ALL = 255;	// this value must be the last
@@ -95,7 +98,7 @@ exports.login = function login(username, password, callback) {
     if (!callback)
         callback = function (result) { /* do nothing! */}
 
-    request({
+    var req = {
         method: 'POST',
         url: portalBaseURI + '/oauth/token',
         form: {
@@ -105,7 +108,13 @@ exports.login = function login(username, password, callback) {
             "email": username,
             "password": password
         }
-    }, function (error, response, body) {
+    };
+
+    log(API_REQUEST_LEVEL, JSON.stringify(req));
+
+    request(req, function (error, response, body) {
+
+        log(API_RESPONSE_LEVEL, JSON.stringify(body));
 
         var authToken;
 
@@ -158,11 +167,15 @@ exports.vehicles = function vehicles(options, callback) {
     if (!callback)
         callback = function (vehicle) { /* do nothing! */ }
 
-    request( {
+    var req = {
         method: 'GET',
         url: portalBaseURI + '/api/1/vehicles',
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
-    }, function (error, response, body) {
+        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+    };
+
+    log(API_REQUEST_LEVEL, JSON.stringify(req));
+
+    request(req, function (error, response, body) {
         try {
             var data = JSON.parse(body);
         } catch (e) {
@@ -189,11 +202,15 @@ function get_command(options, command, callback) {
     if (!callback)
         callback = function (data) { /* do nothing! */ }
 
-    request({
+    var req = {
         method: "GET",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
-    }, function (error, response, body) {
+    };
+
+    log(API_REQUEST_LEVEL, JSON.stringify(req));
+
+    request(req, function (error, response, body) {
 
         if (error)
             console.error(error);

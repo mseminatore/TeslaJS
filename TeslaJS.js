@@ -1,6 +1,9 @@
 //=====================================================================
 // This is a Node.js module encapsulating the unofficial Tesla API set
 //
+// Github: https://github.com/mseminatore/TeslaJS
+// NPM: https://www.npmjs.com/package/teslajs
+//
 // Copyright (c) 2016 Mark Seminatore
 //
 // Refer to included LICENSE file for usage rights and restrictions
@@ -19,6 +22,8 @@ exports.streamingPortal = streamingPortal;
 //===========================
 var portal = "https://owner-api.teslamotors.com/";
 exports.portal = portal;
+
+var portalBaseURI = portal;
 
 //=======================
 // Log levels
@@ -49,15 +54,29 @@ function log(level, str) {
     console.log(str);
 }
 
-//======================
+//==========================
 // Set/get the logging level
-//======================
+//==========================
 exports.setLogLevel = function setLogLevel(level) {
     logLevel = level;
 }
 
 exports.getLogLevel = function getLogLevel(level) {
     return logLevel;
+}
+
+//============================
+// set/get the portal base URI
+//============================
+exports.setPortalBaseURI = function setPortalBaseURI(uri) {
+    if (!uri)
+        portalBaseURI = portal; // reset to the default Tesla servers
+    else
+        portalBaseURI = uri;
+}
+
+exports.getPortalBaseURI = function getPortalBaseURI() {
+    return portalBaseURI;
 }
 
 //==================================
@@ -78,7 +97,7 @@ exports.login = function login(username, password, callback) {
 
     request({
         method: 'POST',
-        url: portal + '/oauth/token',
+        url: portalBaseURI + '/oauth/token',
         form: {
             "grant_type": "password",
             "client_id": c_id,
@@ -112,14 +131,14 @@ exports.logout = function logout(authToken, callback) {
     if (!callback)
         callback = function (result) { /* do nothing! */ }
 
-    callback({ error: "Not implemented", response: "Not implemented", body: "Not implemented" });
+    callback({ error: "Not implemented!", response: "Not implemented!", body: "Not implemented!" });
 
     log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
 
 /*
     request({
         method: 'DELETE',
-        url: portal + 'logout',
+        url: portalBaseURI + 'logout',
         headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
@@ -141,7 +160,7 @@ exports.vehicles = function vehicles(options, callback) {
 
     request( {
         method: 'GET',
-        url: portal + '/api/1/vehicles',
+        url: portalBaseURI + '/api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     }, function (error, response, body) {
         try {
@@ -172,7 +191,7 @@ function get_command(options, command, callback) {
 
     request({
         method: "GET",
-        url: portal + "/api/1/vehicles/" + options.vehicleID + "/" + command,
+        url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     }, function (error, response, body) {
 
@@ -206,7 +225,7 @@ function post_command(options, command, body, callback) {
 
     var cmd = {
         method: "POST",
-        url: portal + "/api/1/vehicles/" + options.vehicleID + "/" + command,
+        url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' },
         form: body || null
     };

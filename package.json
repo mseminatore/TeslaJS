@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "An Unofficial login server and data-logging friendly Tesla REST API NodeJS package",
   "dependencies": {
     "colors": "^1.1.2",

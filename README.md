@@ -25,13 +25,14 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. With the latest version the samples include enhanced command line processing.
+1. Samples now include enhanced command line processing.
 2. Beginning with version **1.0.18** all of the samples support specifying the vehicle for multi-car owners.
-3. Beginning with version **1.0.19** began adding support for offline testing via the **mockla** sample
+3. Beginning with version **1.0.19** adding support for offline testing via the **mockla** sample
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
+2. The **mockla** sample is still being developed.  Suggestions welcome but please hold bug reports.
 
 # Tesla API Documentation
 

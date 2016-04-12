@@ -21,7 +21,7 @@ token is compromised all existing tokens can be invalidated by changing the pass
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
 
-## What's New
+## What's New!
 
 Here are some of the most recent features and fixes:
 
@@ -57,12 +57,13 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).
 
-An installable module for **npm** is now available.  To download and install the library and all of its dependencies 
-to a local project directory use the following:
+An installable module for [npm](http://npmjs.org) is now available.  To download and install the library and all of its 
+dependencies to a local project directory use the following:
 
     npm install teslajs
 
-If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in order to update the **package.json** file for your package as follows:
+If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in 
+order to update the **package.json** file for your package as follows:
 
     npm install teslajs --save
     
@@ -70,8 +71,8 @@ If you prefer to download and install the library globally for all future node p
 
     npm install -g teslajs
 
-You may also install directly from the GitHub [source](https://github.com/mseminatore/TeslaJS).  Either download and unzip the source, or clone the repository.  
-Then from the root level of the library directory:
+You may also install directly from the GitHub [source](https://github.com/mseminatore/TeslaJS).  Either download and 
+unzip the source, or clone the repository.  Then from the root level of the library directory:
 
     npm install
 

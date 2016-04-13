@@ -84,7 +84,7 @@ To do so, from your project directory type:
 
     npm update
 
-# Example Usages
+# Example Usage
 
 ## Login Example
 

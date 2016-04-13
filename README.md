@@ -53,7 +53,7 @@ of your vehicle, or cause damage, through actions including but not limited to:
 * Opening the sunroof
 * Opening the frunk or trunk
 * Lowering the battery charge level
-* Impacting the health of your battery
+* Impacting the long-term health of your battery
 
 # Installation
 

@@ -16,6 +16,7 @@ var program = require('commander');
 program
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .option('-U, --uri [string]', 'URI of test server')
   .parse(process.argv);
 
 //
@@ -43,5 +44,10 @@ var password = program.password;
 
 if (!username || !password)
     program.help();
+
+if (program.uri) {
+    console.log("Setting portal URI to: " + program.uri);
+    tjs.setPortalBaseURI(program.uri);
+}
 
 tjs.login(username, password, login_cb);

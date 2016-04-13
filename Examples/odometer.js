@@ -13,9 +13,13 @@ var fs = require('fs');
 var colors = require('colors');
 var program = require('commander');
 
+//
+//
+//
 program
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .option('-U, --uri [string]', 'URI of test server')
   .parse(process.argv);
 
 //
@@ -54,6 +58,11 @@ var tokenFound = false;
 try {
     tokenFound = fs.statSync('.token').isFile();
 } catch (e) {
+}
+
+if (program.uri) {
+    console.log("Setting portal URI to: " + program.uri);
+    tjs.setPortalBaseURI(program.uri);
 }
 
 if (tokenFound) {

@@ -191,21 +191,131 @@ app.post('/api/1/vehicles/321/wake_up', function (req, res) {
 //=================================
 // Mock the POST set_valet_mode cmd
 //=================================
-app.post('/api/1/vehicles/321/set_valet_mode', function (req, res) {
+app.post('/api/1/vehicles/321/command/set_valet_mode', function (req, res) {
     res.json(resultSuccess);
 });
 
 //==================================
 // Mock the POST reset_valet_pin cmd
 //==================================
-app.post('/api/1/vehicles/321/reset_valet_pin', function (req, res) {
+app.post('/api/1/vehicles/321/command/reset_valet_pin', function (req, res) {
     res.json(resultSuccess);
 });
 
 //========================================
 // Mock the POST charge_port_door_open cmd
 //========================================
-app.post('/api/1/vehicles/321/charge_port_door_open', function (req, res) {
+app.post('/api/1/vehicles/321/command/charge_port_door_open', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST charge_standard cmd
+//========================================
+app.post('/api/1/vehicles/321/command/charge_standard', function (req, res) {
+    res.json({
+        "response": {
+            "result": false,
+            "reason": "already_standard"
+        }
+    });
+});
+
+//========================================
+// Mock the POST charge_max_range cmd
+//========================================
+app.post('/api/1/vehicles/321/command/charge_max_range', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST set_charge_limit cmd
+//========================================
+app.post('/api/1/vehicles/321/command/set_charge_limit', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST charge_start cmd
+//========================================
+app.post('/api/1/vehicles/321/command/charge_start', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST charge_stop cmd
+//========================================
+app.post('/api/1/vehicles/321/command/charge_stop', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST flash_lights cmd
+//========================================
+app.post('/api/1/vehicles/321/command/flash_lights', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST honk_horn cmd
+//========================================
+app.post('/api/1/vehicles/321/command/honk_horn', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST door_unlock cmd
+//========================================
+app.post('/api/1/vehicles/321/command/door_unlock', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST door_lock cmd
+//========================================
+app.post('/api/1/vehicles/321/command/door_lock', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST set_temps cmd
+//========================================
+app.post('/api/1/vehicles/321/command/set_temps', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST auto_conditioning_start cmd
+//========================================
+app.post('/api/1/vehicles/321/command/auto_conditioning_start', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST auto_conditioning_stop cmd
+//========================================
+app.post('/api/1/vehicles/321/command/auto_conditioning_stop', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST sun_roof_control cmd
+//========================================
+app.post('/api/1/vehicles/321/command/sun_roof_control', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST remote_start_drive cmd
+//========================================
+app.post('/api/1/vehicles/321/command/remote_start_drive', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST trunk_open cmd
+//========================================
+app.post('/api/1/vehicles/321/command/trunk_open', function (req, res) {
     res.json(resultSuccess);
 });
 

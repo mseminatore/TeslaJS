@@ -199,6 +199,7 @@ table for the lifetime of the sample.
     flashLights    - Flash the headlights
     geoloc         - Display the current GPS location of the vehicle
     honkHorn       - Honk the horn
+	mockla         - Express app that mimics the Tesla REST API for testing
     odometer       - Displays the current odometer value
     openChargePort - Opens the charge port
     resetValetPin  - Resets the valet mode pin
@@ -230,6 +231,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
+    -U, --uri [string]       URI of test server
 	
 ## logout.js
 
@@ -269,6 +271,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## climateStop.js
 
@@ -284,6 +287,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## flashLights.js
 
@@ -299,6 +303,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## geoloc.js
 
@@ -315,6 +320,7 @@ Usage:
 	-p, --password [string]  password (needed only if token not cached)	
 	-g, --geocode            geocode (reverse geocode to nearest address)
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 	
 ## honkHorn.js
 
@@ -330,6 +336,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## odometer.js
 
@@ -345,6 +352,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## openChargePort.js
 
@@ -360,6 +368,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## remoteStart.js
 
@@ -375,6 +384,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## resetValetPin.js
 
@@ -390,6 +400,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## setChargeLimit.js
 
@@ -405,6 +416,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## setTemps.js
 
@@ -420,6 +432,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## soc.js
 
@@ -436,6 +449,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## startCharge.js
 
@@ -451,6 +465,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## stopCharge.js
 
@@ -466,6 +481,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## sunroof.js
 
@@ -481,6 +497,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## vehicle.js
 
@@ -496,6 +513,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)
 	-i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## valet.js
 
@@ -511,6 +529,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 
 ## wakeup.js
 
@@ -526,4 +545,5 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 	

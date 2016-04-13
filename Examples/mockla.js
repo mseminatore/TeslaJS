@@ -11,9 +11,21 @@
 
 var express = require('express');
 var app = express();
+var program = require('commander');
+
+//
+//
+//
+program
+//  .option('-u, --username [string]', 'username (used to mock login validation)')
+//  .option('-p, --password [string]', 'password (used to mock login validation)')
+  .option('-P, --port <n>', 'port number for the server', parseInt)
+  .parse(process.argv);
 
 // Globals
 var vid = 321;
+var username = null;
+var password = null;
 
 var resultSuccess = {
     "response": {
@@ -322,6 +334,8 @@ app.post('/api/1/vehicles/321/command/trunk_open', function (req, res) {
 //[]===============================[]
 // Setup our listen server
 //[]===============================[]
-app.listen(3000, function () {
-  console.log('Mockla app listening on port 3000!');
+var port = program.port || 3000;
+
+app.listen(port, function () {
+  console.log('Mockla app listening on port ' + port + '!');
 });

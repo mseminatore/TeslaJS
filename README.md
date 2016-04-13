@@ -338,6 +338,23 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server
 
+## mockla.js
+
+This sample is an Express app that mimics (mocks) the Tesla servers and implements the full REST API surface area.
+
+>Note that the app is currently very basic and always returns success results.  It also does not validate input parameters including
+>the OAuth token.  It also does not track state changes on the server.  The goal is to eventually provide a web interface for
+>both viewing and changing state values that are to be returned to enable sophisticated test scenarios.
+
+Usage:
+
+    node mockla.js [options]
+
+    Options:
+	
+    -h, --help               output usage information
+    -P, --port               port for the server (default: 3000)
+	
 ## odometer.js
 
 This sample retrieves and displays the current vehicle odometer value.

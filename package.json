@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "colors": "^1.1.2",
@@ -17,7 +17,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "Tesla", "Model S", "Model X", "REST"
+    "Tesla",
+    "Model S",
+    "Model X",
+    "REST"
   ],
   "author": {
     "name": "Mark Seminatore",

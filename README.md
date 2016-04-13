@@ -84,6 +84,27 @@ To do so, from your project directory type:
 
     npm update
 
+# Example Usages
+
+## Login Example
+
+    var tjs = require('TeslaJS');
+
+    var username = "<your email>";
+    var password = "<your password>";
+
+    tjs.login(username, password, function(result) {
+        if (result.error) {
+          console.log(JSON.stringify(result.error));
+          process.exit(1);
+        }
+
+        var token = JSON.stringify(result.authToken);
+
+        if (token)
+            console.log("Login Successfull!");
+    });
+
 # Library Interfaces
 
 The TeslaJS library exports a number of methods and constants.

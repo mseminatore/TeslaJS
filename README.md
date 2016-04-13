@@ -111,11 +111,13 @@ The TeslaJS library exports a number of methods and constants.
 
 **General API calls**
 
-    setLogLevel() - sets the level of debug logging
-    getLogLevel() - gets the level of debug logging
-    login()       - authenticate with Tesla servers and retrieve the OAuth token
-    logout()      - delete the current OAuth token
-    vehicles()    - retrieve list of vehicles and option data
+    setLogLevel()      - sets the level of debug logging
+    getLogLevel()      - gets the level of debug logging
+	setPortalBaseURI() - sets the server for testing, pass null to reset
+	getPortalBaseURI() - gets the server
+    login()            - authenticate with Tesla servers and retrieve the OAuth token
+    logout()           - delete the current OAuth token
+    vehicles()         - retrieve list of vehicles and option data
 	
 **API calls for a given vehicle id**
 	
@@ -251,7 +253,8 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-
+    -U, --uri [string]       URI of test server
+	
 ## climateStart.js
 
 This sample demonstrates turning on the HVAC system of the vehicle.

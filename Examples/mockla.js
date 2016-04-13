@@ -15,9 +15,16 @@ var app = express();
 // Globals
 var vid = 321;
 
-//
-//
-//
+var resultSuccess = {
+    "response": {
+        "result": true,
+        "reason": ""
+    }
+};
+
+//===============================
+// Get the default web view
+//===============================
 app.get('/', function (req, res) {
   res.send('Hello from Mockla!');
 });
@@ -61,32 +68,11 @@ app.get('/api/1/vehicles', function (req, res) {
     });
 });
 
-//===============================
-// Mock the GET vehicle_state cmd
-//===============================
-app.get('/api/1/vehicles/321/data_request/vehicle_state', function (req, res) {
-    res.json({
-        "response": {
-            "df": false,                  // driver's side front door open
-            "dr": false,                  // driver's side rear door open
-            "pf": false,                  // passenger's side front door open
-            "pr": false,                  // passenger's side rear door open
-            "ft": false,                  // front trunk is open
-            "rt": false,                  // rear trunk is open
-            "car_version": "1.19.42",      // car firmware version
-            "locked": true,               // car is locked
-            "sun_roof_installed": false,  // panoramic roof is installed
-            "sun_roof_state": "unknown",
-            "sun_roof_percent_open": 0,   // null if not installed
-            "dark_rims": false,           // gray rims installed
-            "wheel_type": "Base19",       // wheel type installed
-            "has_spoiler": false,         // spoiler is installed
-            "roof_color": "Colored",      // "None" for panoramic roof
-            "perf_config": "Base",
-            "vehicle_name": "Kit",        // display name if set
-            "valet_mode": false           // true if valet mode is active
-        }
-    });
+//================================
+// Mock the GET mobile_enabled cmd
+//================================
+app.get('/api/1/vehicles/321/mobile_enabled', function (req, res) {
+    res.json({ "response": true });
 });
 
 //===============================
@@ -119,22 +105,6 @@ app.get('/api/1/vehicles/321/data_request/charge_state', function (req, res) {
 });
 
 //===============================
-// Mock the GET drive_state cmd
-//===============================
-app.get('/api/1/vehicles/321/data_request/drive_state', function (req, res) {
-    res.json({
-        "response": {
-            "shift_state": null,          //
-            "speed": null,                //
-            "latitude": 33.794839,        // degrees N of equator
-            "longitude": -84.401593,      // degrees W of the prime meridian
-            "heading": 4,                 // integer compass heading, 0-359
-            "gps_as_of": 1359863204       // Unix timestamp of GPS fix
-        }
-    });
-});
-
-//===============================
 // Mock the GET climate_state cmd
 //===============================
 app.get('/api/1/vehicles/321/data_request/climate_state', function (req, res) {
@@ -153,8 +123,95 @@ app.get('/api/1/vehicles/321/data_request/climate_state', function (req, res) {
 });
 
 //===============================
-// Setup our listen server
+// Mock the GET drive_state cmd
 //===============================
+app.get('/api/1/vehicles/321/data_request/drive_state', function (req, res) {
+    res.json({
+        "response": {
+            "shift_state": null,          //
+            "speed": null,                //
+            "latitude": 33.794839,        // degrees N of equator
+            "longitude": -84.401593,      // degrees W of the prime meridian
+            "heading": 4,                 // integer compass heading, 0-359
+            "gps_as_of": 1359863204       // Unix timestamp of GPS fix
+        }
+    });
+});
+
+//===============================
+// Mock the GET gui_settings cmd
+//===============================
+app.get('/api/1/vehicles/321/data_request/gui_settings', function (req, res) {
+    res.json({
+        "response": {
+            "gui_distance_units": "mi/hr",
+            "gui_temperature_units": "F",
+            "gui_charge_rate_units": "mi/hr",
+            "gui_24_hour_time": false,
+            "gui_range_display": "Rated"
+        }
+    });
+});
+
+//===============================
+// Mock the GET vehicle_state cmd
+//===============================
+app.get('/api/1/vehicles/321/data_request/vehicle_state', function (req, res) {
+    res.json({
+        "response": {
+            "df": false,                  // driver's side front door open
+            "dr": false,                  // driver's side rear door open
+            "pf": false,                  // passenger's side front door open
+            "pr": false,                  // passenger's side rear door open
+            "ft": false,                  // front trunk is open
+            "rt": false,                  // rear trunk is open
+            "car_version": "1.19.42",      // car firmware version
+            "locked": true,               // car is locked
+            "sun_roof_installed": false,  // panoramic roof is installed
+            "sun_roof_state": "unknown",
+            "sun_roof_percent_open": 0,   // null if not installed
+            "dark_rims": false,           // gray rims installed
+            "wheel_type": "Base19",       // wheel type installed
+            "has_spoiler": false,         // spoiler is installed
+            "roof_color": "Colored",      // "None" for panoramic roof
+            "perf_config": "Base",
+            "vehicle_name": "Kit",        // display name if set
+            "valet_mode": false           // true if valet mode is active
+        }
+    });
+});
+
+//===============================
+// Mock the POST wake_up cmd
+//===============================
+app.post('/api/1/vehicles/321/wake_up', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//=================================
+// Mock the POST set_valet_mode cmd
+//=================================
+app.post('/api/1/vehicles/321/set_valet_mode', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//==================================
+// Mock the POST reset_valet_pin cmd
+//==================================
+app.post('/api/1/vehicles/321/reset_valet_pin', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST charge_port_door_open cmd
+//========================================
+app.post('/api/1/vehicles/321/charge_port_door_open', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//[]===============================[]
+// Setup our listen server
+//[]===============================[]
 app.listen(3000, function () {
   console.log('Mockla app listening on port 3000!');
 });

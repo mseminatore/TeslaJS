@@ -337,5 +337,5 @@ app.post('/api/1/vehicles/321/command/trunk_open', function (req, res) {
 var port = program.port || 3000;
 
 app.listen(port, function () {
-  console.log('Mockla app listening on port ' + port + '!');
+  console.log('Mockla app listening at http://127.0.0.1:' + port);
 });

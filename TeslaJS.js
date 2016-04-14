@@ -47,7 +47,7 @@ exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
-var logLevel = 0;
+var logLevel = process.env.TESLAJS_LOG || 0;
 
 //===========================
 // Adjustable console logging
@@ -111,11 +111,11 @@ exports.login = function login(username, password, callback) {
         }
     };
 
-    log(API_REQUEST_LEVEL, JSON.stringify(req));
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
 
     request(req, function (error, response, body) {
 
-        log(API_RESPONSE_LEVEL, JSON.stringify(body));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(body));
 
         var authToken;
 
@@ -174,7 +174,7 @@ exports.vehicles = function vehicles(options, callback) {
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
 
-    log(API_REQUEST_LEVEL, JSON.stringify(req));
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
 
     request(req, function (error, response, body) {
         if (error)
@@ -189,11 +189,11 @@ exports.vehicles = function vehicles(options, callback) {
         data = data.response[options.carIndex || 0];
         data.id = data.id_s;
 
-        log(API_RESPONSE_LEVEL, JSON.stringify(data));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data));
 
         callback(data);
 
-        log(API_RETURN_LEVEL, "Command: /vehicles completed.");
+        log(API_RETURN_LEVEL, "\nGET request: /vehicles completed.");
     });
 }
 
@@ -212,7 +212,7 @@ function get_command(options, command, callback) {
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     };
 
-    log(API_REQUEST_LEVEL, JSON.stringify(req));
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
 
     request(req, function (error, response, body) {
 
@@ -227,11 +227,11 @@ function get_command(options, command, callback) {
 
         data = data.response;
 
-        log(API_RESPONSE_LEVEL, JSON.stringify(data));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data));
 
         callback(data);
 
-        log(API_RETURN_LEVEL, "GET request: " + command + " completed.");
+        log(API_RETURN_LEVEL, "\nGET request: " + command + " completed.");
     });
 }
 
@@ -247,11 +247,11 @@ function post_command(options, command, body, callback) {
     var cmd = {
         method: "POST",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' },
+        headers: { Authorization: "Bearer " + options.authToken, 'content-type': 'application/json; charset=UTF-8' },
         form: body || null
     };
 
-    log(API_BODY_LEVEL, JSON.stringify(cmd));
+    log(API_BODY_LEVEL, "\nRequest: " + JSON.stringify(cmd));
 
     request(cmd, function (error, response, body) {
 
@@ -266,11 +266,11 @@ function post_command(options, command, body, callback) {
 
         data = data.response;
 
-        log(API_RESPONSE_LEVEL, JSON.stringify(data));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data));
 
         callback(data);
 
-        log(API_RETURN_LEVEL, "POST command: " + command + " completed.");
+        log(API_RETURN_LEVEL, "\nPOST command: " + command + " completed.");
     });
 }
 

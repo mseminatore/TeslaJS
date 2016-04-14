@@ -26,13 +26,14 @@ possible to use the library to make multiple overlapping async calls for differe
 Here are some of the most recent features and fixes:
 
 1. Samples now include enhanced command line processing.
-2. Beginning with version **1.0.18** all of the samples support specifying the vehicle index for multi-car owners.
-3. Beginning with version **1.0.19** adding support for offline testing via the **mockla** sample
+2. All samples now support specifying the vehicle index for multi-car owners.
+3. Beginning with version **1.0.21** all samples support offline testing via the **mockla** sample app.
+4. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
-2. The **mockla** sample is still being developed.  Suggestions welcome but please hold bug reports.
+2. The **mockla** sample is still in active development.  Suggestions welcome but please hold bug reports.
 
 # Tesla API Documentation
 
@@ -222,7 +223,9 @@ table for the lifetime of the sample.
     climateStop    - Turn off the HVAC system
     flashLights    - Flash the headlights
     geoloc         - Display the current GPS location of the vehicle
+	guiSettings    - Display the current unit format settings
     honkHorn       - Honk the horn
+	mobileEnabled  - Display whether remote access is enabled
 	mockla         - Express app that mimics the Tesla REST API for testing
     odometer       - Displays the current odometer value
     openChargePort - Opens the charge port
@@ -345,6 +348,22 @@ Usage:
 	-g, --geocode            geocode (reverse geocode to nearest address)
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server
+
+## guiSettings.js
+
+This sample retrieves and displays the current display formats for the user interface.
+
+Usage:
+
+    node guiSettings.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
 	
 ## honkHorn.js
 
@@ -362,11 +381,27 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server
 
+## mobileEnabled.js
+
+This sample retrieves and displays whether mobile access is enabled.
+
+Usage:
+
+    node mobileEnabled.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server
+
 ## mockla.js
 
 This sample is an Express app that mimics (mocks) the Tesla servers and implements the full REST API surface area.
 
->Note that the app is currently very basic and always returns success results.  It also does not validate input parameters including
+>Note that the app is currently very basic and always returns success results.  It does not validate input parameters including
 >the OAuth token.  It also does not track state changes on the server.  The goal is to eventually provide a web interface for
 >both viewing and changing state values that are to be returned to enable sophisticated test scenarios.
 

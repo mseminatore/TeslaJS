@@ -3,7 +3,7 @@ An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This libr
 vehicles.  If someone could confirm successful usage with Model X that would be helpful.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
-why create another one?  Rather than contribute to and modify one or more of the existing libraries, this library was 
+why create another one?  Rather than contribute to or modify one or more of the existing libraries, this library was 
 created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing libraries did not provide
@@ -36,7 +36,7 @@ Here are some of the most recent features and fixes:
 
 # Tesla API Documentation
 
-The Tesla REST API encapusulated by this library was documented through the collaboration of many Tesla Model S owners.  Please
+The Tesla REST API encapusulated by this library was documented through the collaboration of many Tesla owners.  Please
 thank and support them for their efforts.  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/

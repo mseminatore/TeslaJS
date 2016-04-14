@@ -88,6 +88,7 @@ To do so, from your project directory type:
 
 ## Login Example
 
+```javascript
     var tjs = require('TeslaJS');
 
     var username = "<your email>";
@@ -104,6 +105,7 @@ To do so, from your project directory type:
         if (token)
             console.log("Login Successfull!");
     });
+```
 
 # Library Interfaces
 

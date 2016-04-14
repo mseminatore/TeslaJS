@@ -107,6 +107,28 @@ To do so, from your project directory type:
     });
 ```
 
+## Vehicles Example
+
+With the OAuth token from a successful login you can query the vehicles for the account
+
+```javascript
+    var options = { authToken: result.authToken };
+    tjs.vehicles(options, function (vehicle) {
+        console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
+    });
+```
+
+## Charge State Example
+
+Adding the vehicle ID from a successful `vehicles()` call to options you can make other Tesla REST calls
+
+```javascript
+    options.vehicleID = vehicle.id_s;
+    tjs.chargeState(options, function (chargeState) {
+        console.log("Current charge level: " + chargeState.battery_level + '%');
+    });
+```
+
 # Library Interfaces
 
 The TeslaJS library exports a number of methods and constants.

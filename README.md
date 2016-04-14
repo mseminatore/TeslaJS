@@ -26,7 +26,7 @@ possible to use the library to make multiple overlapping async calls for differe
 Here are some of the most recent features and fixes:
 
 1. Samples now include enhanced command line processing.
-2. Beginning with version **1.0.18** all of the samples support specifying the vehicle for multi-car owners.
+2. Beginning with version **1.0.18** all of the samples support specifying the vehicle index for multi-car owners.
 3. Beginning with version **1.0.19** adding support for offline testing via the **mockla** sample
 
 ## Known Issues
@@ -109,7 +109,7 @@ To do so, from your project directory type:
 
 ## Vehicles Example
 
-With the OAuth token from a successful login you can query the vehicles for the account
+With the OAuth token from a successful `login()` call you can query the vehicles for the account
 
 ```javascript
     var options = { authToken: result.authToken };

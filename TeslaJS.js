@@ -10,6 +10,7 @@
 //=====================================================================
 
 var request = require('request');
+var colors = require('colors');
 
 //=======================
 // Streaming API portal
@@ -86,7 +87,7 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
 // Log error messages to the console
 //==================================
 function err(str) {
-    console.error(str);
+    console.error(str.red);
 }
 
 //===============================================
@@ -176,6 +177,9 @@ exports.vehicles = function vehicles(options, callback) {
     log(API_REQUEST_LEVEL, JSON.stringify(req));
 
     request(req, function (error, response, body) {
+        if (error)
+            err(error);
+
         try {
             var data = JSON.parse(body);
         } catch (e) {
@@ -213,7 +217,7 @@ function get_command(options, command, callback) {
     request(req, function (error, response, body) {
 
         if (error)
-            console.error(error);
+            err(error);
 
         try {
             var data = JSON.parse(body);
@@ -252,7 +256,7 @@ function post_command(options, command, body, callback) {
     request(cmd, function (error, response, body) {
 
         if (error)
-            console.error(error);
+            err(error);
 
         try {
             var data = JSON.parse(body);
@@ -358,6 +362,7 @@ exports.closeChargePort = function closeChargePort(options, callback) {
 // Set the charge limit
 //=====================
 exports.CHARGE_STORAGE = 50;
+exports.CHARGE_DAILY = 70;
 exports.CHARGE_STANDARD = 90;
 exports.CHARGE_RANGE = 100;     // note: using thsi frequently is not recommended for long-term battery health!
 

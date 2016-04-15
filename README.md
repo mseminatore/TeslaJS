@@ -401,9 +401,9 @@ Usage:
 
 This sample is an Express app that mimics (mocks) the Tesla servers and implements the full REST API surface area.
 
->Note that the app is currently very basic and always returns success results.  It does not validate input parameters including
->the OAuth token.  It also does not track state changes on the server.  The goal is to eventually provide a web interface for
->both viewing and changing state values that are to be returned to enable sophisticated test scenarios.
+>Note that the app is still basic and almost always returns success results.  It does not validate input parameters including
+>the OAuth token and vehicleID.  It does track state changes on the server.  The goal is to eventually provide a web 
+>interface for both viewing and changing state values that are to be returned to enable sophisticated test scenarios.
 
 Usage:
 

@@ -25,7 +25,7 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. Samples now include enhanced command line processing.
+1. All samples now include enhanced command line processing.
 2. All samples now support specifying the vehicle index for multi-car owners.
 3. Beginning with version **1.0.21** all samples support offline testing via the **mockla** sample app.
 4. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
@@ -85,15 +85,17 @@ To do so, from your project directory type:
 
     npm update
 
-# Example Usage
+# Usage Examples
 
 ## Login Example
+
+As you can see below, it is very simple to login and acquire an OAuth token.
 
 ```javascript
     var tjs = require('TeslaJS');
 
-    var username = "<your email>";
-    var password = "<your password>";
+    var username = "<your MyTesla email>";
+    var password = "<your MyTesla password>";
 
     tjs.login(username, password, function(result) {
         if (result.error) {
@@ -108,9 +110,12 @@ To do so, from your project directory type:
     });
 ```
 
+>Note: Currently the only way to invalidate an issued token is to change your MyTesla account password.  Therefore, you must 
+>take care to properly secure tokens.  Do not share them over an unsecure connection, or store them on a public machine.
+
 ## Vehicles Example
 
-With the OAuth token from a successful `login()` call you can query the vehicles for the account
+With the OAuth token from a successful `login()` call you can query the vehicles for the account:
 
 ```javascript
     var options = { authToken: result.authToken };
@@ -121,7 +126,7 @@ With the OAuth token from a successful `login()` call you can query the vehicles
 
 ## Charge State Example
 
-Adding the vehicle ID from a successful `vehicles()` call to options you can make other Tesla REST calls
+Adding the vehicle ID from a successful `vehicles()` call to options you can make other Tesla REST calls:
 
 ```javascript
     options.vehicleID = vehicle.id_s;
@@ -401,9 +406,10 @@ Usage:
 
 This sample is an Express app that mimics (mocks) the Tesla servers and implements the full REST API surface area.
 
->Note that the app is still basic and almost always returns success results.  It does not validate input parameters including
->the OAuth token and vehicleID.  It does track state changes on the server.  The goal is to eventually provide a web 
->interface for both viewing and changing state values that are to be returned to enable sophisticated test scenarios.
+>Note: the app is still basic and nearly always returns success results.  It does not validate input parameters including
+>the OAuth token and vehicleID.  Streaming is not yet emulated.  It does, however, now track vehicle state changes on the server.
+>The goal is to eventually provide a web interface for both viewing and changing state values that are to be returned
+>to enable sophisticated test scenarios.
 
 Usage:
 

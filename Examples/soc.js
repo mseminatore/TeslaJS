@@ -56,7 +56,12 @@ function sampleMain(options) {
 
             var hours = Math.floor(chargeState.time_to_full_charge);
             var mins = Math.round((chargeState.time_to_full_charge - hours) * 60);
-            console.log("Time remaining: " + hours.toString().green + ":" + mins.toString().green);
+
+            str = ""
+            if (hours > 0)
+                str = hours.toString().green + " hours ";
+
+            console.log("Time remaining: " + str + mins.toString().green + " minutes");
 
             var mph = chargeState.charge_rate;
 

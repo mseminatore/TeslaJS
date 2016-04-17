@@ -65,7 +65,7 @@ function sampleMain(options) {
 
             var mph = chargeState.charge_rate;
 
-            console.log(mph + " mi/hr " + chargeState.charger_voltage + "V / " + chargeState.charger_actual_current + "A");
+            console.log(mph.toString().green + " mi/hr " + chargeState.charger_voltage.toString().green + " V / " + chargeState.charger_actual_current.toString().green + " A");
 
         } else if (chargeState.charging_state == "Disconnected") {
             console.log("Charging State: " + "Unplugged".bold.red);
@@ -80,9 +80,9 @@ function sampleMain(options) {
 
         console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + '%'.green);
         console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + '%'.green);
-        console.log("\nIdeal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
-        console.log("Rated range: " + Math.round(chargeState.battery_range).toString().green + ' miles');
+        console.log("\nRated range: " + Math.round(chargeState.battery_range).toString().green + ' miles');
         console.log("Projected range: " + Math.round(chargeState.est_battery_range).toString().green + ' miles');
+        console.log("Ideal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
     });
 }
 

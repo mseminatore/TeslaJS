@@ -14,7 +14,7 @@ var app = express();
 var program = require('commander');
 var bodyParser = require('body-parser');
 
-//app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/json
 
 //

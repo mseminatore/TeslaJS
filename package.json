@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "body-parser": "^1.15.0",
@@ -22,7 +22,7 @@
     "Tesla",
     "Model S",
     "Model X",
-	"Model 3",
+    "Model 3",
     "REST"
   ],
   "author": {

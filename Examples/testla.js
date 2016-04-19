@@ -10,10 +10,13 @@
 //==========================================================================
 
 var express = require('express');
-var app = express();
 var program = require('commander');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
 
+var app = express();
+
+app.use(logger('dev'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/json
 
@@ -120,7 +123,7 @@ var resultSuccess = {
 // Get the default web view
 //===============================
 app.get('/', function (req, res) {
-  res.send('Hello from Mockla!');
+  res.send('Hello from TesTla!');
 });
 
 //=============================
@@ -432,5 +435,7 @@ app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
 var port = program.port || 3000;
 
 app.listen(port, function () {
-  console.log('Mockla app listening at http://127.0.0.1:' + port);
+  console.log('TesTla app listening at http://127.0.0.1:' + port);
 });
+
+module.exports = app;

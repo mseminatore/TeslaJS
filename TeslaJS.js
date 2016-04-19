@@ -451,6 +451,8 @@ exports.remoteStart = function remoteStartDrive(options, password, callback) {
 //=====================
 // Open the trunk/frunk
 //=====================
+exports.FRUNK = "frunk";
+exports.TRUNK = "trunk";
 exports.openTrunk = function openTrunk(options, which, callback) {
     post_command(options, "command/trunk_open", { which_trunk: which }, callback);
 }
@@ -475,6 +477,62 @@ exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
 exports.resetValetPin = function resetValetPin(options, callback) {
     post_command(options, "command/reset_valet_pin", null, callback);
 }
+
+/*
+//
+// [Alpha impl] Not yet supported
+//
+exports.frontDefrostOn = function frontDefrostOn(options, callback) {
+    post_command(options, "command/front_defrost_on", null, callback);
+}
+
+//
+// [Alpha impl] Not yet supported
+//
+exports.frontDefrostOff = function frontDefrostOff(options, callback) {
+    post_command(options, "command/front_defrost_off", null, callback);
+}
+
+//
+// [Alpha impl] Not yet supported
+//
+exports.rearDefrostOn = function rearDefrostOn(options, callback) {
+    post_command(options, "command/rear_defrost_on", null, callback);
+}
+
+//
+// [Alpha impl] Not yet supported
+//
+exports.rearDefrostOff = function rearDefrostOff(options, callback) {
+    post_command(options, "command/rear_defrost_off", null, callback);
+}
+*/
+
+//
+// [Alpha impl] Trigger homelink
+//
+/*
+exports.homelink = function homelink(options, callback) {
+    post_command(options, "command/trigger_homelink", null, callback);
+}
+*/
+
+//
+// [Alpha impl] Auto Park
+//
+/*
+exports.autoParkForward = function autoParkForward(options, lat, long, callback) {
+    autoPark(options, lat, long, "start_forward", callback);
+}
+
+exports.autoParkBackward = function autoParkBackward(options, lat, long, callback) {
+    autoPark(options, lat, long, "start_reverse", callback);
+}
+
+exports.autoPark = function autoPark(options, lat, long, action, callback) {
+    post_command(options, "command/autopark_request", { lat: lat, long: long, action: action}, callback);
+}
+*/
 
 //=================================
 // Available streaming data options

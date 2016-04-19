@@ -27,13 +27,14 @@ Here are some of the most recent features and fixes:
 
 1. All samples now include enhanced command line processing.
 2. All samples now support specifying the vehicle index for multi-car owners.
-3. Beginning with version **1.0.21** all samples support offline testing via the **mockla** sample app.
+3. Beginning with version **1.0.21** all samples support offline testing via the **testla** sample app.
 4. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
+5. Renamed the **mockla** sample to **testla** in **1.0.25**
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
-2. The **mockla** sample is still in active development.  Suggestions welcome but please hold bug reports.
+2. The **testla** sample is still in active development.  Suggestions welcome but please hold bug reports.
 
 # Tesla API Documentation
 
@@ -231,7 +232,6 @@ table for the lifetime of the sample.
 	guiSettings    - Display the current unit format settings
     honkHorn       - Honk the horn
 	mobileEnabled  - Display whether remote access is enabled
-	mockla         - Express app that mimics the Tesla REST API for testing
     odometer       - Displays the current odometer value
     openChargePort - Opens the charge port
     resetValetPin  - Resets the valet mode pin
@@ -242,6 +242,7 @@ table for the lifetime of the sample.
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
 	sunroof        - Control the sunroof.  Be careful!
+	testla         - Express app that mimics the Tesla REST API for testing
     valet          - Enable or disable valet mode
     vehicle        - Retrieve and display information on the current vehicle state
     wakeup         - Send a wakeup command to the vehicle
@@ -402,24 +403,6 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server
 
-## mockla.js
-
-This sample is an Express app that mimics (mocks) the Tesla servers and implements the full REST API surface area.
-
->Note: the app is still basic and nearly always returns success results.  It does not validate input parameters including
->the OAuth token and vehicleID.  Streaming is not yet emulated.  It does, however, now track vehicle state changes on the server.
->The goal is to eventually provide a web interface for both viewing and changing state values that are to be returned
->to enable sophisticated test scenarios.
-
-Usage:
-
-    node mockla.js [options]
-
-    Options:
-	
-    -h, --help               output usage information
-    -P, --port               port for the server (default: 3000)
-	
 ## odometer.js
 
 This sample retrieves and displays the current vehicle odometer value.
@@ -580,6 +563,24 @@ Usage:
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server
+
+## testla.js
+
+This sample is an Express app that mimics the Tesla servers and implements the full REST API surface area.
+
+>Note: the app is still basic and nearly always returns success results.  It does not validate input parameters including
+>the OAuth token and vehicleID.  Streaming is not yet emulated.  It does, however, now track vehicle state changes on the server.
+>The goal is to eventually provide a web interface for both viewing and changing state values that are to be returned
+>to enable sophisticated test scenarios.
+
+Usage:
+
+    node testla.js [options]
+
+    Options:
+	
+    -h, --help               output usage information
+    -P, --port               port for the server (default: 3000)
 
 ## vehicle.js
 

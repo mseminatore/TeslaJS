@@ -1,6 +1,6 @@
 # TeslaJS
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library should support all existing Tesla
-vehicles.  If someone could confirm successful usage with Model X that would be helpful.
+vehicles.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
 why create another one?  Rather than contribute to or modify one or more of the existing libraries, this library was 
@@ -25,11 +25,8 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. All samples now include enhanced command line processing.
-2. All samples now support specifying the vehicle index for multi-car owners.
-3. Beginning with version **1.0.21** all samples support offline testing via the **testla** sample app.
-4. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
-5. Renamed the **mockla** sample to **testla** in **1.0.25**
+1. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
+2. Renamed the **mockla** sample to **testla** in **1.0.25**
 
 ## Known Issues
 

@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1 Charge State
+
+  p Charging State: 
+    input(type='text', value='#{charging_state}')
+  p Rated Range:
+    input(type='text', value='#{battery_range}')
+  p Projected Range:
+    input(type='text', value='#{est_battery_range}')
+  p Ideal Range:
+    input(type='text', value='#{ideal_battery_range}')
+  p State of Charge:
+    input(type='text', value='#{battery_level}')
+  p Charge Limit:
+    input(type='text', value='#{charge_limit_soc}')
+  p Charge Port Open:
+    if (charge_port_door_open)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+
+  input(type='submit', value='Set')
+
+  br
+  br
+
+  input(type='button', onclick='/chargeState', value='Refresh')
+
+  br
+  br
+
+  a(href='/') Go Home

@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Drive State
+
+  p Shift State: 
+    input(type='text', value='#{shift_state || "Parked"}')
+  p Speed:
+    input(type='text', value='#{speed || 0}')
+  p Latitude:
+    input(type='text', value='#{latitude}')
+  p Longitude:
+    input(type='text', value='#{longitude}')
+  p Compass Heading:
+    input(type='text', value='#{heading}')
+  p GPS Time:
+    input(type='text', value='#{gps_as_of}')
+
+  input(type='submit', value='Set')
+
+  br
+  br
+
+  input(type='button', onclick='/driveState', value='Refresh')
+
+  br
+  br
+
+  a(href='/') Go Home

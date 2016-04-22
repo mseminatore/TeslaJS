@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h1 Climate State
+  p Inside Temperature: 
+    input(type='text', value='#{inside_temp}')
+  p Outside Temperature:
+    input(type='text', value='#{outside_temp}')
+  p Driver Temp:
+    input(type='text', value='#{driver_temp_setting}')
+  p Passenger Temp:
+    input(type='text', value='#{passenger_temp_setting}')
+
+  p HVAC On:
+    if (is_auto_conditioning_on)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+
+  p Front Defrost:
+    if (is_front_defroster_on)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+
+  p Rear Defrost:
+    if (is_rear_defroster_on)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+
+  p Fan Speed:
+    input(type='text', value='#{fan_status}')
+
+  input(type='submit', value='Set')
+
+  br
+  br
+
+  input(type='button', onclick='/climateState', value='Refresh')
+
+  br
+  br
+
+  a(href='/') Go Home

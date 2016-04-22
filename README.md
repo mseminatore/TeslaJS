@@ -7,7 +7,7 @@ why create another one?  Rather than contribute to or modify one or more of the 
 created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing libraries did not provide
-2. I was looking for a personal opportunity to learn more about the Tesla REST API, NodeJS and Git/GitHub
+2. I was looking for a personal opportunity to learn more about the Tesla REST API, NodeJS, Express and Git/GitHub
 
 ## Notable Features
 
@@ -27,11 +27,13 @@ Here are some of the most recent features and fixes:
 
 1. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
 2. Renamed the **mockla** sample to **testla** in **1.0.25**
+3. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
-2. The **testla** sample is still in active development.  Suggestions welcome but please hold bug reports.
+2. The **testla** sample is still in active development.  Setting state through webviews is not working.  Suggestions are
+welcome but please hold bug reports.
 
 # Tesla API Documentation
 

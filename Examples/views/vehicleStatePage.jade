@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  h1 Vehicle State
+
+  p Shift State: 
+    input(type='text', value='#{shift_state || "Parked"}')
+  p Speed:
+    input(type='text', value='#{speed || 0}')
+  p Firmware:
+    input(type='text', value='#{car_version}')
+  p Locked:
+    if (locked)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+  p Vehicle Name:
+    input(type='text', value='#{vehicle_name}')
+  p Valet Mode:
+    if (valet_mode)
+      input(type='checkbox', CHECKED)
+    else
+      input(type='checkbox')
+
+  input(type='submit', value='Set')
+
+  br
+  br
+
+  input(type='button', onclick='/vehicleState', value='Refresh')
+
+  br
+  br
+
+  a(href='/') Go Home

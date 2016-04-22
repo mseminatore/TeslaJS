@@ -14,12 +14,36 @@ var program = require('commander');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
+var cookieParser = require('cookie-parser');
+var favicon = require('serve-favicon');
+
+// pages
+var index = require('./routes/index');
+var driveStatePage = require('./routes/driveStatePage');
+var climateStatePage = require('./routes/climateStatePage');
+var chargeStatePage = require('./routes/chargeStatePage');
+var vehicleStatePage = require('./routes/vehicleStatePage');
 
 var app = express();
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false })); // for parsing application/json
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// define routes
+app.use('/', index);
+app.use('/driveState', driveStatePage);
+app.use('/chargeState', chargeStatePage);
+app.use('/climateState', climateStatePage);
+app.use('/vehicleState', vehicleStatePage);
 
 //
 //
@@ -53,10 +77,10 @@ var chargeState = {
     "charge_to_max_range": false,  // current std/max-range setting
     "max_range_charge_counter": 0,
     "fast_charger_present": false, // connected to Supercharger?
-    "battery_range": 239.02,       // rated miles
+    "battery_range": 219.02,       // rated miles
     "est_battery_range": 155.79,   // range estimated from recent driving
     "ideal_battery_range": 275.09, // ideal miles
-    "battery_level": 91,           // integer charge percentage
+    "battery_level": 80,           // integer charge percentage
     "battery_current": -0.6,       // current flowing into battery
     "charge_starting_range": null,
     "charge_starting_soc": null,
@@ -66,7 +90,7 @@ var chargeState = {
     "charger_power": 0,            // kW (rounded down) of charger
     "time_to_full_charge": null,   // valid only while charging
     "charge_rate": -1.0,           // float mi/hr charging or -1 if not charging
-    "charge_port_door_open": true,
+    "charge_port_door_open": false,
     "charge_limit_soc": 90
 };
 
@@ -120,12 +144,19 @@ var resultSuccess = {
     }
 };
 
+app.locals.driveState = driveState;
+app.locals.climateState = climateState;
+app.locals.vehicleState = vehicleState;
+app.locals.chargeState = chargeState;
+
+/*
 //===============================
 // Get the default web view
 //===============================
 app.get('/', function (req, res) {
   res.send('Hello from TesTla!');
 });
+*/
 
 //=============================
 // Mock the OAuth login command
@@ -232,6 +263,8 @@ app.post('/api/1/vehicles/:vid/command/set_valet_mode', function (req, res) {
     if (req.body.on && valetPin == 0) {
         vehicleState.valet_mode = true;
         valetPin = req.body.password;
+
+        app.locals.vehicleState = vehicleState;
         res.json(resultSuccess);
         return;
     }
@@ -239,6 +272,8 @@ app.post('/api/1/vehicles/:vid/command/set_valet_mode', function (req, res) {
     if (!req.body.on && valetPin == req.body.password) {
         vehicleState.valet_mode = false;
         valetPin = 0;
+
+        app.locals.vehicleState = vehicleState;
         res.json(resultSuccess);
         return;
     }
@@ -258,6 +293,8 @@ app.post('/api/1/vehicles/:vid/command/reset_valet_pin', function (req, res) {
     // TODO - does this reset valet mode?
     vehicleState.valet_mode = false;
     valetPin = 0;
+
+    app.locals.vehicleState = vehicleState;
     res.json(resultSuccess);
 });
 
@@ -266,6 +303,8 @@ app.post('/api/1/vehicles/:vid/command/reset_valet_pin', function (req, res) {
 //========================================
 app.post('/api/1/vehicles/:vid/command/charge_port_door_open', function (req, res) {
     chargeState.charge_port_door_open = true;
+
+    app.locals.chargeState = chargeState;
     res.json(resultSuccess);
 });
 
@@ -361,6 +400,8 @@ app.post('/api/1/vehicles/:vid/command/honk_horn', function (req, res) {
 //========================================
 app.post('/api/1/vehicles/:vid/command/door_unlock', function (req, res) {
     vehicleState.locked = false;
+
+    app.locals.vehicleState = vehicleState;
     res.json(resultSuccess);
 });
 
@@ -369,6 +410,8 @@ app.post('/api/1/vehicles/:vid/command/door_unlock', function (req, res) {
 //========================================
 app.post('/api/1/vehicles/:vid/command/door_lock', function (req, res) {
     vehicleState.locked = true;
+
+    app.locals.vehicleState = vehicleState;
     res.json(resultSuccess);
 });
 
@@ -384,6 +427,7 @@ app.post('/api/1/vehicles/:vid/command/set_temps', function (req, res) {
     climateState.driver_temp_setting = driverTemp;
     climateState.passenger_temp_setting = passTemp;
 
+    app.locals.climateState = climateState;
     res.json(resultSuccess);
 });
 
@@ -393,6 +437,10 @@ app.post('/api/1/vehicles/:vid/command/set_temps', function (req, res) {
 app.post('/api/1/vehicles/:vid/command/auto_conditioning_start', function (req, res) {
     climateState.is_auto_conditioning_on = true;
     climateState.fan_status = 6;
+
+    climateState.inside_temp = climateState.driver_temp_setting;
+
+    app.locals.climateState = climateState;
     res.json(resultSuccess);
 });
 
@@ -402,6 +450,10 @@ app.post('/api/1/vehicles/:vid/command/auto_conditioning_start', function (req, 
 app.post('/api/1/vehicles/:vid/command/auto_conditioning_stop', function (req, res) {
     climateState.is_auto_conditioning_on = false;
     climateState.fan_status = 0;
+
+    climateState.inside_temp = climateState.outside_temp;
+
+    app.locals.climateState = climateState;
     res.json(resultSuccess);
 });
 
@@ -427,6 +479,9 @@ app.post('/api/1/vehicles/:vid/command/remote_start_drive', function (req, res) 
 // Mock the POST trunk_open cmd
 //========================================
 app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
+    vehicleState.rt = true;
+
+    app.locals.vehicleState = vehicleState;
     res.json(resultSuccess);
 });
 

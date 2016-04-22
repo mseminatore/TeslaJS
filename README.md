@@ -1,5 +1,5 @@
 # TeslaJS
-An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library should support all existing Tesla
+An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library supports all existing Tesla
 vehicles.
 
 It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 

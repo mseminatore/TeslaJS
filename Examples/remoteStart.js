@@ -20,7 +20,7 @@ program
   .usage('[options] password')
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
-  .option('-U, --uri [string]', 'URI of test server')
+  .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
   .parse(process.argv);
 
 //

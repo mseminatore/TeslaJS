@@ -76,9 +76,6 @@ function sampleMain(options) {
 //
 // Sample starts here
 //
-if (process.env.TESLAJS_LOG)
-    tjs.setLogLevel(process.env.TESLAJS_LOG);
-
 var tokenFound = false;
 
 try {

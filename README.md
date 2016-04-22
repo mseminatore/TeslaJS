@@ -137,7 +137,12 @@ Adding the vehicle ID from a successful `vehicles()` call to options you can mak
 
 # Library Interfaces
 
-The TeslaJS library exports a number of methods and constants.
+The TeslaJS library exports a number of methods and constants.  The library also responds to some environment variables.
+
+**Environment Variables**
+
+    TESLAJS_LOG        - if set defines the value of the default logging level
+	TESLAJS_SERVER     - if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000) 
 
 **General API calls**
 
@@ -263,7 +268,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
 ## logout.js
 
@@ -287,7 +292,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
 ## climateStart.js
 
@@ -303,7 +308,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## climateStop.js
 
@@ -319,7 +324,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## flashLights.js
 
@@ -335,7 +340,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## geoloc.js
 
@@ -352,7 +357,7 @@ Usage:
 	-p, --password [string]  password (needed only if token not cached)	
 	-g, --geocode            geocode (reverse geocode to nearest address)
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## guiSettings.js
 
@@ -368,7 +373,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
 ## honkHorn.js
 
@@ -384,7 +389,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## mobileEnabled.js
 
@@ -400,7 +405,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## odometer.js
 
@@ -416,7 +421,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## openChargePort.js
 
@@ -432,7 +437,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## remoteStart.js
 
@@ -448,7 +453,7 @@ Usage:
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## resetValetPin.js
 
@@ -464,7 +469,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## setChargeLimit.js
 
@@ -480,7 +485,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## setTemps.js
 
@@ -496,7 +501,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## soc.js
 
@@ -513,7 +518,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## startCharge.js
 
@@ -529,7 +534,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## stopCharge.js
 
@@ -545,7 +550,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## sunroof.js
 
@@ -561,16 +566,16 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## testla.js
 
-This sample is an Express app that mimics the Tesla servers and implements the full REST API surface area.
+This sample is an Express app that mimics the Tesla servers and implements the full REST API surface area.  There is now a
+web interface for this app.  Point your web browser to http://127.0.0.1:3000.
 
->Note: the app is still basic and nearly always returns success results.  It does not validate input parameters including
->the OAuth token and vehicleID.  Streaming is not yet emulated.  It does, however, now track vehicle state changes on the server.
->The goal is to eventually provide a web interface for both viewing and changing state values that are to be returned
->to enable sophisticated test scenarios.
+>Note: the app is still fairly basic and in many cases simply returns success results.  It does not validate input 
+>parameters including the OAuth token and vehicleID.  Streaming is not yet emulated.  It does now track vehicle 
+>state changes on the server.  The web interface does not yet allow for changing vehicle state values.
 
 Usage:
 
@@ -595,7 +600,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)
 	-i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## valet.js
 
@@ -611,7 +616,7 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ## wakeup.js
 
@@ -627,5 +632,5 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
-    -U, --uri [string]       URI of test server
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	

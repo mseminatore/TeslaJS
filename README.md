@@ -259,9 +259,10 @@ table for the lifetime of the sample.
 
 This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
 writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 
-to avoid the need to enter the **username** and **password** and login via the Tesla servers.  If you prefer not to have 
-your OAuth token stored locally do not run this sample.  Instead you may run the samples and provide 
-the **username** and **password** each time on the command line.
+to avoid the need to enter the **username** and **password** and login via the Tesla servers.
+
+>If you prefer not to have your OAuth token stored locally do not run this sample.  Instead you may run the samples and provide 
+>the **username** and **password** each time on the command line.
 
 Usage:
 

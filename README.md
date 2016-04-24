@@ -28,12 +28,12 @@ Here are some of the most recent features and fixes:
 1. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
 2. Renamed the **mockla** sample to **testla** in **1.0.25**
 3. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
+4. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
-2. The **testla** sample is still in active development.  Setting state through webviews is not working.  Suggestions are
-welcome but please hold bug reports.
+2. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
 
 # Tesla API Documentation
 
@@ -75,7 +75,11 @@ If you prefer to download and install the library globally for all future node p
     npm install -g teslajs
 
 You may also install directly from the GitHub [source](https://github.com/mseminatore/TeslaJS).  Either download and 
-unzip the source, or clone the repository.  Then from the root level of the library directory:
+unzip the source, or clone the repository.
+
+>Remember, whether you install via npm, ZIP source or Git clone you must install the dependencies before using TeslaJS.
+
+To install dependencies via npm, from the root level of the library directory type:
 
     npm install
 

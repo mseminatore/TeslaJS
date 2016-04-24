@@ -76,8 +76,10 @@ function sampleMain(options) {
             var state = drive_state.shift_state || "Parked";
             console.log("\nState: " + state.green);
 
-            if (drive_state.speed)
-                console.log("Speed: " + drive_state.speed || 0);
+            if (drive_state.speed) {
+                var str = drive_state.speed || 0;
+                console.log("Speed: " + str.green);
+            }
 
             console.log("Heading: " + compassDirs(drive_state.heading).green);
 

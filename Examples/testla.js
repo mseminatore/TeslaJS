@@ -144,19 +144,25 @@ var resultSuccess = {
     }
 };
 
+//
+// TODO - find a way for this to go away.  Perhaps add as members of app??
+//
 app.locals.driveState = driveState;
 app.locals.climateState = climateState;
 app.locals.vehicleState = vehicleState;
 app.locals.chargeState = chargeState;
 
-/*
-//===============================
-// Get the default web view
-//===============================
-app.get('/', function (req, res) {
-  res.send('Hello from TesTla!');
+//=============================
+// Update the drive state
+//=============================
+app.post('/driveState', function (req, res, next) {
+    console.log(req.body);
+
+    driveState = req.body;
+    app.locals.driveState = driveState;
+
+    res.send("Got it!");
 });
-*/
 
 //=============================
 // Mock the OAuth login command
@@ -491,20 +497,27 @@ app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
 var port = program.port || 3000;
 
 app.listen(port, function () {
-  console.log('TesTla app listening at http://127.0.0.1:' + port);
+    var str = 'http://127.0.0.1:' + port;
+    console.log('TesTla app listening at ' + str);
 });
 
+//========================================
 // catch 404 and forward to error handler
+//========================================
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
+//[]===============================[]
 // error handlers
+//[]===============================[]
 
+//========================================
 // development error handler
 // will print stacktrace
+//========================================
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
@@ -515,8 +528,10 @@ if (app.get('env') === 'development') {
     });
 }
 
+//========================================
 // production error handler
 // no stacktraces leaked to user
+//========================================
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {

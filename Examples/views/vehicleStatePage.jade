@@ -3,26 +3,86 @@ extends layout
 block content
   h1 Vehicle State
 
-  p Shift State: 
-    input(type='text', value='#{shift_state || "Parked"}')
-  p Speed:
-    input(type='text', value='#{speed || 0}')
-  p Firmware:
-    input(type='text', value='#{car_version}')
-  p Locked:
-    if (locked)
-      input(type='checkbox', CHECKED)
-    else
-      input(type='checkbox')
-  p Vehicle Name:
-    input(type='text', value='#{vehicle_name}')
-  p Valet Mode:
-    if (valet_mode)
-      input(type='checkbox', CHECKED)
-    else
-      input(type='checkbox')
+  hr
+  h2 Doors
 
-  input(type='submit', value='Set')
+  form(method="POST", action="/vehicleState")
+    p Doors Locked:
+      if (locked)
+        input(type='checkbox', name="locked", CHECKED)
+      else
+        input(type='checkbox', name="locked")
+    p Driver Door:
+      // driver's side front door open
+      if (df)
+        input(type="checkbox", name="df", CHECKED)
+      else
+        input(type="checkbox", name="df")
+
+    p Passenger Door:
+      // passenger's side front door open
+      if (pf)
+        input(type="checkbox", name="pf", CHECKED)
+      else
+        input(type="checkbox", name="pf")
+
+    p Left Rear Door:
+      // driver's side rear door open
+      if (dr)
+        input(type="checkbox", name="dr", CHECKED)
+      else
+        input(type="checkbox", name="dr")
+
+    p Right Rear Door:
+      // passenger's side rear door open
+      if (pr)
+        input(type="checkbox", name="pr", CHECKED)
+      else
+        input(type="checkbox", name="pr")
+
+    hr
+    h2 Trunks
+
+    p Front Trunk:
+      // front trunk is open
+      if (ft)
+        input(type="checkbox", name="ft", CHECKED)
+      else
+        input(type="checkbox", name="ft")
+    p Rear Trunk:
+      // rear trunk is open
+      if (rt)
+        input(type="checkbox", name="rt", CHECKED)
+      else
+        input(type="checkbox", name="rt")
+
+    hr
+    h2 Sunroof
+
+    p Sunroof:
+      if (sun_roof_installed)
+        input(type="checkbox", name="sun_roof_installed", CHECKED)
+      else
+        input(type="checkbox", name="sun_roof_installed")
+    
+    if (sun_roof_installed)
+      p Sunroof Percent Open: 
+        input(type='text', name="sun_roof_percent_open", value='#{sun_roof_percent_open || 0}')
+    
+    p Firmware version:
+      input(type='text', name="car_version", value='#{car_version}')
+
+    hr
+    h2 Vehicle
+    
+    p Vehicle Name:
+      input(type='text', name="vehicle_name", value='#{vehicle_name}')
+    p Valet Mode:
+      if (valet_mode)
+        input(type='checkbox', name="valet_mode", CHECKED)
+      else
+        input(type='checkbox', name="valet_mode")
+    input(type='submit', value='Set')
 
   br
   br

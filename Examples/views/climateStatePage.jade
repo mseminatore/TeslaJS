@@ -2,37 +2,44 @@ extends layout
 
 block content
   h1 Climate State
-  p Inside Temperature: 
-    input(type='text', value='#{inside_temp}')
-  p Outside Temperature:
-    input(type='text', value='#{outside_temp}')
-  p Driver Temp:
-    input(type='text', value='#{driver_temp_setting}')
-  p Passenger Temp:
-    input(type='text', value='#{passenger_temp_setting}')
 
-  p HVAC On:
-    if (is_auto_conditioning_on)
-      input(type='checkbox', CHECKED)
-    else
-      input(type='checkbox')
+  hr
+  h2 Temperatures
 
-  p Front Defrost:
-    if (is_front_defroster_on)
-      input(type='checkbox', CHECKED)
-    else
-      input(type='checkbox')
+  form(method="POST", action="/climateState")
+    p Inside Temperature: 
+      input(type='text', name="inside_temp", value='#{inside_temp}')
+    p Outside Temperature:
+      input(type='text', name="outside_temp", value='#{outside_temp}')
+    p Driver Temp:
+      input(type='text', name="driver_temp_setting", value='#{driver_temp_setting}')
+    p Passenger Temp:
+      input(type='text', name="passenger_temp_setting", value='#{passenger_temp_setting}')
 
-  p Rear Defrost:
-    if (is_rear_defroster_on)
-      input(type='checkbox', CHECKED)
-    else
-      input(type='checkbox')
+    hr
+    h2 Controls
 
-  p Fan Speed:
-    input(type='text', value='#{fan_status}')
+    p HVAC On:
+      if (is_auto_conditioning_on)
+        input(type='checkbox', name="is_auto_conditioning_on", CHECKED)
+      else
+        input(type='checkbox', name="is_auto_conditioning_on")
 
-  input(type='submit', value='Set')
+    p Front Defrost:
+      if (is_front_defroster_on)
+        input(type='checkbox', name="is_front_defroster_on", CHECKED)
+      else
+        input(type='checkbox', name="is_front_defroster_on")
+
+    p Rear Defrost:
+      if (is_rear_defroster_on)
+        input(type='checkbox', name="is_rear_defroster_on", CHECKED)
+      else
+        input(type='checkbox', name="is_rear_defroster_on")
+
+    p Fan Speed:
+      input(type='text', name="fan_status", value='#{fan_status}')
+    input(type='submit', value='Set')
 
   br
   br

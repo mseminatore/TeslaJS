@@ -2,16 +2,22 @@ extends layout
 
 block content
   h1= title
-  h2 This is a tool for simulating the Tesla servers and testing calls to the Tesla RESTful APIs
+
+  hr
+
+  h2 TesTla is an app for simulating the Tesla servers and testing calls to the Tesla RESTful APIs
 
   br
-  a(href='/driveState') Drive State
+  input(type="button", onclick="location.href='/driveState'", value="Drive State")
+
+  br
+  br  
+  input(type="button", onclick="location.href='/chargeState'", value="Charge State")
   
   br
-  a(href='/chargeState') Charge State
+  br
+  input(type="button", onclick="location.href='/vehicleState'", value="Vehicle State")
   
   br
-  a(href='/vehicleState') Vehicle State
-  
   br
-  a(href='/climateState') Climate State
+  input(type="button", onclick="location.href='/climateState'", value="Climate State")

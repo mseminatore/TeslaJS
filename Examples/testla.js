@@ -161,7 +161,71 @@ app.post('/driveState', function (req, res, next) {
     driveState = req.body;
     app.locals.driveState = driveState;
 
-    res.send("Got it!");
+    res.send("Drive State Updated! <br><br><button onclick=\"location.href='/driveState'\">Go Back</button>");
+});
+
+//=============================
+// Update the climate state
+//=============================
+app.post('/climateState', function (req, res, next) {
+    console.log(req.body);
+
+    climateState.inside_temp = req.body.inside_temp;
+    climateState.outside_temp = req.body.outside_temp;
+    climateState.driver_temp_setting = req.body.driver_temp_setting;
+    climateState.passenger_temp_setting = req.body.passenger_temp_setting;
+    climateState.is_auto_conditioning_on = req.body.is_auto_conditioning_on;
+    climateState.is_front_defroster_on = req.body.is_front_defroster_on;
+    climateState.is_rear_defroster_on = req.body.is_rear_defroster_on;
+    climateState.fan_status = req.body.fan_status;
+
+    app.locals.climateState = climateState;
+
+    res.send("Climate State Updated! <br><br><button onclick=\"location.href='/climateState'\">Go Back</button>");
+});
+
+//=============================
+// Update the charge state
+//=============================
+app.post('/chargeState', function (req, res, next) {
+    console.log(req.body);
+
+    chargeState.charging_state = req.body.charging_state;
+    chargeState.battery_range = req.body.battery_range;
+    chargeState.est_battery_range = req.body.est_battery_range;
+    chargeState.ideal_battery_range = req.body.ideal_battery_range;
+    chargeState.battery_level = req.body.battery_level;
+    chargeState.charge_limit_soc = req.body.charge_limit_soc;
+    chargeState.charge_port_door_open = req.body.charge_port_door_open;
+
+    app.locals.chargeState = chargeState;
+
+    res.send("Charge State Updated! <br><br><button onclick=\"location.href='/chargeState'\">Go Back</button>");
+});
+
+//=============================
+// Update the vehicle state
+//=============================
+app.post('/vehicleState', function (req, res, next) {
+    console.log(req.body);
+
+    // copy over the fields that were updated
+    vehicleState.car_version = req.body.car_version;
+    vehicleState.df = req.body.df;
+    vehicleState.dr = req.body.dr;
+    vehicleState.pf = req.body.pf;
+    vehicleState.pr = req.body.pr;
+    vehicleState.locked = req.body.locked;
+    vehicleState.ft = req.body.ft;
+    vehicleState.rt = req.body.rt;
+    vehicleState.sun_roof_installed = req.body.sun_roof_installed;
+    vehicleState.sun_roof_percent_open = req.body.sun_roof_percent_open;
+    vehicleState.vehicle_name = req.body.vehicle_name;
+    vehicleState.valet_mode = req.body.valet_mode;
+
+    app.locals.vehicleState = vehicleState;
+
+    res.send("Vehicle State Updated! <br><br><button onclick=\"location.href='/vehicleState'\">Go Back</button>");
 });
 
 //=============================

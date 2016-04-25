@@ -12,11 +12,12 @@ created for two main reasons:
 ## Notable Features
 
 With the introduction of the new OAuth-based owner API, one of the features I wanted was the ability to make API calls
-without having to login each time.  Most existing libraries require a login transaction with each API call.  With the 
-TeslaJS library, once an auth token is retrieved it can be used to make other REST API calls.  This is important for 
-moderating load on the Tesla login servers.  This is also important if you want to use the library to do server-based 
-data logging.  It is generally safer to store an OAuth token on the server instead of logon credentials.  If the OAuth
-token is compromised all existing tokens can be invalidated by changing the password on the account.
+without having to login each time a new process was invoked.  Many existing libraries require a login transaction with each 
+initiation of the library.  With the TeslaJS library, once an auth token is retrieved it can be retrieved and used to make other 
+REST API calls.  For certain use cases this can be important for moderating load on the Tesla login servers.  This is 
+also important if you want to use the library to do server-based data logging.  It is generally safer to store an OAuth 
+token on the server instead of logon credentials.  If the OAuth token is compromised all existing tokens can be invalidated 
+by changing the password on the account.
 
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.

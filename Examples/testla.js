@@ -16,6 +16,7 @@ var logger = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var favicon = require('serve-favicon');
+var colors = require('colors');
 
 // pages
 var index = require('./routes/index');
@@ -561,8 +562,8 @@ app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
 var port = program.port || 3000;
 
 app.listen(port, function () {
-    var str = 'http://127.0.0.1:' + port;
-    console.log('TesTla app listening at ' + str);
+    var str = "http://127.0.0.1:" + port;
+    console.log("TesTla".cyan + " listening at " + str.green);
 });
 
 //========================================

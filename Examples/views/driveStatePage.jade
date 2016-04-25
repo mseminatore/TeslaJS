@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1 Drive State
+  h1(onclick="location.href='/'") TesTla
+  hr
+
+  h2 Drive State
 
   form(method="POST", action="/driveState")
     p Shift State: 
@@ -26,4 +29,5 @@ block content
   br
   br
 
-  a(href='/') Go Home
+  hr
+  input(type="button", onclick="location.href='/'", value="Go Home")

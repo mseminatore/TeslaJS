@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1 Charge State
+  h1 TesTla
+  hr
+
+  h2 Charge State
 
   form(method="POST", action="/chargeState")
     p Charging State: 
@@ -23,9 +26,14 @@ block content
         input(type='checkbox', name="charge_port_door_open")
     input(type='submit', value='Set')
 
+  br
+  br
+
   input(type='button', onclick="location.href='/chargeState'", value='Refresh')
 
   br
   br
 
-  a(href='/') Go Home
+  hr
+  input(type="button", onclick="location.href='/'", value="Go Home")
+

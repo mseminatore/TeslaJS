@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1 Vehicle State
+  h1 TesTla
+  hr
+
+  h2 Vehicle State
 
   hr
   h2 Doors
@@ -43,13 +46,13 @@ block content
     hr
     h2 Trunks
 
-    p Front Trunk:
+    p Front:
       // front trunk is open
       if (ft)
         input(type="checkbox", name="ft", CHECKED)
       else
         input(type="checkbox", name="ft")
-    p Rear Trunk:
+    p Rear:
       // rear trunk is open
       if (rt)
         input(type="checkbox", name="rt", CHECKED)
@@ -59,7 +62,7 @@ block content
     hr
     h2 Sunroof
 
-    p Sunroof:
+    p Sunroof Installed:
       if (sun_roof_installed)
         input(type="checkbox", name="sun_roof_installed", CHECKED)
       else
@@ -92,4 +95,6 @@ block content
   br
   br
 
-  a(href='/') Go Home
+  hr
+  input(type="button", onclick="location.href='/'", value="Go Home")
+

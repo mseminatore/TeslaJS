@@ -192,12 +192,12 @@ app.post('/chargeState', function (req, res, next) {
     console.log(req.body);
 
     chargeState.charging_state = req.body.charging_state;
-    chargeState.battery_range = req.body.battery_range;
-    chargeState.est_battery_range = req.body.est_battery_range;
-    chargeState.ideal_battery_range = req.body.ideal_battery_range;
-    chargeState.battery_level = req.body.battery_level;
-    chargeState.charge_limit_soc = req.body.charge_limit_soc;
-    chargeState.charge_port_door_open = req.body.charge_port_door_open;
+    chargeState.battery_range = parseInt(req.body.battery_range);
+    chargeState.est_battery_range = parseInt(req.body.est_battery_range);
+    chargeState.ideal_battery_range = parseInt(req.body.ideal_battery_range);
+    chargeState.battery_level = parseInt(req.body.battery_level);
+    chargeState.charge_limit_soc = parseInt(req.body.charge_limit_soc);
+    chargeState.charge_port_door_open = req.body.charge_port_door_open == "on" ? true : false;
 
     app.locals.chargeState = chargeState;
 
@@ -436,10 +436,66 @@ app.post('/api/1/vehicles/:vid/command/set_charge_limit', function (req, res) {
     res.json(resultSuccess);
 });
 
+//
+//
+//
+function socToRatedMiles(soc) {
+    // 265 rated miles at 100% SOC
+    return Math.round(soc * 2.65);
+}
+
+//
+//
+//
+function ratedToIdealMiles(rated) {
+    return Math.round(rated * 350 / 265);
+}
+
+//
+//
+//
+function chargePowerToRatedRange(power) {
+    return Math.round(power * 3);
+}
+
+//
+//
+//
+function updateChargeCB() {
+    console.log("Charging tick.");
+
+    if (chargeState.battery_level < chargeState.charge_limit_soc) {
+        chargeState.battery_level = 1.0 + chargeState.battery_level;
+        chargeState.battery_range = socToRatedMiles(chargeState.battery_level);
+        chargeState.ideal_battery_range = ratedToIdealMiles(chargeState.battery_range);
+        chargeState.est_battery_range = Math.round(chargeState.battery_range * 0.85);
+    }
+    else {
+        if (chargeState.timer) {
+            clearInterval(chargeState.timer);
+            chargeState.timer = null;
+            chargeState.charging_state = "Complete";
+            console.log("Charginge complete.");
+        }
+    }
+}
+
 //========================================
 // Mock the POST charge_start cmd
 //========================================
 app.post('/api/1/vehicles/:vid/command/charge_start', function (req, res) {
+    if (chargeState.battery_level < chargeState.charge_limit_soc) {
+        chargeState.charger_actual_current = 40;
+        chargeState.charger_voltage = 240;
+        chargeState.charging_state = "Charging";
+        chargeState.charger_power = chargeState.charger_actual_current * chargeState.charger_voltage;
+        chargeState.time_to_full_charge = 10000;
+        chargeState.charge_rate = chargePowerToRatedRange(chargeState.charger_power);
+
+        // set timer to update simulation
+        chargeState.timer = setInterval(updateChargeCB, 1000);
+    }
+
     res.json(resultSuccess);
 });
 
@@ -447,6 +503,11 @@ app.post('/api/1/vehicles/:vid/command/charge_start', function (req, res) {
 // Mock the POST charge_stop cmd
 //========================================
 app.post('/api/1/vehicles/:vid/command/charge_stop', function (req, res) {
+    if (chargeState.timer) {
+        clearInterval(chargeState.timer);
+        chargeState.timer = null;
+    }
+
     res.json(resultSuccess);
 });
 

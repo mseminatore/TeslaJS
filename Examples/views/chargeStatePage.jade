@@ -9,6 +9,10 @@ block content
   form(method="POST", action="/chargeState")
     p Charging State: 
       input(type='text', name="charging_state", value='#{charging_state}')
+    p Charger Voltage:
+      input(type='text', name="charger_voltage", value='#{charger_voltage}')
+    p Charger Current:
+      input(type='text', name="charger_actual_current", value='#{charger_actual_current}')
     p Rated Range:
       input(type='text', name="battery_range", value='#{battery_range}')
     p Projected Range:

@@ -479,6 +479,15 @@ exports.resetValetPin = function resetValetPin(options, callback) {
 }
 
 /*
+//==============================
+// [Alpha impl] Trigger homelink
+//==============================
+exports.homelink = function homelink(options, lat, long, token, callback) {
+    post_command(options, "command/trigger_homelink", { lat: lat, long: long, token: token } , callback);
+}
+*/
+
+/*
 //
 // [Alpha impl] Not yet supported
 //
@@ -505,15 +514,6 @@ exports.rearDefrostOn = function rearDefrostOn(options, callback) {
 //
 exports.rearDefrostOff = function rearDefrostOff(options, callback) {
     post_command(options, "command/rear_defrost_off", null, callback);
-}
-*/
-
-//
-// [Alpha impl] Trigger homelink
-//
-/*
-exports.homelink = function homelink(options, callback) {
-    post_command(options, "command/trigger_homelink", null, callback);
 }
 */
 

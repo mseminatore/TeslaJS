@@ -19,15 +19,20 @@ block content
       input(type='text', name="est_battery_range", value='#{est_battery_range}')
     p Ideal Range:
       input(type='text', name="ideal_battery_range", value='#{ideal_battery_range}')
-    p State of Charge:
+    p Battery Percent:
       input(type='text', name="battery_level", value='#{battery_level}')
-    p Charge Limit:
+    p Charge Limit Percent:
       input(type='text', name="charge_limit_soc", value='#{charge_limit_soc}')
     p Charge Port Open:
       if (charge_port_door_open)
         input(type='checkbox', name="charge_port_door_open", CHECKED)
       else
         input(type='checkbox', name="charge_port_door_open")
+    p Supercharging:
+      if (fast_charger_present)
+        input(type='checkbox', name="fast_charger_present", CHECKED)
+      else
+        input(type='checkbox', name="fast_charger_present")
     input(type='submit', value='Set')
 
   br

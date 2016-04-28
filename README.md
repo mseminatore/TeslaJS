@@ -26,10 +26,9 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. Added two new samples in **1.0.22**, see the **guiSettings** and **mobileEnabled** descriptions.
-2. Renamed the **mockla** sample to **testla** in **1.0.25**
-3. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
-4. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
+1. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
+2. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
+3. With **1.0.32** the **testla** sample now simulates charging and supercharging!
 
 ## Known Issues
 

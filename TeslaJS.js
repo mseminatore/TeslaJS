@@ -219,8 +219,6 @@ function get_command(options, command, callback) {
         if (error)
             err(error);
 
-        console.log(body);
-
         try {
             var data = JSON.parse(body);
         } catch (e) {

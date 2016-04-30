@@ -223,6 +223,7 @@ function get_command(options, command, callback) {
             var data = JSON.parse(body);
         } catch (e) {
             err('Error parsing response');
+            err(body);
         }
 
         data = data.response;
@@ -478,14 +479,12 @@ exports.resetValetPin = function resetValetPin(options, callback) {
     post_command(options, "command/reset_valet_pin", null, callback);
 }
 
-/*
 //==============================
 // [Alpha impl] Trigger homelink
 //==============================
 exports.homelink = function homelink(options, lat, long, token, callback) {
     post_command(options, "command/trigger_homelink", { lat: lat, long: long, token: token } , callback);
 }
-*/
 
 /*
 //

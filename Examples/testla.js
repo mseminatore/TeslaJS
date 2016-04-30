@@ -634,6 +634,20 @@ app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
     res.json(resultSuccess);
 });
 
+//========================================
+// Mock the POST trigger_homelink cmd
+//========================================
+app.post('/api/1/vehicles/:vid/command/trigger_homelink', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST upcoming_calendar_entries cmd
+//========================================
+app.post('/api/1/vehicles/:vid/command/upcoming_calendar_entries', function (req, res) {
+    res.json(resultSuccess);
+});
+
 //[]===============================[]
 // Setup our listen server
 //[]===============================[]

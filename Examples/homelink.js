@@ -53,7 +53,7 @@ function sampleMain(options) {
         if (drive_state) {
             var lat = drive_state.latitude || 0;
             var long = drive_state.longitude || 0;
-            var token = program.name;
+            var token = program.name || "";
 
             tjs.homelink(options, lat, long, token, function (result) {
                 if (result.result)

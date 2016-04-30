@@ -32,11 +32,13 @@ Here are some of the most recent features and fixes:
 1. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
 2. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
 3. With **1.0.32** the **testla** sample now simulates charging and supercharging!
+4. With **1.0.34** added start of homelink support.
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
 2. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
+3. The homelink API seems to not work with pre-AP vehicles.  Can someone with AP test and report back?
 
 # Tesla API Documentation
 
@@ -175,7 +177,8 @@ The TeslaJS library exports a number of methods and constants.  The library also
     driveState()       - retrieve the drive_state data
     flashLights()      - flashes the headlights
     guiSettings()      - retrieves the GUI settings
-    honkHorn()         - honks the horn
+    homelink()         - Triggers homelink from the vehicle
+	honkHorn()         - honks the horn
     mobileEnabled()    - returns whether mobile access is enabled
     startCharge()      - initiates a charging session
     stopCharge()       - terminates a charging session
@@ -387,6 +390,9 @@ Usage:
 ## homelink.js
 
 This sample demonstrates triggering homelink via the vehicle.
+
+>Note: This feature appears to be tied to the presence of Autopilot hardware and software.  Looking for validation
+>on both AP and pre-AP vehicles. 
 
 Usage:
 

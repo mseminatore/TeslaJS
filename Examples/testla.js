@@ -173,13 +173,13 @@ app.post('/driveState', function (req, res, next) {
 app.post('/climateState', function (req, res, next) {
     console.log(req.body);
 
-    climateState.inside_temp = req.body.inside_temp;
-    climateState.outside_temp = req.body.outside_temp;
-    climateState.driver_temp_setting = req.body.driver_temp_setting;
-    climateState.passenger_temp_setting = req.body.passenger_temp_setting;
-    climateState.is_auto_conditioning_on = req.body.is_auto_conditioning_on;
-    climateState.is_front_defroster_on = req.body.is_front_defroster_on;
-    climateState.is_rear_defroster_on = req.body.is_rear_defroster_on;
+    climateState.inside_temp = parseInt(req.body.inside_temp);
+    climateState.outside_temp = parseInt(req.body.outside_temp);
+    climateState.driver_temp_setting = parseInt(req.body.driver_temp_setting);
+    climateState.passenger_temp_setting = parseInt(req.body.passenger_temp_setting);
+    climateState.is_auto_conditioning_on = req.body.is_auto_conditioning_on == "on" ? true : false;
+    climateState.is_front_defroster_on = req.body.is_front_defroster_on == "on" ? true : false;
+    climateState.is_rear_defroster_on = req.body.is_rear_defroster_on == "on" ? true : false;
     climateState.fan_status = req.body.fan_status;
 
     app.locals.climateState = climateState;

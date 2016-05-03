@@ -478,6 +478,13 @@ exports.resetValetPin = function resetValetPin(options, callback) {
     post_command(options, "command/reset_valet_pin", null, callback);
 }
 
+//=======================
+// Send a calendar entry
+//=======================
+exports.calendar = function calendar(options, entry, callback) {
+    post_command(options, "command/upcoming_calendar_entries", entry, callback);
+}
+
 /*
 //==============================
 // [Alpha impl] Trigger homelink

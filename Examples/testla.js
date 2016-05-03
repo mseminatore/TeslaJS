@@ -173,13 +173,13 @@ app.post('/driveState', function (req, res, next) {
 app.post('/climateState', function (req, res, next) {
     console.log(req.body);
 
-    climateState.inside_temp = req.body.inside_temp;
-    climateState.outside_temp = req.body.outside_temp;
-    climateState.driver_temp_setting = req.body.driver_temp_setting;
-    climateState.passenger_temp_setting = req.body.passenger_temp_setting;
-    climateState.is_auto_conditioning_on = req.body.is_auto_conditioning_on;
-    climateState.is_front_defroster_on = req.body.is_front_defroster_on;
-    climateState.is_rear_defroster_on = req.body.is_rear_defroster_on;
+    climateState.inside_temp = parseInt(req.body.inside_temp);
+    climateState.outside_temp = parseInt(req.body.outside_temp);
+    climateState.driver_temp_setting = parseInt(req.body.driver_temp_setting);
+    climateState.passenger_temp_setting = parseInt(req.body.passenger_temp_setting);
+    climateState.is_auto_conditioning_on = req.body.is_auto_conditioning_on == "on" ? true : false;
+    climateState.is_front_defroster_on = req.body.is_front_defroster_on == "on" ? true : false;
+    climateState.is_rear_defroster_on = req.body.is_rear_defroster_on == "on" ? true : false;
     climateState.fan_status = req.body.fan_status;
 
     app.locals.climateState = climateState;
@@ -631,6 +631,20 @@ app.post('/api/1/vehicles/:vid/command/trunk_open', function (req, res) {
     vehicleState.rt = true;
 
     app.locals.vehicleState = vehicleState;
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST trigger_homelink cmd
+//========================================
+app.post('/api/1/vehicles/:vid/command/trigger_homelink', function (req, res) {
+    res.json(resultSuccess);
+});
+
+//========================================
+// Mock the POST upcoming_calendar_entries cmd
+//========================================
+app.post('/api/1/vehicles/:vid/command/upcoming_calendar_entries', function (req, res) {
     res.json(resultSuccess);
 });
 

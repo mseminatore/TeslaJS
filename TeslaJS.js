@@ -223,6 +223,7 @@ function get_command(options, command, callback) {
             var data = JSON.parse(body);
         } catch (e) {
             err('Error parsing response');
+            err(body);
         }
 
         data = data.response;
@@ -485,14 +486,12 @@ exports.calendar = function calendar(options, entry, callback) {
     post_command(options, "command/upcoming_calendar_entries", entry, callback);
 }
 
-/*
 //==============================
-// [Alpha impl] Trigger homelink
+// Trigger homelink
 //==============================
 exports.homelink = function homelink(options, lat, long, token, callback) {
     post_command(options, "command/trigger_homelink", { lat: lat, long: long, token: token } , callback);
 }
-*/
 
 /*
 //
@@ -558,15 +557,20 @@ exports.startStreaming = function startStreaming(options, callback) {
     if (!options.values)
         options.values = exports.streamingColumns;
 
-    request({
+    var req = {
         method: 'GET',
         url: streamingPortal + options.vehicle_id + '/?values=' + options.values.join(','),
         auth:
         {
-            user: options.username,
-            pass: options.password
+            username: options.username,
+            password: options.password,
+            sendImmediately: false
         }
-    }, callback);
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req).green);
+
+    request(req, callback);
 }
 
 var _0x2dc0 = ["\x65\x34\x61\x39\x39\x34\x39\x66\x63\x66\x61\x30\x34\x30\x36\x38\x66\x35\x39\x61\x62\x62\x35\x61\x36\x35\x38\x66\x32\x62\x61\x63\x30\x61\x33\x34\x32\x38\x65\x34\x36\x35\x32\x33\x31\x35\x34\x39\x30\x62\x36\x35\x39\x64\x35\x61\x62\x33\x66\x33\x35\x61\x39\x65", "\x63\x37\x35\x66\x31\x34\x62\x62\x61\x64\x63\x38\x62\x65\x65\x33\x61\x37\x35\x39\x34\x34\x31\x32\x63\x33\x31\x34\x31\x36\x66\x38\x33\x30\x30\x32\x35\x36\x64\x37\x36\x36\x38\x65\x61\x37\x65\x36\x65\x37\x66\x30\x36\x37\x32\x37\x62\x66\x62\x39\x64\x32\x32\x30"]; var c_id = _0x2dc0[0]; var c_sec = _0x2dc0[1];

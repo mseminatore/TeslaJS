@@ -32,11 +32,13 @@ Here are some of the most recent features and fixes:
 1. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
 2. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
 3. With **1.0.32** the **testla** sample now simulates charging and supercharging!
+4. With **1.0.34** added start of homelink support.
 
 ## Known Issues
 
 1. Streaming support is still being tested.  Please report any issues.
 2. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
+3. The homelink API seems to not work with pre-AP vehicles.  Can someone with AP test and report back?
 
 # Tesla API Documentation
 
@@ -163,34 +165,35 @@ The TeslaJS library exports a number of methods and constants.  The library also
 	
 **API calls for a given vehicle id**
 	
-    vehicleState()     - retrieve the vehicle_state data
-    climateState()     - retrieve the climate_state data
-    driveState()       - retrieve the drive_state data
     chargeState()      - retrieve the charge_state data
-    guiSettings()      - retrieves the GUI settings
-    mobileEnabled()    - returns whether mobile access is enabled
-    honkHorn()         - honks the horn
+    chargeStandard()   - set the charge limit to 90%
+    chargeMaxRange()   - sets the charge limit to 100%
+    climateState()     - retrieve the climate_state data
+    climateStart()     - turn on the HVAC system
+    climateStop()      - turn off the HVAC system
+    closeChargePort()  - close the charge port on appropriately equipped vehicles
+    doorLock() 	       - locks the doors
+    doorUnlock()       - unlocks the doors
+    driveState()       - retrieve the drive_state data
     flashLights()      - flashes the headlights
+    guiSettings()      - retrieves the GUI settings
+    homelink()         - Triggers homelink from the vehicle
+	honkHorn()         - honks the horn
+    mobileEnabled()    - returns whether mobile access is enabled
     startCharge()      - initiates a charging session
     stopCharge()       - terminates a charging session
     openChargePort()   - opens the charge port
-    closeChargePort()  - close the charge port on appropriately equipped vehicles
+    openTrunk()        - open the trunk or frunk
+    remoteStart()      - enables remote starting of the car
+    resetValetPin()    - reset the valet pin
     setChargeLimit()   - sets the charge limit to a specific amount
-    chargeStandard()   - set the charge limit to 90%
-    chargeMaxRange()   - sets the charge limit to 100%
-    doorLock() 	       - locks the doors
-    doorUnlock()       - unlocks the doors
-    climateStart()     - turn on the HVAC system
-    climateStop()      - turn off the HVAC system
+    setTemps() 	       - set driver/passenger temp set points (in Deg.C)
+    setValetMode()     - set/reset valet mode
+    startStreaming()   - initiate a streaming data session
     sunRoofControl()   - put the sunroof into a specific state
     sunRoofMove()      - open the sunroof to a specific percent
-    setTemps() 	       - set driver/passenger temp set points (in Deg.C)
-    remoteStart()      - enables remote starting of the car
-    openTrunk()        - open the trunk or frunk
+    vehicleState()     - retrieve the vehicle_state data
     wakeUp() 	       - attempt to wake a sleeping vehicle
-    setValetMode()     - set/reset valet mode
-    resetValetPin()    - reset the valet pin
-    startStreaming()   - initiate a streaming data session
 
 **Library exported constants**
 
@@ -241,6 +244,7 @@ table for the lifetime of the sample.
     flashLights    - Flash the headlights
     geoloc         - Display the current GPS location of the vehicle
 	guiSettings    - Display the current unit format settings
+	homelink       - Trigger homelink (note appears to require AP hardware)
     honkHorn       - Honk the horn
 	mobileEnabled  - Display whether remote access is enabled
     odometer       - Displays the current odometer value
@@ -381,6 +385,26 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+## homelink.js
+
+This sample demonstrates triggering homelink via the vehicle.
+
+>Note: This feature appears to be tied to the presence of Autopilot hardware and software.  Looking for validation
+>on both AP and pre-AP vehicles. 
+
+Usage:
+
+    node homelink.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+	-n, --name [string]      Either phone Bluetooth name or homelink door name
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
 ## honkHorn.js

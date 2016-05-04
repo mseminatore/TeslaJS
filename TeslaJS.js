@@ -486,6 +486,36 @@ exports.calendar = function calendar(options, entry, callback) {
     post_command(options, "command/upcoming_calendar_entries", entry, callback);
 }
 
+exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, startTime, endTime, accountName, phoneName) {
+    var entry = {
+        "calendar_data": {
+            "access_disabled": false,
+            "calendars": [
+                {
+                    "color": "ff9a9cff",
+                    "events": [
+                        {
+                            "color": "ff9a9cff",
+                            "location": location || "",
+                            "start": startTime || new Date().getTime(),
+                            "organizer": "",
+                            "name": eventName || "Event name",
+                            "all_day": false,
+                            "tentative": false,
+                            "end": endTime || new Date().getTime()
+                        }
+                    ],
+                    "name": accountName || ""    // calendar account name?
+                }
+            ],
+            "phone_name": phoneName,    // Bluetooth name of phone
+            "uuid": "333239059961777"   // any random value OK?
+        }
+    };
+
+    return entry;
+}
+
 //==============================
 // Trigger homelink
 //==============================

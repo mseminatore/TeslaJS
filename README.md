@@ -236,7 +236,7 @@ table for the lifetime of the sample.
 
 ## List of Samples
 
-    login          - Login via Tesla servers to acquire an OAuth token.  Cached to the local directory
+    login          - Login and acquire an OAuth token.  Cached to the local directory
     logout         - Delete the locally cached OAuth token if present
     climate        - Display the current state of the HVAC system
     climateStart   - Turn on the HVAC system

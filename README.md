@@ -275,13 +275,11 @@ to avoid the need to enter the **username** and **password** and login via the T
 
 Usage:
 
-    node login.js [options]
+    node login.js [options] username password
 	
 	Options:
 	
     -h, --help               output usage information
-	-u, --username [string]  username (needed only if token not cached)
-	-p, --password [string]  password (needed only if token not cached)	
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
 ## logout.js

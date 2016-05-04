@@ -37,6 +37,11 @@ function login_cb(result) {
     tjs.vehicles(options, function (vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
+        if (vehicle.state.toUpperCase() == "OFFLINE") {
+            console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);
+            return;
+        }
+
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });

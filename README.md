@@ -32,13 +32,13 @@ Here are some of the most recent features and fixes:
 1. With **1.0.32** the **testla** sample now simulates charging and supercharging!
 2. With **1.0.34** added homelink support.
 3. Started working on calendar support beginning with **1.0.36**
+4. Streaming now works as of **1.0.38**, see **simpleStreaming** sample
 
 ## Known Issues
 
-1. Streaming support is still being developed.
-2. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
-3. The homelink API seems to require Autopilot.  Can someone with AP test and report back?
-4. Calendar support not yet functional.
+1. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
+2. The homelink API seems to require Autopilot.  Can someone with AP test and report back?
+3. Calendar support not yet functional.
 
 # Tesla API Documentation
 
@@ -253,6 +253,7 @@ table for the lifetime of the sample.
 	remoteStart    - Enables driving without the key fob present
 	setChargeLimit - Set the battery charge limit to the given value
 	setTemps       - Set the driver and passenger temperatures to the given value
+	simpleStreaming- Demonstrates basic use of the streaming API
     soc            - Displays the current battery State of Charge (SOC) for the vehicle
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
@@ -529,6 +530,21 @@ Usage:
 	
     -h, --help               output usage information
 	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+## simpleStreaming.js
+
+This sample demonstrates basic use of the streaming API to retrieve real-time vehicle data.
+
+Usage:
+
+    node simpleStreaming.js [options] username
+	
+	Options:
+	
+    -h, --help               output usage information
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)

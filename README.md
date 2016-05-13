@@ -29,11 +29,9 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. Significant updates to **testla** in **1.0.26**.  Added web views for server state.
-2. More big updates to **testla** in **1.0.28**.  All web views can now update server state.
-3. With **1.0.32** the **testla** sample now simulates charging and supercharging!
-4. With **1.0.34** added homelink support.
-5. Started working on calendar support beginning with **1.0.36**
+1. With **1.0.32** the **testla** sample now simulates charging and supercharging!
+2. With **1.0.34** added homelink support.
+3. Started working on calendar support beginning with **1.0.36**
 
 ## Known Issues
 

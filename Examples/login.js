@@ -38,11 +38,11 @@ function login_cb(result) {
     }
 }
 
-var username = program.username;
-var password = program.password;
-
-if (!username || !password)
+if (program.args.length < 2)
     program.help();
+
+var username = program.args[0];
+var password = program.args[1];
 
 if (program.uri) {
     console.log("Setting portal URI to: " + program.uri);

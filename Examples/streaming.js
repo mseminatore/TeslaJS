@@ -17,7 +17,8 @@ var program = require('commander');
 //
 //
 program
-  .usage('[options] username password')
+  .usage('[options] username')
+  .option('-p, --password [string]', 'password (needed only if token not cached)')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
   .parse(process.argv);
@@ -36,8 +37,7 @@ function login_cb(result) {
     tjs.vehicles(options, function (vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
-        options.vehicleID = vehicle.id_s;
-        options.id = vehicle.id;
+        options.vehicle_id = vehicle.vehicle_id;
         options.tokens = vehicle.tokens;
 
         sampleMain(options);
@@ -49,19 +49,26 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     var streamingOptions = {
-        username: program.username,
+        username: program.args[0],
         password: options.tokens[0],
-        vehicle_id: options.id
+        vehicle_id: options.vehicle_id
     };
 
-    tjs.startStreaming(streamingOptions, function (result) {
-        console.log(result);
-/*
-        if (result.result)
-            console.log("\nHomelink: " + "Door signaled!".bold.green);
-        else
-            console.log("\nHomelink: " + result.reason.red);
-*/
+    console.log("\nNote: " + "Inactive vehicle streaming responses can take up to several minutes.".green);
+    console.log("\nStreaming starting...".cyan);
+
+    console.log("Columns: timestamp," + tjs.streamingColumns.toString());
+
+    tjs.startStreaming(streamingOptions, function (error, response, body) {
+        if (error) {
+            console.log(error);
+            return;
+        }
+
+        // display the streaming results
+        console.log(body);
+
+        console.log("...Streaming ended.".cyan);
     });
 }
 
@@ -83,7 +90,7 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token || program.args.length < 2)
+    if (!token || program.args.length < 1)
         program.help();
 
     login_cb({ error: false, authToken: token });

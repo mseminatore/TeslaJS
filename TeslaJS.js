@@ -594,7 +594,6 @@ exports.startStreaming = function startStreaming(options, callback) {
         {
             username: options.username,
             password: options.password,
-            sendImmediately: false
         }
     };
 

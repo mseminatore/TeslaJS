@@ -32,7 +32,7 @@ Here are some of the most recent features and fixes:
 1. With **1.0.32** the **testla** sample now simulates charging and supercharging!
 2. With **1.0.34** added homelink support.
 3. Started working on calendar support beginning with **1.0.36**
-4. Streaming now works as of **1.0.38**, see **simpleStreaming** sample
+4. Streaming now works as of **1.0.38**, see **simpleStreaming** sample!
 
 ## Known Issues
 

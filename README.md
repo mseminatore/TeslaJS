@@ -1,4 +1,4 @@
-# TeslaJS [![npm](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslsjs)
+# TeslaJS [![npm](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslsjs)[![npm](https://img.shields.io/npm/l/teslajs.svg)]()
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library supports all existing Tesla
 vehicles.
 

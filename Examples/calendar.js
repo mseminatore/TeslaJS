@@ -57,8 +57,8 @@ function sampleMain(options) {
         "Home",
         new Date(2016, 4, 5, 12, 0).getTime(),
         new Date(2016, 4, 5, 1, 0).getTime(),
-        "mark.seminatore@gmail.com",
-        "Mark Lumia 950"
+        "you@gmail.com",
+        "Phone Bluetooth name"
         );
 
     console.log(JSON.stringify(entry));

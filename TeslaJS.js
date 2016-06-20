@@ -495,21 +495,22 @@ exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, star
                     "color": "ff9a9cff",
                     "events": [
                         {
+                            "allday": false,
                             "color": "ff9a9cff",
-                            "location": location || "",
+                            "end": endTime || new Date().getTime(),
                             "start": startTime || new Date().getTime(),
-                            "organizer": "",
-                            "name": eventName || "Event name",
-                            "all_day": false,
+                            "cancelled": false,
                             "tentative": false,
-                            "end": endTime || new Date().getTime()
+                            "location": location || "",
+                            "name": eventName || "Event name",
+                            "organizer": ""
                         }
                     ],
                     "name": accountName || ""    // calendar account name?
                 }
             ],
             "phone_name": phoneName,    // Bluetooth name of phone
-            "uuid": "333239059961777"   // any random value OK?
+            "uuid": "333239059961778"   // any random value OK?
         }
     };
 

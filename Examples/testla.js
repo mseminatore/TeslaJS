@@ -27,6 +27,8 @@ var vehicleStatePage = require('./routes/vehicleStatePage');
 
 var chargingTimer;
 
+var vehicles = [vehicle];
+
 var app = express();
 
 // view engine setup
@@ -65,6 +67,21 @@ var username = null;
 var password = null;
 var valetPin = 0;
 var mobileEnabled = true;
+
+var vehicle = {
+    "color": "black",
+    "display_name": "Kit",
+    "id": vid,
+    "id_s": vid.toString(),
+    "option_codes": "MS01,RENA,TM00,DRLH,PF00,BT85,PBCW,RFPO,WT19,IBMB,IDPB,TR00,SU01,SC01,TP01,AU01,CH00,HP00,PA00,PS00,AD02,X020,X025,X001,X003,X007,X011,X013",
+    "user_id": 123,
+    "vehicle_id": 1234567890,
+    "vin": "5YJSA1CN5CFP01657",
+    "tokens": [
+        "123",
+        "456"],
+    "state": "online"
+};
 
 var driveState = {
     "shift_state": null,          //
@@ -118,6 +135,7 @@ var vehicleState =
     "ft": false,                  // front trunk is open
     "rt": false,                  // rear trunk is open
     "car_version": "2.15.16",     // car firmware version
+    "car_type": "",               // either 's' or 'x'
     "locked": true,               // car is locked
     "sun_roof_installed": true,   // panoramic roof is installed
     "sun_roof_state": "unknown",
@@ -251,6 +269,8 @@ app.post('/oauth/token', function (req, res) {
 // Mock the GET vehicles cmd
 //==========================
 app.get('/api/1/vehicles', function (req, res) {
+    // TODO - add option_code 'MDLX' if this car is a Model X
+    // TODO - add support for multiple vehicles
     res.json({
         "response": [
             {

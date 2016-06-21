@@ -5,8 +5,16 @@ block content
 
   hr
 
-  h2 An app for simulating the Tesla servers and testing calls to the Tesla RESTful APIs
+  h2 An ExpressJS app for simulating the Tesla servers and testing calls to the Tesla RESTful APIs
 
+  br
+  p= 'Cars: ' + cars + ' cars defined.'
+
+  input(type="button", onclick="location.href='/addcar'", value="Add Car")
+
+  hr
+
+  br
   br
   input(type="button", onclick="location.href='/driveState'", value="Drive State")
 

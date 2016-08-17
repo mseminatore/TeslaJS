@@ -42,6 +42,15 @@ function login_cb(result) {
             return;
         }
 
+        var carType = "Unknown";
+        if (vehicle.option_codes.indexOf("MDLX") != -1) {
+            carType = "Model X";
+        } else {
+            carType = "Model S";
+        }
+
+        console.log("\nVehicle type: " + carType.green);
+
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -54,7 +63,7 @@ function sampleMain(options) {
     tjs.vehicleState(options, function (vehicle_state) {
         var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
 
-        console.log("\nCar name: " + vehicle_state.vehicle_name.green);
+        console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);
 
         console.log("\nDoors: " + str);
         if (vehicle_state.sun_roof_installed) {

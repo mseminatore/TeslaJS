@@ -84,5 +84,5 @@ if (tokenFound) {
     if (!username || !password)
         program.help();
 
-    tjs.login(email, password, login_cb);
+    tjs.login(username, password, login_cb);
 }

@@ -33,7 +33,7 @@ Here are some of the most recent features and fixes:
 
 1. Streaming now works as of **1.0.38**, see **simpleStreaming** sample!
 2. In **1.0.43** updated formatting of **odometer** sample.
-3. In **1.0.45** updated Readme
+3. In **1.0.46** fixed sample bugs with non-cached auth
 
 ## Known Issues
 

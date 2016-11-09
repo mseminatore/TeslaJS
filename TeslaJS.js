@@ -180,8 +180,10 @@ exports.vehicles = function vehicles(options, callback) {
         if (error)
             err(error);
 
+        var data = {};
+
         try {
-            var data = JSON.parse(body);
+            data = JSON.parse(body);
         } catch (e) {
             err('Error parsing vehicles response');
         }

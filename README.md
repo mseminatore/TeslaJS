@@ -1,5 +1,8 @@
 # TeslaJS 
-[![Version](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslsjs)[![License](https://img.shields.io/npm/l/teslajs.svg)]()[![Downloads](https://img.shields.io/npm/dt/teslajs.svg)]()
+[![Version](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslsjs)
+[![License](https://img.shields.io/npm/l/teslajs.svg)]()
+[![Downloads](https://img.shields.io/npm/dt/teslajs.svg)]()
+[![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library supports all existing Tesla
 vehicles.

@@ -1,8 +1,5 @@
 var assert = require('assert');
-
-console.log("Home: " + process.env.HOME);
-
-var tjs = require('teslajs');
+var tjs = require('../teslajs');
 
 describe('TeslaJS', function() {
 	describe('#login()', function() {

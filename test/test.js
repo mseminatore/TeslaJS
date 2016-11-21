@@ -1,3 +1,7 @@
+console.log(process.cwd());
+console.log(process.argv);
+console.log(process.env.TRAVIS_BUILD_DIR);
+
 var assert = require('assert');
 var tjs = require('../teslajs');
 

@@ -18,7 +18,7 @@
   },
   "main": "TeslaJS.js",
   "scripts": {
-    "test": "echo \"Success: tests not yet specified\" && exit 0"
+    "test": "mocha"
   },
   "keywords": [
     "Tesla",
@@ -31,5 +31,8 @@
     "name": "Mark Seminatore",
     "url": "https://github.com/mseminatore/TeslaJS"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
 }

@@ -1,5 +1,5 @@
 var assert = require('assert');
-var tjs = require('teslajs');
+var tjs = require('../TeslaJS');
 
 describe('TeslaJS', function() {
 	describe('#login()', function() {

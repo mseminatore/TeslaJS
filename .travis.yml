@@ -1,2 +1,5 @@
 language: node_js
 node_js: "node"
+env:
+- TESLAJS_USER=elon@tesla.com
+- TESLAJS_PASS=password

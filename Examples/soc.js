@@ -110,8 +110,8 @@ if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
     login_cb({ error: false, authToken: token });
 } else {
-    var username = program.username;
-    var password = program.password;
+    var username = program.username || process.env.TESLAJS_USER;
+    var password = program.password || process.env.TESLAJS_PASS;
 
     if (!username || !password)
         program.help();

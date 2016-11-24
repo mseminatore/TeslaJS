@@ -22,8 +22,8 @@ program
 //
 //
 function login_cb(result) {
-    if (result.error) {
-        console.log(JSON.stringify(result.error).red);
+    if (!result.authToken) {
+        console.error("Login failed!".red);
         process.exit(1);
     }
 

@@ -106,8 +106,8 @@ exports.login = function login(username, password, callback) {
             "grant_type": "password",
             "client_id": c_id,
             "client_secret": c_sec,
-            "email": username,
-            "password": password
+            "email": process.env.TESLAJS_USER || username,
+            "password": process.env.TESLAJS_PASS || password
         }
     };
 
@@ -180,18 +180,20 @@ exports.vehicles = function vehicles(options, callback) {
         if (error)
             err(error);
 
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body).magenta);
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response).magenta);
+
         var data = {};
 
         try {
             data = JSON.parse(body);
         } catch (e) {
             err('Error parsing vehicles response');
+            err(body);
         }
 
         data = data.response[options.carIndex || 0];
         data.id = data.id_s;
-
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data).magenta);
 
         callback(data);
 
@@ -221,16 +223,16 @@ function get_command(options, command, callback) {
         if (error)
             err(error);
 
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response).magenta);
+
         try {
             var data = JSON.parse(body);
         } catch (e) {
-            err('Error parsing response');
+            err('Error parsing GET call response');
             err(body);
         }
 
         data = data.response;
-
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data).magenta);
 
         callback(data);
 
@@ -254,22 +256,23 @@ function post_command(options, command, body, callback) {
         form: body || null
     };
 
-    log(API_BODY_LEVEL, "\nRequest: " + JSON.stringify(cmd).green);
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(cmd).green);
 
     request(cmd, function (error, response, body) {
 
         if (error)
             err(error);
 
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response).magenta);
+
         try {
             var data = JSON.parse(body);
         } catch (e) {
-            err('Error parsing response');
+            err('Error parsing POST call response');
+            err(body);
         }
 
         data = data.response;
-
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(data).magenta);
 
         callback(data);
 

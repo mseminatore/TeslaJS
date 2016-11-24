@@ -16,7 +16,7 @@ describe('TeslaJS', function() {
 				}
 			});
 		});
-//		it('should fail with invalid pwd', function() {
+//		it('should fail with invalid pwd', function(done) {
 //			tjs.login(user, 'badpassword', function(result) {
 //				if (result.response.statusCode == 200) {
 //					done(result.response.statusMessage);

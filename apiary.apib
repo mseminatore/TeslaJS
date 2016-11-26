@@ -53,7 +53,7 @@ Retrieve a list of your owned vehicles (includes vehicles not yet shipped!)
 
     + Headers
 
-            Authorization: Bearer {access_token}
+            authorization: Bearer access_token
 
 + Response 200 (application/json)
 
@@ -78,313 +78,170 @@ Retrieve a list of your owned vehicles (includes vehicles not yet shipped!)
 
 These resources are read-only and determine the state of the vehicle's various sub-systems.
 
-
-
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 ## Mobile Access [GET /api/1/vehicles/{vehicle_id}/mobile_enabled]
 
 Determines if mobile access to the vehicle is enabled.
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
                 "response": true
-
             }
-
-
 
 ## Charge State [GET /api/1/vehicles/{vehicle_id}/data_request/charge_state]
 
 Returns the state of charge in the battery.
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "charging_state": "Complete",  // "Charging", ??
-
                 "charge_to_max_range": false,  // current std/max-range setting
-
                 "max_range_charge_counter": 0,
-
                 "fast_charger_present": false, // connected to Supercharger?
-
                 "battery_range": 239.02,       // rated miles
-
                 "est_battery_range": 155.79,   // range estimated from recent driving
-
                 "ideal_battery_range": 275.09, // ideal miles
-
                 "battery_level": 91,           // integer charge percentage
-
                 "battery_current": -0.6,       // current flowing into battery
-
                 "charge_starting_range": null,
-
                 "charge_starting_soc": null,
-
                 "charger_voltage": 0,          // only has value while charging
-
                 "charger_pilot_current": 40,   // max current allowed by charger & adapter
-
                 "charger_actual_current": 0,   // current actually being drawn
-
                 "charger_power": 0,            // kW (rounded down) of charger
-
                 "time_to_full_charge": null,   // valid only while charging
-
                 "charge_rate": -1.0,           // float mi/hr charging or -1 if not charging
-
                 "charge_port_door_open": true
-
               }
-
             }
-
-
 
 ## Climate Settings [GET /api/1/vehicles/{vehicle_id}/data_request/climate_state]
 
 Returns the current temperature and climate control state.
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "inside_temp": 17.0,          // degC inside car
-
                 "outside_temp": 9.5,          // degC outside car or null
-
                 "driver_temp_setting": 22.6,  // degC of driver temperature setpoint
-
                 "passenger_temp_setting": 22.6, // degC of passenger temperature setpoint
-
                 "is_auto_conditioning_on": false, // apparently even if on
-
                 "is_front_defroster_on": null, // null or boolean as integer?
-
                 "is_rear_defroster_on": false,
-
                 "fan_status": 0               // fan speed 0-6 or null
-
               }
-
             }
-
-
 
 ## Driving and Position [GET /api/1/vehicles/{vehicle_id}/data_request/drive_state]
 
 Returns the driving and position state of the vehicle.
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "shift_state": null,          //
-
                 "speed": null,                //
-
                 "latitude": 33.794839,        // degrees N of equator
-
                 "longitude": -84.401593,      // degrees W of the prime meridian
-
                 "heading": 4,                 // integer compass heading, 0-359
-
                 "gps_as_of": 1359863204       // Unix timestamp of GPS fix
-
               }
-
             }
-
-
 
 ## GUI Settings [GET /api/1/vehicles/{vehicle_id}/data_request/gui_settings]
 
 Returns various information about the GUI settings of the car, such as unit format and range display.
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "gui_distance_units": "mi/hr",
-
                 "gui_temperature_units": "F",
-
                 "gui_charge_rate_units": "mi/hr",
-
                 "gui_24_hour_time": false,
-
                 "gui_range_display": "Rated"
-
               }
-
             }
-
-
 
 ## Vehicle State [GET /api/1/vehicles/{vehicle_id}/data_request/vehicle_state]
 
 Returns the vehicle's physical state, such as which doors are open.
 
-
-
 + Request
 
     + Headers
 
-
-
-            Authorization: Bearer {access_token}
-
-
+            authorization: Bearer {access_token}
 
 + Parameters
 

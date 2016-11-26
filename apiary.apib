@@ -15,116 +15,64 @@ Performs the login. Takes in an plain text email and password, matching the owne
 
 Returns a `access_token` which is passed along as a header with all future requests to authenticate the user.
 
-
 You must provide the `Authorization: Bearer {access_token}` header in all other requests.
 
-
-
 The current client ID and secret are [available here](http://pastebin.com/fX6ejAHd)
-
-
 
 + Attributes
 
     + grant_type: `password` (string) - The type of oAuth grant. Always "password"
-
     + client_id: `abc` (string) - The oAuth client ID
-
     + client_secret: `123` (string) - The oAuth client secret
-
     + email: `elon@teslamotors.com` (string) - The email for my.teslamotors.com
-
     + password: `edisonsux` (string) - The password for my.teslamotors.com
-
-
 
 + Response 200 (application/json)
 
     + Body
-
-
-
+    
             {
-
               "access_token": "abc123",
-
               "token_type": "bearer",
-
               "expires_in": 7776000,
-
               "created_at": 1457385291,
-
               "refresh_token" : "cba321"
-
             }
-
-
 
 # Group Vehicles
 
 A logged in user can have multiple vehicles under their account. This resource is primarily responsible for listing the vehicles and the basic details about them.
 
-
-
 ## Vehicle Collection [/api/1/vehicles]
-
-
 
 ### List all Vehicles [GET]
 
 Retrieve a list of your owned vehicles (includes vehicles not yet shipped!)
 
-
-
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
-
-
-
+    
             {
-
               "response": [{
-
                 "color": null,
-
                 "display_name": null,
-
                 "id": 321,
-
                 "option_codes": "MS01,RENA,TM00,DRLH,PF00,BT85,PBCW,RFPO,WT19,IBMB,IDPB,TR00,SU01,SC01,TP01,AU01,CH00,HP00,PA00,PS00,AD02,X020,X025,X001,X003,X007,X011,X013",
-
                 "user_id": 123,
-
                 "vehicle_id": 1234567890,
-
                 "vin": "5YJSA1CN5CFP01657",
-
                 "tokens": ["x", "x"],
-
                 "state": "online"
-
               }],
-
               "count":1
-
             }
-
-
-
-
 
 ## State and Settings [/api/1/vehicles/{vehicle_id}]
 
@@ -440,113 +388,61 @@ Returns the vehicle's physical state, such as which doors are open.
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "df": false,                  // driver's side front door open
-
                 "dr": false,                  // driver's side rear door open
-
                 "pf": false,                  // passenger's side front door open
-
                 "pr": false,                  // passenger's side rear door open
-
                 "ft": false,                  // front trunk is open
-
                 "rt": false,                  // rear trunk is open
-
-                "car_verson": "1.19.42",      // car firmware version
-
+                "car_version": "1.19.42",      // car firmware version
                 "locked": true,               // car is locked
-
                 "sun_roof_installed": false,  // panoramic roof is installed
-
                 "sun_roof_state": "unknown",
-
                 "sun_roof_percent_open": 0,   // null if not installed
-
                 "dark_rims": false,           // gray rims installed
-
                 "wheel_type": "Base19",       // wheel type installed
-
                 "has_spoiler": false,         // spoiler is installed
-
                 "roof_color": "Colored",      // "None" for panoramic roof
-
                 "perf_config": "Base"
-
               }
-
             }
-
-
 
 # Group Vehicle Commands
 
 These commands alter the vehicles state, and return result (true/false) to indicate success, and if failure reason contains the cause of failure.
 
-
-
 ## Wake Up Car [POST /api/1/vehicles/{vehicle_id}/wake_up]
 
 Wakes up the car from the sleep state. Necessary to get some data from the car.
-
-
 
 + Request
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
               "response": {
-
                 "result": true,
-
                 "reason": ""
-
               }
-
             }
-
-
 
 ## Set Valet Mode [POST /api/1/vehicles/{vehicle_id}/command/set_valet_mode]
 
@@ -564,45 +460,24 @@ locations in navigation.
 
     + Headers
 
-
-
             Authorization: Bearer {access_token}
-
-
 
 + Parameters
 
-
-
     + vehicle_id: `1` (number) - The id of the Vehicle.
-
     + on: true (boolean) - Whether to enable or disable valet mode.
-
     + password: 1234 (number) - (optional) A 4 digit PIN code to unlock the car.
-
-
 
 + Response 200 (application/json)
 
-
-
     + Body
 
-
-
             {
-
-              "response": {
-
+                "response": {
                 "result": true,
-
                 "reason": ""
-
               }
-
             }
-
-
 
 ## Reset Valet PIN [POST /api/1/vehicles/{vehicle_id}/command/reset_valet_pin]
 

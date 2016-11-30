@@ -9,7 +9,7 @@ process.env.TESLAJS_SERVER || process.exit(1);
 
 describe('TeslaJS', function () {
     var options = {authToken: "abc123"};
-    this.timeout(3000);
+    this.timeout(5000);
 
 	describe('#login()', function() {
 		it('should succeed with valid user and pwd', function(done) {

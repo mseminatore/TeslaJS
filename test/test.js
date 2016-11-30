@@ -56,4 +56,88 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
+
+	describe('#climateState()', function () {
+	    it('should return climate state', function (done) {
+	        tjs.climateState(options, function (result) {
+	            if (result.inside_temp) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#driveState()', function () {
+	    it('should return drive state', function (done) {
+	        tjs.driveState(options, function (result) {
+	            if (result.heading) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#chargeState()', function () {
+	    it('should return charge state', function (done) {
+	        tjs.chargeState(options, function (result) {
+	            if (result.est_battery_range) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#guiSettings()', function () {
+	    it('should return gui settings', function (done) {
+	        tjs.guiSettings(options, function (result) {
+	            if (result.gui_distance_units) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#mobileEnabled()', function () {
+	    it('should return mobile enabled', function (done) {
+	        tjs.mobileEnabled(options, function (result) {
+	            if (result) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#honkHorn()', function () {
+	    it('should return true', function (done) {
+	        tjs.honkHorn(options, function (result) {
+	            if (result) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
+
+	describe('#flashLights()', function () {
+	    it('should return true', function (done) {
+	        tjs.flashLights(options, function (result) {
+	            if (result) {
+	                done();
+	            } else {
+	                done(result.response.statusMessage);
+	            }
+	        });
+	    });
+	});
 });

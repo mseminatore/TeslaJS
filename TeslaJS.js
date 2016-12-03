@@ -370,7 +370,7 @@ exports.closeChargePort = function closeChargePort(options, callback) {
 exports.CHARGE_STORAGE = 50;
 exports.CHARGE_DAILY = 70;
 exports.CHARGE_STANDARD = 90;
-exports.CHARGE_RANGE = 100;     // note: using thsi frequently is not recommended for long-term battery health!
+exports.CHARGE_RANGE = 100;     // note: using this frequently is NOT recommended for long-term battery health!
 
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);

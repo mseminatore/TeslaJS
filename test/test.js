@@ -1,14 +1,12 @@
 var assert = require('assert');
 var tjs = require('../TeslaJS');
 
-/*
 var sepia = require('sepia');
 
 sepia.configure({
     verbose: false,
-    touchHits: true
+    touchHits: false    // remove once Sepia is fixed
 });
-*/
 
 // set these in your environment before testing
 var user = process.env.TESLAJS_USER;
@@ -117,7 +115,7 @@ describe('TeslaJS', function () {
 	});
 
 	describe('#mobileEnabled()', function () {
-	    it('should return mobile enabled', function (done) {
+	    it('should return true', function (done) {
 	        tjs.mobileEnabled(options, function (result) {
 	            if (result.result) {
 	                done();
@@ -282,6 +280,184 @@ describe('TeslaJS', function () {
 	describe('#doorLock()', function () {
 	    it('should return true', function (done) {
 	        tjs.doorLock(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#climateStart()', function () {
+	    it('should return true', function (done) {
+	        tjs.climateStart(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+    
+	describe('#climateStop()', function () {
+	    it('should return true', function (done) {
+	        tjs.climateStop(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#sunRoofControl()', function () {
+	    it('SUNROOF_VENT should return true', function (done) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('SUNROOF_COMFORT should return true', function (done) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('SUNROOF_OPEN should return true', function (done) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('SUNROOF_CLOSED should return true', function (done) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#sunRoofMove()', function () {
+	    it('move to 50% should return true', function (done) {
+	        tjs.sunRoofMove(options, 50, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('move to 100% should return true', function (done) {
+	        tjs.sunRoofMove(options, 100, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('move to 0% should return true', function (done) {
+	        tjs.sunRoofMove(options, 0, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#setTemps()', function () {
+	    it('should return true', function (done) {
+	        tjs.setTemps(options, 19, 21, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#remoteStart()', function () {
+	    it('should return true', function (done) {
+	        tjs.remoteStart(options, "password", function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#openTrunk()', function () {
+	    it('Frunk should return true', function (done) {
+	        tjs.openTrunk(options, tjs.FRUNK, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('Trunk should return true', function (done) {
+	        tjs.openTrunk(options, tjs.TRUNK, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#setValetMode()', function () {
+	    it('ON should return true', function (done) {
+	        tjs.setValetMode(options, true, '1234', function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('OFF should return true', function (done) {
+	        tjs.setValetMode(options, false, '1234', function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#resetValetPin()', function () {
+	    it('should return true', function (done) {
+	        tjs.resetValetPin(options, function (result) {
 	            if (result.result) {
 	                done();
 	            } else {

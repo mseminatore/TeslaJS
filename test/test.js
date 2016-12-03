@@ -1,12 +1,14 @@
 var assert = require('assert');
 var tjs = require('../TeslaJS');
 
+/*
 var sepia = require('sepia');
 
 sepia.configure({
     verbose: false,
     touchHits: true
 });
+*/
 
 // set these in your environment before testing
 var user = process.env.TESLAJS_USER;

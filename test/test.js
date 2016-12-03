@@ -1,6 +1,13 @@
 var assert = require('assert');
 var tjs = require('../TeslaJS');
 
+var sepia = require('sepia');
+
+sepia.configure({
+    verbose: false,
+    touchHits: true
+});
+
 // set these in your environment before testing
 var user = process.env.TESLAJS_USER;
 var pass = process.env.TESLAJS_PASS;
@@ -22,15 +29,17 @@ describe('TeslaJS', function () {
 				}
 			});
 		});
-//		it('should fail with invalid pwd', function(done) {
-//			tjs.login(user, 'badpassword', function(result) {
-//				if (result.response.statusCode == 200) {
-//					done(result.response.statusMessage);
-//				} else {
-//					done();
-//				}
-//			});
-	    //		});
+/*
+		it('should fail with invalid pwd', function(done) {
+			tjs.login(user, 'badpassword', function(result) {
+				if (result.response.statusCode == 200) {
+					done(result.response.statusMessage);
+				} else {
+					done();
+				}
+			});
+		});
+*/
 	});
 
 	describe('#vehicles()', function () {
@@ -108,10 +117,10 @@ describe('TeslaJS', function () {
 	describe('#mobileEnabled()', function () {
 	    it('should return mobile enabled', function (done) {
 	        tjs.mobileEnabled(options, function (result) {
-	            if (result) {
+	            if (result.result) {
 	                done();
 	            } else {
-	                done(result.response.statusMessage);
+	                done(result.reason);
 	            }
 	        });
 	    });
@@ -120,10 +129,10 @@ describe('TeslaJS', function () {
 	describe('#honkHorn()', function () {
 	    it('should return true', function (done) {
 	        tjs.honkHorn(options, function (result) {
-	            if (result) {
+	            if (result.result) {
 	                done();
 	            } else {
-	                done(result.response.statusMessage);
+	                done(result.reason);
 	            }
 	        });
 	    });
@@ -132,10 +141,161 @@ describe('TeslaJS', function () {
 	describe('#flashLights()', function () {
 	    it('should return true', function (done) {
 	        tjs.flashLights(options, function (result) {
-	            if (result) {
+	            if (result.result) {
 	                done();
 	            } else {
-	                done(result.response.statusMessage);
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#startCharge()', function () {
+	    it('should return true', function (done) {
+	        tjs.startCharge(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#stopCharge()', function () {
+	    it('should return true', function (done) {
+	        tjs.stopCharge(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#openChargePort()', function () {
+	    it('should return true', function (done) {
+	        tjs.openChargePort(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+/*
+	describe('#closeChargePort()', function () {
+	    it('should return true', function (done) {
+	        tjs.closeChargePort(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+*/
+	describe('#setChargeLimit()', function () {
+	    it('CHARGE_STORAGE should return true', function (done) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('CHARGE_DAILY should return true', function (done) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('CHARGE_STANDARD should return true', function (done) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('CHARGE_RANGE should return true', function (done) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#chargeMaxRange()', function () {
+	    it('should return false', function (done) {
+	        tjs.chargeMaxRange(options, function (result) {
+	            if (!result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#chargeStandard()', function () {
+	    it('should return false', function (done) {
+	        tjs.chargeStandard(options, function (result) {
+	            if (!result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#doorUnlock()', function () {
+	    it('should return true', function (done) {
+	        tjs.doorUnlock(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#doorLock()', function () {
+	    it('should return true', function (done) {
+	        tjs.doorLock(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#wakeUp()', function () {
+	    it('should return true', function (done) {
+	        tjs.wakeUp(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
 	            }
 	        });
 	    });

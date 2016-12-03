@@ -244,9 +244,9 @@ describe('TeslaJS', function () {
 	});
 
 	describe('#chargeMaxRange()', function () {
-	    it('should return false', function (done) {
+	    it('should return true', function (done) {
 	        tjs.chargeMaxRange(options, function (result) {
-	            if (!result.result) {
+	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
@@ -256,9 +256,9 @@ describe('TeslaJS', function () {
 	});
 
 	describe('#chargeStandard()', function () {
-	    it('should return false', function (done) {
+	    it('should return true', function (done) {
 	        tjs.chargeStandard(options, function (result) {
-	            if (!result.result) {
+	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);

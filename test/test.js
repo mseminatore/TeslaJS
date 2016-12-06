@@ -1,9 +1,8 @@
 var assert = require('assert');
 var tjs = require('../TeslaJS');
-
-/*
 var sepia = require('sepia');
 
+/*
 sepia.configure({
     verbose: false,
     touchHits: false    // remove once Sepia is fixed

@@ -1,0 +1,12 @@
+{
+	"curly": true,
+	"eqeqeq": false,
+	"lastsemic": true,
+	"nocomma": true,
+	"nonew": true,
+	"undef": true,
+	"unused": "vars",
+	"varstmt": false,
+	"asi": true,
+	"node": true
+}

@@ -18,7 +18,7 @@
   },
   "main": "TeslaJS.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jshint TeslaJS.js && mocha"
   },
   "keywords": [
     "Tesla",
@@ -33,6 +33,8 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^3.1.2"
+    "jshint": "^2.9.4",
+    "mocha": "^3.1.2",
+    "sepia": "^2.0.2"
   }
 }

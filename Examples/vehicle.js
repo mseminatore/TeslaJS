@@ -8,7 +8,7 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../TeslaJS');
+var tjs = require('../src/TeslaJS');
 var fs = require('fs');
 var colors = require('colors');
 var program = require('commander');

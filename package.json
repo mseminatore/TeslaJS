@@ -18,7 +18,7 @@
   },
   "main": "TeslaJS.js",
   "scripts": {
-    "test": "jshint TeslaJS.js && mocha"
+    "test": "jshint src/TeslaJS.js && mocha && jscover src lib-cov && TESLAJS_COV=1 && mocha --reporter mocha-lcov-reporter | node \"./node_modules/coveralls/bin/coveralls.js\" --verbose"
   },
   "keywords": [
     "Tesla",
@@ -33,8 +33,11 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "coveralls": "^2.11.15",
+    "jscover": "^1.0.0",
     "jshint": "^2.9.4",
     "mocha": "^3.1.2",
+    "mocha-lcov-reporter": "^1.2.0",
     "sepia": "^2.0.2"
   }
 }

@@ -18,7 +18,7 @@
   },
   "main": "TeslaJS.js",
   "scripts": {
-    "test": "jshint src/TeslaJS.js && mocha && jscover src lib-cov && TESLAJS_COV=1 mocha --reporter mocha-lcov-reporter | node \"./node_modules/coveralls/bin/coveralls.js\" --verbose"
+    "test": "jshint src/TeslaJS.js && mocha && jscover src lib-cov && TESLAJS_COV=1 mocha --reporter mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js --verbose"
   },
   "keywords": [
     "Tesla",

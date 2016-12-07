@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 
-An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library supports all existing Tesla
+An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library currently supports all existing Tesla
 vehicles.
 
 [![NPM](https://nodei.co/npm/teslajs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/teslajs/)

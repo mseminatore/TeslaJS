@@ -301,7 +301,7 @@ Wakes up the car from the sleep state. Necessary to get some data from the car.
               }
             }
 
-## Set Valet Mode [POST /api/1/vehicles/{vehicle_id}/command/set_valet_mode]
+## Set Valet Mode [POST /api/1/vehicles/{vehicle_id}/command/set_valet_mode?on={on}&password={password}]
 
 Sets valet mode on or off with a PIN to disable it from within the car. Reuses last PIN from previous valet session.
 
@@ -363,7 +363,7 @@ Resets the PIN set for valet mode, if set.
 
 ## Open Charge Port [POST /api/1/vehicles/{vehicle_id}/command/charge_port_door_open]
 
-Opens the charge port. Does not close the charge port (for now...)
+Opens the charge port.
 
 + Request
 
@@ -386,6 +386,30 @@ Opens the charge port. Does not close the charge port (for now...)
               }
             }
 
+## Close Charge Port [POST /api/1/vehicles/{vehicle_id}/command/charge_port_door_close]
+
+Closes the charge port.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
 ## Set Charge Limit to Standard [POST /api/1/vehicles/{vehicle_id}/command/charge_standard]
 
 Set the charge mode to standard (90% under the new percentage system introduced in 4.5).
@@ -749,7 +773,7 @@ Start the car for keyless driving. Must start driving within 2 minutes of issuin
               }
             }
 
-## Open Trunk/Frunk [POST /api/1/vehicles/{vehicle_id}/command/trunk_open]
+## Open Trunk/Frunk [POST /api/1/vehicles/{vehicle_id}/command/trunk_open?which_trunk={which_trunk}]
 
 Open the trunk or frunk. Currently inoperable.
 
@@ -763,6 +787,34 @@ Open the trunk or frunk. Currently inoperable.
 
     + vehicle_id: `1` (number) - The id of the Vehicle.
     + which_trunk: `rear` (string) - The trunk to open. `rear` is the only one known currently.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Trigger Homelink [POST /api/1/vehicles/{vehicle_id}/command/trigger_homelink?lat={lat}&long={long}&token={token}]
+
+Trigger homelink.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + lat: `75` (number) - The home latitude.
+    + long: `34` (number) - The home longitude.
+    + token: `75` (string) - The streaming token.
 
 + Response 200 (application/json)
 

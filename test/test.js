@@ -18,8 +18,26 @@ describe('TeslaJS', function () {
     var options = {authToken: "abc123"};
     this.timeout(5000);
 
+    describe('#getPortalBaseURI()', function () {
+        it('should return current portal URI', function () {
+            assert.equal(process.env.TESLAJS_SERVER, tjs.getPortalBaseURI());
+        });
+    });
+
+    describe('#setPortalBaseURI()', function () {
+        it('should reset to default portal value on empty parameter', function () {
+            tjs.setPortalBaseURI();
+            assert.equal(tjs.portal, tjs.getPortalBaseURI());
+        });
+
+        it('should change to value passed', function () {
+            tjs.setPortalBaseURI(process.env.TESLAJS_SERVER);
+            assert.equal(process.env.TESLAJS_SERVER, tjs.getPortalBaseURI());
+        });
+    });
+
 	describe('#login()', function() {
-		it('should succeed with valid user and pwd', function(done) {
+	    it('should succeed with valid user and pwd', function (done) {
 			tjs.login(user, pass, function(result) {
 				if (result.response.statusCode == 200) {
 				    options.authToken = result.authToken;
@@ -29,17 +47,38 @@ describe('TeslaJS', function () {
 				}
 			});
 		});
-/*
-		it('should fail with invalid pwd', function(done) {
-			tjs.login(user, 'badpassword', function(result) {
-				if (result.response.statusCode == 200) {
-					done(result.response.statusMessage);
-				} else {
-					done();
-				}
-			});
-		});
-*/
+
+	    it('should succeed with valid user and pwd and no callback', function (done) {
+	        tjs.login(user, pass);
+	        done();
+	    });
+	});
+
+	describe('#getLogLevel()', function () {
+	    it('should return 0', function () {
+	        assert.equal(0, tjs.getLogLevel());
+	    });
+	});
+
+	describe('#setLogLevel()', function () {
+	    it('should change the logging level', function () {
+	        tjs.setLogLevel(255);
+	        assert.equal(255, tjs.getLogLevel());
+	    });
+	});
+
+	describe('#logout()', function () {
+	    it('should return not implemented', function (done) {
+	        tjs.logout("token", function (result) {
+	            assert.equal("Not implemented!", result.response);
+	            done();
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.logout("token");
+	        done();
+	    });
 	});
 
 	describe('#vehicles()', function () {
@@ -52,6 +91,11 @@ describe('TeslaJS', function () {
 	            }
 	        });
 	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.vehicles(options);
+	        done();
+	    });
 	});
 
 	describe('#vehicleState()', function () {
@@ -63,6 +107,11 @@ describe('TeslaJS', function () {
 	                done(result.response.statusMessage);
 	            }
 	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.vehicleState(options);
+	        done();
 	    });
 	});
 
@@ -136,6 +185,11 @@ describe('TeslaJS', function () {
 	            }
 	        });
 	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.honkHorn(options);
+	        done();
+	    });
 	});
 
 	describe('#flashLights()', function () {
@@ -186,19 +240,6 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-/*
-	describe('#closeChargePort()', function () {
-	    it('should return true', function (done) {
-	        tjs.closeChargePort(options, function (result) {
-	            if (result.result) {
-	                done();
-	            } else {
-	                done(result.reason);
-	            }
-	        });
-	    });
-	});
-*/
 	describe('#setChargeLimit()', function () {
 	    it('CHARGE_STORAGE should return true', function (done) {
 	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (result) {
@@ -388,8 +429,18 @@ describe('TeslaJS', function () {
 	});
 
 	describe('#setTemps()', function () {
-	    it('should return true', function (done) {
+	    it('should return true setting both driver and passenger', function (done) {
 	        tjs.setTemps(options, 19, 21, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+
+	    it('should return true setting just driver', function (done) {
+	        tjs.setTemps(options, 19, undefined, function (result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -464,6 +515,13 @@ describe('TeslaJS', function () {
 	                done(result.reason);
 	            }
 	        });
+	    });
+	});
+	
+	describe('#makeCalendarEntry()', function () {
+	    it('should return calendar entry', function () {
+	        var entry = tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName");
+	        assert(entry);
 	    });
 	});
 

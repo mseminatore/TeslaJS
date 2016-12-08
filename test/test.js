@@ -15,7 +15,7 @@ function failure(msg) {
 }
 
 describe('TeslaJS', function () {
-    var options = {authToken: "abc123"};
+    var options = {authToken: "abc123", vehicleID: "1234"};
     this.timeout(5000);
 
     describe('#getPortalBaseURI()', function () {
@@ -231,6 +231,18 @@ describe('TeslaJS', function () {
 	describe('#openChargePort()', function () {
 	    it('should return true', function (done) {
 	        tjs.openChargePort(options, function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#closeChargePort()', function () {
+	    it('should return true', function (done) {
+	        tjs.closeChargePort(options, function (result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -522,6 +534,18 @@ describe('TeslaJS', function () {
 	    it('should return calendar entry', function () {
 	        var entry = tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName");
 	        assert(entry);
+	    });
+	});
+
+	describe('#homelink()', function () {
+	    it('should return true', function (done) {
+	        tjs.homelink(options, 75, 34, "token", function (result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
 	    });
 	});
 

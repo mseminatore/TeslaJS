@@ -1,5 +1,5 @@
 var assert = require('assert');
-var tjs = process.env.TESLAJS_COV ? require('../lib-cov/TeslaJS') : require('../src/TeslaJS');
+var tjs = require('../TeslaJS');
 require('sepia');
 
 // be sure to set these to fake values in your environment before testing

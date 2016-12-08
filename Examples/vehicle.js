@@ -8,9 +8,9 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../src/TeslaJS');
+var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -69,8 +69,9 @@ function sampleMain(options) {
         if (vehicle_state.sun_roof_installed) {
             var state = "CLOSED";
 
-            if (vehicle_state.sun_roof_state != "unknown")
+            if (vehicle_state.sun_roof_state != "unknown") {
                 state = vehicle_state.sun_roof_state;
+            }
 
             console.log("Sunroof: " + state.green);
         }
@@ -100,8 +101,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token)
+    if (!token) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -109,8 +111,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

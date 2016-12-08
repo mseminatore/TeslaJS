@@ -32,8 +32,10 @@ node_modules
 # Test file directory
 fixtures
 
-# Coverage file directory
+# Code Coverage files
 coverage
+.coveralls.yml
+lib-cov
 
 # Optional REPL history
 .node_repl_history

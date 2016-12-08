@@ -1,19 +1,18 @@
 var assert = require('assert');
 var tjs = require('../TeslaJS');
-var sepia = require('sepia');
+require('sepia');
 
-/*
-sepia.configure({
-    verbose: false,
-    touchHits: false    // remove once Sepia is fixed
-});
-*/
+// be sure to set these to fake values in your environment before testing
+var user = process.env.TESLAJS_USER || "elon@tesla.com";
+var pass = process.env.TESLAJS_PASS || "password";
 
-// set these in your environment before testing
-var user = process.env.TESLAJS_USER;
-var pass = process.env.TESLAJS_PASS;
+// Explicitly required to avoid accidentally hammering the Tesla production servers
+process.env.TESLAJS_SERVER || failure("Missing TESLAJS_SERVER defn!\n");
 
-process.env.TESLAJS_SERVER || process.exit(1);
+function failure(msg) {
+    console.log("Error: " + msg);
+    process.exit(1);
+}
 
 describe('TeslaJS', function () {
     var options = {authToken: "abc123"};

@@ -826,3 +826,36 @@ Trigger homelink.
                 "reason": ""
               }
             }
+
+            
+## Bad Get [GET /api/1/vehicles/{vehicle_id}/command/err_get]
+
+This is a GET that is guaranteed to fail.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 400 (application/json)
+
+    + Body
+    
+            <HTML><HEAD></HEAD><BODY>Unknown Request</BODY></HEAD></HTML>
+            
+## Bad Post [POST /api/1/vehicles/{vehicle_id}/command/err_post]
+
+This is a POST that is guaranteed to fail.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 400 (application/json)
+
+    + Body
+    
+            <HTML><HEAD></HEAD><BODY>Unknown Request</BODY></HEAD></HTML>

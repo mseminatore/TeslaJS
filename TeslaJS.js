@@ -56,7 +56,7 @@ var logLevel = process.env.TESLAJS_LOG || 0;
 // Adjustable console logging
 //===========================
 function log(level, str) {
-    if (logLevel <= level) {
+    if (logLevel < level) {
         return;
     }
     console.log(str);
@@ -99,7 +99,7 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
 // Login to the server and receive an OAuth token
 //===============================================
 exports.login = function login(username, password, callback) {
-    log(API_LOG_ALWAYS, "Logging in");
+    log(API_LOG_ALWAYS, "TeslaJS logging in...");
     log(API_CALL_LEVEL, "TeslaJS.login()".cyan);
 
     if (!callback) {
@@ -214,6 +214,7 @@ exports.vehicles = function vehicles(options, callback) {
 //====================================
 // Generic REST call for GET commands
 //====================================
+exports.get_command = get_command;
 function get_command(options, command, callback) {
     log(API_CALL_LEVEL, "GET call: " + command.cyan + " start.");
 
@@ -256,6 +257,7 @@ function get_command(options, command, callback) {
 //====================================
 // Generic REST call for POST commands
 //====================================
+exports.post_command = post_command;
 function post_command(options, command, body, callback) {
     log(API_CALL_LEVEL, "POST call: " + command.cyan + " start.");
 

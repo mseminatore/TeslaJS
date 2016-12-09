@@ -37,8 +37,8 @@ describe('TeslaJS', function () {
     });
 
     describe('#getLogLevel()', function () {
-        it('should return 0', function () {
-            assert.equal(0, tjs.getLogLevel());
+        it('should return default value', function () {
+            assert.equal(process.env.TESLAJS_LOG || 0, tjs.getLogLevel());
         });
     });
 
@@ -47,9 +47,9 @@ describe('TeslaJS', function () {
             tjs.setLogLevel(255);
             assert.equal(255, tjs.getLogLevel());
         });
-        it('should change the logging level to 0', function () {
-            tjs.setLogLevel(0);
-            assert.equal(0, tjs.getLogLevel());
+        it('should change the logging level to default value', function () {
+            tjs.setLogLevel(process.env.TESLAJS_LOG || 0);
+            assert.equal(process.env.TESLAJS_LOG || 0, tjs.getLogLevel());
         });
     });
 
@@ -70,7 +70,6 @@ describe('TeslaJS', function () {
 	        done();
 	    });
 	});
-
 
 	describe('#logout()', function () {
 	    it('should return not implemented', function (done) {

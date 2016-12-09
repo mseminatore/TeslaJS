@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -51,11 +51,13 @@ function ctof(degc) {
 //
 function sampleMain(options) {
     tjs.climateState(options, function (climate_state) {
-        if (climate_state.inside_temp && climate_state.inside_temp != 0)
+        if (climate_state.inside_temp && climate_state.inside_temp !== 0) {
             console.log("\nInterior: " + ctof(climate_state.inside_temp).toString().green + " Deg.F");
+        }
 
-        if (climate_state.outside_temp && climate_state.outside_temp != 0)
+        if (climate_state.outside_temp && climate_state.outside_temp !== 0) {
             console.log("Exterior: " + ctof(climate_state.outside_temp).toString().green + " Deg.F");
+        }
 
         console.log("\nDriver setting: " + ctof(climate_state.driver_temp_setting).toString().green + " Deg.F");
         console.log("Passenger setting: " + ctof(climate_state.passenger_temp_setting).toString().green + " Deg.F");
@@ -63,8 +65,9 @@ function sampleMain(options) {
         var str = climate_state.is_auto_conditioning_on ? "ON" : "OFF";
         console.log("\nClimate is currently: " + str.green);
 
-        if (climate_state.fan_status)
+        if (climate_state.fan_status) {
             console.log("Fan Speed: " + climate_state.fan_status.toString().green);
+        }
     });
 }
 
@@ -86,8 +89,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token)
+    if (!token) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -95,8 +99,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

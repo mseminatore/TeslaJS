@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -52,8 +52,9 @@ function sampleMain(options) {
             console.log("\nCommand completed successfully!\n");
             console.log("You may now begin driving.\n");
             console.log("You must start driving within " + "2 minutes".bold.green + " or Remote Start will expire.");
-        } else
+        } else {
             console.log(result.reason.red);
+        }
     });
 }
 
@@ -75,8 +76,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token || !program.args[0])
+    if (!token || !program.args[0]) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -84,8 +86,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password || !program.args[0])
+    if (!username || !password || !program.args[0]) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

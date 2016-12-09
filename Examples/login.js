@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 program
@@ -38,8 +38,9 @@ function login_cb(result) {
     }
 }
 
-if (program.args.length < 2)
+if (program.args.length < 2) {
     program.help();
+}
 
 var username = program.args[0];
 var password = program.args[1];

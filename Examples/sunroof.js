@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -47,21 +47,23 @@ function login_cb(result) {
 function sampleMain(options) {
     var amt = program.args[0];
 
-    if (amt.toLowerCase() == "open")
+    if (amt.toLowerCase() == "open") {
         amt = 100;
-    else if (amt.toLowerCase() == "close")
+    } else if (amt.toLowerCase() == "close") {
         amt = 0;
-    else if (amt.toLowerCase() == "vent")
+    } else if (amt.toLowerCase() == "vent") {
         amt = 15;
-    else if (amt.toLowerCase() == "comfort")
+    } else if (amt.toLowerCase() == "comfort") {
         amt = 80;
+    }
 
     tjs.sunRoofMove(options, amt, function (result) {
         if (result.result) {
             var str = (amt + "%").green;
             console.log("\nSunroof successfully moved to : " + str);
-        } else
+        } else {
             console.log(result.reason.red);
+        }
     });
 }
 
@@ -83,8 +85,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token || !program.args[0])
+    if (!token || !program.args[0]) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -92,8 +95,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password || !program.args[0])
+    if (!username || !password || !program.args[0]) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

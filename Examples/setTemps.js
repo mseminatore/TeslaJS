@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -58,8 +58,9 @@ function sampleMain(options) {
         if (result.result) {
             var str = (temp + " Deg.F").green;
             console.log("\nTemperature successfully set to: " + str);
-        } else
+        } else {
             console.log(result.reason.red);
+        }
     });
 }
 
@@ -81,8 +82,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token || !program.args[0])
+    if (!token || !program.args[0]) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -90,8 +92,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password || !program.args[0])
+    if (!username || !password || !program.args[0]) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

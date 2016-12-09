@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -45,9 +45,9 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.wakeUp(options, function (result) {
-        if (result)
+        if (result) {
             console.log("\nWakeUp command: " + "SENT".green);
-        else {
+        } else {
             console.error("Error waking up vehicle!".red);
         }
     });
@@ -70,13 +70,19 @@ if (program.uri) {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (!token) {
+        program.help();
+    }
+
     login_cb({ error: false, authToken: token });
 } else {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
- 
+    }
+
     tjs.login(username, password, login_cb);
 }

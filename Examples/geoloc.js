@@ -11,7 +11,7 @@
 var tjs = require('../TeslaJS');
 var fs = require('fs');
 var request = require('request');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -46,22 +46,37 @@ function login_cb(result) {
 //  Turn compass heading into friendly heading (NSEW, etc.)
 //
 function compassDirs(heading) {
-    if (heading > 337 || heading < 23)
+    if (heading > 337 || heading < 23) {
         return "North";
-    if (heading < 67)
+    }
+
+    if (heading < 67) {
         return "North East";
-    if (heading < 112)
+    }
+
+    if (heading < 112) {
         return "East";
-    if (heading < 157)
+    }
+
+    if (heading < 157) {
         return "South East";
-    if (heading < 202)
+    }
+
+    if (heading < 202) {
         return "South";
-    if (heading < 247)
+    }
+
+    if (heading < 247) {
         return "South West";
-    if (heading < 292)
+    }
+
+    if (heading < 292) {
         return "West";
-    if (heading < 337)
+    }
+
+    if (heading < 337) {
         return "North West";
+    }
 
     return heading;
 }
@@ -102,8 +117,9 @@ function sampleMain(options) {
                 });
             }
         }
-        else
+        else {
             console.log(drive_state.reason.red);
+        }
     });
 }
 
@@ -125,8 +141,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token)
+    if (!token) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -134,8 +151,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

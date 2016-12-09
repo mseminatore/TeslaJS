@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -47,10 +47,11 @@ function login_cb(result) {
 //
 function sampleMain(options) {
     tjs.climateStart(options, function (result) {
-        if (result.result)
+        if (result.result) {
             console.log("\nClimate is now: " + "ON".green);
-        else
+        } else {
             console.log(result.reason.red);
+        }
     });
 }
 
@@ -72,8 +73,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token)
+    if (!token) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -81,8 +83,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

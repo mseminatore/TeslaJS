@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -53,7 +53,7 @@ function login_cb(result) {
 function sampleMain(options) {
     tjs.chargeState(options, function (chargeState) {
 
-        var str = chargeState.charge_port_door_open == true ? "OPEN" : "CLOSED";
+        var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);
 
         if (chargeState.charging_state == "Charging") {
@@ -63,8 +63,9 @@ function sampleMain(options) {
             var mins = Math.round((chargeState.time_to_full_charge - hours) * 60);
 
             str = ""
-            if (hours > 0)
+            if (hours > 0) {
                 str = hours.toString().green + " hours ";
+            }
 
             console.log("Time remaining: " + str + mins.toString().green + " minutes");
 
@@ -108,13 +109,19 @@ if (program.uri) {
 
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+
+    if (!token) {
+        program.help();
+    }
+
     login_cb({ error: false, authToken: token });
 } else {
     var username = program.username || process.env.TESLAJS_USER;
     var password = program.password || process.env.TESLAJS_PASS;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

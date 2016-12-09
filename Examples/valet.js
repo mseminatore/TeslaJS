@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -50,18 +50,20 @@ function sampleMain(options) {
     var mode = program.args[0];
     var pin = program.args[1];
 
-    if (mode.toUpperCase() == "ON")
+    if (mode.toUpperCase() == "ON") {
         mode = true;
-    else
+    } else {
         mode = false;
+    }
 
     tjs.setValetMode(options, mode, pin, function (response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
             console.log("\nValet mode: " + str.green);
         }
-        else
+        else {
             console.error(response.reason.red);
+        }
     });
 }
 
@@ -83,8 +85,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token || program.args.length < 2)
+    if (!token || program.args.length < 2) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -92,8 +95,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password || program.args.length < 2)
+    if (!username || !password || program.args.length < 2) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

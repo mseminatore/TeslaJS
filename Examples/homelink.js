@@ -10,7 +10,7 @@
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');
-var colors = require('colors');
+require('colors');
 var program = require('commander');
 
 //
@@ -56,14 +56,16 @@ function sampleMain(options) {
             var token = program.name || "";
 
             tjs.homelink(options, lat, long, token, function (result) {
-                if (result.result)
+                if (result.result) {
                     console.log("\nHomelink: " + "Door signaled!".bold.green);
-                else
+                } else {
                     console.log("\nHomelink: " + result.reason.red);
+                }
             });
         }
-        else
+        else {
             console.log("Drive State: " + drive_state.reason.red);
+        }
     });
 }
 
@@ -85,8 +87,9 @@ if (program.uri) {
 if (tokenFound) {
     var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
-    if (!token)
+    if (!token) {
         program.help();
+    }
 
     login_cb({ error: false, authToken: token });
 } else {
@@ -94,8 +97,9 @@ if (tokenFound) {
     var username = program.username;
     var password = program.password;
 
-    if (!username || !password)
+    if (!username || !password) {
         program.help();
+    }
 
     tjs.login(username, password, login_cb);
 }

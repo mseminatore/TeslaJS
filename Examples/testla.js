@@ -15,8 +15,8 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var favicon = require('serve-favicon');
-var colors = require('colors');
+require('serve-favicon');
+require('colors');
 
 // pages
 var index = require('./routes/index');
@@ -27,7 +27,7 @@ var vehicleStatePage = require('./routes/vehicleStatePage');
 
 var chargingTimer;
 
-var vehicles = [vehicle];
+//var vehicles = [vehicle];
 
 var app = express();
 
@@ -63,11 +63,12 @@ program
 // Global state
 //[]======================[]
 var vid = 321;
-var username = null;
-var password = null;
+//var username = null;
+//var password = null;
 var valetPin = 0;
 var mobileEnabled = true;
 
+/*
 var vehicle = {
     "color": "black",
     "display_name": "Kit",
@@ -82,6 +83,7 @@ var vehicle = {
         "456"],
     "state": "online"
 };
+*/
 
 var driveState = {
     "shift_state": null,          //
@@ -354,7 +356,7 @@ app.post('/api/1/vehicles/:vid/wake_up', function (req, res) {
 // Mock the POST set_valet_mode cmd
 //=================================
 app.post('/api/1/vehicles/:vid/command/set_valet_mode', function (req, res) {
-    if (req.body.on && valetPin == 0) {
+    if (req.body.on && valetPin === 0) {
         vehicleState.valet_mode = true;
         valetPin = req.body.password;
 
@@ -440,15 +442,18 @@ app.post('/api/1/vehicles/:vid/command/charge_max_range', function (req, res) {
 // Mock the POST set_charge_limit cmd
 //========================================
 app.post('/api/1/vehicles/:vid/command/set_charge_limit', function (req, res) {
-    var auth = req.get('Authorization');
+//    var auth = req.get('Authorization');
     // TODO - validate the auth token
 
     // ensure valid percent value
     var percent = req.body.percent;
-    if (percent < 50)
+    if (percent < 50) {
         percent = 50;
-    if (percent > 100)
+    }
+
+    if (percent > 100) {
         percent = 100;
+    }
 
     // process the state change
     chargeState.charge_limit_soc = percent;

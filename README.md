@@ -207,6 +207,7 @@ The TeslaJS library exports a number of methods and constants.  The library also
 
 	streamingPortal    - the URI for the streaming API portal
 	portal 	           - the base URI for the OAuth-based API portal
+	API_LOG_ALWAYS     - log this message always
 	API_CALL_LEVEL 	   - log all API calls
 	API_RETURN_LEVEL   - log all API calls and completions
 	API_REQUEST_LEVEL  - log all API requests

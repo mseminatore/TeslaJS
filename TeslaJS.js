@@ -29,6 +29,9 @@ var portalBaseURI = process.env.TESLAJS_SERVER || portal;
 //=======================
 // Log levels
 //=======================
+var API_LOG_ALWAYS = 0;
+exports.API_LOG_ALWAYS = API_LOG_ALWAYS;
+
 var API_CALL_LEVEL = 1;
 exports.API_CALL_LEVEL = API_CALL_LEVEL;
 
@@ -59,6 +62,13 @@ function log(level, str) {
     console.log(str);
 }
 
+//==================================
+// Log error messages to the console
+//==================================
+function err(str) {
+    console.error(str.red);
+}
+
 //==========================
 // Set/get the logging level
 //==========================
@@ -85,17 +95,11 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
     return portalBaseURI;
 }
 
-//==================================
-// Log error messages to the console
-//==================================
-function err(str) {
-    console.error(str.red);
-}
-
 //===============================================
 // Login to the server and receive an OAuth token
 //===============================================
 exports.login = function login(username, password, callback) {
+    log(API_LOG_ALWAYS, "Logging in");
     log(API_CALL_LEVEL, "TeslaJS.login()".cyan);
 
     if (!callback) {

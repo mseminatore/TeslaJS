@@ -36,6 +36,23 @@ describe('TeslaJS', function () {
         });
     });
 
+    describe('#getLogLevel()', function () {
+        it('should return 0', function () {
+            assert.equal(0, tjs.getLogLevel());
+        });
+    });
+
+    describe('#setLogLevel()', function () {
+        it('should change the logging level to 255', function () {
+            tjs.setLogLevel(255);
+            assert.equal(255, tjs.getLogLevel());
+        });
+        it('should change the logging level to 0', function () {
+            tjs.setLogLevel(0);
+            assert.equal(0, tjs.getLogLevel());
+        });
+    });
+
 	describe('#login()', function() {
 	    it('should succeed with valid user and pwd', function (done) {
 			tjs.login(user, pass, function(result) {
@@ -54,18 +71,6 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-	describe('#getLogLevel()', function () {
-	    it('should return 0', function () {
-	        assert.equal(0, tjs.getLogLevel());
-	    });
-	});
-
-	describe('#setLogLevel()', function () {
-	    it('should change the logging level', function () {
-	        tjs.setLogLevel(255);
-	        assert.equal(255, tjs.getLogLevel());
-	    });
-	});
 
 	describe('#logout()', function () {
 	    it('should return not implemented', function (done) {

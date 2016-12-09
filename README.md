@@ -38,9 +38,9 @@ possible to use the library to make multiple overlapping async calls for differe
 Here are some of the most recent features and fixes:
 
 1. Streaming now works as of **1.0.38**, see **simpleStreaming** sample!
-2. In **1.0.43** updated formatting of **odometer** sample.
-3. In **1.0.46** fixed sample bugs with non-cached auth
-4. In **1.0.49** started adding unit test cases
+2. In **1.0.49** started adding unit test cases
+3. In **1.0.53** finished off test cases and code coverage
+4. I am exploring the addition of Promise based APIs, let me know if there is interest it will be a major update
 
 ## Known Issues
 

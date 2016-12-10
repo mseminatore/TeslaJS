@@ -10,6 +10,7 @@
 //=====================================================================
 
 var request = require('request');
+var Promise = require('promise');
 require('colors');
 
 //=======================
@@ -103,7 +104,7 @@ exports.login = function login(username, password, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()".cyan);
 
     if (!callback) {
-        callback = function (result) { /* do nothing! */ }
+        callback = function (err, result) { /* do nothing! */ }
     }
 
     var req = {
@@ -133,9 +134,20 @@ exports.login = function login(username, password, callback) {
             err('Error parsing response to oauth token request');
         }
 
-        callback({ error: error, response: response, body: body, authToken: authToken });
+        callback(error, { error: error, response: response, body: body, authToken: authToken });
 
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.".cyan);
+    });
+}
+
+exports.loginAsync = function (username, password) {
+    return new Promise(function (resolve, reject) {
+        exports.login(username, password, function (err, data) {
+            if (err !== null) {
+                return reject(err);
+            }
+            resolve(data);
+        });
     });
 }
 
@@ -146,10 +158,10 @@ exports.logout = function logout(authToken, callback) {
     log(API_CALL_LEVEL, "TeslaJS.logout()".cyan);
 
     if (!callback) {
-        callback = function (result) { /* do nothing! */ }
+        callback = function (err, result) { /* do nothing! */ }
     }
 
-    callback({ error: "Not implemented!", response: "Not implemented!", body: "Not implemented!" });
+    callback(null, { error: "Not implemented!", response: "Not implemented!", body: "Not implemented!" });
 
     log(API_RETURN_LEVEL, "TeslaJS.logout() completed.".cyan);
 
@@ -167,6 +179,17 @@ exports.logout = function logout(authToken, callback) {
 */
 }
 
+exports.logoutAsync = function (authToken) {
+    return new Promise(function (resolve, reject) {
+        exports.logout(authToken, function (err, data) {
+            if (err !== null) {
+                return reject(err);
+            }
+            resolve(data);
+        });
+    });
+}
+
 //====================================================
 // Return vehicle information on the requested vehicle
 //====================================================
@@ -174,7 +197,7 @@ exports.vehicles = function vehicles(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.vehicles()".cyan);
 
     if (!callback) {
-        callback = function (vehicle) { /* do nothing! */ }
+        callback = function (err, vehicle) { /* do nothing! */ }
     }
 
     var req = {
@@ -205,9 +228,20 @@ exports.vehicles = function vehicles(options, callback) {
         data = data.response[options.carIndex || 0];
         data.id = data.id_s;
 
-        callback(data);
+        callback(error, data);
 
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles".cyan + " completed.");
+    });
+}
+
+exports.vehiclesAsync = function (options) {
+    return new Promise(function (resolve, reject) {
+        exports.vehicles(options, function (err, data) {
+            if (err !== null) {
+                return reject(err);
+            }
+            resolve(data);
+        });
     });
 }
 
@@ -219,7 +253,7 @@ function get_command(options, command, callback) {
     log(API_CALL_LEVEL, "GET call: " + command.cyan + " start.");
 
     if (!callback) {
-        callback = function (data) { /* do nothing! */ }
+        callback = function (err, data) { /* do nothing! */ }
     }
 
     var req = {
@@ -248,7 +282,7 @@ function get_command(options, command, callback) {
 
         data = data.response;
 
-        callback(data);
+        callback(error, data);
 
         log(API_RETURN_LEVEL, "\nGET request: " + command.cyan + " completed.");
     });
@@ -262,7 +296,7 @@ function post_command(options, command, body, callback) {
     log(API_CALL_LEVEL, "POST call: " + command.cyan + " start.");
 
     if (!callback) {
-        callback = function (data) { /* do nothing! */ }
+        callback = function (err, data) { /* do nothing! */ }
     }
 
     var cmd = {
@@ -292,7 +326,7 @@ function post_command(options, command, body, callback) {
 
         data = data.response;
 
-        callback(data);
+        callback(error, data);
 
         log(API_RETURN_LEVEL, "\nPOST command: " + command.cyan + " completed.");
     });

@@ -55,7 +55,7 @@ describe('TeslaJS', function () {
 
 	describe('#login()', function() {
 	    it('should succeed with valid user and pwd', function (done) {
-			tjs.login(user, pass, function(result) {
+			tjs.login(user, pass, function(err, result) {
 				if (result.response.statusCode == 200) {
 				    options.authToken = result.authToken;
                     done();
@@ -71,9 +71,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#loginAsync()', function () {
+	    it('should succeed with valid user and pwd', function () {
+	        return tjs.loginAsync(user, pass).then(function (result) {
+	            assert.equal(result.response.statusCode, 200);
+	        });
+	    });
+	});
+
 	describe('#logout()', function () {
 	    it('should return not implemented', function (done) {
-	        tjs.logout("token", function (result) {
+	        tjs.logout("token", function (err, result) {
 	            assert.equal("Not implemented!", result.response);
 	            done();
 	        });
@@ -85,9 +93,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#logoutAsync()', function () {
+	    it('should return not implemented', function () {
+	        return tjs.logoutAsync("token").then(function (result) {
+	            assert.equal("Not implemented!", result.response);
+	        });
+	    });
+	});
+
 	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.vehicles(options, function (result) {
+	        tjs.vehicles(options, function (err, result) {
 	            if (result.vehicle_id) {
 	                done();
 	            } else {
@@ -102,9 +118,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#vehiclesAsync()', function () {
+	    it('should succeed enumerating vehicles', function () {
+	        return tjs.vehiclesAsync(options).then(function (result) {
+	            assert(result.vehicle_id);
+	        });
+	    });
+	});
+
 	describe('#vehicleState()', function () {
 	    it('should return vehicle state', function (done) {
-	        tjs.vehicleState(options, function (result) {
+	        tjs.vehicleState(options, function (err, result) {
 	            if (result.car_version) {
 	                done();
 	            } else {
@@ -121,7 +145,7 @@ describe('TeslaJS', function () {
 
 	describe('#climateState()', function () {
 	    it('should return climate state', function (done) {
-	        tjs.climateState(options, function (result) {
+	        tjs.climateState(options, function (err, result) {
 	            if (result.inside_temp) {
 	                done();
 	            } else {
@@ -133,7 +157,7 @@ describe('TeslaJS', function () {
 
 	describe('#driveState()', function () {
 	    it('should return drive state', function (done) {
-	        tjs.driveState(options, function (result) {
+	        tjs.driveState(options, function (err, result) {
 	            if (result.heading) {
 	                done();
 	            } else {
@@ -145,7 +169,7 @@ describe('TeslaJS', function () {
 
 	describe('#chargeState()', function () {
 	    it('should return charge state', function (done) {
-	        tjs.chargeState(options, function (result) {
+	        tjs.chargeState(options, function (err, result) {
 	            if (result.est_battery_range) {
 	                done();
 	            } else {
@@ -157,7 +181,7 @@ describe('TeslaJS', function () {
 
 	describe('#guiSettings()', function () {
 	    it('should return gui settings', function (done) {
-	        tjs.guiSettings(options, function (result) {
+	        tjs.guiSettings(options, function (err, result) {
 	            if (result.gui_distance_units) {
 	                done();
 	            } else {
@@ -169,7 +193,7 @@ describe('TeslaJS', function () {
 
 	describe('#mobileEnabled()', function () {
 	    it('should return true', function (done) {
-	        tjs.mobileEnabled(options, function (result) {
+	        tjs.mobileEnabled(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -181,7 +205,7 @@ describe('TeslaJS', function () {
 
 	describe('#honkHorn()', function () {
 	    it('should return true', function (done) {
-	        tjs.honkHorn(options, function (result) {
+	        tjs.honkHorn(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -198,7 +222,7 @@ describe('TeslaJS', function () {
 
 	describe('#flashLights()', function () {
 	    it('should return true', function (done) {
-	        tjs.flashLights(options, function (result) {
+	        tjs.flashLights(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -210,7 +234,7 @@ describe('TeslaJS', function () {
 
 	describe('#startCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.startCharge(options, function (result) {
+	        tjs.startCharge(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -222,7 +246,7 @@ describe('TeslaJS', function () {
 
 	describe('#stopCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.stopCharge(options, function (result) {
+	        tjs.stopCharge(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -234,7 +258,7 @@ describe('TeslaJS', function () {
 
 	describe('#openChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.openChargePort(options, function (result) {
+	        tjs.openChargePort(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -246,7 +270,7 @@ describe('TeslaJS', function () {
 
 	describe('#closeChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.closeChargePort(options, function (result) {
+	        tjs.closeChargePort(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -258,7 +282,7 @@ describe('TeslaJS', function () {
 
 	describe('#setChargeLimit()', function () {
 	    it('CHARGE_STORAGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -268,7 +292,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_DAILY should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -278,7 +302,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_STANDARD should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -288,7 +312,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_RANGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -300,7 +324,7 @@ describe('TeslaJS', function () {
 
 	describe('#chargeMaxRange()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeMaxRange(options, function (result) {
+	        tjs.chargeMaxRange(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -312,7 +336,7 @@ describe('TeslaJS', function () {
 
 	describe('#chargeStandard()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeStandard(options, function (result) {
+	        tjs.chargeStandard(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -324,7 +348,7 @@ describe('TeslaJS', function () {
 
 	describe('#doorUnlock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorUnlock(options, function (result) {
+	        tjs.doorUnlock(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -336,7 +360,7 @@ describe('TeslaJS', function () {
 
 	describe('#doorLock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorLock(options, function (result) {
+	        tjs.doorLock(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -348,7 +372,7 @@ describe('TeslaJS', function () {
 
 	describe('#climateStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.climateStart(options, function (result) {
+	        tjs.climateStart(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -360,7 +384,7 @@ describe('TeslaJS', function () {
     
 	describe('#climateStop()', function () {
 	    it('should return true', function (done) {
-	        tjs.climateStop(options, function (result) {
+	        tjs.climateStop(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -372,7 +396,7 @@ describe('TeslaJS', function () {
 
 	describe('#sunRoofControl()', function () {
 	    it('SUNROOF_VENT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -382,7 +406,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_COMFORT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -392,7 +416,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_OPEN should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -402,7 +426,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_CLOSED should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -414,7 +438,7 @@ describe('TeslaJS', function () {
 
 	describe('#sunRoofMove()', function () {
 	    it('move to 50% should return true', function (done) {
-	        tjs.sunRoofMove(options, 50, function (result) {
+	        tjs.sunRoofMove(options, 50, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -424,7 +448,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('move to 100% should return true', function (done) {
-	        tjs.sunRoofMove(options, 100, function (result) {
+	        tjs.sunRoofMove(options, 100, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -434,7 +458,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('move to 0% should return true', function (done) {
-	        tjs.sunRoofMove(options, 0, function (result) {
+	        tjs.sunRoofMove(options, 0, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -446,7 +470,7 @@ describe('TeslaJS', function () {
 
 	describe('#setTemps()', function () {
 	    it('should return true setting both driver and passenger', function (done) {
-	        tjs.setTemps(options, 19, 21, function (result) {
+	        tjs.setTemps(options, 19, 21, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -456,7 +480,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should return true setting just driver', function (done) {
-	        tjs.setTemps(options, 19, undefined, function (result) {
+	        tjs.setTemps(options, 19, undefined, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -468,7 +492,7 @@ describe('TeslaJS', function () {
 
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.remoteStart(options, "password", function (result) {
+	        tjs.remoteStart(options, "password", function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -480,7 +504,7 @@ describe('TeslaJS', function () {
 
 	describe('#openTrunk()', function () {
 	    it('Frunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.FRUNK, function (result) {
+	        tjs.openTrunk(options, tjs.FRUNK, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -490,7 +514,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('Trunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.TRUNK, function (result) {
+	        tjs.openTrunk(options, tjs.TRUNK, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -502,7 +526,7 @@ describe('TeslaJS', function () {
 
 	describe('#setValetMode()', function () {
 	    it('ON should return true', function (done) {
-	        tjs.setValetMode(options, true, '1234', function (result) {
+	        tjs.setValetMode(options, true, '1234', function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -512,7 +536,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('OFF should return true', function (done) {
-	        tjs.setValetMode(options, false, '1234', function (result) {
+	        tjs.setValetMode(options, false, '1234', function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -524,7 +548,7 @@ describe('TeslaJS', function () {
 
 	describe('#resetValetPin()', function () {
 	    it('should return true', function (done) {
-	        tjs.resetValetPin(options, function (result) {
+	        tjs.resetValetPin(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -543,7 +567,7 @@ describe('TeslaJS', function () {
 
 	describe('#homelink()', function () {
 	    it('should return true', function (done) {
-	        tjs.homelink(options, 75, 34, "token", function (result) {
+	        tjs.homelink(options, 75, 34, "token", function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -555,7 +579,7 @@ describe('TeslaJS', function () {
 
 	describe('#wakeUp()', function () {
 	    it('should return true', function (done) {
-	        tjs.wakeUp(options, function (result) {
+	        tjs.wakeUp(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {

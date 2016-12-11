@@ -338,6 +338,7 @@ function post_command(options, command, body, callback) {
 exports.vehicleState = function vehicleState(options, callback) {
     get_command(options, "data_request/vehicle_state", callback);
 }
+exports.vehicleStateAsync = Promise.denodeify(exports.vehicleState);
 
 //=====================
 // GET the climate state
@@ -345,6 +346,7 @@ exports.vehicleState = function vehicleState(options, callback) {
 exports.climateState = function climateState(options, callback) {
     get_command(options, "data_request/climate_state", callback);
 }
+exports.climateStateAsync = Promise.denodeify(exports.climateState);
 
 //=====================
 // GET the drive state
@@ -352,6 +354,7 @@ exports.climateState = function climateState(options, callback) {
 exports.driveState = function driveState(options, callback) {
     get_command(options, "data_request/drive_state", callback);
 }
+exports.driveStateAsync = Promise.denodeify(exports.driveState);
 
 //=====================
 // GET the charge state
@@ -359,6 +362,7 @@ exports.driveState = function driveState(options, callback) {
 exports.chargeState = function chargeState(options, callback) {
     get_command(options, "data_request/charge_state", callback);
 }
+exports.chargeStateAsync = Promise.denodeify(exports.chargeState);
 
 //=====================
 // GET the GUI settings
@@ -366,6 +370,7 @@ exports.chargeState = function chargeState(options, callback) {
 exports.guiSettings = function guiSettings(options, callback) {
     get_command(options, "data_request/gui_settings", callback);
 }
+exports.guiSettingsAsync = Promise.denodeify(exports.guiSettings);
 
 //==============================
 // GET the modile enabled status
@@ -373,6 +378,7 @@ exports.guiSettings = function guiSettings(options, callback) {
 exports.mobileEnabled = function mobileEnabled(options, callback) {
     get_command(options, "mobile_enabled", callback);
 }
+exports.mobileEnabledAsync = Promise.denodeify(exports.mobileEnabled);
 
 //=====================
 // Honk the horn
@@ -380,6 +386,7 @@ exports.mobileEnabled = function mobileEnabled(options, callback) {
 exports.honkHorn = function honk(options, callback) {
     post_command(options, "command/honk_horn", null, callback);
 }
+exports.honkHornAsync = Promise.denodeify(exports.honkHorn);
 
 //=====================
 // Flash the lights
@@ -387,6 +394,7 @@ exports.honkHorn = function honk(options, callback) {
 exports.flashLights = function flashLights(options, callback) {
     post_command(options, "command/flash_lights", null, callback);
 }
+exports.flashLightsAsync = Promise.denodeify(exports.flashLights);
 
 //=======================
 // Start charging the car
@@ -394,6 +402,7 @@ exports.flashLights = function flashLights(options, callback) {
 exports.startCharge = function startCharge(options, callback) {
     post_command(options, "command/charge_start", null, callback);
 }
+exports.startChargeAsync = Promise.denodeify(exports.startCharge);
 
 //======================
 // Stop charging the car
@@ -401,6 +410,7 @@ exports.startCharge = function startCharge(options, callback) {
 exports.stopCharge = function stopCharge(options, callback) {
     post_command(options, "command/charge_stop", null, callback);
 }
+exports.stopChargeAsync = Promise.denodeify(exports.stopCharge);
 
 //=====================
 // Open the charge port
@@ -408,6 +418,7 @@ exports.stopCharge = function stopCharge(options, callback) {
 exports.openChargePort = function openChargePort(options, callback) {
     post_command(options, "command/charge_port_door_open", null, callback);
 }
+exports.openChargePortAsync = Promise.denodeify(exports.openChargePort);
 
 //=====================
 // Close the charge port
@@ -415,18 +426,21 @@ exports.openChargePort = function openChargePort(options, callback) {
 exports.closeChargePort = function closeChargePort(options, callback) {
     post_command(options, "command/charge_port_door_close", null, callback);
 }
+exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
 
 //=====================
 // Set the charge limit
+// Note: charging to 100% frequently is NOT recommended for long-term battery health!
 //=====================
-exports.CHARGE_STORAGE = 50;
-exports.CHARGE_DAILY = 70;
+exports.CHARGE_STORAGE  = 50;
+exports.CHARGE_DAILY    = 70;
 exports.CHARGE_STANDARD = 90;
-exports.CHARGE_RANGE = 100;     // note: using this frequently is NOT recommended for long-term battery health!
+exports.CHARGE_RANGE    = 100;
 
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
 }
+exports.setChargeLimitAsync = Promise.denodeify(exports.setChargeLimit);
 
 //========================
 // Set charge limit to 90%
@@ -434,6 +448,7 @@ exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
 exports.chargeStandard = function chargeStandard(options, callback) {
     post_command(options, "command/charge_standard", null, callback);
 }
+exports.chargeStandardAsync = Promise.denodeify(exports.chargeStandard);
 
 //=========================
 // Set charge limit to 100%
@@ -441,6 +456,7 @@ exports.chargeStandard = function chargeStandard(options, callback) {
 exports.chargeMaxRange = function chargeMaxRange(options, callback) {
     post_command(options, "command/charge_max_range", null, callback);
 }
+exports.chargeMaxRangeAsync = Promise.denodeify(exports.chargeMaxRange);
 
 //=====================
 // Lock the car doors
@@ -448,6 +464,7 @@ exports.chargeMaxRange = function chargeMaxRange(options, callback) {
 exports.doorLock = function doorLock(options, callback) {
     post_command(options, "command/door_lock", null, callback);
 }
+exports.doorLockAsync = Promise.denodeify(exports.doorLock);
 
 //=====================
 // Unlock the car doors
@@ -455,6 +472,7 @@ exports.doorLock = function doorLock(options, callback) {
 exports.doorUnlock = function doorUnlock(options, callback) {
     post_command(options, "command/door_unlock", null, callback);
 }
+exports.doorUnlockAsync = Promise.denodeify(exports.doorUnlock);
 
 //=====================
 // Turn on HVAC
@@ -462,6 +480,7 @@ exports.doorUnlock = function doorUnlock(options, callback) {
 exports.climateStart = function climateStart(options, callback) {
     post_command(options, "command/auto_conditioning_start", null, callback);
 }
+exports.climateStartAsync = Promise.denodeify(exports.climateStart);
 
 //=====================
 // Turn off HVAC
@@ -469,6 +488,7 @@ exports.climateStart = function climateStart(options, callback) {
 exports.climateStop = function climateStop(options, callback) {
     post_command(options, "command/auto_conditioning_stop", null, callback);
 }
+exports.climateStopAsync = Promise.denodeify(exports.climateStop);
 
 //==================================
 // Set the sun roof to specific mode
@@ -481,6 +501,7 @@ exports.SUNROOF_COMFORT = "comfort";
 exports.sunRoofControl = function sunRoofControl(options, state, callback) {
     post_command(options, "command/sun_roof_control", { "state": state }, callback);
 }
+exports.sunRoofControlAsync = Promise.denodeify(exports.sunRoofControl);
 
 //======================
 // Set sun roof position
@@ -488,6 +509,7 @@ exports.sunRoofControl = function sunRoofControl(options, state, callback) {
 exports.sunRoofMove = function sunRoofMove(options, percent, callback) {
     post_command(options, "command/sun_roof_control", { "state": "move", "percent": percent }, callback);
 }
+exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
 
 //==============================================
 // Set the driver/passenger climate temperatures
@@ -499,6 +521,7 @@ exports.setTemps = function setTemps(options, driver, pass, callback) {
 
     post_command(options, "command/set_temps", { driver_temp: driver, passenger_temp: pass }, callback);
 }
+exports.setTempsAsync = Promise.denodeify(exports.setTemps);
 
 //=====================
 // Remote start the car
@@ -506,15 +529,18 @@ exports.setTemps = function setTemps(options, driver, pass, callback) {
 exports.remoteStart = function remoteStartDrive(options, password, callback) {
     post_command(options, "command/remote_start_drive", { "password": password }, callback);
 }
+exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
 
 //=====================
 // Open the trunk/frunk
 //=====================
 exports.FRUNK = "frunk";
 exports.TRUNK = "trunk";
+
 exports.openTrunk = function openTrunk(options, which, callback) {
     post_command(options, "command/trunk_open", { which_trunk: which }, callback);
 }
+exports.openTrunkAsync = Promise.denodeify(exports.openTrunk);
 
 //===============================
 // Wake up a car that is sleeping
@@ -522,6 +548,7 @@ exports.openTrunk = function openTrunk(options, which, callback) {
 exports.wakeUp = function wakeUp(options, callback) {
     post_command(options, "wake_up", null, callback);
 }
+exports.wakeUpAsync = Promise.denodeify(exports.wakeUp);
 
 //=======================
 // Turn valet mode on/off
@@ -529,6 +556,7 @@ exports.wakeUp = function wakeUp(options, callback) {
 exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
     post_command(options, "command/set_valet_mode", { on : onoff, password : pin }, callback);
 }
+exports.setValetModeAsync = Promise.denodeify(exports.setValetMode);
 
 //=======================
 // Reset the valet pin
@@ -536,6 +564,7 @@ exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
 exports.resetValetPin = function resetValetPin(options, callback) {
     post_command(options, "command/reset_valet_pin", null, callback);
 }
+exports.resetValetPinAsync = Promise.denodeify(exports.resetValetPin);
 
 //=======================
 // Send a calendar entry
@@ -543,6 +572,7 @@ exports.resetValetPin = function resetValetPin(options, callback) {
 exports.calendar = function calendar(options, entry, callback) {
     post_command(options, "command/upcoming_calendar_entries", entry, callback);
 }
+exports.calendarAsync = Promise.denodeify(exports.calendar);
 
 exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, startTime, endTime, accountName, phoneName) {
     var entry = {
@@ -581,6 +611,7 @@ exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, star
 exports.homelink = function homelink(options, lat, long, token, callback) {
     post_command(options, "command/trigger_homelink", { lat: lat, long: long, token: token } , callback);
 }
+exports.homelinkAsync = Promise.denodeify(exports.homelink);
 
 /*
 //

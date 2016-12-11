@@ -143,6 +143,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#vehicleStateAsync()', function () {
+	    it('should return vehicle state', function () {
+	        return tjs.vehicleStateAsync(options).then(function (result) {
+	            assert(result.car_version);
+	        });
+	    });
+	});
+
 	describe('#climateState()', function () {
 	    it('should return climate state', function (done) {
 	        tjs.climateState(options, function (err, result) {
@@ -151,6 +159,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.response.statusMessage);
 	            }
+	        });
+	    });
+	});
+
+	describe('#climateStateAsync()', function () {
+	    it('should return climate state', function () {
+	        return tjs.climateStateAsync(options).then(function (result) {
+	            assert(result.inside_temp);
 	        });
 	    });
 	});
@@ -167,6 +183,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#driveStateAsync()', function () {
+	    it('should return drive state', function () {
+	        return tjs.driveStateAsync(options).then(function (result) {
+	            assert(result.heading);
+	        });
+	    });
+	});
+
 	describe('#chargeState()', function () {
 	    it('should return charge state', function (done) {
 	        tjs.chargeState(options, function (err, result) {
@@ -175,6 +199,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.response.statusMessage);
 	            }
+	        });
+	    });
+	});
+
+	describe('#chargeStateAsync()', function () {
+	    it('should return charge state', function () {
+	        return tjs.chargeStateAsync(options).then(function (result) {
+	            assert(result.est_battery_range);
 	        });
 	    });
 	});
@@ -191,14 +223,30 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#guiSettingsAsync()', function () {
+	    it('should return gui settings', function () {
+	        return tjs.guiSettingsAsync(options).then(function (result) {
+	            assert(result.gui_distance_units);
+	        });
+	    });
+	});
+
 	describe('#mobileEnabled()', function () {
 	    it('should return true', function (done) {
 	        tjs.mobileEnabled(options, function (err, result) {
-	            if (result.result) {
+	            if (result) {
 	                done();
 	            } else {
-	                done(result.reason);
+	                done(result);
 	            }
+	        });
+	    });
+	});
+
+	describe('#mobileEnabledAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.mobileEnabledAsync(options).then(function (result) {
+	            assert(result);
 	        });
 	    });
 	});
@@ -220,6 +268,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#honkHornAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.honkHornAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#flashLights()', function () {
 	    it('should return true', function (done) {
 	        tjs.flashLights(options, function (err, result) {
@@ -228,6 +284,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#flashLightsAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.flashLightsAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -244,6 +308,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#startChargeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.startChargeAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#stopCharge()', function () {
 	    it('should return true', function (done) {
 	        tjs.stopCharge(options, function (err, result) {
@@ -252,6 +324,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#stopChargeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.stopChargeAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -268,6 +348,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#openChargePortAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.openChargePortAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#closeChargePort()', function () {
 	    it('should return true', function (done) {
 	        tjs.closeChargePort(options, function (err, result) {
@@ -276,6 +364,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#closeChargePortAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.closeChargePortAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -322,6 +418,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#setChargeLimitAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setChargeLimitAsync(options, tjs.CHARGE_STANDARD).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#chargeMaxRange()', function () {
 	    it('should return true', function (done) {
 	        tjs.chargeMaxRange(options, function (err, result) {
@@ -330,6 +434,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#chargeMaxRangeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.chargeMaxRangeAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -346,6 +458,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#chargeStandardAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.chargeStandardAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#doorUnlock()', function () {
 	    it('should return true', function (done) {
 	        tjs.doorUnlock(options, function (err, result) {
@@ -354,6 +474,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#doorUnlockAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.doorUnlockAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -370,6 +498,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#doorLockAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.doorLockAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#climateStart()', function () {
 	    it('should return true', function (done) {
 	        tjs.climateStart(options, function (err, result) {
@@ -381,7 +517,15 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
-    
+
+	describe('#climateStartAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.climateStartAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#climateStop()', function () {
 	    it('should return true', function (done) {
 	        tjs.climateStop(options, function (err, result) {
@@ -390,6 +534,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#climateStopAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.climateStopAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -436,6 +588,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#sunRoofControlAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.sunRoofControlAsync(options, tjs.SUNROOF_CLOSED).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#sunRoofMove()', function () {
 	    it('move to 50% should return true', function (done) {
 	        tjs.sunRoofMove(options, 50, function (err, result) {
@@ -468,6 +628,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#sunRoofMoveAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.sunRoofMoveAsync(options, 0).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#setTemps()', function () {
 	    it('should return true setting both driver and passenger', function (done) {
 	        tjs.setTemps(options, 19, 21, function (err, result) {
@@ -490,6 +658,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#setTempsAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setTempsAsync(options, 19, 21).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
 	        tjs.remoteStart(options, "password", function (err, result) {
@@ -498,6 +674,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#remoteStartAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.remoteStartAsync(options, "password").then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
@@ -524,6 +708,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#openTrunkAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.openTrunkAsync(options, tjs.FRUNK).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#setValetMode()', function () {
 	    it('ON should return true', function (done) {
 	        tjs.setValetMode(options, true, '1234', function (err, result) {
@@ -546,6 +738,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#setValetModeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setValetModeAsync(options, false, '1234').then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#resetValetPin()', function () {
 	    it('should return true', function (done) {
 	        tjs.resetValetPin(options, function (err, result) {
@@ -557,7 +757,15 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
-	
+
+	describe('#resetValetPinAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.resetValetPinAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#makeCalendarEntry()', function () {
 	    it('should return calendar entry', function () {
 	        var entry = tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName");
@@ -577,6 +785,14 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#homelinkAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.homelinkAsync(options, 75, 34, "token").then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#wakeUp()', function () {
 	    it('should return true', function (done) {
 	        tjs.wakeUp(options, function (err, result) {
@@ -585,6 +801,14 @@ describe('TeslaJS', function () {
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#wakeUpAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.wakeUpAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});

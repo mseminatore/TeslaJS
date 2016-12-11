@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         if (vehicle.state != "online") {
@@ -60,7 +60,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.vehicleState(options, function (vehicle_state) {
+    tjs.vehicleState(options, function (err, vehicle_state) {
         var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
 
         console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);

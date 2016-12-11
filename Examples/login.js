@@ -18,10 +18,19 @@ program
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
   .parse(process.argv);
 
-//
-//
-//
-function login_cb(result) {
+if (program.args.length < 2) {
+    program.help();
+}
+
+var username = program.args[0];
+var password = program.args[1];
+
+if (program.uri) {
+    console.log("Setting portal URI to: " + program.uri);
+    tjs.setPortalBaseURI(program.uri);
+}
+
+tjs.loginAsync(username, password).then(function (result) {
     if (!result.authToken) {
         console.error("Login failed!".red);
         process.exit(1);
@@ -36,18 +45,4 @@ function login_cb(result) {
         fs.writeFileSync('.token', token, 'utf8');
         console.log('Auth token saved!');
     }
-}
-
-if (program.args.length < 2) {
-    program.help();
-}
-
-var username = program.args[0];
-var password = program.args[1];
-
-if (program.uri) {
-    console.log("Setting portal URI to: " + program.uri);
-    tjs.setPortalBaseURI(program.uri);
-}
-
-tjs.login(username, password, login_cb);
+});

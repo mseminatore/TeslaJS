@@ -139,17 +139,7 @@ exports.login = function login(username, password, callback) {
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.".cyan);
     });
 }
-
-exports.loginAsync = function (username, password) {
-    return new Promise(function (resolve, reject) {
-        exports.login(username, password, function (err, data) {
-            if (err !== null) {
-                return reject(err);
-            }
-            resolve(data);
-        });
-    });
-}
+exports.loginAsync = Promise.denodeify(exports.login);
 
 //==================================
 // Invalidate the current auth token
@@ -178,17 +168,7 @@ exports.logout = function logout(authToken, callback) {
     });
 */
 }
-
-exports.logoutAsync = function (authToken) {
-    return new Promise(function (resolve, reject) {
-        exports.logout(authToken, function (err, data) {
-            if (err !== null) {
-                return reject(err);
-            }
-            resolve(data);
-        });
-    });
-}
+exports.logoutAsync = Promise.denodeify(exports.logout);
 
 //====================================================
 // Return vehicle information on the requested vehicle
@@ -233,17 +213,7 @@ exports.vehicles = function vehicles(options, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles".cyan + " completed.");
     });
 }
-
-exports.vehiclesAsync = function (options) {
-    return new Promise(function (resolve, reject) {
-        exports.vehicles(options, function (err, data) {
-            if (err !== null) {
-                return reject(err);
-            }
-            resolve(data);
-        });
-    });
-}
+exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
 
 //====================================
 // Generic REST call for GET commands
@@ -287,6 +257,7 @@ function get_command(options, command, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + command.cyan + " completed.");
     });
 }
+exports.get_commandAsync = Promise.denodeify(exports.get_command);
 
 //====================================
 // Generic REST call for POST commands
@@ -331,6 +302,7 @@ function post_command(options, command, body, callback) {
         log(API_RETURN_LEVEL, "\nPOST command: " + command.cyan + " completed.");
     });
 }
+exports.post_commandAsync = Promise.denodeify(exports.post_command);
 
 //=====================
 // GET the vehicle state

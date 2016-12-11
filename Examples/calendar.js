@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         if (vehicle.state.toUpperCase() == "OFFLINE") {
@@ -63,7 +63,7 @@ function sampleMain(options) {
 
     console.log(JSON.stringify(entry));
 
-    tjs.calendar(options, entry, function (result) {
+    tjs.calendar(options, entry, function (err, result) {
         if (result.result) {
             console.log("\nCalendar updated! ".bold.green);
         } else {

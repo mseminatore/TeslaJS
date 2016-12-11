@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -57,7 +57,7 @@ function sampleMain(options) {
         amt = 80;
     }
 
-    tjs.sunRoofMove(options, amt, function (result) {
+    tjs.sunRoofMove(options, amt, function (err, result) {
         if (result.result) {
             var str = (amt + "%").green;
             console.log("\nSunroof successfully moved to : " + str);

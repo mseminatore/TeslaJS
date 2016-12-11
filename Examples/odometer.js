@@ -33,7 +33,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
@@ -63,7 +63,7 @@ function addCommas(str)
 //
 //
 function sampleMain(options) {
-    tjs.vehicleState(options, function (vehicle_state) {
+    tjs.vehicleState(options, function (err, vehicle_state) {
         console.log("\nOdometer");
 		console.log("--------\n");
 		

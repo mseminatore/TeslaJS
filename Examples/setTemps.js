@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -54,7 +54,7 @@ function f2c(degf) {
 function sampleMain(options) {
     var temp = program.args[0];
 
-    tjs.setTemps(options, f2c(temp), null, function (result) {
+    tjs.setTemps(options, f2c(temp), null, function (err, result) {
         if (result.result) {
             var str = (temp + " Deg.F").green;
             console.log("\nTemperature successfully set to: " + str);

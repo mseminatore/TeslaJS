@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
@@ -49,13 +49,13 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.driveState(options, function (drive_state) {
+    tjs.driveState(options, function (err, drive_state) {
         if (drive_state) {
             var lat = drive_state.latitude || 0;
             var long = drive_state.longitude || 0;
-            var token = program.name || "";
+            var token = options.tokens[0];
 
-            tjs.homelink(options, lat, long, token, function (result) {
+            tjs.homelink(options, lat, long, token, function (err, result) {
                 if (result.result) {
                     console.log("\nHomelink: " + "Door signaled!".bold.green);
                 } else {

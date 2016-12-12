@@ -37,10 +37,10 @@ possible to use the library to make multiple overlapping async calls for differe
 
 Here are some of the most recent features and fixes:
 
-1. Streaming now works as of **1.0.38**, see **simpleStreaming** sample!
-2. In **1.0.49** started adding unit test cases
-3. In **1.0.53** finished off test cases and code coverage
-4. I am exploring the addition of Promise based APIs, let me know if there is interest it will be a major update
+1. In **1.0.49** started adding unit test cases
+2. In **1.0.53** finished off test cases and code coverage
+3. In **1.0.54** Last update for version 1.x.x!
+4. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
 
 ## Known Issues
 
@@ -136,9 +136,18 @@ With the OAuth token from a successful `login()` call you can query the vehicles
 
 ```javascript
     var options = { authToken: result.authToken };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
     });
+```
+
+Or using the new Async Promise-based calls:
+
+```javascript
+	options.vehicleID = vehicle.id_s;
+	tjs.vehiclesAsync(options).then(function(vehicle) {
+        console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
+	});
 ```
 
 ## Charge State Example
@@ -147,9 +156,18 @@ Adding the vehicle ID from a successful `vehicles()` call to options you can mak
 
 ```javascript
     options.vehicleID = vehicle.id_s;
-    tjs.chargeState(options, function (chargeState) {
+    tjs.chargeState(options, function (err, chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
+```
+
+And using the new Async Promise-based calls:
+
+```javascript
+	options.vehicleID = vehicle.id_s;
+	tjs.chargeStateAsync(options).then(function(chargeState) {
+        console.log("Current charge level: " + chargeState.battery_level + '%');
+	});
 ```
 
 # Library Interfaces
@@ -159,7 +177,7 @@ The TeslaJS library exports a number of methods and constants.  The library also
 **Environment Variables**
 
     TESLAJS_LOG        - if set defines the value of the default logging level
-	TESLAJS_SERVER     - if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000) 
+	TESLAJS_SERVER     - if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
 
 **General API calls**
 
@@ -168,10 +186,13 @@ The TeslaJS library exports a number of methods and constants.  The library also
 	setPortalBaseURI() - sets the server for testing, pass null to reset
 	getPortalBaseURI() - gets the server
     login()            - authenticate with Tesla servers and retrieve the OAuth token
+	loginAsync()	   - same as above but returns a Promise
     logout()           - delete the current OAuth token
+	logoutAsync()	   - same as above but returns a Promise
     vehicles()         - retrieve list of vehicles and option data
+	vehiclesAsync()	   - same as above but returns a Promise
 	
-**API calls for a given vehicle id**
+**Callback style API calls for a given vehicle id**
 	
     chargeState()      - retrieve the charge_state data
     chargeStandard()   - set the charge limit to 90%
@@ -202,6 +223,38 @@ The TeslaJS library exports a number of methods and constants.  The library also
     sunRoofMove()      - open the sunroof to a specific percent
     vehicleState()     - retrieve the vehicle_state data
     wakeUp() 	       - attempt to wake a sleeping vehicle
+	
+**Promise based API calls for a given vehicle id**
+	
+    chargeStateAsync()      - retrieve the charge_state data
+    chargeStandardAsync()   - set the charge limit to 90%
+    chargeMaxRangeAsync()   - sets the charge limit to 100%
+    climateStateAsync()     - retrieve the climate_state data
+    climateStartAsync()     - turn on the HVAC system
+    climateStopAsync()      - turn off the HVAC system
+    closeChargePortAsync()  - close the charge port on appropriately equipped vehicles
+    doorLockAsync() 	    - locks the doors
+    doorUnlockAsync()       - unlocks the doors
+    driveStateAsync()       - retrieve the drive_state data
+    flashLightsAsync()      - flashes the headlights
+    guiSettingsAsync()      - retrieves the GUI settings
+    homelinkAsync()         - Triggers homelink from the vehicle
+	honkHornAsync()         - honks the horn
+    mobileEnabledAsync()    - returns whether mobile access is enabled
+    startChargeAsync()      - initiates a charging session
+    stopChargeAsync()       - terminates a charging session
+    openChargePortAsync()   - opens the charge port
+    openTrunkAsync()        - open the trunk or frunk
+    remoteStartAsync()      - enables remote starting of the car
+    resetValetPinAsync()    - reset the valet pin
+    setChargeLimitAsync()   - sets the charge limit to a specific amount
+    setTempsAsync() 	    - set driver/passenger temp set points (in Deg.C)
+    setValetModeAsync()     - set/reset valet mode
+    startStreamingAsync()   - initiate a streaming data session
+    sunRoofControlAsync()   - put the sunroof into a specific state
+    sunRoofMoveAsync()      - open the sunroof to a specific percent
+    vehicleStateAsync()     - retrieve the vehicle_state data
+    wakeUpAsync() 	        - attempt to wake a sleeping vehicle
 
 **Library exported constants**
 

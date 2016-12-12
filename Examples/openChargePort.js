@@ -29,7 +29,6 @@ program
 function login_cb(result) {
     if (!result) {
         console.error("Login failed!".red);
-        console.warn(JSON.stringify(err));
         return;
     }
 

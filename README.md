@@ -1,13 +1,13 @@
 # TeslaJS 
 [![Version](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslsjs)
-[![License](https://img.shields.io/npm/l/teslajs.svg)]()
+[![License](https://img.shields.io/npm/l/teslajs.svg)](https://github.com/mseminatore/TeslaJS/blob/master/LICENSE)
 [![Downloads](https://img.shields.io/npm/dt/teslajs.svg)]()
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 
-[![GitHub watchers](https://img.shields.io/github/watchers/mseminatore/teslajs.svg?style=social&label=Fork&style=plastic)]()
-[![GitHub stars](https://img.shields.io/github/stars/mseminatore/teslajs.svg?style=social&label=Fork&style=plastic)]()
-[![GitHub forks](https://img.shields.io/github/forks/mseminatore/teslajs.svg?style=social&label=Fork&style=plastic)]()
+[![GitHub watchers](https://img.shields.io/github/watchers/mseminatore/teslajs.svg?style=social&label=Watch&style=plastic)](https://github.com/mseminatore/TeslaJS/subscription)
+[![GitHub stars](https://img.shields.io/github/stars/mseminatore/teslajs.svg?style=social&label=Star&style=plastic)](https://github.com/mseminatore/TeslaJS/star)
+[![GitHub forks](https://img.shields.io/github/forks/mseminatore/teslajs.svg?style=social&label=Fork&style=plastic)](https://github.com/mseminatore/TeslaJS/fork)
 
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This library currently supports all existing Tesla
 vehicles.

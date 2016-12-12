@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
@@ -56,7 +56,7 @@ function sampleMain(options) {
         mode = false;
     }
 
-    tjs.setValetMode(options, mode, pin, function (response) {
+    tjs.setValetMode(options, mode, pin, function (err, response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
             console.log("\nValet mode: " + str.green);

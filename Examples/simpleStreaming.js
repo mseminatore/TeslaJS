@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicle_id = vehicle.vehicle_id;

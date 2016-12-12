@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
@@ -50,7 +50,7 @@ function ctof(degc) {
 //
 //
 function sampleMain(options) {
-    tjs.climateState(options, function (climate_state) {
+    tjs.climateState(options, function (err, climate_state) {
         if (climate_state.inside_temp && climate_state.inside_temp !== 0) {
             console.log("\nInterior: " + ctof(climate_state.inside_temp).toString().green + " Deg.F");
         }

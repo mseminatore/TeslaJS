@@ -36,7 +36,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -85,7 +85,7 @@ function compassDirs(heading) {
 //
 //
 function sampleMain(options) {
-    tjs.driveState(options, function (drive_state) {
+    tjs.driveState(options, function (err, drive_state) {
         if (drive_state) {
 
             var state = drive_state.shift_state || "Parked";

@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -47,7 +47,7 @@ function sampleMain(options) {
 
     var password = program.args[0]
 
-    tjs.remoteStart(options, password, function (result) {
+    tjs.remoteStart(options, password, function (err, result) {
         if (result.result) {
             console.log("\nCommand completed successfully!\n");
             console.log("You may now begin driving.\n");

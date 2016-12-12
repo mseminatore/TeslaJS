@@ -35,7 +35,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -56,7 +56,7 @@ function sampleMain(options) {
         amt = 50;
     }
 
-    tjs.setChargeLimit(options, amt, function (result) {
+    tjs.setChargeLimit(options, amt, function (err, result) {
         if (result.result) {
             var str = (amt + "%").green;
             console.log("\nCharge limit successfully set to: " + str);

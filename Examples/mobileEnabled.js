@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
         options.vehicleID = vehicle.id_s;
@@ -46,7 +46,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.mobileEnabled(options, function (result) {
+    tjs.mobileEnabled(options, function (err, result) {
         if (!result) {
             console.error("\nError: " + "No response to mobileEnabled() query!".red);
             return;

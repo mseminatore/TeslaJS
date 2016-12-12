@@ -55,7 +55,7 @@ describe('TeslaJS', function () {
 
 	describe('#login()', function() {
 	    it('should succeed with valid user and pwd', function (done) {
-			tjs.login(user, pass, function(result) {
+			tjs.login(user, pass, function(err, result) {
 				if (result.response.statusCode == 200) {
 				    options.authToken = result.authToken;
                     done();
@@ -71,9 +71,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#loginAsync()', function () {
+	    it('should succeed with valid user and pwd', function () {
+	        return tjs.loginAsync(user, pass).then(function (result) {
+	            assert.equal(result.response.statusCode, 200);
+	        });
+	    });
+	});
+
 	describe('#logout()', function () {
 	    it('should return not implemented', function (done) {
-	        tjs.logout("token", function (result) {
+	        tjs.logout("token", function (err, result) {
 	            assert.equal("Not implemented!", result.response);
 	            done();
 	        });
@@ -85,9 +93,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#logoutAsync()', function () {
+	    it('should return not implemented', function () {
+	        return tjs.logoutAsync("token").then(function (result) {
+	            assert.equal("Not implemented!", result.response);
+	        });
+	    });
+	});
+
 	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.vehicles(options, function (result) {
+	        tjs.vehicles(options, function (err, result) {
 	            if (result.vehicle_id) {
 	                done();
 	            } else {
@@ -102,9 +118,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#vehiclesAsync()', function () {
+	    it('should succeed enumerating vehicles', function () {
+	        return tjs.vehiclesAsync(options).then(function (result) {
+	            assert(result.vehicle_id);
+	        });
+	    });
+	});
+
 	describe('#vehicleState()', function () {
 	    it('should return vehicle state', function (done) {
-	        tjs.vehicleState(options, function (result) {
+	        tjs.vehicleState(options, function (err, result) {
 	            if (result.car_version) {
 	                done();
 	            } else {
@@ -119,9 +143,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#vehicleStateAsync()', function () {
+	    it('should return vehicle state', function () {
+	        return tjs.vehicleStateAsync(options).then(function (result) {
+	            assert(result.car_version);
+	        });
+	    });
+	});
+
 	describe('#climateState()', function () {
 	    it('should return climate state', function (done) {
-	        tjs.climateState(options, function (result) {
+	        tjs.climateState(options, function (err, result) {
 	            if (result.inside_temp) {
 	                done();
 	            } else {
@@ -131,9 +163,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#climateStateAsync()', function () {
+	    it('should return climate state', function () {
+	        return tjs.climateStateAsync(options).then(function (result) {
+	            assert(result.inside_temp);
+	        });
+	    });
+	});
+
 	describe('#driveState()', function () {
 	    it('should return drive state', function (done) {
-	        tjs.driveState(options, function (result) {
+	        tjs.driveState(options, function (err, result) {
 	            if (result.heading) {
 	                done();
 	            } else {
@@ -143,9 +183,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#driveStateAsync()', function () {
+	    it('should return drive state', function () {
+	        return tjs.driveStateAsync(options).then(function (result) {
+	            assert(result.heading);
+	        });
+	    });
+	});
+
 	describe('#chargeState()', function () {
 	    it('should return charge state', function (done) {
-	        tjs.chargeState(options, function (result) {
+	        tjs.chargeState(options, function (err, result) {
 	            if (result.est_battery_range) {
 	                done();
 	            } else {
@@ -155,9 +203,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#chargeStateAsync()', function () {
+	    it('should return charge state', function () {
+	        return tjs.chargeStateAsync(options).then(function (result) {
+	            assert(result.est_battery_range);
+	        });
+	    });
+	});
+
 	describe('#guiSettings()', function () {
 	    it('should return gui settings', function (done) {
-	        tjs.guiSettings(options, function (result) {
+	        tjs.guiSettings(options, function (err, result) {
 	            if (result.gui_distance_units) {
 	                done();
 	            } else {
@@ -167,21 +223,37 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#guiSettingsAsync()', function () {
+	    it('should return gui settings', function () {
+	        return tjs.guiSettingsAsync(options).then(function (result) {
+	            assert(result.gui_distance_units);
+	        });
+	    });
+	});
+
 	describe('#mobileEnabled()', function () {
 	    it('should return true', function (done) {
-	        tjs.mobileEnabled(options, function (result) {
-	            if (result.result) {
+	        tjs.mobileEnabled(options, function (err, result) {
+	            if (result) {
 	                done();
 	            } else {
-	                done(result.reason);
+	                done(result);
 	            }
+	        });
+	    });
+	});
+
+	describe('#mobileEnabledAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.mobileEnabledAsync(options).then(function (result) {
+	            assert(result);
 	        });
 	    });
 	});
 
 	describe('#honkHorn()', function () {
 	    it('should return true', function (done) {
-	        tjs.honkHorn(options, function (result) {
+	        tjs.honkHorn(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -196,57 +268,97 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#honkHornAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.honkHornAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#flashLights()', function () {
 	    it('should return true', function (done) {
-	        tjs.flashLights(options, function (result) {
+	        tjs.flashLights(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#flashLightsAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.flashLightsAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#startCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.startCharge(options, function (result) {
+	        tjs.startCharge(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#startChargeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.startChargeAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#stopCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.stopCharge(options, function (result) {
+	        tjs.stopCharge(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#stopChargeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.stopChargeAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#openChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.openChargePort(options, function (result) {
+	        tjs.openChargePort(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#openChargePortAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.openChargePortAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#closeChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.closeChargePort(options, function (result) {
+	        tjs.closeChargePort(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -256,9 +368,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#closeChargePortAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.closeChargePortAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#setChargeLimit()', function () {
 	    it('CHARGE_STORAGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -268,7 +388,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_DAILY should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -278,7 +398,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_STANDARD should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -288,79 +408,107 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('CHARGE_RANGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (result) {
+	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#setChargeLimitAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setChargeLimitAsync(options, tjs.CHARGE_STANDARD).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#chargeMaxRange()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeMaxRange(options, function (result) {
+	        tjs.chargeMaxRange(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#chargeMaxRangeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.chargeMaxRangeAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#chargeStandard()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeStandard(options, function (result) {
+	        tjs.chargeStandard(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#chargeStandardAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.chargeStandardAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#doorUnlock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorUnlock(options, function (result) {
+	        tjs.doorUnlock(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#doorUnlockAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.doorUnlockAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#doorLock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorLock(options, function (result) {
+	        tjs.doorLock(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#doorLockAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.doorLockAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#climateStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.climateStart(options, function (result) {
-	            if (result.result) {
-	                done();
-	            } else {
-	                done(result.reason);
-	            }
-	        });
-	    });
-	});
-    
-	describe('#climateStop()', function () {
-	    it('should return true', function (done) {
-	        tjs.climateStop(options, function (result) {
+	        tjs.climateStart(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -370,9 +518,37 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#climateStartAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.climateStartAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
+	describe('#climateStop()', function () {
+	    it('should return true', function (done) {
+	        tjs.climateStop(options, function (err, result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#climateStopAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.climateStopAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#sunRoofControl()', function () {
 	    it('SUNROOF_VENT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -382,7 +558,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_COMFORT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -392,7 +568,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_OPEN should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -402,7 +578,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('SUNROOF_CLOSED should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (result) {
+	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -412,9 +588,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#sunRoofControlAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.sunRoofControlAsync(options, tjs.SUNROOF_CLOSED).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#sunRoofMove()', function () {
 	    it('move to 50% should return true', function (done) {
-	        tjs.sunRoofMove(options, 50, function (result) {
+	        tjs.sunRoofMove(options, 50, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -424,7 +608,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('move to 100% should return true', function (done) {
-	        tjs.sunRoofMove(options, 100, function (result) {
+	        tjs.sunRoofMove(options, 100, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -434,7 +618,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('move to 0% should return true', function (done) {
-	        tjs.sunRoofMove(options, 0, function (result) {
+	        tjs.sunRoofMove(options, 0, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -444,9 +628,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#sunRoofMoveAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.sunRoofMoveAsync(options, 0).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#setTemps()', function () {
 	    it('should return true setting both driver and passenger', function (done) {
-	        tjs.setTemps(options, 19, 21, function (result) {
+	        tjs.setTemps(options, 19, 21, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -456,19 +648,27 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should return true setting just driver', function (done) {
-	        tjs.setTemps(options, 19, undefined, function (result) {
+	        tjs.setTemps(options, 19, undefined, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#setTempsAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setTempsAsync(options, 19, 21).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});
 
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.remoteStart(options, "password", function (result) {
+	        tjs.remoteStart(options, "password", function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -478,9 +678,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#remoteStartAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.remoteStartAsync(options, "password").then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#openTrunk()', function () {
 	    it('Frunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.FRUNK, function (result) {
+	        tjs.openTrunk(options, tjs.FRUNK, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -490,7 +698,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('Trunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.TRUNK, function (result) {
+	        tjs.openTrunk(options, tjs.TRUNK, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -500,9 +708,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#openTrunkAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.openTrunkAsync(options, tjs.FRUNK).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#setValetMode()', function () {
 	    it('ON should return true', function (done) {
-	        tjs.setValetMode(options, true, '1234', function (result) {
+	        tjs.setValetMode(options, true, '1234', function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -512,7 +728,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('OFF should return true', function (done) {
-	        tjs.setValetMode(options, false, '1234', function (result) {
+	        tjs.setValetMode(options, false, '1234', function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -522,9 +738,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#setValetModeAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.setValetModeAsync(options, false, '1234').then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#resetValetPin()', function () {
 	    it('should return true', function (done) {
-	        tjs.resetValetPin(options, function (result) {
+	        tjs.resetValetPin(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -533,7 +757,15 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
-	
+
+	describe('#resetValetPinAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.resetValetPinAsync(options).then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#makeCalendarEntry()', function () {
 	    it('should return calendar entry', function () {
 	        var entry = tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName");
@@ -543,7 +775,7 @@ describe('TeslaJS', function () {
 
 	describe('#homelink()', function () {
 	    it('should return true', function (done) {
-	        tjs.homelink(options, 75, 34, "token", function (result) {
+	        tjs.homelink(options, 75, 34, "token", function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -553,14 +785,30 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#homelinkAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.homelinkAsync(options, 75, 34, "token").then(function (result) {
+	            assert(result.result);
+	        });
+	    });
+	});
+
 	describe('#wakeUp()', function () {
 	    it('should return true', function (done) {
-	        tjs.wakeUp(options, function (result) {
+	        tjs.wakeUp(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
 	                done(result.reason);
 	            }
+	        });
+	    });
+	});
+
+	describe('#wakeUpAsync()', function () {
+	    it('should return true', function () {
+	        return tjs.wakeUpAsync(options).then(function (result) {
+	            assert(result.result);
 	        });
 	    });
 	});

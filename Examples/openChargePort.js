@@ -27,14 +27,14 @@ program
 //
 //
 function login_cb(result) {
-    if (result.error) {
+    if (!result) {
         console.error("Login failed!".red);
-        console.warn(JSON.stringify(result.error));
+        console.warn(JSON.stringify(err));
         return;
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -44,7 +44,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.openChargePort(options, function (result) {
+    tjs.openChargePort(options, function (err, result) {
         if (result) {
             console.log("\nCharge port: " + "OPEN".green);
         } else {

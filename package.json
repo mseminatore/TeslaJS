@@ -9,6 +9,7 @@
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "morgan": "^1.7.0",
+    "promise": "^7.1.1",
     "request": "^2.14.0",
     "serve-favicon": "^2.3.0"
   },

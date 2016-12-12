@@ -34,7 +34,7 @@ function login_cb(result) {
     }
 
     var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (vehicle) {
+    tjs.vehicles(options, function (err, vehicle) {
         options.vehicleID = vehicle.id_s;
         sampleMain(options);
     });
@@ -44,7 +44,7 @@ function login_cb(result) {
 //
 //
 function sampleMain(options) {
-    tjs.wakeUp(options, function (result) {
+    tjs.wakeUp(options, function (err, result) {
         if (result) {
             console.log("\nWakeUp command: " + "SENT".green);
         } else {

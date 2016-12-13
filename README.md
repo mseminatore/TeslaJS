@@ -184,7 +184,7 @@ The TeslaJS library exports a number of methods and constants.  The library also
     setLogLevel()      - sets the level of debug logging
     getLogLevel()      - gets the level of debug logging
 	setPortalBaseURI() - sets the server for testing, pass null to reset
-	getPortalBaseURI() - gets the server
+	getPortalBaseURI() - gets the server URI
     login()            - authenticate with Tesla servers and retrieve the OAuth token
 	loginAsync()	   - same as above but returns a Promise
     logout()           - delete the current OAuth token
@@ -192,7 +192,7 @@ The TeslaJS library exports a number of methods and constants.  The library also
     vehicles()         - retrieve list of vehicles and option data
 	vehiclesAsync()	   - same as above but returns a Promise
 	
-**Callback style API calls for a given vehicle id**
+**NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	
     chargeState()      - retrieve the charge_state data
     chargeStandard()   - set the charge limit to 90%

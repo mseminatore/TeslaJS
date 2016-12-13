@@ -1,8 +1,6 @@
 @echo off
 
-echo================================= Lint ==========================================
-cmd /c ".\node_modules\.bin\jshint" TeslaJS.js
-echo=================================================================================
+call winlint.cmd
 echo.
 echo================================ Testing ========================================
 call "./node_modules/.bin/istanbul" cover "./node_modules/mocha/bin/_mocha" --report lcovonly -- -R spec

@@ -29,7 +29,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
     this.login = function () {
         try {
-            tokenFound = fs.statSync('.token').isFile();
+            this.tokenFound = fs.statSync('.token').isFile();
         } catch (e) {
         }
 
@@ -38,7 +38,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
             tjs.setPortalBaseURI(program.uri);
         }
 
-        if (tokenFound) {
+        if (this.tokenFound) {
             var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
 
             if (!token) {

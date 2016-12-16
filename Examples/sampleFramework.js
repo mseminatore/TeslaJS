@@ -31,7 +31,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
             console.log("\nVehicle type: " + carType.green);
             options.vehicleID = vehicle.id_s;
-            if (this.main) {
+            if (main) {
                 main(tjs, options);
             }
         });

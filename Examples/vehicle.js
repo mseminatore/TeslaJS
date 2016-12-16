@@ -30,7 +30,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleState(options, function (err, vehicle_state) {
+    tjs.vehicleStateAsync(options).then( function (vehicle_state) {
         var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
 
         console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);

@@ -1,6 +1,18 @@
 var fs = require('fs');
 var tjs = require('../TeslaJS');
 
+function logo() {
+    console.log("\n");
+    console.log("TTTTT EEEEE SSSSS L     AAAAA     J SSSSS");
+    console.log("  T   EEEEE S     L     AAAAA     J S");
+    console.log(" TTT        s     L               J S");
+    console.log("  T   EEEEE SSSSS L     AAAAA     J SSSSS");
+    console.log("  T             S L     A   A     J     S");
+    console.log("  T   EEEEE     S L     A   A J   J     S");
+    console.log("  T   EEEEE SSSSS LLLLL A   A JJJJJ SSSSS");
+    console.log("=========================================");
+}
+
 exports.SampleFramework = function SampleFramework(program, main) {
     this.program = program;
     this.tokenFound = false;
@@ -13,10 +25,10 @@ exports.SampleFramework = function SampleFramework(program, main) {
             return;
         }
 
+        logo();
+
         var options = { authToken: result.authToken, carIndex: program.index || 0 };
         tjs.vehicles(options, function (err, vehicle) {
-            console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
-
             if (vehicle.state.toUpperCase() == "OFFLINE") {
                 console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);
                 return;
@@ -29,8 +41,11 @@ exports.SampleFramework = function SampleFramework(program, main) {
                 carType = "Model S";
             }
 
-            console.log("\nVehicle type: " + carType.green);
+
+            console.log("\nVehicle " + vehicle.vin.green + " - " + carType.green + " ( '" + vehicle.display_name.cyan + "' ) is: " + vehicle.state.toUpperCase().bold.green);
+
             options.vehicleID = vehicle.id_s;
+
             if (main) {
                 main(tjs, options);
             }

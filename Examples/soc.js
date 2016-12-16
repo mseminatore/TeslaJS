@@ -31,6 +31,10 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     tjs.chargeState(options, function (err, chargeState) {
+        if (err) {
+            console.log(err);
+            return;
+        }
 
         var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);

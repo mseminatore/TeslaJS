@@ -22,12 +22,22 @@ exports.SampleFramework = function SampleFramework(program, main) {
                 return;
             }
 
+            var carType = "Unknown";
+            if (vehicle.option_codes.indexOf("MDLX") != -1) {
+                carType = "Model X";
+            } else {
+                carType = "Model S";
+            }
+
+            console.log("\nVehicle type: " + carType.green);
             options.vehicleID = vehicle.id_s;
-            main(tjs, options);
+            if (this.main) {
+                main(tjs, options);
+            }
         });
     }
 
-    this.login = function () {
+    this.run = function () {
         try {
             this.tokenFound = fs.statSync('.token').isFile();
         } catch (e) {
@@ -56,9 +66,5 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
             tjs.login(username, password, this.login_cb);
         }
-    }
-
-    this.run = function () {
-        this.login();
     }
 }

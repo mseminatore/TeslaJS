@@ -54,7 +54,8 @@ function sampleMain(tjs, options) {
 
             var mph = chargeState.charge_rate;
 
-            console.log(mph.toString().green + " mi/hr " + chargeState.charger_voltage.toString().green + " V / " + chargeState.charger_actual_current.toString().green + " A");
+            console.log("Charge Rate: " + mph.toString().green + " mi/hr ");
+            console.log("Power: " + chargeState.charger_voltage.toString().green + " V / " + chargeState.charger_actual_current.toString().green + " A");
 
         } else if (chargeState.charging_state == "Disconnected") {
             console.log("Charging State: " + "Unplugged".bold.red);

@@ -8,10 +8,9 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../TeslaJS');
-var fs = require('fs');
 require('colors');
 var program = require('commander');
+var framework = require('./sampleFramework.js');
 
 //
 //
@@ -25,30 +24,13 @@ program
   .parse(process.argv);
 
 //
-//
-//
-function login_cb(result) {
-    if (result.error) {
-        console.error("Login failed!".red);
-        console.warn(JSON.stringify(result.error));
-        return;
-    }
-
-    var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (err, vehicle) {
-        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
-
-        options.vehicleID = vehicle.id_s;
-        options.tokens = vehicle.tokens;
-
-        sampleMain(options);
-    });
-}
+var sample = new framework.SampleFramework(program, sampleMain);
+sample.run();
 
 //
 //
 //
-function sampleMain(options) {
+function sampleMain(tjs, options) {
     tjs.driveState(options, function (err, drive_state) {
         if (drive_state) {
             var lat = drive_state.latitude || 0;
@@ -67,39 +49,4 @@ function sampleMain(options) {
             console.log("Drive State: " + drive_state.reason.red);
         }
     });
-}
-
-//
-// Sample starts here
-//
-var tokenFound = false;
-
-try {
-    tokenFound = fs.statSync('.token').isFile();
-} catch (e) {
-}
-
-if (program.uri) {
-    console.log("Setting portal URI to: " + program.uri);
-    tjs.setPortalBaseURI(program.uri);
-}
-
-if (tokenFound) {
-    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
-
-    if (!token) {
-        program.help();
-    }
-
-    login_cb({ error: false, authToken: token });
-} else {
-    // no saved token found, expect username and password on command line
-    var username = program.username;
-    var password = program.password;
-
-    if (!username || !password) {
-        program.help();
-    }
-
-    tjs.login(username, password, login_cb);
 }

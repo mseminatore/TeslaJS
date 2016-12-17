@@ -8,10 +8,9 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../TeslaJS');
-var fs = require('fs');
 require('colors');
 var program = require('commander');
+var framework = require('./sampleFramework.js');
 
 //
 //
@@ -24,25 +23,13 @@ program
   .parse(process.argv);
 
 //
-//
-//
-function login_cb(result) {
-    if (!result) {
-        console.error("Login failed!".red);
-        return;
-    }
-
-    var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (err, vehicle) {
-        options.vehicleID = vehicle.id_s;
-        sampleMain(options);
-    });
-}
+var sample = new framework.SampleFramework(program, sampleMain);
+sample.run();
 
 //
 //
 //
-function sampleMain(options) {
+function sampleMain(tjs, options) {
     tjs.openChargePort(options, function (err, result) {
         if (result) {
             console.log("\nCharge port: " + "OPEN".green);
@@ -50,39 +37,4 @@ function sampleMain(options) {
             console.error("Error opening port!".red);
         }
     });
-}
-
-//
-// Sample starts here
-//
-var tokenFound = false;
-
-try {
-    tokenFound = fs.statSync('.token').isFile();
-} catch (e) {
-}
-
-if (program.uri) {
-    console.log("Setting portal URI to: " + program.uri);
-    tjs.setPortalBaseURI(program.uri);
-}
-
-if (tokenFound) {
-    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
-
-    if (!token) {
-        program.help();
-    }
-
-    login_cb({ error: false, authToken: token });
-} else {
-    // no saved token found, expect username and password on command line
-    var username = program.username;
-    var password = program.password;
-
-    if (!username || !password) {
-        program.help();
-    }
-
-    tjs.login(username, password, login_cb);
 }

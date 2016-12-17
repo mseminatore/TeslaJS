@@ -8,10 +8,9 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../TeslaJS');
-var fs = require('fs');
 require('colors');
 var program = require('commander');
+var framework = require('./sampleFramework.js');
 
 //
 //
@@ -24,23 +23,8 @@ program
   .parse(process.argv);
 
 //
-//
-//
-function login_cb(result) {
-    if (result.error) {
-        console.error("Login failed!".red);
-        console.warn(JSON.stringify(result.error));
-        return;
-    }
-
-    var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (err, vehicle) {
-        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
-
-        options.vehicleID = vehicle.id_s;
-        sampleMain(options);
-    });
-}
+var sample = new framework.SampleFramework(program, sampleMain);
+sample.run();
 
 function ctof(degc) {
     return Math.round(degc * 9 / 5 + 32);
@@ -49,7 +33,7 @@ function ctof(degc) {
 //
 //
 //
-function sampleMain(options) {
+function sampleMain(tjs, options) {
     tjs.climateState(options, function (err, climate_state) {
         if (climate_state.inside_temp && climate_state.inside_temp !== 0) {
             console.log("\nInterior: " + ctof(climate_state.inside_temp).toString().green + " Deg.F");
@@ -69,39 +53,4 @@ function sampleMain(options) {
             console.log("Fan Speed: " + climate_state.fan_status.toString().green);
         }
     });
-}
-
-//
-// Sample starts here
-//
-var tokenFound = false;
-
-try {
-    tokenFound = fs.statSync('.token').isFile();
-} catch (e) {
-}
-
-if (program.uri) {
-    console.log("Setting portal URI to: " + program.uri);
-    tjs.setPortalBaseURI(program.uri);
-}
-
-if (tokenFound) {
-    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
-
-    if (!token) {
-        program.help();
-    }
-
-    login_cb({ error: false, authToken: token });
-} else {
-    // no saved token found, expect username and password on command line
-    var username = program.username;
-    var password = program.password;
-
-    if (!username || !password) {
-        program.help();
-    }
-
-    tjs.login(username, password, login_cb);
 }

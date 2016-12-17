@@ -8,10 +8,9 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
-var tjs = require('../TeslaJS');
-var fs = require('fs');
 require('colors');
 var program = require('commander');
+var framework = require('./sampleFramework.js');
 
 //
 //
@@ -24,34 +23,18 @@ program
   .parse(process.argv);
 
 //
+var sample = new framework.SampleFramework(program, sampleMain);
+sample.run();
+
 //
 //
-function login_cb(result) {
-    if (result.error) {
-        console.error("Login failed!".red);
-        console.warn(JSON.stringify(result.error));
-        return;
-    }
-
-    var options = { authToken: result.authToken, carIndex: program.index || 0 };
-    tjs.vehicles(options, function (err, vehicle) {
-        console.log("\nVehicle " + vehicle.vin + " ( '" + vehicle.display_name + "' ) is: " + vehicle.state.toUpperCase().bold.green);
-
-        if (vehicle.state.toUpperCase() == "OFFLINE") {
-            console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);
+//
+function sampleMain(tjs, options) {
+    tjs.chargeState(options, function (err, chargeState) {
+        if (err) {
+            console.log(err);
             return;
         }
-
-        options.vehicleID = vehicle.id_s;
-        sampleMain(options);
-    });
-}
-
-//
-//
-//
-function sampleMain(options) {
-    tjs.chargeState(options, function (err, chargeState) {
 
         var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);
@@ -71,7 +54,8 @@ function sampleMain(options) {
 
             var mph = chargeState.charge_rate;
 
-            console.log(mph.toString().green + " mi/hr " + chargeState.charger_voltage.toString().green + " V / " + chargeState.charger_actual_current.toString().green + " A");
+            console.log("Charge Rate: " + mph.toString().green + " mi/hr ");
+            console.log("Power: " + chargeState.charger_voltage.toString().green + " V / " + chargeState.charger_actual_current.toString().green + " A");
 
         } else if (chargeState.charging_state == "Disconnected") {
             console.log("Charging State: " + "Unplugged".bold.red);
@@ -90,38 +74,4 @@ function sampleMain(options) {
         console.log("Projected range: " + Math.round(chargeState.est_battery_range).toString().green + ' miles');
         console.log("Ideal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
     });
-}
-
-//
-// Sample starts here
-//
-var tokenFound = false;
-
-try {
-    tokenFound = fs.statSync('.token').isFile();
-} catch (e) {
-}
-
-if (program.uri) {
-    console.log("Setting portal URI to: " + program.uri);
-    tjs.setPortalBaseURI(program.uri);
-}
-
-if (tokenFound) {
-    var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
-
-    if (!token) {
-        program.help();
-    }
-
-    login_cb({ error: false, authToken: token });
-} else {
-    var username = program.username || process.env.TESLAJS_USER;
-    var password = program.password || process.env.TESLAJS_PASS;
-
-    if (!username || !password) {
-        program.help();
-    }
-
-    tjs.login(username, password, login_cb);
 }

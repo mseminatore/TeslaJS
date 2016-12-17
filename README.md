@@ -41,6 +41,7 @@ Here are some of the most recent features and fixes:
 2. In **1.0.53** finished off test cases and code coverage
 3. In **1.0.54** Last update for version 1.x.x!
 4. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
+5. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
 
 ## Known Issues
 

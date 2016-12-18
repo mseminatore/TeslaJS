@@ -33,19 +33,36 @@ tokens can be invalidated by changing the password on the account.
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
 
+## Project Principles
+
+This project has a few principles that have and will continue to guide its development.
+
+1. **Dependency lean**.  Try to keep the required dependencies to a minimum.
+2. **Comprehensive**.  Attempt to expose the full Tesla REST API surface area.
+3. **Simple**.  Using the library should be simple and straightforward following common conventions.
+4. **Server friendly**.  Provide for use based on auth tokens and avoid requiring access to passwords.
+
+## Contributing
+
+Contributions are welcome!  Pull requests will be considered with the following guidelines.
+
+1. Must pass `npm test` and `winlint` tests
+2. Meet or exceed code coverage
+3. Must respect and align to Project Principles (see above)
+4. Must add general value to the project
+5. Project owners reserve the right to accept or reject any PR for any reason
+
 ## What's New!
 
 Here are some of the most recent features and fixes:
 
-1. In **1.0.49** started adding unit test cases
-2. In **1.0.53** finished off test cases and code coverage
-3. In **1.0.54** Last update for version 1.x.x!
-4. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
-5. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
+1. In **1.0.54** Last update for version 1.x.x!
+2. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
+3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
 
 ## Known Issues
 
-1. The **testla** sample is still in active development.  Suggestions are welcome but please hold bug reports.
+1. The **testla** sample is now on hold.  Suggestions are welcome but please hold bug reports.
 2. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
 3. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help.
 

@@ -62,7 +62,7 @@ Here are some of the most recent features and fixes:
 
 ## Known Issues
 
-1. The **testla** sample has now been factored out into its own project.
+1. The **testla** sample has now been factored out into its own [project](https://github.com/mseminatore/testla).
 2. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
 3. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help.
 

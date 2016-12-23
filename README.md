@@ -47,7 +47,7 @@ This project has a few principles that have and will continue to guide its devel
 Contributions are welcome!  Pull requests will be considered with the following guidelines.
 
 1. Must pass `npm test` and `wintest` tests
-2. Must meet or exceed current code coverage levels
+2. Should meet or exceed current code coverage level
 3. Must respect and align to Project Principles (see above)
 4. Must add general value to the project
 5. Project owners reserve the right to accept or reject any PR for any reason

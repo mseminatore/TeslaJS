@@ -11,7 +11,7 @@ vehicles.
 [![NPM](https://nodei.co/npm/teslajs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/teslajs/)
 [![NPM](https://nodei.co/npm-dl/teslajs.png)](https://nodei.co/npm/teslajs/)
 
-It is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
+First, it is important to acknowledge that there are already several very good Javascript libraries available for the Tesla.  So 
 why create another one?  Rather than contribute to or modify one or more of the existing libraries, this library was 
 created for two main reasons:
 

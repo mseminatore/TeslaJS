@@ -96,12 +96,9 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
 // Login to the server and receive an OAuth token
 //===============================================
 exports.login = function login(username, password, callback) {
-    log(API_LOG_ALWAYS, "TeslaJS logging in...");
     log(API_CALL_LEVEL, "TeslaJS.login()".cyan);
 
-    if (!callback) {
-        callback = function (err, result) { /* do nothing! */ }
-    }
+    callback = callback || function (err, result) { /* do nothing! */ }
 
     var req = {
         method: 'POST',
@@ -143,9 +140,7 @@ exports.loginAsync = Promise.denodeify(exports.login);
 exports.logout = function logout(authToken, callback) {
     log(API_CALL_LEVEL, "TeslaJS.logout()".cyan);
 
-    if (!callback) {
-        callback = function (err, result) { /* do nothing! */ }
-    }
+    callback = callback || function (err, result) { /* do nothing! */ }
 
     callback(null, { error: "Not implemented!", response: "Not implemented!", body: "Not implemented!" });
 
@@ -172,9 +167,7 @@ exports.logoutAsync = Promise.denodeify(exports.logout);
 exports.vehicles = function vehicles(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.vehicles()".cyan);
 
-    if (!callback) {
-        callback = function (err, vehicle) { /* do nothing! */ }
-    }
+    callback = callback || function (err, vehicle) { /* do nothing! */ }
 
     var req = {
         method: 'GET',
@@ -187,8 +180,6 @@ exports.vehicles = function vehicles(options, callback) {
     request(req, function (error, response, body) {
         if (error) {
             log(API_ERR_LEVEL, error);
-            callback(error, null);
-            return;
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body).magenta);
@@ -201,11 +192,10 @@ exports.vehicles = function vehicles(options, callback) {
             data = data.response[options.carIndex || 0];
             data.id = data.id_s;
 
-            callback(null, data);
+            callback(error, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
-            log(API_ERR_LEVEL, body);
-            callback(body, null);
+            callback(e, null);
         }
 
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles".cyan + " completed.");
@@ -220,9 +210,7 @@ exports.get_command = get_command;
 function get_command(options, command, callback) {
     log(API_CALL_LEVEL, "GET call: " + command.cyan + " start.");
 
-    if (!callback) {
-        callback = function (err, data) { /* do nothing! */ }
-    }
+    callback = callback || function (err, data) { /* do nothing! */ }
 
     var req = {
         method: "GET",
@@ -237,20 +225,20 @@ function get_command(options, command, callback) {
             log(API_ERR_LEVEL, error);
         }
 
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body).magenta);
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response).magenta);
 
         var data = {};
 
         try {
             data = JSON.parse(body);
+            data = data.response;
+
+            callback(error, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing GET call response');
-            log(API_ERR_LEVEL, body);
+            callback(e, null);
         }
-
-        data = data.response;
-
-        callback(error, data);
 
         log(API_RETURN_LEVEL, "\nGET request: " + command.cyan + " completed.");
     });
@@ -264,9 +252,7 @@ exports.post_command = post_command;
 function post_command(options, command, body, callback) {
     log(API_CALL_LEVEL, "POST call: " + command.cyan + " start.");
 
-    if (!callback) {
-        callback = function (err, data) { /* do nothing! */ }
-    }
+    callback = callback || function (err, data) { /* do nothing! */ }
 
     var cmd = {
         method: "POST",
@@ -282,20 +268,20 @@ function post_command(options, command, body, callback) {
             log(API_ERR_LEVEL, error);
         }
 
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body).magenta);
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response).magenta);
 
         var data = {};
 
         try {
             data = JSON.parse(body);
+            data = data.response;
+
+            callback(error, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing POST call response');
-            log(API_ERR_LEVEL, body);
+            callback(e, null);
         }
-
-        data = data.response;
-
-        callback(error, data);
 
         log(API_RETURN_LEVEL, "\nPOST command: " + command.cyan + " completed.");
     });
@@ -641,13 +627,9 @@ exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'e
 exports.startStreaming = function startStreaming(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.startStreaming()");
 
-    if (!callback) {
-        callback = function (error, response, body) { /* do nothing! */ }
-    }
+    callback = callback || function (error, response, body) { /* do nothing! */ }
 
-    if (!options.values) {
-        options.values = exports.streamingColumns;
-    }
+    options.values = options.values || exports.streamingColumns;
 
     var req = {
         method: 'GET',

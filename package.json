@@ -3,15 +3,10 @@
   "version": "2.0.6",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
-    "body-parser": "^1.15.0",
     "colors": "^1.1.2",
     "commander": "^2.9.0",
-    "cookie-parser": "^1.4.1",
-    "express": "^4.13.4",
-    "morgan": "^1.7.0",
     "promise": "^7.1.1",
-    "request": "^2.14.0",
-    "serve-favicon": "^2.3.0"
+    "request": "^2.14.0"
   },
   "bugs": {
     "url": "https://github.com/mseminatore/TeslaJS/issues"

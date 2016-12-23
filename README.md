@@ -56,13 +56,13 @@ Contributions are welcome!  Pull requests will be considered with the following 
 
 Here are some of the most recent features and fixes:
 
-1. In **1.0.54** Last update for version 1.x.x!
+1. In **1.0.54** Last update for version 1.x.x!  Test and code coverage implemented.
 2. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
 3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
 
 ## Known Issues
 
-1. The **testla** sample is now on hold.  Suggestions are welcome but please hold bug reports.
+1. The **testla** sample has now been factored out into its own project.
 2. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
 3. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help.
 
@@ -338,7 +338,6 @@ table for the lifetime of the sample.
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
 	sunroof        - Control the sunroof.  Be careful!
-	testla         - Express app that mimics the Tesla REST API for testing
     valet          - Enable or disable valet mode
     vehicle        - Retrieve and display information on the current vehicle state
     wakeup         - Send a wakeup command to the vehicle
@@ -693,28 +692,6 @@ Usage:
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
-
-## testla.js
-
-This sample is an Express app that mimics the Tesla servers and implements the full REST API surface area.  There is now a
-web interface for this app.  Point your web browser to http://127.0.0.1:3000.
-
->Note: the app is still fairly basic and in many cases simply returns success results.  It does not validate input 
->parameters including the OAuth token and vehicleID.  Streaming is not yet emulated.  It does now track vehicle 
->state changes on the server.  The web interface does not yet allow for changing vehicle state values.
-
-Note that at this time the sample uses the [JADE](http://www.npmjs.com/package/jade) templating engine.  Jade has recently
-been renamed to [PUG](http://www.npmjs.com/package/pug).  The sample will be updated in a future release.  Until then you 
-must explicitly npm install JADE under Express.
-
-Usage:
-
-    node testla.js [options]
-
-    Options:
-	
-    -h, --help               output usage information
-    -P, --port               port for the server (default: 3000)
 
 ## vehicle.js
 

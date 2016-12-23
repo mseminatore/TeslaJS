@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "colors": "^1.1.2",

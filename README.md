@@ -59,12 +59,13 @@ Here are some of the most recent features and fixes:
 1. In **1.0.54** Last update for version 1.x.x!  Test and code coverage implemented.
 2. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
 3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
+4. The **testla** sample has been renamed **teslamock** and factored into its 
+own [project](https://github.com/mseminatore/teslamock).
 
 ## Known Issues
 
-1. The **testla** sample has now been factored out into its own [project](https://github.com/mseminatore/testla).
-2. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
-3. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help.
+1. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
+2. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help!
 
 # Tesla API Documentation
 

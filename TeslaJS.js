@@ -9,6 +9,8 @@
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
 
+"use strict";
+
 var request = require('request');
 var Promise = require('promise');
 require('colors');

@@ -1,3 +1,14 @@
+//=====================================================================
+// This sample framework is used to demonstrate using TeslaJS
+//
+// https://github.com/mseminatore/TeslaJS
+//
+// Copyright (c) 2016 Mark Seminatore
+//
+// Refer to included LICENSE file for usage rights and restrictions
+//=====================================================================
+"use strict";
+
 var fs = require('fs');
 var tjs = require('../TeslaJS');
 

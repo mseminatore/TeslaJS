@@ -8,5 +8,6 @@
 	"unused": "vars",
 	"varstmt": false,
 	"asi": true,
+	"strict": "global",
 	"node": true
 }

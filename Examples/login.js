@@ -7,6 +7,7 @@
 //
 // Refer to included LICENSE file for usage rights and restrictions
 //=====================================================================
+"use strict";
 
 var tjs = require('../TeslaJS');
 var fs = require('fs');

@@ -173,7 +173,7 @@ exports.vehicles = function vehicles(options, callback) {
 
     var req = {
         method: 'GET',
-        url: portalBaseURI + '/api/1/vehicles',
+        url: portalBaseURI + 'api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
 

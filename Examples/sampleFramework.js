@@ -40,6 +40,11 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
         var options = { authToken: result.authToken, carIndex: program.index || 0 };
         tjs.vehicles(options, function (err, vehicle) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
             if (vehicle.state.toUpperCase() == "OFFLINE") {
                 console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);
                 return;
@@ -51,7 +56,6 @@ exports.SampleFramework = function SampleFramework(program, main) {
             } else {
                 carType = "Model S";
             }
-
 
             console.log("\nVehicle " + vehicle.vin.green + " - " + carType.green + " ( '" + vehicle.display_name.cyan + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 

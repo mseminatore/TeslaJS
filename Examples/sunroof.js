@@ -34,6 +34,10 @@ sample.run();
 function sampleMain(tjs, options) {
     var amt = program.args[0];
 
+    if (!amt) {
+        program.help();
+    }
+
     if (amt.toLowerCase() == "open") {
         amt = 100;
     } else if (amt.toLowerCase() == "close") {

@@ -1,5 +1,8 @@
 language: node_js
-node_js: "node"
+node_js: 
+  - "node"
+  - "0.12"
+  - "0.10"
 os:
   - linux
 env:

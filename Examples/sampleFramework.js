@@ -59,8 +59,6 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
             console.log("\nVehicle " + vehicle.vin.green + " - " + carType.green + " ( '" + vehicle.display_name.cyan + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
-            options.vehicleID = vehicle.id_s;
-
             if (main) {
                 main(tjs, options);
             }

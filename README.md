@@ -61,6 +61,7 @@ Here are some of the most recent features and fixes:
 3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
 4. The **testla** sample has been renamed **teslamock** and factored into its 
 own [project](https://github.com/mseminatore/teslamock).
+5. The **vehicles()** call now sets the **vehicleID** on **options** for you!
 
 ## Known Issues
 
@@ -164,7 +165,6 @@ With the OAuth token from a successful `login()` call you can query the vehicles
 Or using the new Async Promise-based calls:
 
 ```javascript
-	options.vehicleID = vehicle.id_s;
 	tjs.vehiclesAsync(options).then(function(vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
 	});
@@ -175,7 +175,6 @@ Or using the new Async Promise-based calls:
 Adding the vehicle ID from a successful `vehicles()` call to options you can make other Tesla REST calls:
 
 ```javascript
-    options.vehicleID = vehicle.id_s;
     tjs.chargeState(options, function (err, chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
@@ -184,7 +183,6 @@ Adding the vehicle ID from a successful `vehicles()` call to options you can mak
 And using the new Async Promise-based calls:
 
 ```javascript
-	options.vehicleID = vehicle.id_s;
 	tjs.chargeStateAsync(options).then(function(chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
 	});

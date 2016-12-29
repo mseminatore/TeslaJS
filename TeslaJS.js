@@ -193,7 +193,8 @@ exports.vehicles = function vehicles(options, callback) {
             data = JSON.parse(body);
             data = data.response[options.carIndex || 0];
             data.id = data.id_s;
-
+            options.vehicleID = data.id;
+            
             callback(error, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');

@@ -37,11 +37,18 @@ function sampleMain(tjs, options) {
         console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);
 
         console.log("\nDoors: " + str);
+        vehicle_state.df ? console.log("Driver door: " + "OPEN".red) : "";
+        vehicle_state.pf ? console.log("Passenger door: " + "OPEN".red) : "";
+        vehicle_state.dr ? console.log("Driver side rear door: " + "OPEN".red) : "";
+        vehicle_state.prf ? console.log("Passenger side rear door: " + "OPEN".red) : "";
+        vehicle_state.ft ? console.log("Front trunk: " + "OPEN".red) : "";
+        vehicle_state.rt ? console.log("Rear trunk: " + "OPEN".red) : "";
+
         if (vehicle_state.sun_roof_installed) {
             var state = "CLOSED";
 
             if (vehicle_state.sun_roof_state != "unknown") {
-                state = vehicle_state.sun_roof_state;
+                state = vehicle_state.sun_roof_state.toUpperCase();
             }
 
             console.log("Sunroof: " + state.green);

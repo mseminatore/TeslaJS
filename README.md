@@ -59,7 +59,7 @@ Here are some of the most recent features and fixes:
 1. In **1.0.54** Last update for version 1.x.x!  Test and code coverage implemented.
 2. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
 3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler
-4. The **testla** sample has been renamed **teslamock** and factored into its 
+4. The **testla** sample has been renamed **teslamock** and factored out into its 
 own [project](https://github.com/mseminatore/teslamock).
 5. The **vehicles()** call now sets the **vehicleID** on **options** for you!
 

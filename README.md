@@ -94,7 +94,7 @@ of your vehicle, or cause damage, through actions including but not limited to:
 
 In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).
 
-An installable module for [npm](http://npmjs.org) is now available.  To download and install the library and all of its 
+An installable TeslaJS module for [npm](http://npmjs.org) is now available.  To download and install the library and all of its 
 dependencies to a local project directory use the following:
 
     npm install teslajs
@@ -166,7 +166,7 @@ With the OAuth token from a successful `login()` call you can query the vehicles
 Or using the new Async Promise-based calls:
 
 ```javascript
-	tjs.vehiclesAsync(options).then(function(vehicle) {
+	tjs.vehiclesAsync(options).done(function(vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
 	});
 ```
@@ -184,7 +184,7 @@ Adding the vehicle ID from a successful `vehicles()` call to options you can mak
 And using the new Async Promise-based calls:
 
 ```javascript
-	tjs.chargeStateAsync(options).then(function(chargeState) {
+	tjs.chargeStateAsync(options).done(function(chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
 	});
 ```

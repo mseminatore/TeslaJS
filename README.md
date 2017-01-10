@@ -327,6 +327,7 @@ table for the lifetime of the sample.
 	guiSettings    - Display the current unit format settings
 	homelink       - Trigger homelink (note appears to require AP hardware)
     honkHorn       - Honk the horn
+	lock		   - Lock the car doors
 	mobileEnabled  - Display whether remote access is enabled
     odometer       - Displays the current odometer value
     openChargePort - Opens the charge port
@@ -339,7 +340,8 @@ table for the lifetime of the sample.
     startCharge    - Initiate a charging session
     stopCharge     - Terminate a charging session
 	sunroof        - Control the sunroof.  Be careful!
-    valet          - Enable or disable valet mode
+    unlock		   - Unlock the car doors
+	valet          - Enable or disable valet mode
     vehicle        - Retrieve and display information on the current vehicle state
     wakeup         - Send a wakeup command to the vehicle
 	
@@ -493,6 +495,22 @@ This sample demonstrates honking the horn of the vehicle.
 Usage:
 
     node honkHorn.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+	
+## lock.js
+
+This sample demonstrates locking the doors of the vehicle.
+
+Usage:
+
+    node lock.js [options]
 	
 	Options:
 	
@@ -685,6 +703,22 @@ This sample demonstrates controlling the panoramic sunroof if present.
 Usage:
 
     node sunroof.js [options] percentage|open|close|vent|comfort
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+	
+## unlock.js
+
+This sample demonstrates unlocking the doors of the vehicle.
+
+Usage:
+
+    node unlock.js [options]
 	
 	Options:
 	

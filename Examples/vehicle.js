@@ -32,7 +32,7 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     tjs.vehicleStateAsync(options).then( function (vehicle_state) {
-        var str = vehicle_state.locked ? "LOCKED".green : "UNLOCKED".yellow;
+        var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
 
         console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);
 

@@ -46,7 +46,7 @@ This project has a few principles that have and will continue to guide its devel
 
 Contributions are welcome!  Pull requests will be considered with the following guidelines.
 
-1. Must pass `npm test` and `wintest` tests
+1. Must pass both `npm test` and `wintest` tests
 2. Should meet or exceed current code coverage level
 3. Must respect and align to Project Principles (see above)
 4. Must add general value to the project
@@ -62,12 +62,13 @@ Here are some of the most recent features and fixes:
 4. The **testla** sample has been renamed **teslamock** and factored out into its 
 own [project](https://github.com/mseminatore/teslamock).
 5. The **vehicles()** call now sets the **vehicleID** in **options** for you!
-6. In **2.0.15** added new samples for door: `lock` and `unlock`
+6. In **2.0.15** added new samples: **lock** and **unlock**
 
 ## Known Issues
 
-1. The homelink API appears to require Autopilot.  Can someone with AP test and report back?
+1. The homelink API appears to require Autopilot hardware.  Can someone with AP test and report back?
 2. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help!
+3. Sunroof API was changed by Tesla to limit functionality.  Will be addressed in TeslJS soon.
 
 # Tesla API Documentation
 
@@ -75,6 +76,9 @@ The Tesla REST API encapusulated by this library was documented through the coll
 thank and support them for their efforts.  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/
+
+>Note that timdorr has announced plans to migrate the documentation to a new location.  This reference will be updated
+>in the future once that migration is complete.
 	
 # Warranty Disclaimer
 

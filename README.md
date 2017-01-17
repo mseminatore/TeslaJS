@@ -56,13 +56,13 @@ Contributions are welcome!  Pull requests will be considered with the following 
 
 Here are some of the most recent features and fixes:
 
-1. In **1.0.54** Last update for version 1.x.x!  Test and code coverage implemented.
-2. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
-3. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler!
-4. The **testla** sample has been renamed **teslamock** and factored out into its 
+1. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
+2. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler!
+3. The **testla** sample has been renamed **teslamock** and factored out into its 
 own [project](https://github.com/mseminatore/teslamock).
-5. The **vehicles()** call now sets the **vehicleID** in **options** for you!
-6. In **2.0.15** added new samples: **lock** and **unlock**
+4. The **vehicles()** call now sets the **vehicleID** in **options** for you!
+5. In **2.0.15** added new samples: **lock** and **unlock**
+6. In **2.0.19** added new constant exports and value clamping on temps and battery levels
 
 ## Known Issues
 
@@ -293,6 +293,8 @@ The TeslaJS library exports a number of methods and constants.  The library also
 	CHARGE_STORAGE     - charge to 50%
 	CHARGE_STANDARD    - charge to 90%
 	CHARGE_RANGE       - charge to 100%.  Tesla recommends against frequent usage!
+	MAX_TEMP		   - maximum temperature for climate system
+	MIN_TEMP		   - minimum temperature for climate system
 	SUNROOF_OPEN       - fully opens the sunroof
 	SUNROOF_CLOSED     - closes the sunroof
 	SUNROOF_VENT       - open the sunroof to the vent position

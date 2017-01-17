@@ -24,7 +24,7 @@ exports.streamingPortal = streamingPortal;
 //===========================
 // New OAuth-based API portal
 //===========================
-var portal = "https://owner-api.teslamotors.com/";
+var portal = "https://owner-api.teslamotors.com";
 exports.portal = portal;
 
 var portalBaseURI = process.env.TESLAJS_SERVER || portal;
@@ -66,6 +66,21 @@ function log(level, str) {
         return;
     }
     console.log(str);
+}
+
+//==================================
+// Ensure value is within [min..max]
+//==================================
+function clamp(value, min, max) {
+    if (value < min) {
+        value = min;
+    }
+
+    if (value > max) {
+        value = max;
+    }
+
+    return value;
 }
 
 //==========================
@@ -397,6 +412,7 @@ exports.CHARGE_STANDARD = 90;
 exports.CHARGE_RANGE    = 100;
 
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
+    amt = clamp(amt, exports.CHARGE_STANDARD, exports.CHARGE_RANGE);
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
 }
 exports.setChargeLimitAsync = Promise.denodeify(exports.setChargeLimit);
@@ -473,10 +489,16 @@ exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
 //==============================================
 // Set the driver/passenger climate temperatures
 //==============================================
+exports.MIN_TEMP = 60;
+exports.MAX_TEMP = 80;
+
 exports.setTemps = function setTemps(options, driver, pass, callback) {
     if (pass === undefined) {
         pass = driver;
     }
+
+    driver = clamp(driver, exports.MIN_TEMP, exports.MAX_TEMP);
+    pass = clamp(pass, exports.MIN_TEMP, exports.MAX_TEMP);
 
     post_command(options, "command/set_temps", { driver_temp: driver, passenger_temp: pass }, callback);
 }

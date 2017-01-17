@@ -1,7 +1,7 @@
 # TeslaJS 
 [![Version](http://img.shields.io/npm/v/teslajs.png)](https://www.npmjs.org/package/teslajs)
 [![License](https://img.shields.io/npm/l/teslajs.svg)](https://github.com/mseminatore/TeslaJS/blob/master/LICENSE)
-[![Downloads](https://img.shields.io/npm/dt/teslajs.svg)]()
+[![Downloads](https://img.shields.io/npm/dt/teslajs.svg)](https://www.npmjs.org/package/teslajs)
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 

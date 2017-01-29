@@ -807,6 +807,18 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#calendar()', function () {
+	    it('should return true', function (done) {
+	        tjs.calendar(options, tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName"), function(err, result) {
+	            if (result.result) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+			});
+	    });
+	});
+
 	describe('#homelink()', function () {
 	    it('should return true', function (done) {
 	        tjs.homelink(options, 75, 34, "token", function (err, result) {

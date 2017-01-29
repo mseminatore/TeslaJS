@@ -63,6 +63,8 @@ own [project](https://github.com/mseminatore/teslamock).
 4. The **vehicles()** call now sets the **vehicleID** in **options** for you!
 5. In **2.0.15** added new samples: **lock** and **unlock**
 6. In **2.0.19** added new constant exports and value clamping on temps and battery levels
+7. In **2.0.21** removed colors dependency, still used by samples
+8. In **2.1.0** added **vehicle()** and **allVehicles()** to make it multiple vehicles easier
 
 ## Known Issues
 
@@ -212,8 +214,12 @@ The TeslaJS library exports a number of methods and constants.  The library also
 	loginAsync()	   - same as above but returns a Promise
     logout()           - delete the current OAuth token
 	logoutAsync()	   - same as above but returns a Promise
-    vehicles()         - retrieve list of vehicles and option data
+    vehicles()         - retrieve list of vehicles and return requesteed vehicle option data
+	vehicle()		   - same as above
 	vehiclesAsync()	   - same as above but returns a Promise
+	vehicleAsync()	   - same as above
+	allVehicles()	   - return information and option data for all vehicles
+	allVehiclesAsync() - same as above but returns a Promise
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	

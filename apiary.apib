@@ -827,6 +827,27 @@ Trigger homelink.
               }
             }
 
+## Update Calendar [POST /api/1/vehicles/{vehicle_id}/command/upcoming_calendar_entries]
+
+Update calendar.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
             
 ## Bad Get [GET /api/1/vehicles/{vehicle_id}/command/err_get]
 

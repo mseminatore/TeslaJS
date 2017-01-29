@@ -3,7 +3,6 @@
   "version": "2.0.20",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
-    "colors": "^1.1.2",
     "commander": "^2.9.0",
     "promise": "^7.1.1",
     "request": "^2.14.0"
@@ -32,6 +31,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "colors": "^1.1.2",
     "coveralls": "^2.11.15",
     "istanbul": "^0.4.5",
     "jshint": "^2.9.4",

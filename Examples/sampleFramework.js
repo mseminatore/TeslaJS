@@ -11,6 +11,7 @@
 
 var fs = require('fs');
 var tjs = require('../TeslaJS');
+require('colors');
 
 function logo() {
     console.log("\n");

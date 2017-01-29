@@ -39,12 +39,15 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
         logo();
 
-        var options = { authToken: result.authToken, carIndex: program.index || 0 };
-        tjs.vehicles(options, function (err, vehicle) {
+        var options = { authToken: result.authToken };
+        tjs.allVehicles(options, function (err, vehicles) {
             if (err) {
                 console.log(err);
                 return;
             }
+
+            var vehicle = vehicles[program.index || 0];
+            options.vehicleID = vehicle.id_s;
 
             if (vehicle.state.toUpperCase() == "OFFLINE") {
                 console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);

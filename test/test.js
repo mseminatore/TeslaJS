@@ -101,13 +101,47 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-	describe('#vehicles()', function () {
+	describe('#vehicle()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.vehicles(options, function (err, result) {
-	            if (result.vehicle_id) {
+	        tjs.vehicle(options, function (err, vehicle) {
+	            if (vehicle.vehicle_id) {
 	                done();
 	            } else {
-	                done(result.response.statusMessage);
+	                done(vehicle.response.statusMessage);
+	            }
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.vehicle(options);
+	        done();
+	    });
+	});
+
+	describe('#vehicles()', function () {
+	    it('should succeed enumerating vehicles', function (done) {
+	        tjs.vehicles(options, function (err, vehicle) {
+	            if (vehicle.vehicle_id) {
+	                done();
+	            } else {
+	                done(vehicle.response.statusMessage);
+	            }
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.vehicles(options);
+	        done();
+	    });
+	});
+
+	describe('#allVehicles()', function () {
+	    it('should succeed enumerating vehicles', function (done) {
+	        tjs.allVehicles(options, function (err, vehicles) {
+	            if (vehicles[0]) {
+	                done();
+	            } else {
+	                done(vehicles.response.statusMessage);
 	            }
 	        });
 	    });
@@ -638,7 +672,7 @@ describe('TeslaJS', function () {
 
 	describe('#setTemps()', function () {
 	    it('should return true setting both driver and passenger', function (done) {
-	        tjs.setTemps(options, 19, 21, function (err, result) {
+	        tjs.setTemps(options, 0, 100, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {

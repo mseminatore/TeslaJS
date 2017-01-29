@@ -218,7 +218,50 @@ exports.vehicles = function vehicles(options, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
     });
 }
+exports.vehicle = exports.vehicles;
+exports.vehicleAsync = Promise.denodeify(exports.vehicles);
 exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
+
+//====================================================
+// Return vehicle information on ALL vehicles
+//====================================================
+exports.allVehicles = function allVehicles(options, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.allVehicles()");
+
+    callback = callback || function (err, vehicle) { /* do nothing! */ }
+
+    var req = {
+        method: 'GET',
+        url: portalBaseURI + '/api/1/vehicles',
+        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+    request(req, function (error, response, body) {
+        if (error) {
+            log(API_ERR_LEVEL, error);
+        }
+
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+        var data = {};
+
+        try {
+            data = JSON.parse(body);
+            data = data.response;
+            
+            callback(error, data);
+        } catch (e) {
+            log(API_ERR_LEVEL, 'Error parsing vehicles response');
+            callback(e, null);
+        }
+
+        log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
+    });
+}
+exports.allVehiclesAsync = Promise.denodeify(exports.allVehicles);
 
 //====================================
 // Generic REST call for GET commands

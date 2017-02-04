@@ -59,8 +59,8 @@ Here are some of the most recent features and fixes:
 1. In **2.0.15** added new samples: **lock** and **unlock**
 2. In **2.0.19** added new constant exports and value clamping on temps and battery levels
 3. In **2.0.21** removed colors dependency, still used by samples
-4. In **2.1.0** added **vehicle()** and **allVehicles()** to make it multiple vehicles easier
-5. In **2.1.2** added **getModel()** and **getPaintColor()*
+4. In **2.1.0** added *vehicle()* and *allVehicles()* to make it multiple vehicles easier
+5. In **2.1.2** added *getModel()* and *getPaintColor()*
 
 ## Known Issues
 
@@ -204,22 +204,24 @@ TESLAJS_SERVER | if set defines the URI for the Tesla servers (e.g. set to http:
 
 **General API calls**
 
-    setLogLevel()          - sets the level of debug logging
-    getLogLevel()          - gets the level of debug logging
-	setPortalBaseURI()     - sets the server for testing, pass null to reset
-	getPortalBaseURI()     - gets the server URI
-    login()                - authenticate with Tesla servers and retrieve the OAuth token
-	loginAsync()	       - same as above but returns a Promise
-    logout()               - delete the current OAuth token
-	logoutAsync()	       - same as above but returns a Promise
-    vehicles()             - retrieve list of vehicles and return requested vehicle option data
-	vehicle()		       - same as above
-	vehiclesAsync()	       - same as above but returns a Promise
-	vehicleAsync()	       - same as above
-	allVehicles()	  	   - return information and option data for all vehicles
-	allVehiclesAsync()     - same as above but returns a Promise
-	getModel(vehicle)      - returns the Tesla model as a string from vehicle object
-	getpaintColor(vehicle) - returns the paint color as a string from vehicle object
+Function | Description
+-------- | -----------
+getLogLevel() | gets the level of debug logging
+setLogLevel() | sets the level of debug logging
+getPortalBaseURI() | gets the server URI
+setPortalBaseURI() | sets the server for testing, pass null to reset
+login() | authenticate with Tesla servers and retrieve the OAuth token
+loginAsync() | same as above but returns a Promise
+logout() | delete the current OAuth token
+logoutAsync() | same as above but returns a Promise
+vehicles() | retrieve list of vehicles and return requested vehicle option data
+vehicle() | same as above
+vehiclesAsync() | same as above but returns a Promise
+vehicleAsync() | same as above
+allVehicles() | return information and option data for all vehicles
+allVehiclesAsync() | same as above but returns a Promise
+getModel(vehicle) | returns the Tesla model as a string from vehicle object
+getpaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	

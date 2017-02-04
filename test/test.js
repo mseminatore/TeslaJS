@@ -53,6 +53,63 @@ describe('TeslaJS', function () {
         });
     });
 
+    describe('#getModel()', function () {
+        it('should return Model S', function () {
+            assert.equal('Model S', tjs.getModel({"option_codes": ""}));
+        });
+        it('should return Model X', function () {
+            assert.equal('Model X', tjs.getModel({"option_codes": "MDLX"}));
+        });
+    });
+
+    describe('#getPaintColor()', function () {
+        it('should return white', function () {
+            assert.equal('white', tjs.getPaintColor({"option_codes": "PBCW"}));
+        });
+        it('should return black', function () {
+            assert.equal('black', tjs.getPaintColor({"option_codes": "PBSB"}));
+        });
+        it('should return metallic_brown', function () {
+            assert.equal('metallic_brown', tjs.getPaintColor({"option_codes": "PMAB"}));
+        });
+        it('should return metallic_black', function () {
+            assert.equal('metallic_black', tjs.getPaintColor({"option_codes": "PMBL"}));
+        });
+        it('should return metallic_blue', function () {
+            assert.equal('metallic_blue', tjs.getPaintColor({"option_codes": "PMMB"}));
+        });
+        it('should return mc_red', function () {
+            assert.equal('mc_red', tjs.getPaintColor({"option_codes": "PMMR"}));
+        });
+        it('should return mc_red', function () {
+            assert.equal('mc_red', tjs.getPaintColor({"option_codes": "PPMR"}));
+        });
+        it('should return steel_grey', function () {
+            assert.equal('steel_grey', tjs.getPaintColor({"option_codes": "PMNG"}));
+        });
+        it('should return metallic_green', function () {
+            assert.equal('metallic_green', tjs.getPaintColor({"option_codes": "PMSG"}));
+        });
+        it('should return metallic_silver', function () {
+            assert.equal('metallic_silver', tjs.getPaintColor({"option_codes": "PMSS"}));
+        });
+        it('should return ocean_blue', function () {
+            assert.equal('ocean_blue', tjs.getPaintColor({"option_codes": "PPSB"}));
+        });
+        it('should return red', function () {
+            assert.equal('red', tjs.getPaintColor({"option_codes": "PPSR"}));
+        });
+        it('should return pearl_white', function () {
+            assert.equal('pearl_white', tjs.getPaintColor({"option_codes": "PPSW"}));
+        });
+        it('should return titanium', function () {
+            assert.equal('titanium', tjs.getPaintColor({"option_codes": "PPTI"}));
+        });
+        it('should return metallic_grey', function () {
+            assert.equal('metallic_grey', tjs.getPaintColor({"option_codes": "PMTG"}));
+        });
+    });
+
 	describe('#login()', function() {
 	    it('should succeed with valid user and pwd', function (done) {
 			tjs.login(user, pass, function(err, result) {

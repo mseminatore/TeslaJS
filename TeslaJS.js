@@ -108,6 +108,49 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
     return portalBaseURI;
 }
 
+
+//==============================================
+// Return the car model from vehicle information
+//==============================================
+exports.getModel = function getModel(vehicle) {
+    var carType = "Unknown";
+
+    if (vehicle.option_codes.indexOf("MDLX") != -1) {
+        carType = "Model X";
+    } else {
+        carType = "Model S";
+    }
+
+    return carType;
+}
+
+//================================================
+// Return the paint color from vehicle information
+//================================================
+exports.getPaintColor = function getPaintColor(vehicle) {
+    var colors = {
+        "PBCW": "white",
+        "PBSB": "black",
+        "PMAB": "metallic_brown",
+        "PMBL": "metallic_black",
+        "PMMB": "metallic_blue",
+        "PMMR": "mc_red",
+        "PPMR": "mc_red",
+        "PMNG": "steel_grey",
+        "PMSG": "metallic_green",
+        "PMSS" : "metallic_silver",
+        "PPSB": "ocean_blue",
+        "PPSR" : "red",  //premium signature red"
+        "PPSW": "pearl_white",
+        "PPTI": "titanium",
+        "PMTG": "metallic_grey"   // dolphin grey
+    };
+
+    var paintColor = vehicle.option_codes.match(/PBCW|PBSB|PMAB|PMBL|PMMB|PMMR|PPMR|PMNG|PMSG|PMSS|PPSB|PPSR|PPSW|PPTI|PMTG/);
+
+    return colors[paintColor] || "black";
+}
+
 //===============================================
 // Login to the server and receive an OAuth token
 //===============================================

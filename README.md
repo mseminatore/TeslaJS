@@ -56,15 +56,11 @@ Contributions are welcome!  Pull requests will be considered with the following 
 
 Here are some of the most recent features and fixes:
 
-1. In **2.0.0** Big changes!  Changed callback style to Nodeback AND added *Async versions using Promises!
-2. In **2.0.4** Finished refactoring samples to use new common sample framework.  Much simpler!
-3. The **testla** sample has been renamed **teslamock** and factored out into its 
-own [project](https://github.com/mseminatore/teslamock).
-4. The **vehicles()** call now sets the **vehicleID** in **options** for you!
-5. In **2.0.15** added new samples: **lock** and **unlock**
-6. In **2.0.19** added new constant exports and value clamping on temps and battery levels
-7. In **2.0.21** removed colors dependency, still used by samples
-8. In **2.1.0** added **vehicle()** and **allVehicles()** to make it multiple vehicles easier
+1. In **2.0.15** added new samples: **lock** and **unlock**
+2. In **2.0.19** added new constant exports and value clamping on temps and battery levels
+3. In **2.0.21** removed colors dependency, still used by samples
+4. In **2.1.0** added **vehicle()** and **allVehicles()** to make it multiple vehicles easier
+5. In **2.1.2** added **getModel()** and **getPaintColor()*
 
 ## Known Issues
 
@@ -201,25 +197,29 @@ The TeslaJS library exports a number of methods and constants.  The library also
 
 **Environment Variables**
 
-    TESLAJS_LOG        - if set defines the value of the default logging level
-	TESLAJS_SERVER     - if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
+ENV variable | Description
+------------ | -----------
+TESLAJS_LOG | if set defines the value of the default logging level
+TESLAJS_SERVER | if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
 
 **General API calls**
 
-    setLogLevel()      - sets the level of debug logging
-    getLogLevel()      - gets the level of debug logging
-	setPortalBaseURI() - sets the server for testing, pass null to reset
-	getPortalBaseURI() - gets the server URI
-    login()            - authenticate with Tesla servers and retrieve the OAuth token
-	loginAsync()	   - same as above but returns a Promise
-    logout()           - delete the current OAuth token
-	logoutAsync()	   - same as above but returns a Promise
-    vehicles()         - retrieve list of vehicles and return requesteed vehicle option data
-	vehicle()		   - same as above
-	vehiclesAsync()	   - same as above but returns a Promise
-	vehicleAsync()	   - same as above
-	allVehicles()	   - return information and option data for all vehicles
-	allVehiclesAsync() - same as above but returns a Promise
+    setLogLevel()          - sets the level of debug logging
+    getLogLevel()          - gets the level of debug logging
+	setPortalBaseURI()     - sets the server for testing, pass null to reset
+	getPortalBaseURI()     - gets the server URI
+    login()                - authenticate with Tesla servers and retrieve the OAuth token
+	loginAsync()	       - same as above but returns a Promise
+    logout()               - delete the current OAuth token
+	logoutAsync()	       - same as above but returns a Promise
+    vehicles()             - retrieve list of vehicles and return requested vehicle option data
+	vehicle()		       - same as above
+	vehiclesAsync()	       - same as above but returns a Promise
+	vehicleAsync()	       - same as above
+	allVehicles()	  	   - return information and option data for all vehicles
+	allVehiclesAsync()     - same as above but returns a Promise
+	getModel(vehicle)      - returns the Tesla model as a string from vehicle object
+	getpaintColor(vehicle) - returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	

@@ -131,19 +131,19 @@ exports.getPaintColor = function getPaintColor(vehicle) {
     var colors = {
         "PBCW": "white",
         "PBSB": "black",
-        "PMAB": "metallic_brown",
-        "PMBL": "metallic_black",
-        "PMMB": "metallic_blue",
-        "PMMR": "mc_red",
-        "PPMR": "mc_red",
-        "PMNG": "steel_grey",
-        "PMSG": "metallic_green",
-        "PMSS" : "metallic_silver",
-        "PPSB": "ocean_blue",
-        "PPSR" : "red",  //premium signature red"
-        "PPSW": "pearl_white",
+        "PMAB": "metallic brown",
+        "PMBL": "metallic black",
+        "PMMB": "metallic blue",
+        "PMMR": "multi-coat red",
+        "PPMR": "multi-coat red",
+        "PMNG": "steel grey",
+        "PMSG": "metallic green",
+        "PMSS" : "metallic silver",
+        "PPSB": "ocean blue",
+        "PPSR" : "signature red",  //premium signature red"
+        "PPSW": "pearl white",
         "PPTI": "titanium",
-        "PMTG": "metallic_grey"   // dolphin grey
+        "PMTG": "metallic grey"   // dolphin grey
     };
 
     var paintColor = vehicle.option_codes.match(/PBCW|PBSB|PMAB|PMBL|PMMB|PMMR|PPMR|PMNG|PMSG|PMSS|PPSB|PPSR|PPSW|PPTI|PMTG/);

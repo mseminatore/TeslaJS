@@ -61,6 +61,7 @@ Here are some of the most recent features and fixes:
 3. In **2.0.21** removed colors dependency, still used by samples
 4. In **2.1.0** added *vehicle()* and *allVehicles()* to make it multiple vehicles easier
 5. In **2.1.2** added *getModel()* and *getPaintColor()*
+6. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
 
 ## Known Issues
 

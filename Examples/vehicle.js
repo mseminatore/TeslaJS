@@ -69,6 +69,6 @@ function sampleMain(tjs, options) {
         console.log("Firmware: " + vehicle_state.car_version.green);
 
         str = vehicle_state.valet_mode ? "ON" : "OFF";
-        console.log("Valet mode: " + str.green);
+        console.log("Valet mode: " + str.bgGreen);
     });
 }

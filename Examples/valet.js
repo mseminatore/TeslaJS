@@ -35,6 +35,10 @@ function sampleMain(tjs, options) {
     var mode = program.args[0];
     var pin = program.args[1];
 
+    if (!mode || !pin) {
+        program.help();
+    }
+
     if (mode.toUpperCase() == "ON") {
         mode = true;
     } else {
@@ -44,7 +48,7 @@ function sampleMain(tjs, options) {
     tjs.setValetMode(options, mode, pin, function (err, response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
-            console.log("\nValet mode: " + str.green);
+            console.log("\nValet mode: " + str.bgGreen);
         }
         else {
             console.error(response.reason.red);

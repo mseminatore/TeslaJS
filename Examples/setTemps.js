@@ -40,6 +40,9 @@ function f2c(degf) {
 //
 function sampleMain(tjs, options) {
     var temp = program.args[0];
+    if (!temp) {
+        program.help();
+    }
 
     tjs.setTemps(options, f2c(temp), null, function (err, result) {
         if (result.result) {

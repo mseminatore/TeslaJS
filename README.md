@@ -226,36 +226,38 @@ getpaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	
-    chargeState()      - retrieve the charge_state data
-    chargeStandard()   - set the charge limit to 90%
-    chargeMaxRange()   - sets the charge limit to 100%
-    climateState()     - retrieve the climate_state data
-    climateStart()     - turn on the HVAC system
-    climateStop()      - turn off the HVAC system
-    closeChargePort()  - close the charge port on appropriately equipped vehicles
-    doorLock() 	       - locks the doors
-    doorUnlock()       - unlocks the doors
-    driveState()       - retrieve the drive_state data
-    flashLights()      - flashes the headlights
-    guiSettings()      - retrieves the GUI settings
-    homelink()         - Triggers homelink from the vehicle
-	honkHorn()         - honks the horn
-    mobileEnabled()    - returns whether mobile access is enabled
-    startCharge()      - initiates a charging session
-    stopCharge()       - terminates a charging session
-    openChargePort()   - opens the charge port
-    openTrunk()        - open the trunk or frunk
-    remoteStart()      - enables remote starting of the car
-    resetValetPin()    - reset the valet pin
-    setChargeLimit()   - sets the charge limit to a specific amount
-    setTemps() 	       - set driver/passenger temp set points (in Deg.C)
-    setValetMode()     - set/reset valet mode
-    startStreaming()   - initiate a streaming data session
-    sunRoofControl()   - put the sunroof into a specific state
-    sunRoofMove()      - open the sunroof to a specific percent
-    vehicleState()     - retrieve the vehicle_state data
-    wakeUp() 	       - attempt to wake a sleeping vehicle
-	
+Function | Description
+-------- | -----------
+chargeState() | retrieve the charge_state data
+chargeStandard() | set the charge limit to 90%
+chargeMaxRange() | sets the charge limit to 100%
+climateState() | retrieve the climate_state data
+climateStart() | turn on the HVAC system
+climateStop() | turn off the HVAC system
+closeChargePort() | close the charge port on appropriately equipped vehicles
+doorLock() | locks the doors
+doorUnlock() | unlocks the doors
+driveState() | retrieve the drive_state data
+flashLights() | flashes the headlights
+guiSettings() | retrieves the GUI settings
+homelink() | Triggers homelink from the vehicle
+honkHorn() | honks the horn
+mobileEnabled() | returns whether mobile access is enabled
+startCharge() | initiates a charging session
+stopCharge() | terminates a charging session
+openChargePort() | opens the charge port
+openTrunk() | open the trunk or frunk
+remoteStart() | enables remote starting of the car
+resetValetPin() | reset the valet pin
+setChargeLimit() | sets the charge limit to a specific amount
+setTemps() | set driver/passenger temp set points (in Deg.C)
+setValetMode() | set/reset valet mode
+startStreaming() | initiate a streaming data session
+sunRoofControl() | put the sunroof into a specific state
+sunRoofMove() | open the sunroof to a specific percent
+vehicleState() | retrieve the vehicle_state data
+wakeUp() | attempt to wake a sleeping vehicle
+
 **Promise based API calls for a given vehicle id**
 	
     chargeStateAsync()      - retrieve the charge_state data

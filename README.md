@@ -340,32 +340,32 @@ table for the lifetime of the sample.
 Sample | Description
 ------ | -----------
 [login](#loginjs) | Login and acquire an OAuth token.  Cached to the local directory
-logout | Delete the locally cached OAuth token if present
-climate | Display the current state of the HVAC system
-climateStart | Turn on the HVAC system
-climateStop | Turn off the HVAC system
-flashLights | Flash the headlights
-geoloc | Display the current GPS location of the vehicle
-guiSettings | Display the current unit format settings
-homelink | Trigger homelink (note appears to require AP hardware)
-honkHorn | Honk the horn
-lock | Lock the car doors
-mobileEnabled | Display whether remote access is enabled
-odometer | Displays the current odometer value
-openChargePort | Opens the charge port
-resetValetPin | Resets the valet mode pin
-remoteStart | Enables driving without the key fob present
-setChargeLimit | Set the battery charge limit to the given value
-setTemps | Set the driver and passenger temperatures to the given value
-simpleStreaming | Demonstrates basic use of the streaming API
-soc | Displays the current battery State of Charge (SOC) for the vehicle
-startCharge | Initiate a charging session
-stopCharge | Terminate a charging session
-sunroof | Control the sunroof.  Be careful!
-unlock | Unlock the car doors
-valet | Enable or disable valet mode
-vehicle | Retrieve and display information on the current vehicle state
-wakeup | Send a wakeup command to the vehicle
+[logout](#logoutjs) | Delete the locally cached OAuth token if present
+[climate](#climatejs) | Display the current state of the HVAC system
+[climateStart](#climatestartjs) | Turn on the HVAC system
+[climateStop](#climatestopjs) | Turn off the HVAC system
+[flashLights](#flashlightsjs) | Flash the headlights
+[geoloc](#geolocjs) | Display the current GPS location of the vehicle
+[guiSettings](#guisettingsjs) | Display the current unit format settings
+[homelink](#homelinkjs) | Trigger homelink (note appears to require AP hardware)
+[honkHorn](#honkhornjs) | Honk the horn
+[lock](#lockjs) | Lock the car doors
+[mobileEnabled](#mobileenabledjs) | Display whether remote access is enabled
+[odometer](#odometerjs) | Displays the current odometer value
+[openChargePort](#openchargeportjs) | Opens the charge port
+[resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
+[remoteStart](#remotestartjs) | Enables driving without the key fob present
+[setChargeLimit](#setchargelimitjs) | Set the battery charge limit to the given value
+[setTemps](#settempsjs) | Set the driver and passenger temperatures to the given value
+[simpleStreaming](#simplestreamingjs) | Demonstrates basic use of the streaming API
+[soc](#socjs) | Displays the current battery State of Charge (SOC) for the vehicle
+[startCharge](#startchargejs) | Initiate a charging session
+[stopCharge](#stopchargejs) | Terminate a charging session
+[sunroof](#sunroofjs) | Control the sunroof.  Be careful!
+[unlock](#unlockjs) | Unlock the car doors
+[valet](#valetjs) | Enable or disable valet mode
+[vehicle](#vehiclejs) | Retrieve and display information on the current vehicle state
+[wakeup](#wakeupjs) | Send a wakeup command to the vehicle
 	
 ## login.js
 

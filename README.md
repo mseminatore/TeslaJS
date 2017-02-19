@@ -260,60 +260,63 @@ wakeUp() | attempt to wake a sleeping vehicle
 
 **Promise based API calls for a given vehicle id**
 	
-    chargeStateAsync()      - retrieve the charge_state data
-    chargeStandardAsync()   - set the charge limit to 90%
-    chargeMaxRangeAsync()   - sets the charge limit to 100%
-    climateStateAsync()     - retrieve the climate_state data
-    climateStartAsync()     - turn on the HVAC system
-    climateStopAsync()      - turn off the HVAC system
-    closeChargePortAsync()  - close the charge port on appropriately equipped vehicles
-    doorLockAsync() 	    - locks the doors
-    doorUnlockAsync()       - unlocks the doors
-    driveStateAsync()       - retrieve the drive_state data
-    flashLightsAsync()      - flashes the headlights
-    guiSettingsAsync()      - retrieves the GUI settings
-    homelinkAsync()         - Triggers homelink from the vehicle
-	honkHornAsync()         - honks the horn
-    mobileEnabledAsync()    - returns whether mobile access is enabled
-    startChargeAsync()      - initiates a charging session
-    stopChargeAsync()       - terminates a charging session
-    openChargePortAsync()   - opens the charge port
-    openTrunkAsync()        - open the trunk or frunk
-    remoteStartAsync()      - enables remote starting of the car
-    resetValetPinAsync()    - reset the valet pin
-    setChargeLimitAsync()   - sets the charge limit to a specific amount
-    setTempsAsync() 	    - set driver/passenger temp set points (in Deg.C)
-    setValetModeAsync()     - set/reset valet mode
-    startStreamingAsync()   - initiate a streaming data session
-    sunRoofControlAsync()   - put the sunroof into a specific state
-    sunRoofMoveAsync()      - open the sunroof to a specific percent
-    vehicleStateAsync()     - retrieve the vehicle_state data
-    wakeUpAsync() 	        - attempt to wake a sleeping vehicle
+Function | Description
+-------- | -----------
+chargeStateAsync() | retrieve the charge_state data
+chargeStandardAsync() | set the charge limit to 90%
+chargeMaxRangeAsync() | sets the charge limit to 100%
+climateStateAsync() | retrieve the climate_state data
+climateStartAsync() | turn on the HVAC system
+climateStopAsync() | turn off the HVAC system
+closeChargePortAsync() | close the charge port on appropriately equipped vehicles
+doorLockAsync() | locks the doors
+doorUnlockAsync() | unlocks the doors
+driveStateAsync() | retrieve the drive_state data
+flashLightsAsync() | flashes the headlights
+guiSettingsAsync() | retrieves the GUI settings
+homelinkAsync() | Triggers homelink from the vehicle
+honkHornAsync() | honks the horn
+mobileEnabledAsync() | returns whether mobile access is enabled
+startChargeAsync() | initiates a charging session
+stopChargeAsync() | terminates a charging session
+openChargePortAsync() | opens the charge port
+openTrunkAsync() | open the trunk or frunk
+remoteStartAsync() | enables remote starting of the car
+resetValetPinAsync() | reset the valet pin
+setChargeLimitAsync() | sets the charge limit to a specific amount
+setTempsAsync() | set driver/passenger temp set points (in Deg.C)
+setValetModeAsync() | set/reset valet mode
+startStreamingAsync() | initiate a streaming data session
+sunRoofControlAsync() | put the sunroof into a specific state
+sunRoofMoveAsync() | open the sunroof to a specific percent
+vehicleStateAsync() | retrieve the vehicle_state data
+wakeUpAsync() | attempt to wake a sleeping vehicle
 
 **Library exported constants**
-
-	streamingPortal    - the URI for the streaming API portal
-	portal 	           - the base URI for the OAuth-based API portal
-	API_LOG_ALWAYS     - log this message always
-	API_CALL_LEVEL 	   - log all API calls
-	API_RETURN_LEVEL   - log all API calls and completions
-	API_REQUEST_LEVEL  - log all API requests
-	API_RESPONSE_LEVEL - log all API responses
-	API_BODY_LEVEL     - log calls and completions as well as the body of POST commands
-	API_LOG_ALL        - the highest level of logging
-	CHARGE_STORAGE     - charge to 50%
-	CHARGE_STANDARD    - charge to 90%
-	CHARGE_RANGE       - charge to 100%.  Tesla recommends against frequent usage!
-	MAX_TEMP		   - maximum temperature for climate system
-	MIN_TEMP		   - minimum temperature for climate system
-	SUNROOF_OPEN       - fully opens the sunroof
-	SUNROOF_CLOSED     - closes the sunroof
-	SUNROOF_VENT       - open the sunroof to the vent position
-	SUNROOF_COMFORT	   - open the sunroof to the comfort position
-	streamingColumns   - an array of the available streaming columns
+Constant | Description
+-------- | -----------
+streamingPortal | the URI for the streaming API portal
+portal | the base URI for the OAuth-based API portal
+API_LOG_ALWAYS | log this message always
+API_CALL_LEVEL | log all API calls
+API_RETURN_LEVEL | log all API calls and completions
+API_REQUEST_LEVEL | log all API requests
+API_RESPONSE_LEVEL | log all API responses
+API_BODY_LEVEL | log calls and completions as well as the body of POST commands
+API_LOG_ALL | the highest level of logging
+CHARGE_STORAGE | charge to 50%
+CHARGE_STANDARD | charge to 90%
+CHARGE_RANGE | charge to 100%.  Tesla recommends against frequent usage!
+MAX_TEMP | maximum temperature for climate system
+MIN_TEMP | minimum temperature for climate system
+SUNROOF_OPEN | fully opens the sunroof
+SUNROOF_CLOSED | closes the sunroof
+SUNROOF_VENT | open the sunroof to the vent position
+SUNROOF_COMFORT | open the sunroof to the comfort position
+streamingColumns | an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
-contain a member called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 
+contain a property called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 
 act on a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned from a successful call to **vehicles()**.
 
 By default the **vehicles()** API returns information on the first vehicle returned.  By providing a **carIndex** member in the
@@ -334,33 +337,35 @@ table for the lifetime of the sample.
 
 ## List of Samples
 
-    login          - Login and acquire an OAuth token.  Cached to the local directory
-    logout         - Delete the locally cached OAuth token if present
-    climate        - Display the current state of the HVAC system
-    climateStart   - Turn on the HVAC system
-    climateStop    - Turn off the HVAC system
-    flashLights    - Flash the headlights
-    geoloc         - Display the current GPS location of the vehicle
-	guiSettings    - Display the current unit format settings
-	homelink       - Trigger homelink (note appears to require AP hardware)
-    honkHorn       - Honk the horn
-	lock		   - Lock the car doors
-	mobileEnabled  - Display whether remote access is enabled
-    odometer       - Displays the current odometer value
-    openChargePort - Opens the charge port
-    resetValetPin  - Resets the valet mode pin
-	remoteStart    - Enables driving without the key fob present
-	setChargeLimit - Set the battery charge limit to the given value
-	setTemps       - Set the driver and passenger temperatures to the given value
-	simpleStreaming- Demonstrates basic use of the streaming API
-    soc            - Displays the current battery State of Charge (SOC) for the vehicle
-    startCharge    - Initiate a charging session
-    stopCharge     - Terminate a charging session
-	sunroof        - Control the sunroof.  Be careful!
-    unlock		   - Unlock the car doors
-	valet          - Enable or disable valet mode
-    vehicle        - Retrieve and display information on the current vehicle state
-    wakeup         - Send a wakeup command to the vehicle
+Sample | Description
+------ | -----------
+[login](#loginjs) | Login and acquire an OAuth token.  Cached to the local directory
+logout | Delete the locally cached OAuth token if present
+climate | Display the current state of the HVAC system
+climateStart | Turn on the HVAC system
+climateStop | Turn off the HVAC system
+flashLights | Flash the headlights
+geoloc | Display the current GPS location of the vehicle
+guiSettings | Display the current unit format settings
+homelink | Trigger homelink (note appears to require AP hardware)
+honkHorn | Honk the horn
+lock | Lock the car doors
+mobileEnabled | Display whether remote access is enabled
+odometer | Displays the current odometer value
+openChargePort | Opens the charge port
+resetValetPin | Resets the valet mode pin
+remoteStart | Enables driving without the key fob present
+setChargeLimit | Set the battery charge limit to the given value
+setTemps | Set the driver and passenger temperatures to the given value
+simpleStreaming | Demonstrates basic use of the streaming API
+soc | Displays the current battery State of Charge (SOC) for the vehicle
+startCharge | Initiate a charging session
+stopCharge | Terminate a charging session
+sunroof | Control the sunroof.  Be careful!
+unlock | Unlock the car doors
+valet | Enable or disable valet mode
+vehicle | Retrieve and display information on the current vehicle state
+wakeup | Send a wakeup command to the vehicle
 	
 ## login.js
 

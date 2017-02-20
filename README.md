@@ -368,7 +368,7 @@ Sample | Description
 [vehicle](#vehiclejs) | Retrieve and display information on the current vehicle state
 [wakeup](#wakeupjs) | Send a wakeup command to the vehicle
 	
-## login.js ([back to samples](#list-of-samples))
+## login.js [back to samples](#list-of-samples)
 
 This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
 writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 

@@ -368,7 +368,7 @@ Sample | Description
 [vehicle](#vehiclejs) | Retrieve and display information on the current vehicle state
 [wakeup](#wakeupjs) | Send a wakeup command to the vehicle
 	
-## login.js [back to samples](#list-of-samples)
+## login.js
 
 This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
 writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 
@@ -386,7 +386,7 @@ Usage:
     -h, --help               output usage information
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## logout.js ([back to samples](#list-of-samples))
+## logout.js
 
 This sample deletes the locally cached **.token** file if present.
 
@@ -394,7 +394,7 @@ Usage:
 
     node logout.js
 	
-## climate.js ([back to samples](#list-of-samples))
+## climate.js
 
 This sample retrieves and displays the **climate_state** data on the HVAC system of the vehicle.
 
@@ -410,7 +410,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## climateStart.js ([back to samples](#list-of-samples))
+## climateStart.js
 
 This sample demonstrates turning on the HVAC system of the vehicle.
 
@@ -426,7 +426,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## climateStop.js ([back to samples](#list-of-samples))
+## climateStop.js
 
 This sample demonstrates turning off the HVAC system of the vehicle.
 
@@ -442,7 +442,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## flashLights.js ([back to samples](#list-of-samples))
+## flashLights.js
 
 This sample demonstrates flashing the headlights of the vehicle.
 
@@ -458,7 +458,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## geoloc.js ([back to samples](#list-of-samples))
+## geoloc.js
 
 This sample retrieves and displays information on the location and driving state of the car using the **drive_state** query.
 
@@ -475,7 +475,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## guiSettings.js ([back to samples](#list-of-samples))
+## guiSettings.js
 
 This sample retrieves and displays the current display formats for the user interface.
 
@@ -491,7 +491,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## homelink.js ([back to samples](#list-of-samples))
+## homelink.js
 
 This sample demonstrates triggering homelink via the vehicle.
 
@@ -511,7 +511,7 @@ Usage:
 	-n, --name [string]      Either phone Bluetooth name or homelink door name
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## honkHorn.js ([back to samples](#list-of-samples))
+## honkHorn.js
 
 This sample demonstrates honking the horn of the vehicle.
 
@@ -527,7 +527,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## lock.js ([back to samples](#list-of-samples))
+## lock.js
 
 This sample demonstrates locking the doors of the vehicle.
 
@@ -543,7 +543,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## mobileEnabled.js ([back to samples](#list-of-samples))
+## mobileEnabled.js
 
 This sample retrieves and displays whether mobile access is enabled.
 
@@ -559,7 +559,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## odometer.js ([back to samples](#list-of-samples))
+## odometer.js
 
 This sample retrieves and displays the current vehicle odometer value.
 
@@ -575,7 +575,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## openChargePort.js ([back to samples](#list-of-samples))
+## openChargePort.js
 
 This sample sends the command to open the charge port.
 
@@ -591,7 +591,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## remoteStart.js ([back to samples](#list-of-samples))
+## remoteStart.js
 
 This sample enables remotely starting the vehicle without a key fob present.  Note that the **password** parameter is 
 **required** in this sample.
@@ -607,7 +607,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## resetValetPin.js ([back to samples](#list-of-samples))
+## resetValetPin.js
 
 This sample attempts to reset the current valet pin.
 
@@ -623,7 +623,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## setChargeLimit.js ([back to samples](#list-of-samples))
+## setChargeLimit.js
 
 This sample sets the current battery charge limit to the given value.
 
@@ -639,7 +639,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## setTemps.js ([back to samples](#list-of-samples))
+## setTemps.js
 
 This sample sets the driver and passenger temperature to the given value.
 
@@ -655,7 +655,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## simpleStreaming.js ([back to samples](#list-of-samples))
+## simpleStreaming.js
 
 This sample demonstrates basic use of the streaming API to retrieve real-time vehicle data.
 
@@ -670,7 +670,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## soc.js ([back to samples](#list-of-samples))
+## soc.js
 
 This sample retrieves the **charge_state** information and displays the charge limit, the current 
 vehicle charge level, and the ideal, rated and projected range.
@@ -687,7 +687,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## startCharge.js ([back to samples](#list-of-samples))
+## startCharge.js
 
 This sample demonstrates how to initiate a charging session.
 
@@ -703,7 +703,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## stopCharge.js ([back to samples](#list-of-samples))
+## stopCharge.js
 
 This sample demonstrates how to terminate a charging session.
 
@@ -719,7 +719,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## sunroof.js ([back to samples](#list-of-samples))
+## sunroof.js
 
 This sample demonstrates controlling the panoramic sunroof if present.
 
@@ -735,7 +735,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## unlock.js ([back to samples](#list-of-samples))
+## unlock.js
 
 This sample demonstrates unlocking the doors of the vehicle.
 
@@ -751,7 +751,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## vehicle.js ([back to samples](#list-of-samples))
+## vehicle.js
 
 This sample retrives and displays several elements of data returned from the **vehicle_state** REST API. 
 
@@ -767,7 +767,7 @@ Usage:
 	-i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## valet.js ([back to samples](#list-of-samples))
+## valet.js
 
 This sample enables or disables valet mode. 
 
@@ -783,7 +783,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## wakeup.js ([back to samples](#list-of-samples))
+## wakeup.js
 
 This sample sends a wakeup signal to wake a vehicle in sleep mode.
 

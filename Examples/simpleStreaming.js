@@ -31,6 +31,11 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
+
+    if (program.args.length < 1) {
+        program.help();
+    }
+
     var streamingOptions = {
         username: program.args[0],
         password: options.tokens[0],

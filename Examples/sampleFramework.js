@@ -48,6 +48,8 @@ exports.SampleFramework = function SampleFramework(program, main) {
 
             var vehicle = vehicles[program.index || 0];
             options.vehicleID = vehicle.id_s;
+            options.vehicle_id = vehicle.vehicle_id;
+            options.tokens = vehicle.tokens;
 
             if (vehicle.state.toUpperCase() == "OFFLINE") {
                 console.log("\nResult: " + "Unable to contact vehicle, exiting!".bold.red);

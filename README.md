@@ -148,7 +148,7 @@ As you can see below, it is very simple to login and acquire an OAuth token.
         var token = JSON.stringify(result.authToken);
 
         if (token)
-            console.log("Login Successfull!");
+            console.log("Login Succesful!");
     });
 ```
 

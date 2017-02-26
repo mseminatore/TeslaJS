@@ -70,7 +70,7 @@ Here are some of the more recent features and fixes:
 
 1. The homelink API appears to require Autopilot hardware.  Can someone with AP test and report back?
 2. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help!
-3. Sunroof API was changed by Tesla to limit functionality.  Will be addressed in TeslJS soon.
+3. Sunroof API was changed by Tesla to limit functionality.  Will be addressed in TeslaJS soon.
 
 # Tesla API Documentation
 

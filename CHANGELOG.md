@@ -211,7 +211,7 @@
 * add **geoloc** sample
 
 ## v1.0.8
-* add reset_valet_pin and close_charge_port APIs
+* add `reset_valet_pin()` and `close_charge_port()` APIs
 
 ## v1.0.7
 * added **openChargePort** sample

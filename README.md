@@ -54,7 +54,9 @@ Contributions are welcome!  Pull requests will be considered with the following 
 
 ## What's New!
 
-Here are some of the most recent features and fixes:
+You can read the history of all changes in the [CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
+
+Here are some of the more recent features and fixes:
 
 1. In **2.0.15** added new samples: **lock** and **unlock**
 2. In **2.0.19** added new constant exports and value clamping on temps and battery levels
@@ -62,6 +64,7 @@ Here are some of the most recent features and fixes:
 4. In **2.1.0** added *vehicle()* and *allVehicles()* to make it multiple vehicles easier
 5. In **2.1.2** added *getModel()* and *getPaintColor()*
 6. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
+7. In **2.1.11** fixed issue with the **simpleStraming** sample
 
 ## Known Issues
 

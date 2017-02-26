@@ -44,7 +44,7 @@ This project has a few principles that have and will continue to guide its devel
 
 ## Contributing
 
-Contributions are welcome!  Pull requests will be considered with the following guidelines.
+Contributions are welcome!  Pull Requests will be considered with the following guidelines.
 
 1. Must pass both `npm test` and `wintest` tests
 2. Should meet or exceed current code coverage level
@@ -54,7 +54,7 @@ Contributions are welcome!  Pull requests will be considered with the following 
 
 ## What's New!
 
-You can read the history of all changes in the [CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
+You can read the complete history of changes in the [CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
 
 Here are some of the more recent features and fixes:
 

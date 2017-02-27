@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## v2.1.13
+* added Code of Conduct
+
 ## Up through v2.1.11
 * addressed #60 issue with **simpleStreaming** sample
 * a number of documentation fixes and updates

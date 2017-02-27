@@ -56,9 +56,11 @@ Contributions are welcome!  Pull Requests will be considered with the following 
 
 ## Code of Conduct
 
-Please be sure to familiarize yourself with our project 
-[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CONDUCT.md) 
-which is intended to govern interactions within the TeslaJS community.
+Before contributing or participating in the TeslaJS community please be sure to 
+familiarize yourself with our project 
+[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CONDUCT.md). 
+These guidelines are intended to govern interactions with and within the TeslaJS 
+community.
 
 ## What's New!
 

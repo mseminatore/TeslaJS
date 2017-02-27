@@ -7,7 +7,7 @@ to be honored. Anyone who violates this code of conduct may be banned from the c
 
 Our open source community strives to:
 
-* **Be friendly and patient.** Remember you might not be communicating in someone else's 
+* **Be friendly and patient:** Remember you might not be communicating in someone else's 
 primary spoken or programming language, and others may not have your level of understanding.
 
 * **Be welcoming:** We strive to be a community that welcomes and supports people of all 
@@ -23,15 +23,15 @@ that we’re a world-wide community, so you might not be communicating in someon
 primary language.
 
 * **Be respectful:** Not all of us will agree all the time, but disagreement is no 
-excuse for poor behavior and poor manners.Disrespectful and unacceptable behavior includes, 
+excuse for poor behavior and poor manners. Disrespectful and unacceptable behavior includes, 
 but is not limited to:
-* Violent threats or language.
-* Discriminatory or derogatory jokes and language.
-* Posting sexually explicit or violent material.
-* Posting, or threatening to post, people's personally identifying information ("doxing").
-* Insults, especially those using discriminatory terms or slurs.
-* Behavior that could be perceived as sexual attention.
-* Advocating for or encouraging any of the above behaviors.
+    * Violent threats or language.
+    * Discriminatory or derogatory jokes and language.
+    * Posting sexually explicit or violent material.
+    * Posting, or threatening to post, people's personally identifying information ("doxing").
+    * Insults, especially those using discriminatory terms or slurs.
+    * Behavior that could be perceived as sexual attention.
+    * Advocating for or encouraging any of the above behaviors.
 
 * **Be careful in the words that we choose:** we are a community of professionals, 
 and we conduct ourselves professionally. Be kind to others. Do not insult or put 

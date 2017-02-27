@@ -26,9 +26,11 @@ initiation of the library.  With the TeslaJS library, once an auth token is retr
 Tesla REST API calls.  For certain use cases, notably server logging of multiple vehicles, this can be important for moderating
 load on the Tesla login servers.  
 
-This is also important if you want to use the library to do server-based data logging.  It is generally safer to store an OAuth 
-token on the server rather than logon credentials.  If the server is compromised only the OAuth token is at risk and all existing 
-tokens can be invalidated by changing the password on the account.
+This is also important if you want to use the library to do server-based data 
+logging.  It is generally safer to store an OAuth token on the server rather 
+than logon credentials.  If the server is compromised only the OAuth token is 
+at risk and all existing tokens can be invalidated by changing the password on 
+the account.
 
 Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
 possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
@@ -52,6 +54,12 @@ Contributions are welcome!  Pull Requests will be considered with the following 
 4. Must add general value to the project
 5. Project owners reserve the right to accept or reject any PR for any reason
 
+## Code of Conduct
+
+Please be sure to familiarize yourself with our project 
+[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CONDUCT.md) 
+which is intended to govern interactions within the TeslaJS community.
+
 ## What's New!
 
 You can read the complete history of changes in the [CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
@@ -64,7 +72,7 @@ Here are some of the more recent features and fixes:
 4. In **2.1.0** added *vehicle()* and *allVehicles()* to make it multiple vehicles easier
 5. In **2.1.2** added *getModel()* and *getPaintColor()*
 6. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
-7. In **2.1.11** fixed issue with the **simpleStraming** sample
+7. In **2.1.11** fixed issue with the **simpleStreaming** sample
 
 ## Known Issues
 

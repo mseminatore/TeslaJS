@@ -229,6 +229,14 @@ exports.login = function login(username, password, callback) {
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.");
     });
 }
+
+/**
+ * Login to the server and receive an OAuth token
+ * @function loginAsync
+ * @param {string} username - Tesla.com username
+ * @param {string} password - Tesla.com password
+ * @returns {Promise} result - {response, body, authToken}
+ */
 exports.loginAsync = Promise.denodeify(exports.login);
 
 /**
@@ -258,6 +266,13 @@ exports.logout = function logout(authToken, callback) {
     });
 */
 }
+
+/**
+ * Logout and invalidate the current auth token
+ * @function logoutAsync
+ * @param {string} authToken - Tesla provided OAuth token
+ * @returns {Promise} result
+ */
 exports.logoutAsync = Promise.denodeify(exports.logout);
 
 /**
@@ -304,8 +319,30 @@ exports.vehicles = function vehicles(options, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
     });
 }
+
+/**
+ * Return vehicle information on the requested vehicle
+ * @function vehicle
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Vehicle} - vehicle JSON data
+ */
 exports.vehicle = exports.vehicles;
+
+/**
+ * Return vehicle information on the requested vehicle
+ * @function vehicleAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} - vehicle JSON data
+ */
 exports.vehicleAsync = Promise.denodeify(exports.vehicles);
+
+/**
+ * Return vehicle information on the requested vehicle
+ * @function vehiclesAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} - vehicle JSON data
+ */
 exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
 
 /**
@@ -350,6 +387,14 @@ exports.allVehicles = function allVehicles(options, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
     });
 }
+
+/**
+ * Return vehicle information on ALL vehicles
+ * @function allVehiclesAsync
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} - array of vehicle JSON data
+ */
 exports.allVehiclesAsync = Promise.denodeify(exports.allVehicles);
 
 /**

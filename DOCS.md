@@ -22,13 +22,31 @@
 <dt><a href="#login">login(username, password, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Login to the server and receive an OAuth token</p>
 </dd>
+<dt><a href="#loginAsync">loginAsync(username, password)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Login to the server and receive an OAuth token</p>
+</dd>
 <dt><a href="#logout">logout(authToken, callback)</a></dt>
+<dd><p>Logout and invalidate the current auth token</p>
+</dd>
+<dt><a href="#logoutAsync">logoutAsync(authToken)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Logout and invalidate the current auth token</p>
 </dd>
 <dt><a href="#vehicles">vehicles(options, callback)</a> ⇒ <code>Vehicle</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
 </dd>
+<dt><a href="#vehicle">vehicle(options, callback)</a> ⇒ <code>Vehicle</code></dt>
+<dd><p>Return vehicle information on the requested vehicle</p>
+</dd>
+<dt><a href="#vehicleAsync">vehicleAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Return vehicle information on the requested vehicle</p>
+</dd>
+<dt><a href="#vehiclesAsync">vehiclesAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Return vehicle information on the requested vehicle</p>
+</dd>
 <dt><a href="#allVehicles">allVehicles(options, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
+<dd><p>Return vehicle information on ALL vehicles</p>
+</dd>
+<dt><a href="#allVehiclesAsync">allVehiclesAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
 </dd>
 <dt><a href="#get_command">get_command(options, command, callback)</a></dt>
@@ -218,6 +236,19 @@ Login to the server and receive an OAuth token
 | password | <code>string</code> | Tesla.com password |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="loginAsync"></a>
+
+## loginAsync(username, password) ⇒ <code>Promise</code>
+Login to the server and receive an OAuth token
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result - {response, body, authToken}  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| username | <code>string</code> | Tesla.com username |
+| password | <code>string</code> | Tesla.com password |
+
 <a name="logout"></a>
 
 ## logout(authToken, callback)
@@ -229,6 +260,18 @@ Logout and invalidate the current auth token
 | --- | --- | --- |
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="logoutAsync"></a>
+
+## logoutAsync(authToken) ⇒ <code>Promise</code>
+Logout and invalidate the current auth token
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| authToken | <code>string</code> | Tesla provided OAuth token |
 
 <a name="vehicles"></a>
 
@@ -243,6 +286,43 @@ Return vehicle information on the requested vehicle
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="vehicle"></a>
+
+## vehicle(options, callback) ⇒ <code>Vehicle</code>
+Return vehicle information on the requested vehicle
+
+**Kind**: global function  
+**Returns**: <code>Vehicle</code> - - vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="vehicleAsync"></a>
+
+## vehicleAsync(options) ⇒ <code>Promise</code>
+Return vehicle information on the requested vehicle
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - - vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
+<a name="vehiclesAsync"></a>
+
+## vehiclesAsync(options) ⇒ <code>Promise</code>
+Return vehicle information on the requested vehicle
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - - vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="allVehicles"></a>
 
 ## allVehicles(options, callback) ⇒ <code>Array.&lt;Vehicles&gt;</code>
@@ -250,6 +330,19 @@ Return vehicle information on ALL vehicles
 
 **Kind**: global function  
 **Returns**: <code>Array.&lt;Vehicles&gt;</code> - - array of vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="allVehiclesAsync"></a>
+
+## allVehiclesAsync(options, callback) ⇒ <code>Promise</code>
+Return vehicle information on ALL vehicles
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - - array of vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -700,7 +793,7 @@ Start streaming car data
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | <code>object</code> | = {username, token, vehicle_id, columns[]} |
+| options | <code>object</code> | {username, token, vehicle_id, columns[]} |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="nodeBack"></a>

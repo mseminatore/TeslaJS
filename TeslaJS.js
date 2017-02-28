@@ -910,7 +910,7 @@ exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'e
 
 /**
  * Start streaming car data
- * @param {object} options - = {username, token, vehicle_id, columns[]}
+ * @param {object} options - {username, token, vehicle_id, columns[]}
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */

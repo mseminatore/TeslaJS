@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## v2.1.14
+* added jsdoc generation
+* fixed #66 crash in sampleFramework.js
+
 ## v2.1.13
 * added Code of Conduct
 

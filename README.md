@@ -4,6 +4,7 @@
 [![Downloads](https://img.shields.io/npm/dt/teslajs.svg)](https://www.npmjs.org/package/teslajs)
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
+[![Dependencies](https://david-dm.org/mseminatore/TeslaJS.svg)](https://david-dm.org/mseminatore/TeslaJS)
 
 An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This 
 library currently supports all existing Tesla vehicles.
@@ -37,10 +38,11 @@ than logon credentials.  If the server is compromised only the OAuth token is
 at risk and all existing tokens can be invalidated by changing the password on 
 the account.
 
-Another feature that I wanted was API stateless-ness (achieved via an **options** parameter to API calls) so that it was 
-possible to use the library to make multiple overlapping async calls for different vehicles for data-logging.
+Another feature that I wanted was API stateless-ness (achieved via an **options** 
+parameter to API calls) so that it was possible to use the library to make 
+multiple overlapping async calls for different vehicles for data-logging.
 
-## TeslaJS Documentation
+## Documentation
 
 We've recently added auto-generated documentation via jsdocs.  See the
  [DOCS.md](https://github.com/mseminatore/TeslaJS/blob/master/DOCS.md)
@@ -49,16 +51,20 @@ missing and we'll continue to expand.
 
 ## Project Principles
 
-This project has a few principles that have and will continue to guide its development.
+This project has a few principles that have and will continue to guide its 
+development.
 
 1. **Dependency lean**.  Try to keep the required dependencies to a minimum.
 2. **Comprehensive**.  Attempt to expose the full Tesla REST API surface area.
-3. **Simple**.  Using the library should be simple and straightforward following common conventions.
-4. **Server friendly**.  Provide for use based on auth tokens and avoid requiring access to passwords.
+3. **Simple**.  Using the library should be simple and straightforward 
+following common conventions.
+4. **Server friendly**.  Provide for use based on auth tokens and avoid 
+requiring access to passwords.
 
 ## Contributing
 
-Contributions are welcome!  Pull Requests will be considered with the following guidelines.
+Contributions are welcome, particularly bug fixes and enhancements!  Pull 
+Requests will be considered with the following guidelines.
 
 1. Must pass both `npm test` and `wintest` tests
 2. Should meet or exceed current code coverage level
@@ -76,7 +82,8 @@ community.
 
 ## What's New!
 
-You can read the complete history of changes in the [CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
+You can read the complete history of changes in the 
+[CHANGELOG](https://github.com/mseminatore/TeslaJS/blob/master/CHANGELOG.md).
 
 Here are some of the more recent features and fixes:
 
@@ -88,26 +95,33 @@ Here are some of the more recent features and fixes:
 
 ## Known Issues
 
-1. The homelink API appears to require Autopilot hardware.  Can someone with AP test and report back?
-2. Calendar support not yet functional.  If someone can share the JSON for a valid calendar request that would help!
-3. Sunroof API was changed by Tesla to limit functionality.  Will be addressed in TeslaJS soon.
+1. The homelink API appears to require Autopilot hardware.  Can someone with 
+AP test and report back?
+2. Calendar support not yet functional.  If someone can share the JSON for a 
+valid calendar request that would help!
+3. Sunroof API was changed by Tesla to limit functionality.  Will be 
+addressed in TeslaJS soon.
 
 # Tesla API Documentation
 
-The Tesla REST API encapusulated by this library was documented through the collaboration of many Tesla owners.  Please
-thank and support them for their efforts.  The current REST API documentation can be found at:
+The Tesla REST API encapusulated by this library was documented through the 
+collaboration of many Tesla owners.  Please thank and support them for their 
+efforts.  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/
 
->Note that timdorr has announced plans to migrate the documentation to a new location.  This reference will be updated
->in the future once that migration is complete.
+>Note that timdorr has announced plans to migrate the documentation to a new 
+>location.  This reference will be updated in the future once that migration 
+>is complete.
 	
 # Warranty Disclaimer
 
-You may use this library with the understanding that doing so is **AT YOUR OWN RISK**.  No warranty, express or implied, 
-is made with regards to the fitness or safety of this code for any purpose.  If you use this library to query or change 
-settings of your vehicle you understand that it is possible to make changes that could inadvertently lower the security 
-of your vehicle, or cause damage, through actions including but not limited to:
+You may use this library with the understanding that doing so is 
+**AT YOUR OWN RISK**.  No warranty, express or implied, is made with regards 
+to the fitness or safety of this code for any purpose.  If you use this 
+library to query or change settings of your vehicle you understand that it 
+is possible to make changes that could inadvertently lower the security of 
+your vehicle, or cause damage, through actions including but not limited to:
 
 * Unlocking the vehicle
 * Remotely starting the vehicle

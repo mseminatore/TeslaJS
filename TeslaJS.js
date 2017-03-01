@@ -194,8 +194,13 @@ exports.getPaintColor = function getPaintColor(vehicle) {
  */
 exports.login = function login(username, password, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()");
-
+    
     callback = callback || function (err, result) { /* do nothing! */ }
+
+    if (!username || !password) {
+        callback("login() requires username and password", null);
+        return;
+    } 
 
     var req = {
         method: 'POST',

@@ -5,7 +5,7 @@
   "dependencies": {
     "commander": "^2.9.0",
     "promise": "^7.1.1",
-    "request": "^2.14.0"
+    "request": "^2.79.0"
   },
   "bugs": {
     "url": "https://github.com/mseminatore/TeslaJS/issues"
@@ -32,11 +32,11 @@
   "license": "MIT",
   "devDependencies": {
     "colors": "^1.1.2",
-    "coveralls": "^2.11.15",
+    "coveralls": "^2.11.16",
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^3.0.0",
     "jshint": "^2.9.4",
-    "mocha": "^3.1.2",
+    "mocha": "^3.2.0",
     "sepia": "^2.0.2"
   }
 }

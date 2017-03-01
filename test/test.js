@@ -126,6 +126,16 @@ describe('TeslaJS', function () {
 	        tjs.login(user, pass);
 	        done();
 	    });
+
+	    it('should fail with invalid user or pwd', function (done) {
+	        tjs.login(user, pass, function(err, result){
+				if (err) {
+			        done(err);
+				} else {
+					done();
+				}
+			});
+	    });
 	});
 
 	describe('#loginAsync()', function () {

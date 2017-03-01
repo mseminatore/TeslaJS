@@ -147,11 +147,11 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should fail with invalid user or pwd', function (done) {
-	        tjs.login(user, pass, function(err, result){
+	        tjs.login(null, null, function(err, result){
 				if (err) {
-			        done(err);
+			        done();
 				} else {
-					done();
+					done(result);
 				}
 			});
 	    });

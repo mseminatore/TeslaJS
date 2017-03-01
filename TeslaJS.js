@@ -19,12 +19,16 @@ var Promise = require('promise');
 //=======================
 // Streaming API portal
 //=======================
-var streamingPortal = "https://streaming.vn.teslamotors.com/stream/";
+/** @global */
+var streamingPortal = "https://streaming.vn.teslamotors.com/stream";
 exports.streamingPortal = streamingPortal;
+
+var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
 
 //===========================
 // New OAuth-based API portal
 //===========================
+/** @global */
 var portal = "https://owner-api.teslamotors.com";
 exports.portal = portal;
 
@@ -138,6 +142,25 @@ exports.getPortalBaseURI = function getPortalBaseURI() {
     return portalBaseURI;
 }
 
+/**
+ * Set the streaming base URI
+ * @param {string} uri - URI for Tesla streaming servers
+ */
+exports.setStreamingBaseURI = function setStreamingBaseURI(uri) {
+    if (!uri) {
+        streamingBaseURI = streamingPortal; // reset to the default Tesla servers
+    } else {
+        streamingBaseURI = uri;
+    }
+}
+
+/**
+ * Get the streaming base URI
+ * @return {string} uri - URI for Tesla streaming servers
+ */
+exports.getStreamingBaseURI = function getStreamingBaseURI() {
+    return streamingBaseURI;
+}
 
 /**
  * Return the car model from vehicle JSON information
@@ -446,6 +469,14 @@ function get_command(options, command, callback) {
         log(API_RETURN_LEVEL, "\nGET request: " + command + " completed.");
     });
 }
+
+/**
+ * Generic Async REST call for GET commands
+ * @function get_commandAsync
+ * @param {optionsType} options - options object
+ * @param {string} command - REST command
+ * @returns {Promise} - result
+ */
 exports.get_commandAsync = Promise.denodeify(exports.get_command);
 
 /**
@@ -494,6 +525,15 @@ function post_command(options, command, body, callback) {
         log(API_RETURN_LEVEL, "\nPOST command: " + command + " completed.");
     });
 }
+
+/**
+ * Generic Async REST call for POST commands
+ * @function post_commandAsync
+ * @param {optionsType} options - options object
+ * @param {string} command - REST command
+ * @param {object} body - JSON payload
+ * @returns {Promise} - result
+ */
 exports.post_commandAsync = Promise.denodeify(exports.post_command);
 
 /**
@@ -631,9 +671,13 @@ exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
 //=====================
 // Charge limit constants
 //=====================
+/** @global */
 exports.CHARGE_STORAGE  = 50;
+/** @global */
 exports.CHARGE_DAILY    = 70;
+/** @global */
 exports.CHARGE_STANDARD = 90;
+/** @global */
 exports.CHARGE_RANGE    = 100;
 
 /**
@@ -956,6 +1000,7 @@ exports.autoPark = function autoPark(options, lat, long, action, callback) {
 //=================================
 // Available streaming data options
 //=================================
+/** @global */
 exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc'];
 
 /**
@@ -973,7 +1018,7 @@ exports.startStreaming = function startStreaming(options, callback) {
 
     var req = {
         method: 'GET',
-        url: streamingPortal + options.vehicle_id + '/?values=' + options.values.join(','),
+        url: streamingBaseURI + "/" + options.vehicle_id + '/?values=' + options.values.join(','),
         auth:
         {
             username: options.username,

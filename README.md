@@ -239,6 +239,7 @@ ENV variable | Description
 ------------ | -----------
 TESLAJS_LOG | if set defines the value of the default logging level
 TESLAJS_SERVER | if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
+TESLAJS_STREAMING | if set defines the URI for the Tesla streaming servers (e.g. set to http://127.0.0.1:3000)
 
 **General API calls**
 

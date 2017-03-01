@@ -1,3 +1,22 @@
+## Members
+
+<dl>
+<dt><a href="#streamingPortal">streamingPortal</a></dt>
+<dd></dd>
+<dt><a href="#portal">portal</a></dt>
+<dd></dd>
+<dt><a href="#CHARGE_STORAGE">CHARGE_STORAGE</a></dt>
+<dd></dd>
+<dt><a href="#CHARGE_DAILY">CHARGE_DAILY</a></dt>
+<dd></dd>
+<dt><a href="#CHARGE_STANDARD">CHARGE_STANDARD</a></dt>
+<dd></dd>
+<dt><a href="#CHARGE_RANGE">CHARGE_RANGE</a></dt>
+<dd></dd>
+<dt><a href="#streamingColumns">streamingColumns</a></dt>
+<dd></dd>
+</dl>
+
 ## Functions
 
 <dl>
@@ -12,6 +31,12 @@
 </dd>
 <dt><a href="#getPortalBaseURI">getPortalBaseURI()</a> ⇒ <code>string</code></dt>
 <dd><p>Get the portal base URI</p>
+</dd>
+<dt><a href="#setStreamingBaseURI">setStreamingBaseURI(uri)</a></dt>
+<dd><p>Set the streaming base URI</p>
+</dd>
+<dt><a href="#getStreamingBaseURI">getStreamingBaseURI()</a> ⇒ <code>string</code></dt>
+<dd><p>Get the streaming base URI</p>
 </dd>
 <dt><a href="#getModel">getModel(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the car model from vehicle JSON information</p>
@@ -52,8 +77,14 @@
 <dt><a href="#get_command">get_command(options, command, callback)</a></dt>
 <dd><p>Generic REST call for GET commands</p>
 </dd>
+<dt><a href="#get_commandAsync">get_commandAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Generic Async REST call for GET commands</p>
+</dd>
 <dt><a href="#post_command">post_command(options, command, body, callback)</a></dt>
 <dd><p>Generic REST call for POST commands</p>
+</dd>
+<dt><a href="#post_commandAsync">post_commandAsync(options, command, body)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Generic Async REST call for POST commands</p>
 </dd>
 <dt><a href="#vehicleState">vehicleState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle state</p>
@@ -154,14 +185,42 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## Typedefs
 
 <dl>
-<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
-<dd><p>Node-style callback function</p>
-</dd>
 <dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
 <dd><p>TeslaJS options parameter</p>
 </dd>
+<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
+<dd><p>Node-style callback function</p>
+</dd>
 </dl>
 
+<a name="streamingPortal"></a>
+
+## streamingPortal
+**Kind**: global variable  
+<a name="portal"></a>
+
+## portal
+**Kind**: global variable  
+<a name="CHARGE_STORAGE"></a>
+
+## CHARGE_STORAGE
+**Kind**: global variable  
+<a name="CHARGE_DAILY"></a>
+
+## CHARGE_DAILY
+**Kind**: global variable  
+<a name="CHARGE_STANDARD"></a>
+
+## CHARGE_STANDARD
+**Kind**: global variable  
+<a name="CHARGE_RANGE"></a>
+
+## CHARGE_RANGE
+**Kind**: global variable  
+<a name="streamingColumns"></a>
+
+## streamingColumns
+**Kind**: global variable  
 <a name="setLogLevel"></a>
 
 ## setLogLevel(level)
@@ -198,6 +257,24 @@ Get the portal base URI
 
 **Kind**: global function  
 **Returns**: <code>string</code> - uri - URI for Tesla servers  
+<a name="setStreamingBaseURI"></a>
+
+## setStreamingBaseURI(uri)
+Set the streaming base URI
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| uri | <code>string</code> | URI for Tesla streaming servers |
+
+<a name="getStreamingBaseURI"></a>
+
+## getStreamingBaseURI() ⇒ <code>string</code>
+Get the streaming base URI
+
+**Kind**: global function  
+**Returns**: <code>string</code> - uri - URI for Tesla streaming servers  
 <a name="getModel"></a>
 
 ## getModel(vehicle) ⇒ <code>string</code>
@@ -362,6 +439,19 @@ Generic REST call for GET commands
 | command | <code>string</code> | REST command |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="get_commandAsync"></a>
+
+## get_commandAsync(options, command) ⇒ <code>Promise</code>
+Generic Async REST call for GET commands
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| command | <code>string</code> | REST command |
+
 <a name="post_command"></a>
 
 ## post_command(options, command, body, callback)
@@ -375,6 +465,20 @@ Generic REST call for POST commands
 | command | <code>string</code> | REST command |
 | body | <code>object</code> | JSON payload |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="post_commandAsync"></a>
+
+## post_commandAsync(options, command, body) ⇒ <code>Promise</code>
+Generic Async REST call for POST commands
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| command | <code>string</code> | REST command |
+| body | <code>object</code> | JSON payload |
 
 <a name="vehicleState"></a>
 
@@ -796,18 +900,6 @@ Start streaming car data
 | options | <code>object</code> | {username, token, vehicle_id, columns[]} |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
-<a name="nodeBack"></a>
-
-## nodeBack : <code>function</code>
-Node-style callback function
-
-**Kind**: global typedef  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>function</code> | function which receives the error result |
-| data | <code>function</code> | function which receives the data result |
-
 <a name="optionsType"></a>
 
 ## optionsType : <code>object</code>
@@ -821,4 +913,16 @@ TeslaJS options parameter
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | vehicleID | <code>string</code> | Tesla provided long vehicle id |
 | carIndex | <code>int</code> | index of vehicle within vehicles JSON |
+
+<a name="nodeBack"></a>
+
+## nodeBack : <code>function</code>
+Node-style callback function
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>function</code> | function which receives the error result |
+| data | <code>function</code> | function which receives the data result |
 

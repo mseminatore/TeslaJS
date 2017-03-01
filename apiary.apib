@@ -3,7 +3,8 @@ HOST: https://owner-api.teslamotors.com
 
 # TeslaJS Mock Model S JSON API
 
-This is unofficial documentation of the Tesla Model S JSON API used by the iOS and Android apps. Its primary purpose is to enable testing the teslajs node library.
+This is unofficial documentation of the Tesla Model S JSON API used by the iOS and Android apps. 
+Its primary purpose is to enable testing the TeslaJS node library.
 
 # Group Authentication
 
@@ -849,7 +850,7 @@ Update calendar.
             }
 
             
-## Bad Get [GET /api/1/vehicles/{vehicle_id}/command/err_get]
+## Bad Get [GET /api/1/vehicles/{vehicle_id}/data_request/err_get]
 
 This is a GET that is guaranteed to fail.
 
@@ -869,6 +870,10 @@ This is a GET that is guaranteed to fail.
 
 This is a POST that is guaranteed to fail.
 
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
 + Request
 
     + Headers
@@ -880,3 +885,25 @@ This is a POST that is guaranteed to fail.
     + Body
     
             <HTML><HEAD></HEAD><BODY>Unknown Request</BODY></HEAD></HTML>
+
+## Streaming [GET /{vehicle_id}/?values=elevation,est_heading,est_lat,est_lng,est_range,heading,odometer,power,range,shift_state,speed,soc]
+
+This models the streaming API interface.
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "result": "['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc']"            
+            }

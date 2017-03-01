@@ -3,6 +3,8 @@
 ## v2.1.15
 * added dependency checking badge to README
 * updated depdendencies
+* added login param checking
+* added test case for login failure
 
 ## v2.1.14
 * added jsdoc generation

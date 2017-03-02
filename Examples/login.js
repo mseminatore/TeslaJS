@@ -31,19 +31,26 @@ if (program.uri) {
     tjs.setPortalBaseURI(program.uri);
 }
 
-tjs.loginAsync(username, password).then(function (result) {
-    if (!result.authToken) {
-        console.error("Login failed!".red);
-        process.exit(1);
+tjs.loginAsync(username, password).done(
+    // success!
+    function (result) {
+        if (!result.authToken) {
+            console.error("Login failed!".red);
+            process.exit(1);
+        }
+
+        var token = JSON.stringify(result.authToken);
+
+        if (token) {
+            console.log("Login " + "Successfull.".green);
+            //    console.log("OAuth token is: " + token.green);
+
+            fs.writeFileSync('.token', token, 'utf8');
+            console.log('Auth token saved!');
+        }
+    },
+    // failure!
+    function (error) {
+        console.error(error);
     }
-
-    var token = JSON.stringify(result.authToken);
-
-    if (token) {
-        console.log("Login " + "Successfull.".green);
-        //    console.log("OAuth token is: " + token.green);
-
-        fs.writeFileSync('.token', token, 'utf8');
-        console.log('Auth token saved!');
-    }
-});
+);

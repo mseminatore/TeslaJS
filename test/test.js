@@ -8,6 +8,7 @@ var pass = process.env.TESLAJS_PASS || "password";
 
 // Explicitly required to avoid accidentally hammering the Tesla production servers
 process.env.TESLAJS_SERVER || failure("Missing TESLAJS_SERVER defn!\n");
+process.env.TESLAJS_STREAMING || failure("Missing TESLAJS_STREAMING defn!\n");
 
 function failure(msg) {
     console.log("Error: " + msg);
@@ -15,8 +16,26 @@ function failure(msg) {
 }
 
 describe('TeslaJS', function () {
-    var options = {authToken: "abc123", vehicleID: "1234"};
+    var options = {authToken: "abc123", vehicleID: "1234", vehicle_id: "1", username: user, password: pass};
     this.timeout(5000);
+
+    describe('#getStreamingBaseURI()', function () {
+        it('should return current streaming URI', function () {
+            assert.equal(process.env.TESLAJS_STREAMING, tjs.getStreamingBaseURI());
+        });
+    });
+
+    describe('#setStreamingBaseURI()', function () {
+        it('should reset to default portal value on empty parameter', function () {
+            tjs.setStreamingBaseURI();
+            assert.equal(tjs.streamingPortal, tjs.getStreamingBaseURI());
+        });
+
+        it('should change to value passed', function () {
+            tjs.setStreamingBaseURI(process.env.TESLAJS_STREAMING);
+            assert.equal(process.env.TESLAJS_STREAMING, tjs.getStreamingBaseURI());
+        });
+    });
 
     describe('#getPortalBaseURI()', function () {
         it('should return current portal URI', function () {
@@ -125,6 +144,16 @@ describe('TeslaJS', function () {
 	    it('should succeed with valid user and pwd and no callback', function (done) {
 	        tjs.login(user, pass);
 	        done();
+	    });
+
+	    it('should fail with invalid user or pwd', function (done) {
+	        tjs.login(null, null, function(err, result){
+				if (err) {
+			        done();
+				} else {
+					done(result);
+				}
+			});
 	    });
 	});
 
@@ -912,6 +941,42 @@ describe('TeslaJS', function () {
 	    it('should return true', function () {
 	        return tjs.wakeUpAsync(options).then(function (result) {
 	            assert(result.result);
+	        });
+	    });
+	});
+
+	describe('#get_command(err_get)', function () {
+	    it('should fail', function (done) {
+	        tjs.get_command(options, "data_request/err_get", function (err, result) {
+	            if (err) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#post_command(err_post)', function () {
+	    it('should fail', function (done) {
+	        tjs.post_command(options, "command/err_post", null, function (err, result) {
+	            if (err) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
+	});
+
+	describe('#startStreaming()', function () {
+	    it('should succeed', function (done) {
+	        tjs.startStreaming(options, function (err, response, body) {
+	            if (response) {
+	                done();
+	            } else {
+	                done(err);
+	            }
 	        });
 	    });
 	});

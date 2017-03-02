@@ -30,7 +30,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
     this.tokenFound = false;
     this.main = main;
 
-    this.login_cb = function (result) {
+    this.login_cb = function (err, result) {
         if (result.error) {
             console.error("Login failed!".red);
             console.warn(JSON.stringify(result.error));
@@ -89,7 +89,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
                 program.help();
             }
 
-            this.login_cb({ error: false, authToken: token });
+            this.login_cb(null, { error: false, authToken: token });
         } else {
             var username = program.username || process.env.TESLAJS_USER;
             var password = program.password || process.env.TESLAJS_PASS;

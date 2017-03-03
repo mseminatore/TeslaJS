@@ -1,5 +1,12 @@
 # TeslaJS Change log
 
+## v2.1.17
+* removed old model id code from sampleFramework now using `getModel()`
+
+## v2.1.16
+* added test case for `startStreaming()`
+* fixed incorrect login failure test case
+
 ## v2.1.15
 * added dependency checking badge to README
 * updated depdendencies

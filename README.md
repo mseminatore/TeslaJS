@@ -87,11 +87,13 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.0** added *vehicle()* and *allVehicles()* to make it multiple vehicles easier
-2. In **2.1.2** added *getModel()* and *getPaintColor()*
-3. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
-4. In **2.1.11** fixed issue with the **simpleStreaming** sample
-5. In **2.1.14** added jsdocs and fixed #66 crash in sampleFramework.js
+1. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
+2. In **2.1.11** fixed issue with the **simpleStreaming** sample
+3. In **2.1.14** added jsdocs and fixed #66 crash in sampleFramework.js
+4. In **2.1.15** updated dependencies and added badging, login param checking and test case
+5. In **2.1.16** test case(s) for streaming and fixed login failure test case
+6. In **2.1.17** sampleFramework now uses `getModel()`
+7. In **2.1.18** removed `commander` dependency, more jsdocs tagging
 
 ## Known Issues
 

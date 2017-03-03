@@ -37,27 +37,35 @@ var portalBaseURI = process.env.TESLAJS_SERVER || portal;
 //=======================
 // Log levels
 //=======================
+/** @global */
 var API_LOG_ALWAYS = 0;
 exports.API_LOG_ALWAYS = API_LOG_ALWAYS;
 
+/** @global */
 var API_ERR_LEVEL = 1;
 exports.API_ERR_LEVEL = API_ERR_LEVEL;
 
+/** @global */
 var API_CALL_LEVEL = 2;
 exports.API_CALL_LEVEL = API_CALL_LEVEL;
 
+/** @global */
 var API_RETURN_LEVEL = 3;
 exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 
+/** @global */
 var API_BODY_LEVEL = 4;
 exports.API_BODY_LEVEL = API_BODY_LEVEL;
 
+/** @global */
 var API_REQUEST_LEVEL = 5;
 exports.API_REQUEST_LEVEL = API_REQUEST_LEVEL;
 
+/** @global */
 var API_RESPONSE_LEVEL = 6;
 exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 
+/** @global */
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
@@ -116,7 +124,7 @@ exports.setLogLevel = function setLogLevel(level) {
 
 /**
  * Get the current logging level
- * @return {int} level - current logging level
+ * @return {int} the current logging level
  */
 exports.getLogLevel = function getLogLevel() {
     return logLevel;
@@ -136,7 +144,7 @@ exports.setPortalBaseURI = function setPortalBaseURI(uri) {
 
 /**
  * Get the portal base URI
- * @return {string} uri - URI for Tesla servers
+ * @return {string} URI for Tesla servers
  */
 exports.getPortalBaseURI = function getPortalBaseURI() {
     return portalBaseURI;
@@ -156,7 +164,7 @@ exports.setStreamingBaseURI = function setStreamingBaseURI(uri) {
 
 /**
  * Get the streaming base URI
- * @return {string} uri - URI for Tesla streaming servers
+ * @return {string} URI for Tesla streaming servers
  */
 exports.getStreamingBaseURI = function getStreamingBaseURI() {
     return streamingBaseURI;
@@ -165,7 +173,7 @@ exports.getStreamingBaseURI = function getStreamingBaseURI() {
 /**
  * Return the car model from vehicle JSON information
  * @param {object} vehicle - vehicle JSON
- * @return {string} model - vehicle model string
+ * @return {string} vehicle model string
  */
 exports.getModel = function getModel(vehicle) {
     var carType = "Unknown";
@@ -182,7 +190,7 @@ exports.getModel = function getModel(vehicle) {
 /**
  * Return the paint color from vehicle JSON information
  * @param {object} vehicle - vehicle JSON
- * @return {string} color - vehicle paint color
+ * @return {string} the vehicle paint color
  */
 exports.getPaintColor = function getPaintColor(vehicle) {
     var colors = {
@@ -213,7 +221,7 @@ exports.getPaintColor = function getPaintColor(vehicle) {
  * @param {string} username - Tesla.com username
  * @param {string} password - Tesla.com password
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} result - {response, body, authToken}
+ * @returns {object} {response, body, authToken}
  */
 exports.login = function login(username, password, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()");
@@ -263,7 +271,7 @@ exports.login = function login(username, password, callback) {
  * @function loginAsync
  * @param {string} username - Tesla.com username
  * @param {string} password - Tesla.com password
- * @returns {Promise} result - {response, body, authToken}
+ * @returns {Promise} {response, body, authToken}
  */
 exports.loginAsync = Promise.denodeify(exports.login);
 
@@ -307,7 +315,7 @@ exports.logoutAsync = Promise.denodeify(exports.logout);
  * Return vehicle information on the requested vehicle
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicle} - vehicle JSON data
+ * @returns {Vehicle} vehicle JSON data
  */
 exports.vehicles = function vehicles(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.vehicles()");
@@ -353,7 +361,7 @@ exports.vehicles = function vehicles(options, callback) {
  * @function vehicle
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicle} - vehicle JSON data
+ * @returns {Vehicle} vehicle JSON data
  */
 exports.vehicle = exports.vehicles;
 
@@ -361,7 +369,7 @@ exports.vehicle = exports.vehicles;
  * Return vehicle information on the requested vehicle
  * @function vehicleAsync
  * @param {optionsType} options - options object
- * @returns {Promise} - vehicle JSON data
+ * @returns {Promise} vehicle JSON data
  */
 exports.vehicleAsync = Promise.denodeify(exports.vehicles);
 
@@ -369,7 +377,7 @@ exports.vehicleAsync = Promise.denodeify(exports.vehicles);
  * Return vehicle information on the requested vehicle
  * @function vehiclesAsync
  * @param {optionsType} options - options object
- * @returns {Promise} - vehicle JSON data
+ * @returns {Promise} vehicle JSON data
  */
 exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
 
@@ -377,7 +385,7 @@ exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
  * Return vehicle information on ALL vehicles
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicles[]} - array of vehicle JSON data
+ * @returns {Vehicles[]} array of vehicle JSON data
  */
 exports.allVehicles = function allVehicles(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.allVehicles()");
@@ -421,7 +429,7 @@ exports.allVehicles = function allVehicles(options, callback) {
  * @function allVehiclesAsync
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Promise} - array of vehicle JSON data
+ * @returns {Promise} array of vehicle JSON data
  */
 exports.allVehiclesAsync = Promise.denodeify(exports.allVehicles);
 
@@ -475,7 +483,7 @@ function get_command(options, command, callback) {
  * @function get_commandAsync
  * @param {optionsType} options - options object
  * @param {string} command - REST command
- * @returns {Promise} - result
+ * @returns {Promise} result
  */
 exports.get_commandAsync = Promise.denodeify(exports.get_command);
 
@@ -532,7 +540,7 @@ function post_command(options, command, body, callback) {
  * @param {optionsType} options - options object
  * @param {string} command - REST command
  * @param {object} body - JSON payload
- * @returns {Promise} - result
+ * @returns {Promise} result
  */
 exports.post_commandAsync = Promise.denodeify(exports.post_command);
 
@@ -540,7 +548,7 @@ exports.post_commandAsync = Promise.denodeify(exports.post_command);
  * GET the vehicle state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} vehicle_state
+ * @returns {object} vehicle_state object
  */
 exports.vehicleState = function vehicleState(options, callback) {
     get_command(options, "data_request/vehicle_state", callback);
@@ -551,7 +559,7 @@ exports.vehicleStateAsync = Promise.denodeify(exports.vehicleState);
  * GET the climate state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} climate_state
+ * @returns {object} climate_state object
  */
 exports.climateState = function climateState(options, callback) {
     get_command(options, "data_request/climate_state", callback);
@@ -562,7 +570,7 @@ exports.climateStateAsync = Promise.denodeify(exports.climateState);
  * GET the drive state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} drive_state
+ * @returns {object} drive_state object
  */
 exports.driveState = function driveState(options, callback) {
     get_command(options, "data_request/drive_state", callback);
@@ -573,7 +581,7 @@ exports.driveStateAsync = Promise.denodeify(exports.driveState);
  * GET the charge state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} charge_state
+ * @returns {object} charge_state object
  */
 exports.chargeState = function chargeState(options, callback) {
     get_command(options, "data_request/charge_state", callback);
@@ -584,7 +592,7 @@ exports.chargeStateAsync = Promise.denodeify(exports.chargeState);
  * GET the GUI settings
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} gui_settings
+ * @returns {object} gui_settings object
  */
 exports.guiSettings = function guiSettings(options, callback) {
     get_command(options, "data_request/gui_settings", callback);
@@ -595,7 +603,7 @@ exports.guiSettingsAsync = Promise.denodeify(exports.guiSettings);
  * GET the mobile enabled status
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {object} mobile_enabled
+ * @returns {object} mobile_enabled object
  */
 exports.mobileEnabled = function mobileEnabled(options, callback) {
     get_command(options, "mobile_enabled", callback);
@@ -763,9 +771,13 @@ exports.climateStopAsync = Promise.denodeify(exports.climateStop);
 //==================================
 // Set the sun roof to specific mode
 //==================================
+/** @global */
 exports.SUNROOF_OPEN = "open";
+/** @global */
 exports.SUNROOF_VENT = "vent";
+/** @global */
 exports.SUNROOF_CLOSED = "close";
+/** @global */
 exports.SUNROOF_COMFORT = "comfort";
 
 /**
@@ -795,7 +807,9 @@ exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
 //==============================================
 // Temperature Limits
 //==============================================
+/** @global */
 exports.MIN_TEMP = 15.5;    // 60 Deg.F
+/** @global */
 exports.MAX_TEMP = 26.7;    // 80 Deg.F
 
 /**
@@ -833,7 +847,9 @@ exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
 //=====================
 // Truns/Frunk constants
 //=====================
+/** @global */
 exports.FRUNK = "frunk";
+/** @global */
 exports.TRUNK = "trunk";
 
 /**

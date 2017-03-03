@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## v2.1.18
+* moved commander to devDependency, still used by samples
+* added more jsdocs tagging
+
 ## v2.1.17
 * removed old model id code from sampleFramework now using `getModel()`
 

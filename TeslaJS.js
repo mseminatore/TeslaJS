@@ -96,6 +96,7 @@ function log(level, str) {
     if (logLevel < level) {
         return;
     }
+//    console.log("[" + new Date().toISOString() + "] " + str);
     console.log(str);
 }
 

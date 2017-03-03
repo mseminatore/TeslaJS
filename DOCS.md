@@ -5,6 +5,22 @@
 <dd></dd>
 <dt><a href="#portal">portal</a></dt>
 <dd></dd>
+<dt><a href="#API_LOG_ALWAYS">API_LOG_ALWAYS</a></dt>
+<dd></dd>
+<dt><a href="#API_ERR_LEVEL">API_ERR_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_CALL_LEVEL">API_CALL_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_RETURN_LEVEL">API_RETURN_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_BODY_LEVEL">API_BODY_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_REQUEST_LEVEL">API_REQUEST_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_RESPONSE_LEVEL">API_RESPONSE_LEVEL</a></dt>
+<dd></dd>
+<dt><a href="#API_LOG_ALL">API_LOG_ALL</a></dt>
+<dd></dd>
 <dt><a href="#CHARGE_STORAGE">CHARGE_STORAGE</a></dt>
 <dd></dd>
 <dt><a href="#CHARGE_DAILY">CHARGE_DAILY</a></dt>
@@ -12,6 +28,22 @@
 <dt><a href="#CHARGE_STANDARD">CHARGE_STANDARD</a></dt>
 <dd></dd>
 <dt><a href="#CHARGE_RANGE">CHARGE_RANGE</a></dt>
+<dd></dd>
+<dt><a href="#SUNROOF_OPEN">SUNROOF_OPEN</a></dt>
+<dd></dd>
+<dt><a href="#SUNROOF_VENT">SUNROOF_VENT</a></dt>
+<dd></dd>
+<dt><a href="#SUNROOF_CLOSED">SUNROOF_CLOSED</a></dt>
+<dd></dd>
+<dt><a href="#SUNROOF_COMFORT">SUNROOF_COMFORT</a></dt>
+<dd></dd>
+<dt><a href="#MIN_TEMP">MIN_TEMP</a></dt>
+<dd></dd>
+<dt><a href="#MAX_TEMP">MAX_TEMP</a></dt>
+<dd></dd>
+<dt><a href="#FRUNK">FRUNK</a></dt>
+<dd></dd>
+<dt><a href="#TRUNK">TRUNK</a></dt>
 <dd></dd>
 <dt><a href="#streamingColumns">streamingColumns</a></dt>
 <dd></dd>
@@ -201,6 +233,38 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 
 ## portal
 **Kind**: global variable  
+<a name="API_LOG_ALWAYS"></a>
+
+## API_LOG_ALWAYS
+**Kind**: global variable  
+<a name="API_ERR_LEVEL"></a>
+
+## API_ERR_LEVEL
+**Kind**: global variable  
+<a name="API_CALL_LEVEL"></a>
+
+## API_CALL_LEVEL
+**Kind**: global variable  
+<a name="API_RETURN_LEVEL"></a>
+
+## API_RETURN_LEVEL
+**Kind**: global variable  
+<a name="API_BODY_LEVEL"></a>
+
+## API_BODY_LEVEL
+**Kind**: global variable  
+<a name="API_REQUEST_LEVEL"></a>
+
+## API_REQUEST_LEVEL
+**Kind**: global variable  
+<a name="API_RESPONSE_LEVEL"></a>
+
+## API_RESPONSE_LEVEL
+**Kind**: global variable  
+<a name="API_LOG_ALL"></a>
+
+## API_LOG_ALL
+**Kind**: global variable  
 <a name="CHARGE_STORAGE"></a>
 
 ## CHARGE_STORAGE
@@ -216,6 +280,38 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 <a name="CHARGE_RANGE"></a>
 
 ## CHARGE_RANGE
+**Kind**: global variable  
+<a name="SUNROOF_OPEN"></a>
+
+## SUNROOF_OPEN
+**Kind**: global variable  
+<a name="SUNROOF_VENT"></a>
+
+## SUNROOF_VENT
+**Kind**: global variable  
+<a name="SUNROOF_CLOSED"></a>
+
+## SUNROOF_CLOSED
+**Kind**: global variable  
+<a name="SUNROOF_COMFORT"></a>
+
+## SUNROOF_COMFORT
+**Kind**: global variable  
+<a name="MIN_TEMP"></a>
+
+## MIN_TEMP
+**Kind**: global variable  
+<a name="MAX_TEMP"></a>
+
+## MAX_TEMP
+**Kind**: global variable  
+<a name="FRUNK"></a>
+
+## FRUNK
+**Kind**: global variable  
+<a name="TRUNK"></a>
+
+## TRUNK
 **Kind**: global variable  
 <a name="streamingColumns"></a>
 
@@ -238,7 +334,7 @@ Set the current logging level
 Get the current logging level
 
 **Kind**: global function  
-**Returns**: <code>int</code> - level - current logging level  
+**Returns**: <code>int</code> - the current logging level  
 <a name="setPortalBaseURI"></a>
 
 ## setPortalBaseURI(uri)
@@ -256,7 +352,7 @@ Set the portal base URI
 Get the portal base URI
 
 **Kind**: global function  
-**Returns**: <code>string</code> - uri - URI for Tesla servers  
+**Returns**: <code>string</code> - URI for Tesla servers  
 <a name="setStreamingBaseURI"></a>
 
 ## setStreamingBaseURI(uri)
@@ -274,14 +370,14 @@ Set the streaming base URI
 Get the streaming base URI
 
 **Kind**: global function  
-**Returns**: <code>string</code> - uri - URI for Tesla streaming servers  
+**Returns**: <code>string</code> - URI for Tesla streaming servers  
 <a name="getModel"></a>
 
 ## getModel(vehicle) ⇒ <code>string</code>
 Return the car model from vehicle JSON information
 
 **Kind**: global function  
-**Returns**: <code>string</code> - model - vehicle model string  
+**Returns**: <code>string</code> - vehicle model string  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -293,7 +389,7 @@ Return the car model from vehicle JSON information
 Return the paint color from vehicle JSON information
 
 **Kind**: global function  
-**Returns**: <code>string</code> - color - vehicle paint color  
+**Returns**: <code>string</code> - the vehicle paint color  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -305,7 +401,7 @@ Return the paint color from vehicle JSON information
 Login to the server and receive an OAuth token
 
 **Kind**: global function  
-**Returns**: <code>object</code> - result - {response, body, authToken}  
+**Returns**: <code>object</code> - {response, body, authToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -319,7 +415,7 @@ Login to the server and receive an OAuth token
 Login to the server and receive an OAuth token
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - result - {response, body, authToken}  
+**Returns**: <code>Promise</code> - {response, body, authToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -356,7 +452,7 @@ Logout and invalidate the current auth token
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
-**Returns**: <code>Vehicle</code> - - vehicle JSON data  
+**Returns**: <code>Vehicle</code> - vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -369,7 +465,7 @@ Return vehicle information on the requested vehicle
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
-**Returns**: <code>Vehicle</code> - - vehicle JSON data  
+**Returns**: <code>Vehicle</code> - vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -382,7 +478,7 @@ Return vehicle information on the requested vehicle
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - - vehicle JSON data  
+**Returns**: <code>Promise</code> - vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -394,7 +490,7 @@ Return vehicle information on the requested vehicle
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - - vehicle JSON data  
+**Returns**: <code>Promise</code> - vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -406,7 +502,7 @@ Return vehicle information on the requested vehicle
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
-**Returns**: <code>Array.&lt;Vehicles&gt;</code> - - array of vehicle JSON data  
+**Returns**: <code>Array.&lt;Vehicles&gt;</code> - array of vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -419,7 +515,7 @@ Return vehicle information on ALL vehicles
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - - array of vehicle JSON data  
+**Returns**: <code>Promise</code> - array of vehicle JSON data  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -445,7 +541,7 @@ Generic REST call for GET commands
 Generic Async REST call for GET commands
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - - result  
+**Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -472,7 +568,7 @@ Generic REST call for POST commands
 Generic Async REST call for POST commands
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - - result  
+**Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -486,7 +582,7 @@ Generic Async REST call for POST commands
 GET the vehicle state
 
 **Kind**: global function  
-**Returns**: <code>object</code> - vehicle_state  
+**Returns**: <code>object</code> - vehicle_state object  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -499,7 +595,7 @@ GET the vehicle state
 GET the climate state
 
 **Kind**: global function  
-**Returns**: <code>object</code> - climate_state  
+**Returns**: <code>object</code> - climate_state object  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -512,7 +608,7 @@ GET the climate state
 GET the drive state
 
 **Kind**: global function  
-**Returns**: <code>object</code> - drive_state  
+**Returns**: <code>object</code> - drive_state object  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -525,7 +621,7 @@ GET the drive state
 GET the charge state
 
 **Kind**: global function  
-**Returns**: <code>object</code> - charge_state  
+**Returns**: <code>object</code> - charge_state object  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -538,7 +634,7 @@ GET the charge state
 GET the GUI settings
 
 **Kind**: global function  
-**Returns**: <code>object</code> - gui_settings  
+**Returns**: <code>object</code> - gui_settings object  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -551,7 +647,7 @@ GET the GUI settings
 GET the mobile enabled status
 
 **Kind**: global function  
-**Returns**: <code>object</code> - mobile_enabled  
+**Returns**: <code>object</code> - mobile_enabled object  
 
 | Param | Type | Description |
 | --- | --- | --- |

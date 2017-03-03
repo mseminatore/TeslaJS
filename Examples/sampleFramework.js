@@ -56,13 +56,8 @@ exports.SampleFramework = function SampleFramework(program, main) {
                 return;
             }
 
-            var carType = "Unknown";
-            if (vehicle.option_codes.indexOf("MDLX") != -1) {
-                carType = "Model X";
-            } else {
-                carType = "Model S";
-            }
-
+            var carType = tjs.getModel(vehicle);
+            
             console.log("\nVehicle " + vehicle.vin.green + " - " + carType.green + " ( '" + vehicle.display_name.cyan + "' ) is: " + vehicle.state.toUpperCase().bold.green);
 
             if (main) {

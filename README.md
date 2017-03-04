@@ -87,13 +87,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.6** fixed several bugs including temp clamping and **settemps** and **valet** samples
-2. In **2.1.11** fixed issue with the **simpleStreaming** sample
-3. In **2.1.14** added jsdocs and fixed #66 crash in sampleFramework.js
-4. In **2.1.15** updated dependencies and added badging, login param checking and test case
-5. In **2.1.16** test case(s) for streaming and fixed login failure test case
-6. In **2.1.17** sampleFramework now uses `getModel()`
-7. In **2.1.18** removed `commander` dependency, more jsdocs tagging
+1. In **2.1.16** test case(s) for streaming and fixed login failure test case
+2. In **2.1.17** sampleFramework now uses `getModel()`
+3. In **2.1.18** removed `commander` dependency, more jsdocs tagging
+4. In **2.1.19** added gzip support
 
 ## Known Issues
 
@@ -135,38 +132,47 @@ your vehicle, or cause damage, through actions including but not limited to:
 > Please be careful not to use this code in a way that loads the Tesla servers
 > with too many with requests. Calling the Tesla REST APIs at a very high 
 > frequency will stress the Tesla servers and could get your IP or favorite
-> cloud service blocked by Tesla.  Or it could cause Tesla to revoke the
-> key that enables access via this and many other libraries.
+> cloud service blocked by Tesla.  Or in the worst case it could cause Tesla 
+> to revoke the key that enables access via this and many other libraries.
 
 # Installation
 
-In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).
+In order to use the library and/or samples you must first download and install
+ [NodeJS](http://nodejs.org).
 
-An installable TeslaJS module for [npm](http://npmjs.org) is now available.  To download and install the library and all of its 
-dependencies to a local project directory use the following:
+An installable TeslaJS module for [npm](http://npmjs.org) is now available.  
+To download and install the library and all of its dependencies to a local 
+project directory use the following:
 
     npm install teslajs
 
-If you are building an npm package that depends upon this library then you will want to use the **--save** parameter in 
-order to update the **package.json** file for your package as follows:
+If you are building an npm package that depends upon this library then you 
+will want to use the **--save** parameter in order to update the 
+**package.json** file for your package as follows:
 
     npm install teslajs --save
     
-If you prefer to download and install the library globally for all future node projects you may use:
+If you prefer to download and install the library globally for all future 
+node projects you may use:
 
     npm install -g teslajs
 
-You may also install directly from the GitHub [source](https://github.com/mseminatore/TeslaJS).  Either download and 
-unzip the source, or clone the repository.
+You may also install directly from the GitHub 
+[source](https://github.com/mseminatore/TeslaJS).  Either download and unzip 
+the source, or clone the repository.
 
->Remember, whether you install via ZIP source or Git clone you must install the dependencies before using TeslaJS.
+> Remember, whether you install via ZIP source or Git clone you must install 
+> the dependencies before using TeslaJS.
 
-To install dependencies via npm, from the root level of the library directory type:
+To install dependencies via npm, from the root level of the library directory 
+type:
 
     npm install
 
-This library and its accomanying samples are under active development.  New features, samples and bug fixes are being added
-regularly.  To ensure that you have the very latest version of TeslaJS and it's dependencies be sure to update frequently.
+This library and its accomanying samples are under active development.  New 
+features, samples and bug fixes are being added regularly.  To ensure that 
+you have the very latest version of TeslaJS and it's dependencies be sure to 
+update frequently.
 
 To do so, from your project directory type:
 
@@ -197,12 +203,15 @@ As you can see below, it is very simple to login and acquire an OAuth token.
     });
 ```
 
->Note: Currently the only way to invalidate an issued token is to change your MyTesla account password.  Therefore, you must 
->take care to properly secure tokens.  Do not share them over an unsecure connection, or store them on a public machine.
+> Note: Currently the only way to invalidate an issued token is to change your 
+> MyTesla account password.  Therefore, you must take care to properly secure 
+> tokens.  Do not share them over an unsecure connection, or store them on a 
+> public machine.
 
 ## Vehicles Example
 
-With the OAuth token from a successful `login()` call you can query the vehicles for the account:
+With the OAuth token from a successful `login()` call you can query the 
+vehicles for the account:
 
 ```javascript
     var options = { authToken: result.authToken };
@@ -221,7 +230,8 @@ Or using the new Async Promise-based calls:
 
 ## Charge State Example
 
-Adding the vehicle ID from a successful `vehicles()` call to options you can make other Tesla REST calls:
+Adding the vehicle ID from a successful `vehicles()` call to options you can 
+make other Tesla REST calls:
 
 ```javascript
     tjs.chargeState(options, function (err, chargeState) {
@@ -239,7 +249,8 @@ And using the new Async Promise-based calls:
 
 # Library Interfaces
 
-The TeslaJS library exports a number of methods and constants.  The library also responds to some environment variables.
+The TeslaJS library exports a number of methods and constants.  The library 
+also responds to some environment variables.
 
 **Environment Variables**
 
@@ -362,25 +373,32 @@ SUNROOF_VENT | open the sunroof to the vent position
 SUNROOF_COMFORT | open the sunroof to the comfort position
 streamingColumns | an array of the available streaming columns
 
-Most of the APIs take both an **options** parameter and an optional **callback** function.  The **options** parameter must always
-contain a property called **authToken** that contains the OAuth token returned from a successfull **login()**.  For all APIs that 
-act on a specific vehicle the **options** parameter must also contain a **vehicleID** member that contains the long vehicle ID value returned from a successful call to **vehicles()**.
+Most of the APIs take both an **options** parameter and an optional 
+**callback** function.  The **options** parameter must always contain a 
+property called **authToken** that contains the OAuth token returned 
+from a successfull **login()**.  For all APIs that act on a specific 
+vehicle the **options** parameter must also contain a **vehicleID** 
+member that contains the long vehicle ID value returned from a successful 
+call to **vehicles()**.
 
-By default the **vehicles()** API returns information on the first vehicle returned.  By providing a **carIndex** member in the
-**options** parameter information on a specific vehicle can be queried.
+By default the **vehicles()** API returns information on the first vehicle 
+returned.  By providing a **carIndex** member in the **options** parameter 
+information on a specific vehicle can be queried.
 	
 # Samples
 
-A number of samples are provided in the Examples directory.  These demonstrate some basic usage scenarios for 
-the library.  To use the samples first:
+A number of samples are provided in the Examples directory.  These demonstrate 
+some basic usage scenarios for the library.  To use the samples first:
 
     cd Examples
 
-After running the **login** sample an auth token will be cached locally.  If you prefer to avoid keeping an auth token on
-your machine, provide login credentials on the command line for each sample.  This will perform a login request and 
-keep the token only for the duration of the sample.  The difference lies in whether you are more comfortable with the security 
-of a file associated with an account in your file system vs. the visibility of your login credentials in the process 
-table for the lifetime of the sample.
+After running the **login** sample an auth token will be cached locally.  
+If you prefer to avoid keeping an auth token on your machine, provide login 
+credentials on the command line for each sample.  This will perform a login 
+request and keep the token only for the duration of the sample.  The 
+difference lies in whether you are more comfortable with the security of a 
+file associated with an account in your file system vs. the visibility of 
+your login credentials in the process table for the lifetime of the sample.
 
 ## List of Samples
 

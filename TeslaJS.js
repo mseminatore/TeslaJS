@@ -237,6 +237,7 @@ exports.login = function login(username, password, callback) {
     var req = {
         method: 'POST',
         url: portalBaseURI + '/oauth/token',
+        gzip: true,
         form: {
             "grant_type": "password",
             "client_id": c_id,
@@ -325,6 +326,7 @@ exports.vehicles = function vehicles(options, callback) {
 
     var req = {
         method: 'GET',
+        gzip: true,
         url: portalBaseURI + '/api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
@@ -395,6 +397,7 @@ exports.allVehicles = function allVehicles(options, callback) {
 
     var req = {
         method: 'GET',
+        gzip: true,
         url: portalBaseURI + '/api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
@@ -449,6 +452,7 @@ function get_command(options, command, callback) {
 
     var req = {
         method: "GET",
+        gzip: true,
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     };
@@ -505,6 +509,7 @@ function post_command(options, command, body, callback) {
     var cmd = {
         method: "POST",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
+        gzip: true,
         headers: { Authorization: "Bearer " + options.authToken, 'content-type': 'application/json; charset=UTF-8' },
         form: body || null
     };
@@ -1036,6 +1041,7 @@ exports.startStreaming = function startStreaming(options, callback) {
     var req = {
         method: 'GET',
         url: streamingBaseURI + "/" + options.vehicle_id + '/?values=' + options.values.join(','),
+        gzip: true,
         auth:
         {
             username: options.username,

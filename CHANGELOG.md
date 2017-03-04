@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## v2.1.19
+* added header advertising of gzip #69
+
 ## v2.1.18
 * moved commander to devDependency, still used by samples
 * added more jsdocs tagging

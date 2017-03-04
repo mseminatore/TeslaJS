@@ -132,6 +132,12 @@ your vehicle, or cause damage, through actions including but not limited to:
 * Lowering the battery charge level
 * Impacting the long-term health of your battery
 
+> Please be careful not to use this code in a way that loads the Tesla servers
+> with too many with requests. Calling the Tesla REST APIs at a very high 
+> frequency will stress the Tesla servers and could get your IP or favorite
+> cloud service blocked by Tesla.  Or it could cause Tesla to revoke the
+> key that enables access via this and many other libraries.
+
 # Installation
 
 In order to use the library and/or samples you must first download and install [NodeJS](http://nodejs.org).

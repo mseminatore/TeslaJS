@@ -45,7 +45,7 @@ multiple overlapping async calls for different vehicles for data-logging.
 ## Documentation
 
 We've recently added auto-generated documentation via jsdocs.  See the
- [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/DOCS.md)
+ [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
 for a mostly complete reference.  Please let us know if you see something 
 missing and we'll continue to expand.
 

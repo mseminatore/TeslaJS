@@ -697,6 +697,7 @@ exports.startCharge = function startCharge(options, callback) {
 }
 
 /**
+ * Start charging the car
  * @function startChargeAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -714,6 +715,7 @@ exports.stopCharge = function stopCharge(options, callback) {
 }
 
 /**
+ * Stop charging the car
  * @function stopChargeAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -731,6 +733,7 @@ exports.openChargePort = function openChargePort(options, callback) {
 }
 
 /**
+ * Open the charge port
  * @function openChargePortAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -748,6 +751,7 @@ exports.closeChargePort = function closeChargePort(options, callback) {
 }
 
 /**
+ * Close the charge port
  * @function closeChargePortAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -767,7 +771,7 @@ exports.CHARGE_STANDARD = 90;
 exports.CHARGE_RANGE    = 100;
 
 /**
- * Set the charge limit
+ * Set the charge limit.
  * Note: charging to 100% frequently is NOT recommended for long-term battery health!
  * @param {optionsType} options - options object
  * @param {int} amt - charge limit in percent
@@ -780,6 +784,8 @@ exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
 }
 
 /**
+ * Set the charge limit async and return Promise.
+ * Note: charging to 100% frequently is NOT recommended for long-term battery health!
  * @function setChargeLimitAsync
  * @param {optionsType} options - options object
  * @param {int} amt - charge limit in percent
@@ -788,7 +794,7 @@ exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
 exports.setChargeLimitAsync = Promise.denodeify(exports.setChargeLimit);
 
 /**
- * Set charge limit to 90%
+ * Set the charge limit to (standard) 90%
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result

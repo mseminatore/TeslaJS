@@ -121,94 +121,152 @@
 <dt><a href="#vehicleState">vehicleState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle state</p>
 </dd>
+<dt><a href="#vehicleStateAsync">vehicleStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#climateState">climateState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the climate state</p>
 </dd>
+<dt><a href="#climateStateAsync">climateStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#driveState">driveState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the drive state</p>
 </dd>
+<dt><a href="#driveStateAsync">driveStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#chargeState">chargeState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the charge state</p>
 </dd>
+<dt><a href="#chargeStateAsync">chargeStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#guiSettings">guiSettings(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the GUI settings</p>
 </dd>
+<dt><a href="#guiSettingsAsync">guiSettingsAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#mobileEnabled">mobileEnabled(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the mobile enabled status</p>
 </dd>
+<dt><a href="#mobileEnabledAsync">mobileEnabledAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#honkHorn">honkHorn(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Honk the horn</p>
 </dd>
+<dt><a href="#honkHornAsync">honkHornAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#flashLights">flashLights(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Flash the lights</p>
 </dd>
+<dt><a href="#flashLightsAsync">flashLightsAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#startCharge">startCharge(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Start charging the car</p>
 </dd>
+<dt><a href="#startChargeAsync">startChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#stopCharge">stopCharge(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Stop charging the car</p>
 </dd>
+<dt><a href="#stopChargeAsync">stopChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#openChargePort">openChargePort(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the charge port</p>
 </dd>
+<dt><a href="#openChargePortAsync">openChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#closeChargePort">closeChargePort(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Close the charge port</p>
 </dd>
+<dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
 </dd>
+<dt><a href="#setChargeLimitAsync">setChargeLimitAsync(options, amt)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#chargeStandard">chargeStandard(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set charge limit to 90%</p>
 </dd>
+<dt><a href="#chargeStandardAsync">chargeStandardAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#chargeMaxRange">chargeMaxRange(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set charge limit to 100%</p>
 </dd>
+<dt><a href="#chargeMaxRangeAsync">chargeMaxRangeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#doorLock">doorLock(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Lock the car doors</p>
 </dd>
+<dt><a href="#doorLockAsync">doorLockAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#doorUnlock">doorUnlock(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Unlock the car doors</p>
 </dd>
+<dt><a href="#doorUnlockAsync">doorUnlockAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#climateStart">climateStart(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn on HVAC system</p>
 </dd>
+<dt><a href="#climateStartAsync">climateStartAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#climateStop">climateStop(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn off HVAC system</p>
 </dd>
+<dt><a href="#climateStopAsync">climateStopAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#sunRoofControl">sunRoofControl(options, state, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set sun roof mode</p>
 </dd>
+<dt><a href="#sunRoofControlAsync">sunRoofControlAsync(options, state)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#sunRoofMove">sunRoofMove(options, percent, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set sun roof position</p>
 </dd>
+<dt><a href="#sunRoofMoveAsync">sunRoofMoveAsync(options, percent)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#setTemps">setTemps(options, driver, pass, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the driver/passenger climate temperatures</p>
 </dd>
+<dt><a href="#setTempsAsync">setTempsAsync(options, driver, pass)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#remoteStart">remoteStart(options, password, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote start the car</p>
 </dd>
+<dt><a href="#remoteStartAsync">remoteStartAsync(options, password)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#openTrunk">openTrunk(options, which, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the trunk/frunk</p>
 </dd>
+<dt><a href="#openTrunkAsync">openTrunkAsync(options, which)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#wakeUp">wakeUp(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Wake up a car that is sleeping</p>
 </dd>
+<dt><a href="#wakeUpAsync">wakeUpAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#setValetMode">setValetMode(options, onoff, pin, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn valet mode on/off</p>
 </dd>
+<dt><a href="#setValetModeAsync">setValetModeAsync(options, onoff, pin)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#resetValetPin">resetValetPin(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Reset the valet pin</p>
 </dd>
+<dt><a href="#resetValetPinAsync">resetValetPinAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#calendar">calendar(options, entry, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set a calendar entry</p>
 </dd>
+<dt><a href="#calendarAsync">calendarAsync(options, entry)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#makeCalendarEntry">makeCalendarEntry(eventName, location, startTime, endTime, accountName, phoneName)</a> ⇒ <code>object</code></dt>
 <dd><p>Create a calendar entry</p>
 </dd>
 <dt><a href="#homelink">homelink(options, lat, long, string, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Trigger homelink</p>
 </dd>
+<dt><a href="#homelinkAsync">homelinkAsync(options, lat, long, string)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#startStreaming">startStreaming(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Start streaming car data</p>
 </dd>
@@ -589,6 +647,16 @@ GET the vehicle state
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="vehicleStateAsync"></a>
+
+## vehicleStateAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - vehicle_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="climateState"></a>
 
 ## climateState(options, callback) ⇒ <code>object</code>
@@ -601,6 +669,16 @@ GET the climate state
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="climateStateAsync"></a>
+
+## climateStateAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - climate_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="driveState"></a>
 
@@ -615,6 +693,16 @@ GET the drive state
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="driveStateAsync"></a>
+
+## driveStateAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - drive_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="chargeState"></a>
 
 ## chargeState(options, callback) ⇒ <code>object</code>
@@ -627,6 +715,16 @@ GET the charge state
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="chargeStateAsync"></a>
+
+## chargeStateAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - charge_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="guiSettings"></a>
 
@@ -641,6 +739,16 @@ GET the GUI settings
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="guiSettingsAsync"></a>
+
+## guiSettingsAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - gui_settings object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="mobileEnabled"></a>
 
 ## mobileEnabled(options, callback) ⇒ <code>object</code>
@@ -653,6 +761,16 @@ GET the mobile enabled status
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="mobileEnabledAsync"></a>
+
+## mobileEnabledAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - mobile_enabled object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="honkHorn"></a>
 
@@ -667,6 +785,16 @@ Honk the horn
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="honkHornAsync"></a>
+
+## honkHornAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="flashLights"></a>
 
 ## flashLights(options, callback) ⇒ <code>object</code>
@@ -679,6 +807,16 @@ Flash the lights
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="flashLightsAsync"></a>
+
+## flashLightsAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="startCharge"></a>
 
@@ -693,6 +831,16 @@ Start charging the car
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="startChargeAsync"></a>
+
+## startChargeAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="stopCharge"></a>
 
 ## stopCharge(options, callback) ⇒ <code>object</code>
@@ -705,6 +853,16 @@ Stop charging the car
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="stopChargeAsync"></a>
+
+## stopChargeAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="openChargePort"></a>
 
@@ -719,6 +877,16 @@ Open the charge port
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="openChargePortAsync"></a>
+
+## openChargePortAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="closeChargePort"></a>
 
 ## closeChargePort(options, callback) ⇒ <code>object</code>
@@ -731,6 +899,16 @@ Close the charge port
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="closeChargePortAsync"></a>
+
+## closeChargePortAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="setChargeLimit"></a>
 
@@ -746,6 +924,17 @@ Set the charge limitNote: charging to 100% frequently is NOT recommended for lo
 | amt | <code>int</code> | charge limit in percent |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="setChargeLimitAsync"></a>
+
+## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| amt | <code>int</code> | charge limit in percent |
+
 <a name="chargeStandard"></a>
 
 ## chargeStandard(options, callback) ⇒ <code>object</code>
@@ -758,6 +947,16 @@ Set charge limit to 90%
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="chargeStandardAsync"></a>
+
+## chargeStandardAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="chargeMaxRange"></a>
 
@@ -772,6 +971,16 @@ Set charge limit to 100%
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="chargeMaxRangeAsync"></a>
+
+## chargeMaxRangeAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="doorLock"></a>
 
 ## doorLock(options, callback) ⇒ <code>object</code>
@@ -784,6 +993,16 @@ Lock the car doors
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="doorLockAsync"></a>
+
+## doorLockAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="doorUnlock"></a>
 
@@ -798,6 +1017,16 @@ Unlock the car doors
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="doorUnlockAsync"></a>
+
+## doorUnlockAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="climateStart"></a>
 
 ## climateStart(options, callback) ⇒ <code>object</code>
@@ -811,6 +1040,16 @@ Turn on HVAC system
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="climateStartAsync"></a>
+
+## climateStartAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
 <a name="climateStop"></a>
 
 ## climateStop(options, callback) ⇒ <code>object</code>
@@ -823,6 +1062,16 @@ Turn off HVAC system
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="climateStopAsync"></a>
+
+## climateStopAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="sunRoofControl"></a>
 
@@ -838,6 +1087,17 @@ Set sun roof mode
 | state | <code>string</code> | one of "open", "vent", "close", "comfort" |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="sunRoofControlAsync"></a>
+
+## sunRoofControlAsync(options, state) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| state | <code>string</code> | one of "open", "vent", "close", "comfort" |
+
 <a name="sunRoofMove"></a>
 
 ## sunRoofMove(options, percent, callback) ⇒ <code>object</code>
@@ -851,6 +1111,17 @@ Set sun roof position
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | percent | <code>int</code> | position in percent |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="sunRoofMoveAsync"></a>
+
+## sunRoofMoveAsync(options, percent) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| percent | <code>int</code> | position in percent |
 
 <a name="setTemps"></a>
 
@@ -867,6 +1138,18 @@ Set the driver/passenger climate temperatures
 | pass | <code>number</code> | passenger temp in Deg.C |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="setTempsAsync"></a>
+
+## setTempsAsync(options, driver, pass) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| driver | <code>number</code> | driver temp in Deg.C |
+| pass | <code>number</code> | passenger temp in Deg.C |
+
 <a name="remoteStart"></a>
 
 ## remoteStart(options, password, callback) ⇒ <code>object</code>
@@ -880,6 +1163,17 @@ Remote start the car
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | password | <code>string</code> | Tesla.com password |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="remoteStartAsync"></a>
+
+## remoteStartAsync(options, password) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| password | <code>string</code> | Tesla.com password |
 
 <a name="openTrunk"></a>
 
@@ -895,6 +1189,17 @@ Open the trunk/frunk
 | which | <code>string</code> | one of "trunk", "frunk" |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="openTrunkAsync"></a>
+
+## openTrunkAsync(options, which) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| which | <code>string</code> | one of "trunk", "frunk" |
+
 <a name="wakeUp"></a>
 
 ## wakeUp(options, callback) ⇒ <code>object</code>
@@ -907,6 +1212,16 @@ Wake up a car that is sleeping
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="wakeUpAsync"></a>
+
+## wakeUpAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="setValetMode"></a>
 
@@ -923,6 +1238,18 @@ Turn valet mode on/off
 | pin | <code>int</code> | pin code |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
+<a name="setValetModeAsync"></a>
+
+## setValetModeAsync(options, onoff, pin) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| onoff | <code>boolean</code> | true for on, false for off |
+| pin | <code>int</code> | pin code |
+
 <a name="resetValetPin"></a>
 
 ## resetValetPin(options, callback) ⇒ <code>object</code>
@@ -935,6 +1262,16 @@ Reset the valet pin
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="resetValetPinAsync"></a>
+
+## resetValetPinAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="calendar"></a>
 
@@ -949,6 +1286,17 @@ Set a calendar entry
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | entry | <code>object</code> | calendar entry object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="calendarAsync"></a>
+
+## calendarAsync(options, entry) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| entry | <code>object</code> | calendar entry object |
 
 <a name="makeCalendarEntry"></a>
 
@@ -982,6 +1330,19 @@ Trigger homelink
 | long | <code>number</code> | vehicle GPS longitude |
 | string | <code>string</code> | one of the tokens from vehicle JSON |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="homelinkAsync"></a>
+
+## homelinkAsync(options, lat, long, string) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| lat | <code>number</code> | vehicle GPS latitude |
+| long | <code>number</code> | vehicle GPS longitude |
+| string | <code>string</code> | one of the tokens from vehicle JSON |
 
 <a name="startStreaming"></a>
 

@@ -91,6 +91,7 @@ Here are some of the more recent features and fixes:
 2. In **2.1.17** sampleFramework now uses `getModel()`
 3. In **2.1.18** removed `commander` dependency, more jsdocs tagging
 4. In **2.1.19** added gzip support
+5. In **2.1.20** expanded docs
 
 ## Known Issues
 

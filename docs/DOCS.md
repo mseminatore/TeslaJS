@@ -162,30 +162,36 @@
 <dd><p>Start charging the car</p>
 </dd>
 <dt><a href="#startChargeAsync">startChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Start charging the car</p>
+</dd>
 <dt><a href="#stopCharge">stopCharge(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Stop charging the car</p>
 </dd>
 <dt><a href="#stopChargeAsync">stopChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Stop charging the car</p>
+</dd>
 <dt><a href="#openChargePort">openChargePort(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the charge port</p>
 </dd>
 <dt><a href="#openChargePortAsync">openChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Open the charge port</p>
+</dd>
 <dt><a href="#closeChargePort">closeChargePort(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Close the charge port</p>
 </dd>
 <dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Close the charge port</p>
+</dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Set the charge limit
+<dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
 </dd>
 <dt><a href="#setChargeLimitAsync">setChargeLimitAsync(options, amt)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Set the charge limit async and return Promise.
+Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
+</dd>
 <dt><a href="#chargeStandard">chargeStandard(options, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Set charge limit to 90%</p>
+<dd><p>Set the charge limit to (standard) 90%</p>
 </dd>
 <dt><a href="#chargeStandardAsync">chargeStandardAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
@@ -834,6 +840,8 @@ Start charging the car
 <a name="startChargeAsync"></a>
 
 ## startChargeAsync(options) ⇒ <code>Promise</code>
+Start charging the car
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -857,6 +865,8 @@ Stop charging the car
 <a name="stopChargeAsync"></a>
 
 ## stopChargeAsync(options) ⇒ <code>Promise</code>
+Stop charging the car
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -880,6 +890,8 @@ Open the charge port
 <a name="openChargePortAsync"></a>
 
 ## openChargePortAsync(options) ⇒ <code>Promise</code>
+Open the charge port
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -903,6 +915,8 @@ Close the charge port
 <a name="closeChargePortAsync"></a>
 
 ## closeChargePortAsync(options) ⇒ <code>Promise</code>
+Close the charge port
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -913,7 +927,7 @@ Close the charge port
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limitNote: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -927,6 +941,8 @@ Set the charge limitNote: charging to 100% frequently is NOT recommended for lo
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
+Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -938,7 +954,7 @@ Set the charge limitNote: charging to 100% frequently is NOT recommended for lo
 <a name="chargeStandard"></a>
 
 ## chargeStandard(options, callback) ⇒ <code>object</code>
-Set charge limit to 90%
+Set the charge limit to (standard) 90%
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  

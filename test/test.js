@@ -127,6 +127,9 @@ describe('TeslaJS', function () {
         it('should return metallic grey', function () {
             assert.equal('metallic grey', tjs.getPaintColor({"option_codes": "PMTG"}));
         });
+        it('should return black', function () {
+            assert.equal('black', tjs.getPaintColor({"option_codes": "PPPP"}));
+        });
     });
 
 	describe('#login()', function() {
@@ -233,7 +236,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicles(options);
+	        tjs.allVehicles(options);
 	        done();
 	    });
 	});
@@ -978,6 +981,11 @@ describe('TeslaJS', function () {
 	                done(err);
 	            }
 	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.startStreaming(options);
+			done();
 	    });
 	});
 });

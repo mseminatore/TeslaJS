@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## v2.1.21
+* more test coverage
+* added global consts to docs
+
 ## v2.1.20
 * expanded docs
 

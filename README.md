@@ -92,6 +92,7 @@ Here are some of the more recent features and fixes:
 3. In **2.1.18** removed `commander` dependency, more jsdocs tagging
 4. In **2.1.19** added gzip support
 5. In **2.1.20** expanded docs
+6. In **2.1.21** expanded test cov and added consts to docs
 
 ## Known Issues
 

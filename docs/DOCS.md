@@ -293,94 +293,117 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 
 ## streamingPortal
 **Kind**: global variable  
+**Default**: <code>https://streaming.vn.teslamotors.com/stream</code>  
 <a name="portal"></a>
 
 ## portal
 **Kind**: global variable  
+**Default**: <code>https://owner-api.teslamotors.com</code>  
 <a name="API_LOG_ALWAYS"></a>
 
 ## API_LOG_ALWAYS
 **Kind**: global variable  
+**Default**: <code>0</code>  
 <a name="API_ERR_LEVEL"></a>
 
 ## API_ERR_LEVEL
 **Kind**: global variable  
+**Default**: <code>1</code>  
 <a name="API_CALL_LEVEL"></a>
 
 ## API_CALL_LEVEL
 **Kind**: global variable  
+**Default**: <code>2</code>  
 <a name="API_RETURN_LEVEL"></a>
 
 ## API_RETURN_LEVEL
 **Kind**: global variable  
+**Default**: <code>3</code>  
 <a name="API_BODY_LEVEL"></a>
 
 ## API_BODY_LEVEL
 **Kind**: global variable  
+**Default**: <code>4</code>  
 <a name="API_REQUEST_LEVEL"></a>
 
 ## API_REQUEST_LEVEL
 **Kind**: global variable  
+**Default**: <code>5</code>  
 <a name="API_RESPONSE_LEVEL"></a>
 
 ## API_RESPONSE_LEVEL
 **Kind**: global variable  
+**Default**: <code>6</code>  
 <a name="API_LOG_ALL"></a>
 
 ## API_LOG_ALL
 **Kind**: global variable  
+**Default**: <code>255</code>  
 <a name="CHARGE_STORAGE"></a>
 
 ## CHARGE_STORAGE
 **Kind**: global variable  
+**Default**: <code>50</code>  
 <a name="CHARGE_DAILY"></a>
 
 ## CHARGE_DAILY
 **Kind**: global variable  
+**Default**: <code>70</code>  
 <a name="CHARGE_STANDARD"></a>
 
 ## CHARGE_STANDARD
 **Kind**: global variable  
+**Default**: <code>90</code>  
 <a name="CHARGE_RANGE"></a>
 
 ## CHARGE_RANGE
 **Kind**: global variable  
+**Default**: <code>100</code>  
 <a name="SUNROOF_OPEN"></a>
 
 ## SUNROOF_OPEN
 **Kind**: global variable  
+**Default**: <code>open</code>  
 <a name="SUNROOF_VENT"></a>
 
 ## SUNROOF_VENT
 **Kind**: global variable  
+**Default**: <code>vent</code>  
 <a name="SUNROOF_CLOSED"></a>
 
 ## SUNROOF_CLOSED
 **Kind**: global variable  
+**Default**: <code>close</code>  
 <a name="SUNROOF_COMFORT"></a>
 
 ## SUNROOF_COMFORT
 **Kind**: global variable  
+**Default**: <code>comfort</code>  
 <a name="MIN_TEMP"></a>
 
 ## MIN_TEMP
 **Kind**: global variable  
+**Default**: <code>15.5</code>  
 <a name="MAX_TEMP"></a>
 
 ## MAX_TEMP
 **Kind**: global variable  
+**Default**: <code>26.7</code>  
 <a name="FRUNK"></a>
 
 ## FRUNK
 **Kind**: global variable  
+**Default**: <code>frunk</code>  
 <a name="TRUNK"></a>
 
 ## TRUNK
 **Kind**: global variable  
+**Default**: <code>trunk</code>  
 <a name="streamingColumns"></a>
 
 ## streamingColumns
 **Kind**: global variable  
+**Default**: <code>[&quot;elevation&quot;,&quot;est_heading&quot;,&quot;est_lat&quot;,&quot;est_lng&quot;,&quot;est_range&quot;,&quot;heading&quot;,&quot;odometer&quot;,&quot;power&quot;,&quot;range&quot;,&quot;shift_state&quot;,&quot;speed&quot;,&quot;soc&quot;]</code>  
 <a name="setLogLevel"></a>
 
 ## setLogLevel(level)

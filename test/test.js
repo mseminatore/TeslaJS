@@ -958,6 +958,16 @@ describe('TeslaJS', function () {
 	            }
 	        });
 	    });
+
+	    it('should fail', function (done) {
+	        tjs.get_command(options, "err_get", function (err, result) {
+	            if (err) {
+	                done();
+	            } else {
+	                done(result.reason);
+	            }
+	        });
+	    });
 	});
 
 	describe('#post_command(err_post)', function () {

@@ -19,7 +19,10 @@ var Promise = require('promise');
 //=======================
 // Streaming API portal
 //=======================
-/** @global */
+/** 
+ * @global 
+ * @default
+ */
 var streamingPortal = "https://streaming.vn.teslamotors.com/stream";
 exports.streamingPortal = streamingPortal;
 
@@ -28,7 +31,10 @@ var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
 //===========================
 // New OAuth-based API portal
 //===========================
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var portal = "https://owner-api.teslamotors.com";
 exports.portal = portal;
 
@@ -37,35 +43,59 @@ var portalBaseURI = process.env.TESLAJS_SERVER || portal;
 //=======================
 // Log levels
 //=======================
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_LOG_ALWAYS = 0;
 exports.API_LOG_ALWAYS = API_LOG_ALWAYS;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_ERR_LEVEL = 1;
 exports.API_ERR_LEVEL = API_ERR_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_CALL_LEVEL = 2;
 exports.API_CALL_LEVEL = API_CALL_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_RETURN_LEVEL = 3;
 exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_BODY_LEVEL = 4;
 exports.API_BODY_LEVEL = API_BODY_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_REQUEST_LEVEL = 5;
 exports.API_REQUEST_LEVEL = API_REQUEST_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_RESPONSE_LEVEL = 6;
 exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
@@ -761,13 +791,25 @@ exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
 //=====================
 // Charge limit constants
 //=====================
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.CHARGE_STORAGE  = 50;
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.CHARGE_DAILY    = 70;
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.CHARGE_STANDARD = 90;
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.CHARGE_RANGE    = 100;
 
 /**
@@ -898,13 +940,25 @@ exports.climateStopAsync = Promise.denodeify(exports.climateStop);
 //==================================
 // Set the sun roof to specific mode
 //==================================
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.SUNROOF_OPEN = "open";
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.SUNROOF_VENT = "vent";
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.SUNROOF_CLOSED = "close";
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.SUNROOF_COMFORT = "comfort";
 
 /**
@@ -949,9 +1003,15 @@ exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
 // Temperature Limits
 //==============================================
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.MIN_TEMP = 15.5;    // 60 Deg.F
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.MAX_TEMP = 26.7;    // 80 Deg.F
 
 /**
@@ -1006,9 +1066,15 @@ exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
 // Truns/Frunk constants
 //=====================
 
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.FRUNK = "frunk";
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.TRUNK = "trunk";
 
 /**
@@ -1218,7 +1284,10 @@ exports.autoPark = function autoPark(options, lat, long, action, callback) {
 //=================================
 // Available streaming data options
 //=================================
-/** @global */
+/**   
+ * @global   
+ * @default  
+ */
 exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc'];
 
 /**

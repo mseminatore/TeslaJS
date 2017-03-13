@@ -87,12 +87,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.16** test case(s) for streaming and fixed login failure test case
-2. In **2.1.17** sampleFramework now uses `getModel()`
-3. In **2.1.18** removed `commander` dependency, more jsdocs tagging
-4. In **2.1.19** added gzip support
-5. In **2.1.20** expanded docs
-6. In **2.1.21** expanded test cov and added consts to docs
+1. In **2.1.19** added gzip support
+2. In **2.1.20** expanded docs
+3. In **2.1.21** expanded test cov and added consts to docs
+4. In **2.1.22** enhanced error handling
 
 ## Known Issues
 

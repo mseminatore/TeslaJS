@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## v2.1.22
+* addressed #71 enhancing error handling
+
 ## v2.1.21
 * more test coverage
 * added global consts to docs

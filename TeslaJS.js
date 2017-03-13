@@ -366,6 +366,11 @@ exports.vehicles = function vehicles(options, callback) {
     request(req, function (error, response, body) {
         if (error) {
             log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
@@ -379,7 +384,7 @@ exports.vehicles = function vehicles(options, callback) {
             data.id = data.id_s;
             options.vehicleID = data.id;
             
-            callback(error, data);
+            callback(null, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);
@@ -437,6 +442,11 @@ exports.allVehicles = function allVehicles(options, callback) {
     request(req, function (error, response, body) {
         if (error) {
             log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
@@ -448,7 +458,7 @@ exports.allVehicles = function allVehicles(options, callback) {
             data = JSON.parse(body);
             data = data.response;
             
-            callback(error, data);
+            callback(null, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);
@@ -492,6 +502,11 @@ function get_command(options, command, callback) {
     request(req, function (error, response, body) {
         if (error) {
             log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
@@ -503,7 +518,7 @@ function get_command(options, command, callback) {
             data = JSON.parse(body);
             data = data.response;
 
-            callback(error, data);
+            callback(null, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing GET call response');
             callback(e, null);
@@ -549,6 +564,11 @@ function post_command(options, command, body, callback) {
     request(cmd, function (error, response, body) {
         if (error) {
             log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
@@ -560,7 +580,7 @@ function post_command(options, command, body, callback) {
             data = JSON.parse(body);
             data = data.response;
 
-            callback(error, data);
+            callback(null, data);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing POST call response');
             callback(e, null);

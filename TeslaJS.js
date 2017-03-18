@@ -248,6 +248,24 @@ exports.getPaintColor = function getPaintColor(vehicle) {
 }
 
 /**
+ * Return the vehicle VIN from vehicle JSON information
+ * @param {object} vehicle - vehicle JSON
+ * @return {string} the vehicle VIN
+ */
+exports.getVin = function getVin(vehicle) {
+    return vehicle.vin;
+}
+
+/**
+ * Return the vehicle VIN from vehicle JSON information
+ * @param {object} vehicle - vehicle JSON
+ * @return {string} the short version of the vehicle VIN
+ */
+exports.getShortVin = function getShortVin(vehicle) {
+    return vehicle.vin.substr(11);
+}
+
+/**
  * Login to the server and receive an OAuth token
  * @param {string} username - Tesla.com username
  * @param {string} password - Tesla.com password

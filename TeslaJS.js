@@ -1045,12 +1045,12 @@ exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
  * @global   
  * @default  
  */
-exports.MIN_TEMP = 15.5;    // 60 Deg.F
+exports.MIN_TEMP = 15;    // 59 Deg.F
 /**   
  * @global   
  * @default  
  */
-exports.MAX_TEMP = 26.7;    // 80 Deg.F
+exports.MAX_TEMP = 28;    // 82.4 Deg.F
 
 /**
  * Set the driver/passenger climate temperatures

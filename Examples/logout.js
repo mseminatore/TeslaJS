@@ -32,7 +32,7 @@ if (tokenFound) {
     } catch (e) {
     }
 
-    tjs.logout(token, function (result) {
+    tjs.logout(token, function (err, result) {
         console.log(result);
     });
 }

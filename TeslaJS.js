@@ -253,6 +253,10 @@ exports.getPaintColor = function getPaintColor(vehicle) {
  * @return {string} the vehicle VIN
  */
 exports.getVin = function getVin(vehicle) {
+    if (!vehicle || !vehicle.vin) {
+        throw new Error("invalid parameter");
+    }
+
     return vehicle.vin;
 }
 
@@ -262,6 +266,10 @@ exports.getVin = function getVin(vehicle) {
  * @return {string} the short version of the vehicle VIN
  */
 exports.getShortVin = function getShortVin(vehicle) {
+    if (!vehicle || !vehicle.vin) {
+        throw new Error("invalid parameter");
+    }
+
     return vehicle.vin.substr(11);
 }
 
@@ -335,22 +343,16 @@ exports.logout = function logout(authToken, callback) {
 
     callback = callback || function (err, result) { /* do nothing! */ }
 
-    callback(null, { error: "Not implemented!", response: "Not implemented!", body: "Not implemented!" });
-
-    log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
-
-/*
     request({
-        method: 'DELETE',
-        url: portalBaseURI + 'logout',
+        method: 'POST',
+        url: portalBaseURI + '/oauth/revoke',
         headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
-        callback({ error: error, response: response, body: body });
+        callback(error, { error: error, response: response, body: body });
 
         log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
     });
-*/
 }
 
 /**

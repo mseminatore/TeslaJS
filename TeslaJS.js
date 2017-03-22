@@ -524,7 +524,9 @@ function get_command(options, command, callback) {
         }
 
         if (response.statusCode != 200) {
-            return callback(response.statusMessage, null);
+            var str = "Error response: " + response.statusCode;
+            log(API_ERR_LEVEL, str);
+            return callback(str, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
@@ -586,7 +588,9 @@ function post_command(options, command, body, callback) {
         }
 
         if (response.statusCode != 200) {
-            return callback(response.statusMessage, null);
+            var str = "Error response: " + response.statusCode;
+            log(API_ERR_LEVEL, str);
+            return callback(str, null);
         }
 
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));

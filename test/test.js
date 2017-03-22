@@ -2,6 +2,8 @@ var assert = require('assert');
 var tjs = require('../TeslaJS');
 require('sepia');
 
+var options = {authToken: "abc123", vehicleID: "1234", vehicle_id: "1", username: user, password: pass};
+
 // be sure to set these to fake values in your environment before testing
 var user = process.env.TESLAJS_USER || "elon@tesla.com";
 var pass = process.env.TESLAJS_PASS || "password";
@@ -16,8 +18,7 @@ function failure(msg) {
 }
 
 describe('TeslaJS', function () {
-    var options = {authToken: "abc123", vehicleID: "1234", vehicle_id: "1", username: user, password: pass};
-    this.timeout(5000);
+    this.timeout(7500);
 
     describe('#getStreamingBaseURI()', function () {
         it('should return current streaming URI', function () {
@@ -951,16 +952,6 @@ describe('TeslaJS', function () {
 	describe('#get_command(err_get)', function () {
 	    it('should fail', function (done) {
 	        tjs.get_command(options, "data_request/err_get", function (err, result) {
-	            if (err) {
-	                done();
-	            } else {
-	                done(result.reason);
-	            }
-	        });
-	    });
-
-	    it('should fail', function (done) {
-	        tjs.get_command(options, "err_get", function (err, result) {
 	            if (err) {
 	                done();
 	            } else {

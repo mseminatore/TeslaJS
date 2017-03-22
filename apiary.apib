@@ -8,7 +8,7 @@ Its primary purpose is to enable testing the TeslaJS node library.
 
 # Group Authentication
 
-## Tokens [/oauth/token]
+## Login [/oauth/token]
 
 ### Get an Access Token [POST]
 
@@ -38,6 +38,26 @@ The current client ID and secret are [available here](http://pastebin.com/fX6ejA
               "expires_in": 7776000,
               "created_at": 1457385291,
               "refresh_token" : "cba321"
+            }
+            
+## Logout [/oauth/revoke]
+
+### Revoke an Access Token [POST]
+
+Revoke an access token
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": true
             }
 
 # Group Vehicles

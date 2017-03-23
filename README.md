@@ -87,12 +87,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.19** added gzip support
-2. In **2.1.20** expanded docs
-3. In **2.1.21** expanded test cov and added consts to docs
-4. In **2.1.22** enhanced error handling
-5. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
-6. In **2.1.24** added `refreshToken()` method and test cases
+1. In **2.1.22** enhanced error handling
+2. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
+3. In **2.1.24** added `refreshToken()` method and test cases
+4. In **2.1.25** added refreshToken to return obj from `login()` and `refreshToken()`
 
 ## Known Issues
 

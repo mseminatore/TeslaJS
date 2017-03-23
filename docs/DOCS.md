@@ -83,16 +83,16 @@
 <dd><p>Return the vehicle VIN from vehicle JSON information</p>
 </dd>
 <dt><a href="#login">login(username, password, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Login to the server and receive an OAuth token</p>
+<dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
 <dt><a href="#loginAsync">loginAsync(username, password)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Login to the server and receive an OAuth token</p>
+<dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
 <dt><a href="#refreshToken">refreshToken(refresh_token, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Retrieve a new OAuth token using a refresh_token</p>
+<dd><p>Retrieve new OAuth and refresh tokens using a refresh_token</p>
 </dd>
 <dt><a href="#refreshTokenAsync">refreshTokenAsync(refresh_token)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Async call to retrieve a new OAuth token using a refresh_token</p>
+<dd><p>Async call to retrieve new OAuth and refresh tokens using a refresh_token</p>
 </dd>
 <dt><a href="#logout">logout(authToken, callback)</a></dt>
 <dd><p>Logout and invalidate the current auth token</p>
@@ -521,10 +521,10 @@ Return the vehicle VIN from vehicle JSON information
 <a name="login"></a>
 
 ## login(username, password, callback) ⇒ <code>object</code>
-Login to the server and receive an OAuth token
+Login to the server and receive OAuth tokens
 
 **Kind**: global function  
-**Returns**: <code>object</code> - {response, body, authToken}  
+**Returns**: <code>object</code> - {response, body, authToken, refreshToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -535,10 +535,10 @@ Login to the server and receive an OAuth token
 <a name="loginAsync"></a>
 
 ## loginAsync(username, password) ⇒ <code>Promise</code>
-Login to the server and receive an OAuth token
+Login to the server and receive OAuth tokens
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - {response, body, authToken}  
+**Returns**: <code>Promise</code> - {response, body, authToken, refreshToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -548,10 +548,10 @@ Login to the server and receive an OAuth token
 <a name="refreshToken"></a>
 
 ## refreshToken(refresh_token, callback) ⇒ <code>object</code>
-Retrieve a new OAuth token using a refresh_token
+Retrieve new OAuth and refresh tokens using a refresh_token
 
 **Kind**: global function  
-**Returns**: <code>object</code> - {response, body, authToken}  
+**Returns**: <code>object</code> - {response, body, authToken, refreshToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -561,10 +561,10 @@ Retrieve a new OAuth token using a refresh_token
 <a name="refreshTokenAsync"></a>
 
 ## refreshTokenAsync(refresh_token) ⇒ <code>Promise</code>
-Async call to retrieve a new OAuth token using a refresh_token
+Async call to retrieve new OAuth and refresh tokens using a refresh_token
 
 **Kind**: global function  
-**Returns**: <code>Promise</code> - {response, body, authToken}  
+**Returns**: <code>Promise</code> - {response, body, authToken, refreshToken}  
 
 | Param | Type | Description |
 | --- | --- | --- |

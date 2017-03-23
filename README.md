@@ -91,6 +91,7 @@ Here are some of the more recent features and fixes:
 2. In **2.1.20** expanded docs
 3. In **2.1.21** expanded test cov and added consts to docs
 4. In **2.1.22** enhanced error handling
+5. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
 
 ## Known Issues
 

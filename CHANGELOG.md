@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## v2.1.23
+* added `getVin()` and `getShortVin()`
+* added test cases
+
 ## v2.1.22
 * addressed #71 enhancing error handling
 

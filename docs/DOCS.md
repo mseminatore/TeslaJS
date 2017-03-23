@@ -76,6 +76,12 @@
 <dt><a href="#getPaintColor">getPaintColor(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the paint color from vehicle JSON information</p>
 </dd>
+<dt><a href="#getVin">getVin(vehicle)</a> ⇒ <code>string</code></dt>
+<dd><p>Return the vehicle VIN from vehicle JSON information</p>
+</dd>
+<dt><a href="#getShortVin">getShortVin(vehicle)</a> ⇒ <code>string</code></dt>
+<dd><p>Return the vehicle VIN from vehicle JSON information</p>
+</dd>
 <dt><a href="#login">login(username, password, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Login to the server and receive an OAuth token</p>
 </dd>
@@ -383,12 +389,12 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 
 ## MIN_TEMP
 **Kind**: global variable  
-**Default**: <code>15.5</code>  
+**Default**: <code>15</code>  
 <a name="MAX_TEMP"></a>
 
 ## MAX_TEMP
 **Kind**: global variable  
-**Default**: <code>26.7</code>  
+**Default**: <code>28</code>  
 <a name="FRUNK"></a>
 
 ## FRUNK
@@ -477,6 +483,30 @@ Return the paint color from vehicle JSON information
 
 **Kind**: global function  
 **Returns**: <code>string</code> - the vehicle paint color  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| vehicle | <code>object</code> | vehicle JSON |
+
+<a name="getVin"></a>
+
+## getVin(vehicle) ⇒ <code>string</code>
+Return the vehicle VIN from vehicle JSON information
+
+**Kind**: global function  
+**Returns**: <code>string</code> - the vehicle VIN  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| vehicle | <code>object</code> | vehicle JSON |
+
+<a name="getShortVin"></a>
+
+## getShortVin(vehicle) ⇒ <code>string</code>
+Return the vehicle VIN from vehicle JSON information
+
+**Kind**: global function  
+**Returns**: <code>string</code> - the short version of the vehicle VIN  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -312,7 +312,7 @@ exports.login = function login(username, password, callback) {
         var loginResult;
 
         try {
-            var loginResult = JSON.parse(body);
+            loginResult = JSON.parse(body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing response to oauth token request');
         }
@@ -369,7 +369,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
         var loginResult;
 
         try {
-            var loginResult = JSON.parse(body);
+            loginResult = JSON.parse(body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing response to oauth token request');
         }

@@ -78,10 +78,15 @@ exports.SampleFramework = function SampleFramework(program, main) {
         }
 
         if (this.tokenFound) {
-            var token = JSON.parse(fs.readFileSync('.token', 'utf8'));
+            var fileStr = fs.readFileSync('.token', 'utf8');
+            var token = JSON.parse(fileStr);
 
             if (!token) {
                 program.help();
+            }
+
+            if (token.access_token) {
+                token = token.access_token;
             }
 
             this.login_cb(null, { error: false, authToken: token });

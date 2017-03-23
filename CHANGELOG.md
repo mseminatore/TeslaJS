@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## v2.1.24
+* added `refreshToken()` and test cases
+* updated samples to save/use full token payload
+
 ## v2.1.23
 * added `getVin()` and `getShortVin()`
 * added test cases

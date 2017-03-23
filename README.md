@@ -92,6 +92,7 @@ Here are some of the more recent features and fixes:
 3. In **2.1.21** expanded test cov and added consts to docs
 4. In **2.1.22** enhanced error handling
 5. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
+6. In **2.1.24** added `refreshToken()` method and test cases
 
 ## Known Issues
 
@@ -267,6 +268,8 @@ Function | Description
 -------- | -----------
 getLogLevel() | gets the level of debug logging
 setLogLevel() | sets the level of debug logging
+getVin() | return the VIN from the vehicle object
+getShortVin() | return short form VIN from the vehicle object
 getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
@@ -305,6 +308,7 @@ startCharge() | initiates a charging session
 stopCharge() | terminates a charging session
 openChargePort() | opens the charge port
 openTrunk() | open the trunk or frunk
+refreshToken() | retrieve new OAuth token from refresh token
 remoteStart() | enables remote starting of the car
 resetValetPin() | reset the valet pin
 setChargeLimit() | sets the charge limit to a specific amount
@@ -339,6 +343,7 @@ startChargeAsync() | initiates a charging session
 stopChargeAsync() | terminates a charging session
 openChargePortAsync() | opens the charge port
 openTrunkAsync() | open the trunk or frunk
+refreshTokenAsync() | retrieve new OAuth token from refresh token
 remoteStartAsync() | enables remote starting of the car
 resetValetPinAsync() | reset the valet pin
 setChargeLimitAsync() | sets the charge limit to a specific amount

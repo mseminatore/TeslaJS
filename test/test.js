@@ -204,6 +204,42 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#refreshToken()', function() {
+	    it('should succeed with valid refresh token', function (done) {
+			tjs.refreshToken("faketoken", function(err, result) {
+				if (result.response.statusCode == 200) {
+				    options.authToken = result.authToken;
+                    done();
+				} else {
+				    done(result.response.statusMessage);
+				}
+			});
+		});
+
+	    it('should succeed with valid refresh token and no callback', function (done) {
+	        tjs.refreshToken("faketoken");
+	        done();
+	    });
+
+	    it('should fail with missing refresh token', function (done) {
+	        tjs.refreshToken(null, function(err, result){
+				if (err) {
+			        done();
+				} else {
+					done(result);
+				}
+			});
+	    });
+	});
+
+	describe('#refreshTokenAsync()', function () {
+	    it('should succeed with valid user and pwd', function () {
+	        return tjs.refreshTokenAsync("faketoken").then(function (result) {
+	            assert.equal(result.response.statusCode, 200);
+	        });
+	    });
+	});
+
 	describe('#logout()', function () {
 	    it('should succeed', function (done) {
 	        tjs.logout("token", function (err, result) {

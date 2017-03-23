@@ -334,6 +334,63 @@ exports.login = function login(username, password, callback) {
 exports.loginAsync = Promise.denodeify(exports.login);
 
 /**
+ * Retrieve a new OAuth token using a refresh_token
+ * @param {string} refresh_token - a valid OAuth refresh_token from a previous login
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} {response, body, authToken}
+ */
+exports.refreshToken = function refreshToken(refresh_token, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.refreshToken()");
+    
+    callback = callback || function (err, result) { /* do nothing! */ }
+
+    if (!refresh_token) {
+        callback("refreshToken() requires a refresh_token", null);
+        return;
+    } 
+
+    var req = {
+        method: 'POST',
+        url: portalBaseURI + '/oauth/token',
+        gzip: true,
+        form: {
+            "grant_type": "refresh_token",
+            "client_id": c_id,
+            "client_secret": c_sec,
+            "refresh_token": refresh_token
+        }
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+    request(req, function (error, response, body) {
+
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(body));
+
+        var authToken;
+
+        try {
+            var authdata = JSON.parse(body);
+            authToken = authdata.access_token;
+        } catch (e) {
+            log(API_ERR_LEVEL, 'Error parsing response to oauth token request');
+        }
+
+        callback(error, { error: error, response: response, body: body, authToken: authToken });
+
+        log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
+    });
+}
+
+/**
+ * Async call to retrieve a new OAuth token using a refresh_token
+ * @function refreshTokenAsync
+ * @param {string} refresh_token - a valid OAuth refresh_token from a previous login
+ * @returns {Promise} {response, body, authToken}
+ */
+exports.refreshTokenAsync = Promise.denodeify(exports.refreshToken);
+
+/**
  * Logout and invalidate the current auth token
  * @param {string} authToken - Tesla provided OAuth token
  * @param {nodeBack} callback - Node-style callback

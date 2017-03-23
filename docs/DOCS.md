@@ -88,6 +88,12 @@
 <dt><a href="#loginAsync">loginAsync(username, password)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Login to the server and receive an OAuth token</p>
 </dd>
+<dt><a href="#refreshToken">refreshToken(refresh_token, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>Retrieve a new OAuth token using a refresh_token</p>
+</dd>
+<dt><a href="#refreshTokenAsync">refreshTokenAsync(refresh_token)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Async call to retrieve a new OAuth token using a refresh_token</p>
+</dd>
 <dt><a href="#logout">logout(authToken, callback)</a></dt>
 <dd><p>Logout and invalidate the current auth token</p>
 </dd>
@@ -538,6 +544,31 @@ Login to the server and receive an OAuth token
 | --- | --- | --- |
 | username | <code>string</code> | Tesla.com username |
 | password | <code>string</code> | Tesla.com password |
+
+<a name="refreshToken"></a>
+
+## refreshToken(refresh_token, callback) ⇒ <code>object</code>
+Retrieve a new OAuth token using a refresh_token
+
+**Kind**: global function  
+**Returns**: <code>object</code> - {response, body, authToken}  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| refresh_token | <code>string</code> | a valid OAuth refresh_token from a previous login |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="refreshTokenAsync"></a>
+
+## refreshTokenAsync(refresh_token) ⇒ <code>Promise</code>
+Async call to retrieve a new OAuth token using a refresh_token
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - {response, body, authToken}  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| refresh_token | <code>string</code> | a valid OAuth refresh_token from a previous login |
 
 <a name="logout"></a>
 

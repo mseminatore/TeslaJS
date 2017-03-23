@@ -63,14 +63,16 @@ requiring access to passwords.
 
 ## Contributing
 
-Contributions are welcome, particularly bug fixes and enhancements!  Pull 
-Requests will be considered with the following guidelines.
+Contributions are welcome, particularly bug fixes and enhancements!  `Pull 
+Requests` will be considered with the following criteria:
 
 1. Must pass both `npm test` and `wintest` tests
 2. Should meet or exceed current code coverage level
 3. Must respect and align to Project Principles (see above)
 4. Must add general value to the project
-5. Project owners reserve the right to accept or reject any PR for any reason
+5. Must update appropriate documentation
+
+> Project owners reserve the right to accept or reject any PR for any reason
 
 ## Code of Conduct
 
@@ -98,20 +100,20 @@ Here are some of the more recent features and fixes:
 AP test and report back?
 2. Calendar support not yet functional.  If someone can share the JSON for a 
 valid calendar request that would help!
-3. Sunroof API was changed by Tesla to limit functionality.  Will be 
+3. Sunroof API was recently changed by Tesla to limit functionality.  Will be 
 addressed in TeslaJS soon.
 
 # Tesla API Documentation
 
 The Tesla REST API encapusulated by this library was documented through the 
 collaboration of many Tesla owners.  Please thank and support them for their 
-efforts.  The current REST API documentation can be found at:
+efforts!  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/
 
->Note that timdorr has announced plans to migrate the documentation to a new 
->location.  This reference will be updated in the future once that migration 
->is complete.
+> Note that timdorr has announced plans to migrate the documentation to a new 
+> location.  This reference will be updated in the future once that migration 
+> is complete.
 	
 # Warranty Disclaimer
 

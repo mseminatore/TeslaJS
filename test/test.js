@@ -145,7 +145,7 @@ describe('TeslaJS', function () {
         
 		it('should throw with no vin', function () {
             assert.throws( function() {
-				tjs.getVin( {} )
+				tjs.getVin( {} );
 			});
         });
     });

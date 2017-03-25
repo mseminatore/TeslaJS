@@ -34,8 +34,6 @@ function sampleMain(tjs, options) {
     tjs.vehicleStateAsync(options).then( function (vehicle_state) {
         var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
 
-        console.log("\nVehicle name: " + vehicle_state.vehicle_name.green);
-
         console.log("\nDoors: " + str);
         if (vehicle_state.df) {
             console.log("Driver door: " + "OPEN".red);
@@ -57,18 +55,18 @@ function sampleMain(tjs, options) {
         }
 
         if (vehicle_state.sun_roof_installed) {
-            var state = "CLOSED";
+            var state = "CLOSED".green;
 
             if (vehicle_state.sun_roof_state != "unknown") {
-                state = vehicle_state.sun_roof_state.toUpperCase();
+                state = vehicle_state.sun_roof_state.toUpperCase().red;
             }
 
-            console.log("Sunroof: " + state.green);
+            console.log("Sunroof: " + state);
         }
 
         console.log("Firmware: " + vehicle_state.car_version.green);
 
-        str = vehicle_state.valet_mode ? "ON" : "OFF";
-        console.log("Valet mode: " + str.bgGreen);
+        str = vehicle_state.valet_mode ? "ON".bgGreen : "OFF".green;
+        console.log("Valet mode: " + str);
     });
 }

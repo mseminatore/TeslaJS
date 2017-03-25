@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## v2.1.26
+* small sample tweaks
+
 ## v2.1.25
 * added `refresh_token` property to obj return from `login()` and `refreshToken()`
 

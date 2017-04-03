@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.27
+* fixed crash in setChargeLimit sample
+
 ## v2.1.26
 * small sample tweaks
 

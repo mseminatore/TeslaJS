@@ -93,6 +93,7 @@ Here are some of the more recent features and fixes:
 2. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
 3. In **2.1.24** added `refreshToken()` method and test cases
 4. In **2.1.25** added refreshToken to return obj from `login()` and `refreshToken()`
+5. In **2.1.27** fixed crash in setChargeLimit sample
 
 ## Known Issues
 

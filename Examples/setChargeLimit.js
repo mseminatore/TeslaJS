@@ -33,6 +33,9 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     var amt = program.args[0];
+    if (!amt) {
+        program.help();
+    }
 
     // handle named values
     if (amt.toLowerCase() == "standard") {

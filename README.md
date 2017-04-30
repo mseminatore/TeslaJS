@@ -89,11 +89,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.22** enhanced error handling
-2. In **2.1.23** added `getVin()` and `getShortVin()` methods and test cases
-3. In **2.1.24** added `refreshToken()` method and test cases
-4. In **2.1.25** added refreshToken to return obj from `login()` and `refreshToken()`
-5. In **2.1.27** fixed crash in setChargeLimit sample
+1. In **2.1.24** added `refreshToken()` method and test cases
+2. In **2.1.25** added refreshToken to return obj from `login()` and `refreshToken()`
+3. In **2.1.27** fixed crash in setChargeLimit sample
+4. In **2.1.28** added support for new `/data` endpoint, **soc** sample now uses
 
 ## Known Issues
 
@@ -250,6 +249,14 @@ And using the new Async Promise-based calls:
 	});
 ```
 
+Or using the new vehicleData API call:
+
+```javascript
+    tjs.vehicleData(options).done(function(vehicleData) {
+        var chargeState = vehicleData.charge_state;
+        console.log("Current charge level: " + chargeState.battery_level + '%');
+    });
+
 # Library Interfaces
 
 The TeslaJS library exports a number of methods and constants.  The library 
@@ -318,6 +325,7 @@ setValetMode() | set/reset valet mode
 startStreaming() | initiate a streaming data session
 sunRoofControl() | put the sunroof into a specific state
 sunRoofMove() | open the sunroof to a specific percent
+vehicleData() | retrieve **all** vehicle state data in a single call
 vehicleState() | retrieve the vehicle_state data
 wakeUp() | attempt to wake a sleeping vehicle
 
@@ -353,6 +361,7 @@ setValetModeAsync() | set/reset valet mode
 startStreamingAsync() | initiate a streaming data session
 sunRoofControlAsync() | put the sunroof into a specific state
 sunRoofMoveAsync() | open the sunroof to a specific percent
+vehicleDataAsync() | retrieve **all** vehicle state data in a single call
 vehicleStateAsync() | retrieve the vehicle_state data
 wakeUpAsync() | attempt to wake a sleeping vehicle
 

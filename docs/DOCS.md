@@ -535,7 +535,7 @@ Login to the server and receive OAuth tokens
 | --- | --- | --- |
 | username | <code>string</code> | Tesla.com username |
 | password | <code>string</code> | Tesla.com password |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="loginAsync"></a>
 
@@ -561,7 +561,7 @@ Retrieve new OAuth and refresh tokens using a refresh_token
 | Param | Type | Description |
 | --- | --- | --- |
 | refresh_token | <code>string</code> | a valid OAuth refresh_token from a previous login |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="refreshTokenAsync"></a>
 
@@ -585,7 +585,7 @@ Logout and invalidate the current auth token
 | Param | Type | Description |
 | --- | --- | --- |
 | authToken | <code>string</code> | Tesla provided OAuth token |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="logoutAsync"></a>
 
@@ -609,8 +609,8 @@ Return vehicle information on the requested vehicle
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="vehicle"></a>
 
@@ -622,8 +622,8 @@ Return vehicle information on the requested vehicle
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="vehicleAsync"></a>
 
@@ -635,7 +635,7 @@ Return vehicle information on the requested vehicle
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="vehiclesAsync"></a>
 
@@ -647,7 +647,7 @@ Return vehicle information on the requested vehicle
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="allVehicles"></a>
 
@@ -659,8 +659,8 @@ Return vehicle information on ALL vehicles
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="allVehiclesAsync"></a>
 
@@ -672,8 +672,8 @@ Return vehicle information on ALL vehicles
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="get_command"></a>
 
@@ -684,9 +684,9 @@ Generic REST call for GET commands
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | command | <code>string</code> | REST command |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="get_commandAsync"></a>
 
@@ -698,7 +698,7 @@ Generic Async REST call for GET commands
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | command | <code>string</code> | REST command |
 
 <a name="post_command"></a>
@@ -710,10 +710,10 @@ Generic REST call for POST commands
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | command | <code>string</code> | REST command |
 | body | <code>object</code> | JSON payload |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="post_commandAsync"></a>
 
@@ -725,7 +725,7 @@ Generic Async REST call for POST commands
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | command | <code>string</code> | REST command |
 | body | <code>object</code> | JSON payload |
 
@@ -739,8 +739,8 @@ GET all vehicle data in a single call
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="vehicleDataAsync"></a>
 
@@ -750,7 +750,7 @@ GET all vehicle data in a single call
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="vehicleState"></a>
 
@@ -762,8 +762,8 @@ GET the vehicle state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="vehicleStateAsync"></a>
 
@@ -773,7 +773,7 @@ GET the vehicle state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="climateState"></a>
 
@@ -785,8 +785,8 @@ GET the climate state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="climateStateAsync"></a>
 
@@ -796,7 +796,7 @@ GET the climate state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="driveState"></a>
 
@@ -808,8 +808,8 @@ GET the drive state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="driveStateAsync"></a>
 
@@ -819,7 +819,7 @@ GET the drive state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="chargeState"></a>
 
@@ -831,8 +831,8 @@ GET the charge state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="chargeStateAsync"></a>
 
@@ -842,7 +842,7 @@ GET the charge state
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="guiSettings"></a>
 
@@ -854,8 +854,8 @@ GET the GUI settings
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="guiSettingsAsync"></a>
 
@@ -865,7 +865,7 @@ GET the GUI settings
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="mobileEnabled"></a>
 
@@ -877,8 +877,8 @@ GET the mobile enabled status
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="mobileEnabledAsync"></a>
 
@@ -888,7 +888,7 @@ GET the mobile enabled status
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="honkHorn"></a>
 
@@ -900,8 +900,8 @@ Honk the horn
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="honkHornAsync"></a>
 
@@ -911,7 +911,7 @@ Honk the horn
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="flashLights"></a>
 
@@ -923,8 +923,8 @@ Flash the lights
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="flashLightsAsync"></a>
 
@@ -934,7 +934,7 @@ Flash the lights
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="startCharge"></a>
 
@@ -946,8 +946,8 @@ Start charging the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="startChargeAsync"></a>
 
@@ -959,7 +959,7 @@ Start charging the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="stopCharge"></a>
 
@@ -971,8 +971,8 @@ Stop charging the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="stopChargeAsync"></a>
 
@@ -984,7 +984,7 @@ Stop charging the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="openChargePort"></a>
 
@@ -996,8 +996,8 @@ Open the charge port
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="openChargePortAsync"></a>
 
@@ -1009,7 +1009,7 @@ Open the charge port
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="closeChargePort"></a>
 
@@ -1021,8 +1021,8 @@ Close the charge port
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="closeChargePortAsync"></a>
 
@@ -1034,35 +1034,33 @@ Close the charge port
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | amt | <code>int</code> | charge limit in percent |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | amt | <code>int</code> | charge limit in percent |
 
 <a name="chargeStandard"></a>
@@ -1075,8 +1073,8 @@ Set the charge limit to (standard) 90%
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="chargeStandardAsync"></a>
 
@@ -1086,7 +1084,7 @@ Set the charge limit to (standard) 90%
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="chargeMaxRange"></a>
 
@@ -1098,8 +1096,8 @@ Set charge limit to 100%
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="chargeMaxRangeAsync"></a>
 
@@ -1109,7 +1107,7 @@ Set charge limit to 100%
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="doorLock"></a>
 
@@ -1121,8 +1119,8 @@ Lock the car doors
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="doorLockAsync"></a>
 
@@ -1132,7 +1130,7 @@ Lock the car doors
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="doorUnlock"></a>
 
@@ -1144,8 +1142,8 @@ Unlock the car doors
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="doorUnlockAsync"></a>
 
@@ -1155,7 +1153,7 @@ Unlock the car doors
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="climateStart"></a>
 
@@ -1167,8 +1165,8 @@ Turn on HVAC system
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="climateStartAsync"></a>
 
@@ -1178,7 +1176,7 @@ Turn on HVAC system
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="climateStop"></a>
 
@@ -1190,8 +1188,8 @@ Turn off HVAC system
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="climateStopAsync"></a>
 
@@ -1201,7 +1199,7 @@ Turn off HVAC system
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="sunRoofControl"></a>
 
@@ -1213,9 +1211,9 @@ Set sun roof mode
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | state | <code>string</code> | one of "open", "vent", "close", "comfort" |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="sunRoofControlAsync"></a>
 
@@ -1225,7 +1223,7 @@ Set sun roof mode
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | state | <code>string</code> | one of "open", "vent", "close", "comfort" |
 
 <a name="sunRoofMove"></a>
@@ -1238,9 +1236,9 @@ Set sun roof position
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | percent | <code>int</code> | position in percent |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="sunRoofMoveAsync"></a>
 
@@ -1250,7 +1248,7 @@ Set sun roof position
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | percent | <code>int</code> | position in percent |
 
 <a name="setTemps"></a>
@@ -1263,10 +1261,10 @@ Set the driver/passenger climate temperatures
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | driver | <code>number</code> | driver temp in Deg.C |
 | pass | <code>number</code> | passenger temp in Deg.C |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="setTempsAsync"></a>
 
@@ -1276,7 +1274,7 @@ Set the driver/passenger climate temperatures
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | driver | <code>number</code> | driver temp in Deg.C |
 | pass | <code>number</code> | passenger temp in Deg.C |
 
@@ -1290,9 +1288,9 @@ Remote start the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | password | <code>string</code> | Tesla.com password |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="remoteStartAsync"></a>
 
@@ -1302,7 +1300,7 @@ Remote start the car
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | password | <code>string</code> | Tesla.com password |
 
 <a name="openTrunk"></a>
@@ -1315,9 +1313,9 @@ Open the trunk/frunk
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | which | <code>string</code> | one of "trunk", "frunk" |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="openTrunkAsync"></a>
 
@@ -1327,7 +1325,7 @@ Open the trunk/frunk
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | which | <code>string</code> | one of "trunk", "frunk" |
 
 <a name="wakeUp"></a>
@@ -1340,8 +1338,8 @@ Wake up a car that is sleeping
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="wakeUpAsync"></a>
 
@@ -1351,7 +1349,7 @@ Wake up a car that is sleeping
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="setValetMode"></a>
 
@@ -1363,10 +1361,10 @@ Turn valet mode on/off
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | onoff | <code>boolean</code> | true for on, false for off |
 | pin | <code>int</code> | pin code |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="setValetModeAsync"></a>
 
@@ -1376,7 +1374,7 @@ Turn valet mode on/off
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | onoff | <code>boolean</code> | true for on, false for off |
 | pin | <code>int</code> | pin code |
 
@@ -1390,8 +1388,8 @@ Reset the valet pin
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="resetValetPinAsync"></a>
 
@@ -1401,7 +1399,7 @@ Reset the valet pin
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 
 <a name="calendar"></a>
 
@@ -1413,9 +1411,9 @@ Set a calendar entry
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | entry | <code>object</code> | calendar entry object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="calendarAsync"></a>
 
@@ -1425,7 +1423,7 @@ Set a calendar entry
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | entry | <code>object</code> | calendar entry object |
 
 <a name="makeCalendarEntry"></a>
@@ -1455,11 +1453,11 @@ Trigger homelink
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | lat | <code>number</code> | vehicle GPS latitude |
 | long | <code>number</code> | vehicle GPS longitude |
 | string | <code>string</code> | one of the tokens from vehicle JSON |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="homelinkAsync"></a>
 
@@ -1469,7 +1467,7 @@ Trigger homelink
 
 | Param | Type | Description |
 | --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
+| options | <code>[optionsType](#optionsType)</code> | options object |
 | lat | <code>number</code> | vehicle GPS latitude |
 | long | <code>number</code> | vehicle GPS longitude |
 | string | <code>string</code> | one of the tokens from vehicle JSON |
@@ -1485,7 +1483,7 @@ Start streaming car data
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>object</code> | {username, token, vehicle_id, columns[]} |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="optionsType"></a>
 

@@ -680,6 +680,23 @@ function post_command(options, command, body, callback) {
 exports.post_commandAsync = Promise.denodeify(exports.post_command);
 
 /**
+ * GET all vehicle data in a single call
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} vehicle_data object
+ */
+exports.vehicleData = function vehicleData(options, callback){
+    get_command(options, "data", callback);
+}
+
+/**
+ * @function vehicleDataAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} vehicle_data object
+ */
+exports.vehicleDataAsync = Promise.denodeify(exports.vehicleData);
+
+/**
  * GET the vehicle state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback

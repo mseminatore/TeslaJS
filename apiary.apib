@@ -125,6 +125,102 @@ Determines if mobile access to the vehicle is enabled.
                 "response": true
             }
 
+## Data [GET /api/1/vehicles/{vehicle_id}/data]
+
+Returns all vehicle data in a single call.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                    "color": null,
+                    "display_name": null,
+                    "id": 321,
+                    "option_codes": "MS01,RENA,TM00,DRLH,PF00,BT85,PBCW,RFPO,WT19,IBMB,IDPB,TR00,SU01,SC01,TP01,AU01,CH00,HP00,PA00,PS00,AD02,X020,X025,X001,X003,X007,X011,X013",
+                    "user_id": 123,
+                    "vehicle_id": 1234567890,
+                    "vin": "5YJSA1CN5CFP01657",
+                    "tokens": ["x", "x"],
+                    "state": "online",
+                    "charge_state": {
+                        "charging_state": "Complete",
+                        "charge_to_max_range": false,
+                        "max_range_charge_counter": 0,
+                        "fast_charger_present": false,
+                        "battery_range": 239.02,
+                        "est_battery_range": 155.79,
+                        "ideal_battery_range": 275.09,
+                        "battery_level": 91,
+                        "battery_current": -0.6,
+                        "charge_starting_range": null,
+                        "charge_starting_soc": null,
+                        "charger_voltage": 0,
+                        "charger_pilot_current": 40,
+                        "charger_actual_current": 0,
+                        "charger_power": 0,
+                        "time_to_full_charge": null,
+                        "charge_rate": -1.0,
+                        "motorized_charge_port": false,
+                        "charge_energy_added": 14.74,
+                        "charge_miles_added_rated": 50,
+                        "charge_miles_added_ideal": 58,
+                        "charge_port_door_open": true },
+                    "climate_state": {
+                        "inside_temp": 17.0,
+                        "outside_temp": 9.5,
+                        "driver_temp_setting": 22.6,
+                        "passenger_temp_setting": 22.6,
+                        "is_auto_conditioning_on": false,
+                        "is_front_defroster_on": null,
+                        "is_rear_defroster_on": false,
+                        "fan_status": 0 },
+                    "drive_state": {
+                        "shift_state": null,
+                        "speed": null,
+                        "latitude": 33.794839,
+                        "longitude": -84.401593,
+                        "heading": 4,
+                        "gps_as_of": 1359863204 },
+                    "gui_settings": {
+                        "gui_distance_units": "mi/hr",
+                        "gui_temperature_units": "F",
+                        "gui_charge_rate_units": "mi/hr",
+                        "gui_24_hour_time": false,
+                        "gui_range_display": "Rated" },
+                    "mobile_enabled": true,
+                    "vehicle_state": {
+                        "df": false,
+                        "dr": false,
+                        "pf": false,
+                        "pr": false,
+                        "ft": false,
+                        "rt": false,
+                        "car_version": "1.19.42",
+                        "locked": true,
+                        "sun_roof_installed": false,
+                        "sun_roof_state": "unknown",
+                        "sun_roof_percent_open": 0,
+                        "dark_rims": false,
+                        "wheel_type": "Base19",
+                        "has_spoiler": false,
+                        "roof_color": "Colored",
+                        "perf_config": "Base" }
+                }
+            }
+
+
 ## Charge State [GET /api/1/vehicles/{vehicle_id}/data_request/charge_state]
 
 Returns the state of charge in the battery.

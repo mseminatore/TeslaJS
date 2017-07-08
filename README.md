@@ -291,7 +291,7 @@ vehicleAsync() | same as above
 allVehicles() | return information and option data for all vehicles
 allVehiclesAsync() | same as above but returns a Promise
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
-getpaintColor(vehicle) | returns the paint color as a string from vehicle object
+getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 	

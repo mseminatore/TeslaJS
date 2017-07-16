@@ -3,7 +3,7 @@
   "version": "2.1.29",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
-    "promise": "^7.1.1",
+    "promise": "^8.0.1",
     "request": "^2.81.0"
   },
   "bugs": {

@@ -257,6 +257,8 @@ Or using the new vehicleData API call:
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
 
+```
+
 # Library Interfaces
 
 The TeslaJS library exports a number of methods and constants.  The library 

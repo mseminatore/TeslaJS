@@ -314,7 +314,7 @@ honkHorn() | honks the horn
 mobileEnabled() | returns whether mobile access is enabled
 startCharge() | initiates a charging session
 stopCharge() | terminates a charging session
-openChargePort() | opens the charge port
+openChargePort() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 openTrunk() | open the trunk or frunk
 refreshToken() | retrieve new OAuth token from refresh token
 remoteStart() | enables remote starting of the car
@@ -350,7 +350,7 @@ honkHornAsync() | honks the horn
 mobileEnabledAsync() | returns whether mobile access is enabled
 startChargeAsync() | initiates a charging session
 stopChargeAsync() | terminates a charging session
-openChargePortAsync() | opens the charge port
+openChargePortAsync() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 openTrunkAsync() | open the trunk or frunk
 refreshTokenAsync() | retrieve new OAuth token from refresh token
 remoteStartAsync() | enables remote starting of the car
@@ -433,7 +433,7 @@ Sample | Description
 [lock](#lockjs) | Lock the car doors
 [mobileEnabled](#mobileenabledjs) | Display whether remote access is enabled
 [odometer](#odometerjs) | Displays the current odometer value
-[openChargePort](#openchargeportjs) | Opens the charge port
+[openChargePort](#openchargeportjs) | Opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 [resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
 [setChargeLimit](#setchargelimitjs) | Set the battery charge limit to the given value
@@ -657,7 +657,8 @@ Usage:
 
 ## openChargePort.js
 
-This sample sends the command to open the charge port.
+This sample sends the command to open the charge port, or to release the latch if
+the charge port is open, a cable is plugged in, and charging is stopped.
 
 Usage:
 

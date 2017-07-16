@@ -188,16 +188,16 @@
 <dd><p>Stop charging the car</p>
 </dd>
 <dt><a href="#openChargePort">openChargePort(options, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Open the charge port</p>
+<dd><p>Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped</p>
 </dd>
 <dt><a href="#openChargePortAsync">openChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Open the charge port</p>
+<dd><p>Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped</p>
 </dd>
 <dt><a href="#closeChargePort">closeChargePort(options, callback)</a> ⇒ <code>object</code></dt>
-<dd><p>Close the charge port</p>
+<dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
 <dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Close the charge port</p>
+<dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
@@ -989,7 +989,7 @@ Stop charging the car
 <a name="openChargePort"></a>
 
 ## openChargePort(options, callback) ⇒ <code>object</code>
-Open the charge port
+Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1002,7 +1002,7 @@ Open the charge port
 <a name="openChargePortAsync"></a>
 
 ## openChargePortAsync(options) ⇒ <code>Promise</code>
-Open the charge port
+Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1014,7 +1014,7 @@ Open the charge port
 <a name="closeChargePort"></a>
 
 ## closeChargePort(options, callback) ⇒ <code>object</code>
-Close the charge port
+Close the charge port for appropriately equipped vehicles
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1027,7 +1027,7 @@ Close the charge port
 <a name="closeChargePortAsync"></a>
 
 ## closeChargePortAsync(options) ⇒ <code>Promise</code>
-Close the charge port
+Close the charge port for appropriately equipped vehicles
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  

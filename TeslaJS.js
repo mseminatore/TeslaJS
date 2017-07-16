@@ -869,7 +869,7 @@ exports.stopCharge = function stopCharge(options, callback) {
 exports.stopChargeAsync = Promise.denodeify(exports.stopCharge);
 
 /**
- * Open the charge port
+ * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
@@ -879,7 +879,7 @@ exports.openChargePort = function openChargePort(options, callback) {
 }
 
 /**
- * Open the charge port
+ * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped 
  * @function openChargePortAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -887,7 +887,7 @@ exports.openChargePort = function openChargePort(options, callback) {
 exports.openChargePortAsync = Promise.denodeify(exports.openChargePort);
 
 /**
- * Close the charge port
+ * Close the charge port for appropriately equipped vehicles
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
@@ -897,7 +897,7 @@ exports.closeChargePort = function closeChargePort(options, callback) {
 }
 
 /**
- * Close the charge port
+ * Close the charge port for appropriately equipped vehicles
  * @function closeChargePortAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result

@@ -89,10 +89,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.24** added `refreshToken()` method and test cases
-2. In **2.1.25** added refreshToken to return obj from `login()` and `refreshToken()`
-3. In **2.1.27** fixed crash in setChargeLimit sample
-4. In **2.1.28** added support for new `/data` endpoint, **soc** sample now uses
+1. In **2.1.30** updated dependencies
+2. In **2.1.31** updated README to indicate that openChargePort also unlocks it #81
+3. In **2.1.32** fixed README formatting
+4. In **2.1.33** fixed `homelink` sample cmd line parms #84
 
 ## Known Issues
 

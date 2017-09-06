@@ -1,6 +1,21 @@
 # TeslaJS Change log
 
-## V2.1.18
+## V2.1.33
+* fixed `homelink` sample cmd line parms #84
+
+## V2.1.32
+* fixed README formatting
+
+## V2.1.31
+* updated README to indicate that openChargePort also unlocks it #81
+
+## V2.1.30
+* updated dependencies
+
+## V2.1.29
+* fixed function typo in README #80
+
+## V2.1.28
 * merged PR #78 to add support for `/data` REST endpoint
 * updated 
 

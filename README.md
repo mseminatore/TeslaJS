@@ -72,7 +72,8 @@ Requests` will be considered with the following criteria:
 4. Must add general value to the project
 5. Must update appropriate documentation
 
-> Project owners reserve the right to accept or reject any PR for any reason
+> Note that the Project owners reserve the right to accept or reject any PR
+> for any reason.
 
 ## Code of Conduct
 

@@ -324,6 +324,31 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+    describe('#vehicleConfig()', function () {
+        it('should return vehicle config', function (done) {
+            tjs.vehicleConfig(options, function (err, result) {
+                if (result.exterior_color) {
+                    done();
+                } else {
+                    done(result.response.statusMessage);
+                }
+            });
+        });
+
+        it('should succeed with no callback', function (done) {
+            tjs.vehicleConfig(options);
+            done();
+        });
+    });
+
+    describe('#vehicleConfigAsync()', function () {
+        it('should return vehicle config', function () {
+            return tjs.vehicleConfigAsync(options).then(function (result) {
+                assert(result.exterior_color);
+            });
+        });
+    });
+
 	describe('#vehicleState()', function () {
 	    it('should return vehicle state', function (done) {
 	        tjs.vehicleState(options, function (err, result) {

@@ -697,6 +697,23 @@ exports.vehicleData = function vehicleData(options, callback){
 exports.vehicleDataAsync = Promise.denodeify(exports.vehicleData);
 
 /**
+ * GET the vehicle config
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} vehicle_config object
+ */
+exports.vehicleConfig = function vehicleConfig(options, callback) {
+    get_command(options, "data_request/vehicle_config", callback);
+}
+
+/**
+ * @function vehicleStateAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} vehicle_config object
+ */
+exports.vehicleConfigAsync = Promise.denodeify(exports.vehicleConfig);
+
+/**
  * GET the vehicle state
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback

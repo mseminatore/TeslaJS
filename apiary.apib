@@ -127,7 +127,8 @@ Determines if mobile access to the vehicle is enabled.
 
 ## Data [GET /api/1/vehicles/{vehicle_id}/data]
 
-Returns all vehicle data in a single call.
+Returns all vehicle data in a single call.  Highly recommended to use this
+instead of individual calls as it lowers overall load on Tesla servers.
 
 + Request
 
@@ -393,6 +394,30 @@ Returns the vehicle's physical state, such as which doors are open.
               }
             }
 
+## Vehicle Config [GET /api/1/vehicles/{vehicle_id}/data_request/vehicle_config]
+
+Returns the vehicle's configuration details.
+
++ Request
+
+    + Headers
+
+            authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+              "response": {
+                "exterior_color": "black";
+              }
+            }
+            
 # Group Vehicle Commands
 
 These commands alter the vehicles state, and return result (true/false) to indicate success, and if failure reason contains the cause of failure.

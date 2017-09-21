@@ -134,17 +134,20 @@
 <dd><p>GET all vehicle data in a single call</p>
 </dd>
 <dt><a href="#vehicleDataAsync">vehicleDataAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Async version to GET all vehicle data in a single call</p>
+</dd>
 <dt><a href="#vehicleConfig">vehicleConfig(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle config</p>
 </dd>
-<dt><a href="#vehicleStateAsync">vehicleStateAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dt><a href="#vehicleConfigAsync">vehicleConfigAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Async version to GET the vehicle config</p>
+</dd>
 <dt><a href="#vehicleState">vehicleState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle state</p>
 </dd>
 <dt><a href="#vehicleStateAsync">vehicleStateAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd></dd>
+<dd><p>Async version to GET the vehicle state</p>
+</dd>
 <dt><a href="#climateState">climateState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the climate state</p>
 </dd>
@@ -750,6 +753,8 @@ GET all vehicle data in a single call
 <a name="vehicleDataAsync"></a>
 
 ## vehicleDataAsync(options) ⇒ <code>Promise</code>
+Async version to GET all vehicle data in a single call
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - vehicle_data object  
 
@@ -770,9 +775,11 @@ GET the vehicle config
 | options | <code>[optionsType](#optionsType)</code> | options object |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
-<a name="vehicleStateAsync"></a>
+<a name="vehicleConfigAsync"></a>
 
-## vehicleStateAsync(options) ⇒ <code>Promise</code>
+## vehicleConfigAsync(options) ⇒ <code>Promise</code>
+Async version to GET the vehicle config
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - vehicle_config object  
 
@@ -796,6 +803,8 @@ GET the vehicle state
 <a name="vehicleStateAsync"></a>
 
 ## vehicleStateAsync(options) ⇒ <code>Promise</code>
+Async version to GET the vehicle state
+
 **Kind**: global function  
 **Returns**: <code>Promise</code> - vehicle_state object  
 

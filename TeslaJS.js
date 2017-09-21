@@ -690,6 +690,7 @@ exports.vehicleData = function vehicleData(options, callback){
 }
 
 /**
+ * Async version to GET all vehicle data in a single call
  * @function vehicleDataAsync
  * @param {optionsType} options - options object
  * @returns {Promise} vehicle_data object
@@ -707,7 +708,8 @@ exports.vehicleConfig = function vehicleConfig(options, callback) {
 }
 
 /**
- * @function vehicleStateAsync
+ * Async version to GET the vehicle config
+ * @function vehicleConfigAsync
  * @param {optionsType} options - options object
  * @returns {Promise} vehicle_config object
  */
@@ -724,6 +726,7 @@ exports.vehicleState = function vehicleState(options, callback) {
 }
 
 /**
+ * Async version to GET the vehicle state
  * @function vehicleStateAsync
  * @param {optionsType} options - options object
  * @returns {Promise} vehicle_state object

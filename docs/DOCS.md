@@ -135,6 +135,11 @@
 </dd>
 <dt><a href="#vehicleDataAsync">vehicleDataAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
+<dt><a href="#vehicleConfig">vehicleConfig(options, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>GET the vehicle config</p>
+</dd>
+<dt><a href="#vehicleStateAsync">vehicleStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd></dd>
 <dt><a href="#vehicleState">vehicleState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle state</p>
 </dd>
@@ -747,6 +752,29 @@ GET all vehicle data in a single call
 ## vehicleDataAsync(options) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - vehicle_data object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+
+<a name="vehicleConfig"></a>
+
+## vehicleConfig(options, callback) ⇒ <code>object</code>
+GET the vehicle config
+
+**Kind**: global function  
+**Returns**: <code>object</code> - vehicle_config object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>[optionsType](#optionsType)</code> | options object |
+| callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
+
+<a name="vehicleStateAsync"></a>
+
+## vehicleStateAsync(options) ⇒ <code>Promise</code>
+**Kind**: global function  
+**Returns**: <code>Promise</code> - vehicle_config object  
 
 | Param | Type | Description |
 | --- | --- | --- |

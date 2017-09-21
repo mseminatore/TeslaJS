@@ -329,6 +329,7 @@ startStreaming() | initiate a streaming data session
 sunRoofControl() | put the sunroof into a specific state
 sunRoofMove() | open the sunroof to a specific percent
 vehicleData() | retrieve **all** vehicle state data in a single call
+vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
 wakeUp() | attempt to wake a sleeping vehicle
 
@@ -365,6 +366,7 @@ startStreamingAsync() | initiate a streaming data session
 sunRoofControlAsync() | put the sunroof into a specific state
 sunRoofMoveAsync() | open the sunroof to a specific percent
 vehicleDataAsync() | retrieve **all** vehicle state data in a single call
+vehicleConfigAsync() | retrieve the vehicle_config data
 vehicleStateAsync() | retrieve the vehicle_state data
 wakeUpAsync() | attempt to wake a sleeping vehicle
 

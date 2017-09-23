@@ -90,10 +90,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.30** updated dependencies
-2. In **2.1.31** updated README to indicate that openChargePort also unlocks it #81
-3. In **2.1.32** fixed README formatting
-4. In **2.1.33** fixed `homelink` sample cmd line parms #84
+1. In **2.1.31** updated README to indicate that openChargePort also unlocks it #81
+2. In **2.1.32** fixed README formatting
+3. In **2.1.33** fixed `homelink` sample cmd line parms #84
+4. In **2.1.34** merged PR #85 to add vehicleConfig()
+5. In **2.1.35** added `vehicleConfig` sample
 
 ## Known Issues
 
@@ -451,6 +452,7 @@ Sample | Description
 [unlock](#unlockjs) | Unlock the car doors
 [valet](#valetjs) | Enable or disable valet mode
 [vehicle](#vehiclejs) | Retrieve and display information on the current vehicle state
+[vehicleConfig](#vehicleConfigjs) | Retrieve and display information on the current vehicle configuration
 [wakeup](#wakeupjs) | Send a wakeup command to the vehicle
 	
 ## login.js
@@ -843,6 +845,22 @@ This sample retrives and displays several elements of data returned from the **v
 Usage:
 
     node vehicle.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)
+	-i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+## vehicleConfig.js
+
+This sample retrives and displays several elements of data returned from the **vehicle_config** REST API.
+
+Usage:
+
+    node vehicleConfig.js [options]
 	
 	Options:
 	

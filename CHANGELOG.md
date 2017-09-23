@@ -1,5 +1,11 @@
 # TeslaJS Change log
 
+## V2.1.35
+* added `vehicleConfig` sample
+
+## V2.1.34
+* merged PR #85 to add vehicleConfig()
+
 ## V2.1.33
 * fixed `homelink` sample cmd line parms #84
 

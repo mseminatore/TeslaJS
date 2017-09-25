@@ -1,13 +1,13 @@
 # TeslaJS Change log
 
-## V2.1.26
+## V2.1.36
 * fixed #44 sunroof control and `sunroof` sample
 
 ## V2.1.35
 * added `vehicleConfig` sample
 
-## V2.1.34
-* merged PR #85 to add vehicleConfig()
+## v2.1.34
+* merged PR #85 to add vehicleConfig() endpoint call
 
 ## V2.1.33
 * fixed `homelink` sample cmd line parms #84

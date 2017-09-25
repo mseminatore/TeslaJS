@@ -90,11 +90,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.31** updated README to indicate that openChargePort also unlocks it #81
-2. In **2.1.32** fixed README formatting
-3. In **2.1.33** fixed `homelink` sample cmd line parms #84
-4. In **2.1.34** merged PR #85 to add vehicleConfig()
-5. In **2.1.35** added `vehicleConfig` sample
+1. In **2.1.33** fixed `homelink` sample cmd line parms #84
+2. In **2.1.34** merged PR #85 to add vehicleConfig()
+3. In **2.1.35** added `vehicleConfig` sample
+4. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
 
 ## Known Issues
 
@@ -102,8 +101,6 @@ Here are some of the more recent features and fixes:
 AP test and report back?
 2. Calendar support not yet functional.  If someone can share the JSON for a 
 valid calendar request that would help!
-3. Sunroof API was recently changed by Tesla to limit functionality.  Will be 
-addressed in TeslaJS soon.
 
 # Tesla API Documentation
 

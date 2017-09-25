@@ -17,7 +17,7 @@ var framework = require('./sampleFramework.js');
 //
 //
 program
-  .usage('[options] percentage|open|close|vent|comfort')
+  .usage('[options] close|vent')
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
@@ -32,28 +32,26 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    var amt = program.args[0];
+    var state = program.args[0];
 
-    if (!amt) {
+    if (!state) {
         program.help();
     }
 
-    if (amt.toLowerCase() == "open") {
-        amt = 100;
-    } else if (amt.toLowerCase() == "close") {
-        amt = 0;
-    } else if (amt.toLowerCase() == "vent") {
-        amt = 15;
-    } else if (amt.toLowerCase() == "comfort") {
-        amt = 80;
+    if (state.toLowerCase() == "closed") {
+        state = "close";
+    }
+    
+    if (state.toLowerCase() != "close" && state.toLowerCase() != "vent") {
+        program.help();
     }
 
-    tjs.sunRoofMove(options, amt, function (err, result) {
-        if (result.result) {
-            var str = (amt + "%").green;
-            console.log("\nSunroof successfully moved to : " + str);
+    tjs.sunRoofControl(options, state, function (err, result) {
+        if (result && result.result) {
+            console.log("\nSunroof successfully moved to : " + state.bgGreen);
         } else {
-            console.log(result.reason.red);
+            console.log(err);
+            console.log("Invalid option".red);
         }
     });
 }

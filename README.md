@@ -389,10 +389,8 @@ CHARGE_STANDARD | charge to 90%
 CHARGE_RANGE | charge to 100%.  Tesla recommends against frequent usage!
 MAX_TEMP | maximum temperature for climate system
 MIN_TEMP | minimum temperature for climate system
-SUNROOF_OPEN | fully opens the sunroof
 SUNROOF_CLOSED | closes the sunroof
 SUNROOF_VENT | open the sunroof to the vent position
-SUNROOF_COMFORT | open the sunroof to the comfort position
 streamingColumns | an array of the available streaming columns
 
 Most of the APIs take both an **options** parameter and an optional 
@@ -812,7 +810,7 @@ This sample demonstrates controlling the panoramic sunroof if present.
 
 Usage:
 
-    node sunroof.js [options] percentage|open|close|vent|comfort
+    node sunroof.js [options] close|vent
 	
 	Options:
 	

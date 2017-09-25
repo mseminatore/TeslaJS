@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.26
+* fixed #44 sunroof control and `sunroof` sample
+
 ## V2.1.35
 * added `vehicleConfig` sample
 

@@ -29,13 +29,9 @@
 <dd></dd>
 <dt><a href="#CHARGE_RANGE">CHARGE_RANGE</a></dt>
 <dd></dd>
-<dt><a href="#SUNROOF_OPEN">SUNROOF_OPEN</a></dt>
-<dd></dd>
 <dt><a href="#SUNROOF_VENT">SUNROOF_VENT</a></dt>
 <dd></dd>
 <dt><a href="#SUNROOF_CLOSED">SUNROOF_CLOSED</a></dt>
-<dd></dd>
-<dt><a href="#SUNROOF_COMFORT">SUNROOF_COMFORT</a></dt>
 <dd></dd>
 <dt><a href="#MIN_TEMP">MIN_TEMP</a></dt>
 <dd></dd>
@@ -384,11 +380,6 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## CHARGE_RANGE
 **Kind**: global variable  
 **Default**: <code>100</code>  
-<a name="SUNROOF_OPEN"></a>
-
-## SUNROOF_OPEN
-**Kind**: global variable  
-**Default**: <code>open</code>  
 <a name="SUNROOF_VENT"></a>
 
 ## SUNROOF_VENT
@@ -399,11 +390,6 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## SUNROOF_CLOSED
 **Kind**: global variable  
 **Default**: <code>close</code>  
-<a name="SUNROOF_COMFORT"></a>
-
-## SUNROOF_COMFORT
-**Kind**: global variable  
-**Default**: <code>comfort</code>  
 <a name="MIN_TEMP"></a>
 
 ## MIN_TEMP
@@ -1249,7 +1235,7 @@ Set sun roof mode
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
-| state | <code>string</code> | one of "open", "vent", "close", "comfort" |
+| state | <code>string</code> | one of "vent", "close" |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="sunRoofControlAsync"></a>
@@ -1261,7 +1247,7 @@ Set sun roof mode
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
-| state | <code>string</code> | one of "open", "vent", "close", "comfort" |
+| state | <code>string</code> | one of "vent", "close" |
 
 <a name="sunRoofMove"></a>
 

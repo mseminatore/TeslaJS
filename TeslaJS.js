@@ -1080,27 +1080,17 @@ exports.climateStopAsync = Promise.denodeify(exports.climateStop);
  * @global   
  * @default  
  */
-exports.SUNROOF_OPEN = "open";
-/**   
- * @global   
- * @default  
- */
 exports.SUNROOF_VENT = "vent";
 /**   
  * @global   
  * @default  
  */
 exports.SUNROOF_CLOSED = "close";
-/**   
- * @global   
- * @default  
- */
-exports.SUNROOF_COMFORT = "comfort";
 
 /**
  * Set sun roof mode
  * @param {optionsType} options - options object
- * @param {string} state - one of "open", "vent", "close", "comfort"
+ * @param {string} state - one of "vent", "close"
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
@@ -1111,7 +1101,7 @@ exports.sunRoofControl = function sunRoofControl(options, state, callback) {
 /**
  * @function sunRoofControlAsync
  * @param {optionsType} options - options object
- * @param {string} state - one of "open", "vent", "close", "comfort"
+ * @param {string} state - one of "vent", "close"
  * @returns {Promise} result
  */
 exports.sunRoofControlAsync = Promise.denodeify(exports.sunRoofControl);

@@ -79,7 +79,7 @@ Requests` will be considered with the following criteria:
 
 Before contributing or participating in the TeslaJS community please be sure to 
 familiarize yourself with our project 
-[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CONDUCT.md). 
+[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CODE_OF_CONDUCT.md). 
 These guidelines are intended to govern interactions with and within the TeslaJS 
 community.
 

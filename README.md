@@ -63,16 +63,10 @@ requiring access to passwords.
 
 ## Contributing
 
-Contributions are welcome, particularly bug fixes and enhancements!  `Pull 
-Requests` will be considered with the following criteria:
+Contributions are welcome, particularly bug fixes and enhancements!
+Refer to our [Contribution Guidelines](https://github.com/mseminatore/TeslaJS/blob/master/CONTRIBUTING.md) for details.
 
-1. Must pass both `npm test` and `wintest` tests
-2. Should meet or exceed current code coverage level
-3. Must respect and align to Project Principles (see above)
-4. Must add general value to the project
-5. Must update appropriate documentation
-
-> Note that the Project owners reserve the right to accept or reject any PR
+> Please note that Project owners reserve the right to accept or reject any PR
 > for any reason.
 
 ## Code of Conduct

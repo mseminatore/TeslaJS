@@ -1189,29 +1189,29 @@ exports.remoteStart = function remoteStartDrive(options, password, callback) {
 exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
 
 //=====================
-// Truns/Frunk constants
+// Trunk/Frunk constants
 //=====================
 
 /**   
  * @global   
  * @default  
  */
-exports.FRUNK = "frunk";
+exports.FRUNK = "front";
 /**   
  * @global   
  * @default  
  */
-exports.TRUNK = "trunk";
+exports.TRUNK = "rear";
 
 /**
  * Open the trunk/frunk
  * @param {optionsType} options - options object
- * @param {string} which - one of "trunk", "frunk"
+ * @param {string} which - FRUNK or TRUNK constant
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
 exports.openTrunk = function openTrunk(options, which, callback) {
-    post_command(options, "command/trunk_open", { which_trunk: which }, callback);
+    post_command(options, "command/actuate_trunk", { which_trunk: which }, callback);
 }
 
 /**

@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## V2.1.37
+* merge PR to re-enable `openTrunk` API
+* added `openTrunk` sample
+
 ## V2.1.36
 * fixed #44 sunroof control and `sunroof` sample
 

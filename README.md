@@ -383,6 +383,8 @@ MIN_TEMP | minimum temperature for climate system
 SUNROOF_CLOSED | closes the sunroof
 SUNROOF_VENT | open the sunroof to the vent position
 streamingColumns | an array of the available streaming columns
+FRUNK | constant for openTrunk API
+TRUNK | constant for openTrunk API
 
 Most of the APIs take both an **options** parameter and an optional 
 **callback** function.  The **options** parameter must always contain a 
@@ -429,6 +431,7 @@ Sample | Description
 [mobileEnabled](#mobileenabledjs) | Display whether remote access is enabled
 [odometer](#odometerjs) | Displays the current odometer value
 [openChargePort](#openchargeportjs) | Opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
+[openTrunk](#opentrunkjs) | Opens the FRUNK or opens/closes the trunk
 [resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
 [setChargeLimit](#setchargelimitjs) | Set the battery charge limit to the given value
@@ -667,10 +670,27 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
+## openTrunk.js
+
+This sample sends the command to open or close the trunk or frunk.  On current
+model vehicles only the trunk can currently be closed.
+
+Usage:
+
+    node openTrunk.js [options] trunk|frunk
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
 ## remoteStart.js
 
-This sample enables remotely starting the vehicle without a key fob present.  Note that the **password** parameter is 
-**required** in this sample.
+This sample enables remotely starting the vehicle without a key fob present.  
+Note that the **password** parameter is **required** in this sample.
 
 Usage:
 

@@ -84,10 +84,10 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.33** fixed `homelink` sample cmd line parms #84
-2. In **2.1.34** merged PR #85 to add vehicleConfig()
+1. In **2.1.37** merge PR to re-enable open trunk/frunk feature for latest firmware
+2. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
 3. In **2.1.35** added `vehicleConfig` sample
-4. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
+4. In **2.1.34** merged PR #85 to add vehicleConfig()
 
 ## Known Issues
 
@@ -447,7 +447,7 @@ Sample | Description
 [vehicleConfig](#vehicleConfigjs) | Retrieve and display information on the current vehicle configuration
 [wakeup](#wakeupjs) | Send a wakeup command to the vehicle
 	
-## login.js
+## login.js [top](#teslajs)
 
 This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
 writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 
@@ -465,7 +465,7 @@ Usage:
     -h, --help               output usage information
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## logout.js
+## logout.js [top](#teslajs)
 
 This sample deletes the locally cached **.token** file if present.
 
@@ -473,7 +473,7 @@ Usage:
 
     node logout.js
 	
-## climate.js
+## climate.js [top](#teslajs)
 
 This sample retrieves and displays the **climate_state** data on the HVAC system of the vehicle.
 
@@ -489,7 +489,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## climateStart.js
+## climateStart.js [top](#teslajs)
 
 This sample demonstrates turning on the HVAC system of the vehicle.
 
@@ -505,7 +505,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## climateStop.js
+## climateStop.js [top](#teslajs)
 
 This sample demonstrates turning off the HVAC system of the vehicle.
 
@@ -521,7 +521,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## flashLights.js
+## flashLights.js [top](#teslajs)
 
 This sample demonstrates flashing the headlights of the vehicle.
 
@@ -537,7 +537,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## geoloc.js
+## geoloc.js [top](#teslajs)
 
 This sample retrieves and displays information on the location and driving state of the car using the **drive_state** query.
 
@@ -554,7 +554,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## guiSettings.js
+## guiSettings.js [top](#teslajs)
 
 This sample retrieves and displays the current display formats for the user interface.
 
@@ -570,7 +570,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## homelink.js
+## homelink.js [top](#teslajs)
 
 This sample demonstrates triggering homelink via the vehicle.
 
@@ -589,7 +589,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## honkHorn.js
+## honkHorn.js [top](#teslajs)
 
 This sample demonstrates honking the horn of the vehicle.
 
@@ -605,7 +605,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## lock.js
+## lock.js [top](#teslajs)
 
 This sample demonstrates locking the doors of the vehicle.
 
@@ -621,7 +621,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## mobileEnabled.js
+## mobileEnabled.js [top](#teslajs)
 
 This sample retrieves and displays whether mobile access is enabled.
 
@@ -637,7 +637,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## odometer.js
+## odometer.js [top](#teslajs)
 
 This sample retrieves and displays the current vehicle odometer value.
 
@@ -653,7 +653,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## openChargePort.js
+## openChargePort.js [top](#teslajs)
 
 This sample sends the command to open the charge port, or to release the latch if
 the charge port is open, a cable is plugged in, and charging is stopped.
@@ -670,7 +670,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## openTrunk.js
+## openTrunk.js [top](#teslajs)
 
 This sample sends the command to open or close the trunk or frunk.  On current
 model vehicles only the trunk can currently be closed.
@@ -687,7 +687,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## remoteStart.js
+## remoteStart.js [top](#teslajs)
 
 This sample enables remotely starting the vehicle without a key fob present.  
 Note that the **password** parameter is **required** in this sample.
@@ -703,7 +703,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## resetValetPin.js
+## resetValetPin.js [top](#teslajs)
 
 This sample attempts to reset the current valet pin.
 
@@ -719,7 +719,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## setChargeLimit.js
+## setChargeLimit.js [top](#teslajs)
 
 This sample sets the current battery charge limit to the given value.
 
@@ -735,7 +735,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## setTemps.js
+## setTemps.js [top](#teslajs)
 
 This sample sets the driver and passenger temperature to the given value.
 
@@ -751,7 +751,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## simpleStreaming.js
+## simpleStreaming.js [top](#teslajs)
 
 This sample demonstrates basic use of the streaming API to retrieve real-time vehicle data.
 
@@ -766,7 +766,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## soc.js
+## soc.js [top](#teslajs)
 
 This sample retrieves the **charge_state** information and displays the charge limit, the current 
 vehicle charge level, and the ideal, rated and projected range.
@@ -783,7 +783,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## startCharge.js
+## startCharge.js [top](#teslajs)
 
 This sample demonstrates how to initiate a charging session.
 
@@ -799,7 +799,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## stopCharge.js
+## stopCharge.js [top](#teslajs)
 
 This sample demonstrates how to terminate a charging session.
 
@@ -815,7 +815,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## sunroof.js
+## sunroof.js [top](#teslajs)
 
 This sample demonstrates controlling the panoramic sunroof if present.
 
@@ -831,7 +831,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 	
-## unlock.js
+## unlock.js [top](#teslajs)
 
 This sample demonstrates unlocking the doors of the vehicle.
 
@@ -847,7 +847,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## vehicle.js
+## vehicle.js [top](#teslajs)
 
 This sample retrives and displays several elements of data returned from the **vehicle_state** REST API. 
 
@@ -863,7 +863,7 @@ Usage:
 	-i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## vehicleConfig.js
+## vehicleConfig.js [top](#teslajs)
 
 This sample retrives and displays several elements of data returned from the **vehicle_config** REST API.
 
@@ -879,7 +879,7 @@ Usage:
 	-i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## valet.js
+## valet.js [top](#teslajs)
 
 This sample enables or disables valet mode. 
 
@@ -895,7 +895,7 @@ Usage:
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
-## wakeup.js
+## wakeup.js [top](#teslajs)
 
 This sample sends a wakeup signal to wake a vehicle in sleep mode.
 

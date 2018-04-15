@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.38
+* fixed doc errors
+
 ## V2.1.37
 * merge PR to re-enable `openTrunk` API
 * added `openTrunk` sample

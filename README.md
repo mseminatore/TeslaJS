@@ -73,7 +73,7 @@ Refer to our [Contribution Guidelines](https://github.com/mseminatore/TeslaJS/bl
 
 Before contributing or participating in the TeslaJS community please be sure to 
 familiarize yourself with our project 
-[code of conduct](https://github.com/mseminatore/TeslaJS/blob/master/CODE_OF_CONDUCT.md). 
+[CODE OF CONDUCT](https://github.com/mseminatore/TeslaJS/blob/master/CODE_OF_CONDUCT.md). 
 These guidelines are intended to govern interactions with and within the TeslaJS 
 community.
 
@@ -84,10 +84,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.37** merge PR to re-enable open trunk/frunk feature for latest firmware
-2. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
-3. In **2.1.35** added `vehicleConfig` sample
-4. In **2.1.34** merged PR #85 to add vehicleConfig()
+1. In **2.1.38** fixed doc errors
+2. In **2.1.37** merge PR to re-enable open trunk/frunk feature for latest firmware
+3. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
+4. In **2.1.35** added `vehicleConfig` sample
+5. In **2.1.34** merged PR #85 to add vehicleConfig()
 
 ## Known Issues
 

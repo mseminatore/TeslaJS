@@ -404,12 +404,12 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 
 ## FRUNK
 **Kind**: global variable  
-**Default**: <code>frunk</code>  
+**Default**: <code>front</code>  
 <a name="TRUNK"></a>
 
 ## TRUNK
 **Kind**: global variable  
-**Default**: <code>trunk</code>  
+**Default**: <code>rear</code>  
 <a name="streamingColumns"></a>
 
 ## streamingColumns
@@ -1337,7 +1337,7 @@ Open the trunk/frunk
 | Param | Type | Description |
 | --- | --- | --- |
 | options | <code>[optionsType](#optionsType)</code> | options object |
-| which | <code>string</code> | one of "trunk", "frunk" |
+| which | <code>string</code> | FRUNK or TRUNK constant |
 | callback | <code>[nodeBack](#nodeBack)</code> | Node-style callback |
 
 <a name="openTrunkAsync"></a>

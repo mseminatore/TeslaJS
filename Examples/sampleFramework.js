@@ -42,7 +42,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
         var options = { authToken: result.authToken };
         tjs.allVehicles(options, function (err, vehicles) {
             if (err) {
-                console.log(err);
+                console.log("\nError: " + err.red);
                 return;
             }
 

@@ -84,11 +84,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.38** fixed doc errors
-2. In **2.1.37** merge PR to re-enable open trunk/frunk feature for latest firmware
-3. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
-4. In **2.1.35** added `vehicleConfig` sample
-5. In **2.1.34** merged PR #85 to add vehicleConfig()
+1. In **2.1.39** addressed #94 to make samples Model 3 aware
+2. In **2.1.38** fixed doc errors
+3. In **2.1.37** merge PR to re-enable open trunk/frunk feature for latest firmware
+4. In **2.1.36** fixed #44 sunroof control and `sunroof` sample
+5. In **2.1.35** added `vehicleConfig` sample
 
 ## Known Issues
 

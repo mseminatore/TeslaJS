@@ -211,6 +211,8 @@ exports.getModel = function getModel(vehicle) {
 
     if (vehicle.option_codes.indexOf("MDLX") != -1) {
         carType = "Model X";
+    } else if (vehicle.option_codes.indexOf("MDL3") != -1) {
+        carType = "Model 3";
     } else {
         carType = "Model S";
     }

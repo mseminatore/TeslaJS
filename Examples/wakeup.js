@@ -32,10 +32,11 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     tjs.wakeUp(options, function (err, result) {
-        if (result) {
-            console.log("\nWakeUp command: " + "SENT".green);
+        if (err) {
+            console.error("\nWakeUp command: " + "Failed!".red);
         } else {
-            console.error("Error waking up vehicle!".red);
+            console.log("\nWakeUp command: " + "Succeeded".green);
+            console.log("Vehicle state: " + result.state.green);
         }
     });
 }

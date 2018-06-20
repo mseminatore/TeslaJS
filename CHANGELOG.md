@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.40
+* updated `wakeup` sample to better show result
+
 ## V2.1.39
 * addressed #94 - Samples should be Model 3 aware
 

@@ -31,8 +31,17 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleStateAsync(options).then( function (vehicle_state) {
+    tjs.vehicleDataAsync(options).then( function(vehicleData) {
+        var vehicle_state = vehicleData.vehicle_state;
+        var charge_state = vehicleData.charge_state;
+
         var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
+
+        console.log("\nCharging state: " + charge_state.charging_state.green);
+        console.log("Battery level: "+ charge_state.battery_level.toString().green);
+        console.log("Charge limit: " + charge_state.charge_limit_soc.toString().green);
+        console.log("Rated range: " + Math.round(charge_state.battery_range).toString().green);
+        console.log("Projected range: " + Math.round(charge_state.est_battery_range).toString().green);
 
         console.log("\nDoors: " + str);
         if (vehicle_state.df) {

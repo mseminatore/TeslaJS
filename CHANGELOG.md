@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.41
+* updated `vehicles` sample to show vehicleData() call
+
 ## V2.1.40
 * updated `wakeup` sample to better show result
 

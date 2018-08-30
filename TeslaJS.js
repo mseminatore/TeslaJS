@@ -318,7 +318,7 @@ exports.login = function login(username, password, callback) {
 
         var loginResult = body;
 
-        callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
+        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
 
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.");
     });
@@ -366,7 +366,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        callback(error, { error: error, response: response, body: body, authToken: body.access_token, refreshToken: body.refresh_token });
+        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
 
         log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
     });
@@ -396,7 +396,7 @@ exports.logout = function logout(authToken, callback) {
         headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
-        callback(error, { error: error, response: response, body: body });
+        callback(error, { error: error, response: response, body: JSON.stringify(body) });
 
         log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
     });

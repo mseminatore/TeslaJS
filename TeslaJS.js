@@ -13,7 +13,15 @@
 
 "use strict";
 
-var request = require('request');
+var request = require('request').defaults({
+    headers: {
+        "x-tesla-user-agent": "TeslaApp/3.4.4-350/fad4a582e/android/8.1.0",
+        "user-agent": "Mozilla/5.0 (Linux; Android 8.1.0; Pixel XL Build/OPM4.171019.021.D1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/68.0.3440.91 Mobile Safari/537.36"
+    },
+    json: true,
+    gzip: true,
+    body: {}
+});
 var Promise = require('promise');
 
 //=======================
@@ -295,8 +303,7 @@ exports.login = function login(username, password, callback) {
     var req = {
         method: 'POST',
         url: portalBaseURI + '/oauth/token',
-        gzip: true,
-        form: {
+        body: {
             "grant_type": "password",
             "client_id": c_id,
             "client_secret": c_sec,
@@ -311,15 +318,9 @@ exports.login = function login(username, password, callback) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        var loginResult;
+        var loginResult = body;
 
-        try {
-            loginResult = JSON.parse(body);
-        } catch (e) {
-            log(API_ERR_LEVEL, 'Error parsing response to oauth token request');
-        }
-
-        callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
+        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
 
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.");
     });
@@ -353,8 +354,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
     var req = {
         method: 'POST',
         url: portalBaseURI + '/oauth/token',
-        gzip: true,
-        form: {
+        body: {
             "grant_type": "refresh_token",
             "client_id": c_id,
             "client_secret": c_sec,
@@ -368,15 +368,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        var loginResult;
-
-        try {
-            loginResult = JSON.parse(body);
-        } catch (e) {
-            log(API_ERR_LEVEL, 'Error parsing response to oauth token request');
-        }
-
-        callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
+        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
 
         log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
     });
@@ -406,7 +398,7 @@ exports.logout = function logout(authToken, callback) {
         headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
-        callback(error, { error: error, response: response, body: body });
+        callback(error, { error: error, response: response, body: JSON.stringify(body) });
 
         log(API_RETURN_LEVEL, "TeslaJS.logout() completed.");
     });
@@ -433,7 +425,6 @@ exports.vehicles = function vehicles(options, callback) {
 
     var req = {
         method: 'GET',
-        gzip: true,
         url: portalBaseURI + '/api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
@@ -453,15 +444,12 @@ exports.vehicles = function vehicles(options, callback) {
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
 
-        var data = {};
-
         try {
-            data = JSON.parse(body);
-            data = data.response[options.carIndex || 0];
-            data.id = data.id_s;
-            options.vehicleID = data.id;
+            body = body.response[options.carIndex || 0];
+            body.id = body.id_s;
+            options.vehicleID = body.id;
             
-            callback(null, data);
+            callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);
@@ -509,7 +497,6 @@ exports.allVehicles = function allVehicles(options, callback) {
 
     var req = {
         method: 'GET',
-        gzip: true,
         url: portalBaseURI + '/api/1/vehicles',
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
     };
@@ -529,13 +516,10 @@ exports.allVehicles = function allVehicles(options, callback) {
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
 
-        var data = {};
-
         try {
-            data = JSON.parse(body);
-            data = data.response;
+            body = body.response;
             
-            callback(null, data);
+            callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);
@@ -569,7 +553,6 @@ function get_command(options, command, callback) {
 
     var req = {
         method: "GET",
-        gzip: true,
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     };
@@ -591,13 +574,10 @@ function get_command(options, command, callback) {
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
 
-        var data = {};
-
         try {
-            data = JSON.parse(body);
-            data = data.response;
+            body = body.response;
 
-            callback(null, data);
+            callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing GET call response');
             callback(e, null);
@@ -633,9 +613,8 @@ function post_command(options, command, body, callback) {
     var cmd = {
         method: "POST",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
-        gzip: true,
         headers: { Authorization: "Bearer " + options.authToken, 'content-type': 'application/json; charset=UTF-8' },
-        form: body || null
+        body: body || null
     };
 
     log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(cmd));
@@ -655,13 +634,10 @@ function post_command(options, command, body, callback) {
         log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
 
-        var data = {};
-
         try {
-            data = JSON.parse(body);
-            data = data.response;
+            body = body.response;
 
-            callback(null, data);
+            callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing POST call response');
             callback(e, null);
@@ -1436,7 +1412,6 @@ exports.startStreaming = function startStreaming(options, callback, onDataCb) {
     var req = {
         method: 'GET',
         url: streamingBaseURI + "/" + options.vehicle_id + '/?values=' + options.values.join(','),
-        gzip: true,
         auth:
         {
             username: options.username,

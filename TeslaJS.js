@@ -1422,12 +1422,14 @@ exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'e
  * Start streaming car data
  * @param {object} options - {username, token, vehicle_id, columns[]}
  * @param {nodeBack} callback - Node-style callback
+ * @param {nodeBack} onDataCb - Node-style callback
  * @returns {object} result
  */
 exports.startStreaming = function startStreaming(options, callback, onDataCb) {
     log(API_CALL_LEVEL, "TeslaJS.startStreaming()");
 
     callback = callback || function (error, response, body) { /* do nothing! */ }
+    onDataCb = onDataCb || function (data) { /* do nothing! */ }
 
     options.values = options.values || exports.streamingColumns;
 

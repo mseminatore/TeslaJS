@@ -1,5 +1,9 @@
 # TeslaJS Change log
 
+## V2.1.42
+* merged PR #91 to add progress callback to streaming
+* merged PR #96 to fix headers for JSON request bodies
+
 ## V2.1.41
 * updated `vehicles` sample to show vehicleData() call
 

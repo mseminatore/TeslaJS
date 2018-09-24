@@ -79,6 +79,9 @@ describe('TeslaJS', function () {
         it('should return Model X', function () {
             assert.equal('Model X', tjs.getModel({"option_codes": "MDLX"}));
         });
+        it('should return Model 3', function () {
+            assert.equal('Model 3', tjs.getModel({"option_codes": "MDL3"}));
+        });
     });
 
     describe('#getPaintColor()', function () {
@@ -262,6 +265,31 @@ describe('TeslaJS', function () {
 	        return tjs.logoutAsync("token").then(function (result) {
 				assert(result.response.statusCode, 200);
 			});
+	    });
+	});
+
+	describe('#vehicleData()', function () {
+	    it('should succeed returning vehicle data', function (done) {
+	        tjs.vehicleData(options, function (err, vehicle) {
+	            if (vehicle.vehicle_id) {
+	                done();
+	            } else {
+	                done(vehicle.response.statusMessage);
+	            }
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.vehicleData(options);
+	        done();
+	    });
+	});
+
+	describe('#vehicleDataAsync()', function () {
+	    it('should succeed returning vehicle data', function () {
+	        return tjs.vehicleDataAsync(options).then(function (result) {
+	            assert(result.vehicle_id);
+	        });
 	    });
 	});
 

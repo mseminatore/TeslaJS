@@ -1,55 +1,46 @@
-# TeslaJS Code of Conduct
+# Contributor Covenant Code of Conduct
 
-This code of conduct outlines our expectations for participants within the TeslaJS 
-community, as well as steps to reporting unacceptable behavior. We are committed to 
-providing a welcoming and inspiring community for all and expect our code of conduct 
-to be honored. Anyone who violates this code of conduct may be banned from the community.
+## Our Pledge
 
-Our open source community strives to:
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
-* **Be friendly and patient:** Remember you might not be communicating in someone else's 
-primary spoken or programming language, and others may not have your level of understanding.
+## Our Standards
 
-* **Be welcoming:** We strive to be a community that welcomes and supports people of all 
-backgrounds and identities. This includes, but is not limited to members of any race, 
-ethnicity, culture, national origin, colour, immigration status, social and economic 
-class, educational level, sex, sexual orientation, gender identity and expression, 
-age, size, family status, political belief, religion, and mental and physical ability.
+Examples of behavior that contributes to creating a positive environment include:
 
-* **Be considerate:** Your work will be used by other people, and you in turn will 
-depend on the work of others. Any decision you take will affect users and colleagues, 
-and you should take those consequences into account when making decisions. Remember 
-that we’re a world-wide community, so you might not be communicating in someone else’s 
-primary language.
+* Using welcoming and inclusive language
+* Being respectful of differing viewpoints and experiences
+* Gracefully accepting constructive criticism
+* Focusing on what is best for the community
+* Showing empathy towards other community members
 
-* **Be respectful:** Not all of us will agree all the time, but disagreement is no 
-excuse for poor behavior and poor manners. Disrespectful and unacceptable behavior includes, 
-but is not limited to:
-    * Violent threats or language.
-    * Discriminatory or derogatory jokes and language.
-    * Posting sexually explicit or violent material.
-    * Posting, or threatening to post, people's personally identifying information ("doxing").
-    * Insults, especially those using discriminatory terms or slurs.
-    * Behavior that could be perceived as sexual attention.
-    * Advocating for or encouraging any of the above behaviors.
+Examples of unacceptable behavior by participants include:
 
-* **Be careful in the words that we choose:** we are a community of professionals, 
-and we conduct ourselves professionally. Be kind to others. Do not insult or put 
-down other participants. Harassment and other exclusionary behavior aren’t 
-acceptable.
+* The use of sexualized language or imagery and unwelcome sexual attention or advances
+* Trolling, insulting/derogatory comments, and personal or political attacks
+* Public or private harassment
+* Publishing others' private information, such as a physical or electronic address, without explicit permission
+* Other conduct which could reasonably be considered inappropriate in a professional setting
 
-* **Try to understand why we disagree:** Disagreements, both social and 
-technical, happen all the time. It is important that we resolve disagreements 
-and differing views constructively. Remember that we’re different. The 
-strength of our community comes from its diversity, people from a wide 
-range of backgrounds. Different people have different perspectives on issues. 
-Being unable to understand why someone holds a viewpoint doesn’t mean that 
-they’re wrong. Don’t forget that it is human to err and blaming each other 
-doesn’t get us anywhere. Instead, focus on helping to resolve issues and 
-learning from mistakes.
+## Our Responsibilities
 
-## Acknowledgements
+Project maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
-This code of conduct is inspired by the 
-[Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) which 
-in turn is based on work by the [TODO Group](http://todogroup.org/).
+Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+
+## Scope
+
+This Code of Conduct applies both within project spaces and in public spaces when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event. Representation of a project may be further defined and clarified by project maintainers.
+
+## Enforcement
+
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at support@teslajs.org. The project team will review and investigate all complaints, and will respond in a way that it deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+
+Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
+
+## Attribution
+
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
+
+[homepage]: http://contributor-covenant.org
+[version]: http://contributor-covenant.org/version/1/4/

@@ -42,6 +42,12 @@ Another feature that I wanted was API stateless-ness (achieved via an **options*
 parameter to API calls) so that it was possible to use the library to make 
 multiple overlapping async calls for different vehicles for data-logging.
 
+## Library Users
+
+A growing number of projects use the library or are based on its code.  One project is
+the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store.  This 
+Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
+
 ## Documentation
 
 We've recently added auto-generated documentation via jsdocs.  See the

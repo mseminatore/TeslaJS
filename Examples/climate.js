@@ -58,6 +58,6 @@ function sampleMain(tjs, options) {
         console.log("Front defroster: " + str)
         
         str = climate_state.is_rear_defroster_on ? "ON".red : "OFF".green;
-        console.log("Rear defroster: " + str)
+        console.log("Rear defroster: " + str + "\n")
     });
 }

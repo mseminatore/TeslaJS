@@ -103,6 +103,7 @@ function sampleMain(tjs, options) {
                     console.log(res.placename + ", " + res.adminCode1 + " " + res.postalcode + " " + res.countryCode);
                 });
             }
+            console.log("");
         }
         else {
             console.log(drive_state.reason.red);

@@ -32,7 +32,7 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     tjs.vehicleConfigAsync(options).then( function (vehicle_config) {
-        console.log("\nCar type: " + "Model ".green + vehicle_config.car_type.toUpperCase().green);
+        console.log("\nCar type: " + vehicle_config.car_type.toUpperCase().green);
         console.log("Exterior color: " + vehicle_config.exterior_color.green);
         if (vehicle_config.eu_vehicle) {
             console.log("EU vehicle: " + "Yes".bgGreen);
@@ -43,6 +43,6 @@ function sampleMain(tjs, options) {
         console.log("Motorized charge port: " + (vehicle_config.motorized_charge_port ? "YES".bgGreen : "No".green));
         console.log("Spoiler type: " + vehicle_config.spoiler_type.green);
         console.log("Trim badging: " + vehicle_config.trim_badging.toUpperCase().green);
-        console.log("Wheel type: " + vehicle_config.wheel_type.green);
+        console.log("Wheel type: " + vehicle_config.wheel_type.green + "\n");
     });
 }

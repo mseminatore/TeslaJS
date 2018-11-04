@@ -926,7 +926,7 @@ exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftware
  * @param {optionsType} options - options object
  * @returns {object} result
 */
-function cancelSoftwareUpdate(options, callback) {
+exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) {
     post_command(options, "command/cancel_software_update", null, callback);
 }
 
@@ -945,7 +945,7 @@ exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpda
  * @param {string} text - address details including things like name, address, map link
  * @param {string} locale - the language locale, for example "en-US"
  */
-function navigationRequest(options, subject, text, locale, callback) {
+exports.navigationRequest = function navigationRequest(options, subject, text, locale, callback) {
     var req =
     {
         "type": "share_ext_content_raw",

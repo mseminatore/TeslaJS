@@ -936,7 +936,7 @@ exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) 
  * @param {optionsType} options - options object
  * @returns {Promise} result
 */
-exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdat);
+exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdate);
 
 /**
  * Send a navigation request to the car

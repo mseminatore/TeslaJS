@@ -203,6 +203,24 @@
 <dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
+<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Schedule a firmware update</p>
+</dd>
+<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Schedule a firmware update</p>
+</dd>
+<dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Cancel a scheduled software update</p>
+</dd>
+<dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Cancel a scheduled software update</p>
+</dd>
+<dt><a href="#navigationRequest">navigationRequest(subject, text, locale)</a></dt>
+<dd><p>Send a navigation request to the car</p>
+</dd>
+<dt><a href="#navigationRequest">navigationRequest(subject, text, locale)</a></dt>
+<dd><p>Send a navigation request to the car</p>
+</dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
@@ -322,82 +340,82 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 **Default**: <code>https://owner-api.teslamotors.com</code>  
 <a name="API_LOG_ALWAYS"></a>
 
-## API_LOG_ALWAYS
+## API\_LOG\_ALWAYS
 **Kind**: global variable  
 **Default**: <code>0</code>  
 <a name="API_ERR_LEVEL"></a>
 
-## API_ERR_LEVEL
+## API\_ERR\_LEVEL
 **Kind**: global variable  
 **Default**: <code>1</code>  
 <a name="API_CALL_LEVEL"></a>
 
-## API_CALL_LEVEL
+## API\_CALL\_LEVEL
 **Kind**: global variable  
 **Default**: <code>2</code>  
 <a name="API_RETURN_LEVEL"></a>
 
-## API_RETURN_LEVEL
+## API\_RETURN\_LEVEL
 **Kind**: global variable  
 **Default**: <code>3</code>  
 <a name="API_BODY_LEVEL"></a>
 
-## API_BODY_LEVEL
+## API\_BODY\_LEVEL
 **Kind**: global variable  
 **Default**: <code>4</code>  
 <a name="API_REQUEST_LEVEL"></a>
 
-## API_REQUEST_LEVEL
+## API\_REQUEST\_LEVEL
 **Kind**: global variable  
 **Default**: <code>5</code>  
 <a name="API_RESPONSE_LEVEL"></a>
 
-## API_RESPONSE_LEVEL
+## API\_RESPONSE\_LEVEL
 **Kind**: global variable  
 **Default**: <code>6</code>  
 <a name="API_LOG_ALL"></a>
 
-## API_LOG_ALL
+## API\_LOG\_ALL
 **Kind**: global variable  
 **Default**: <code>255</code>  
 <a name="CHARGE_STORAGE"></a>
 
-## CHARGE_STORAGE
+## CHARGE\_STORAGE
 **Kind**: global variable  
 **Default**: <code>50</code>  
 <a name="CHARGE_DAILY"></a>
 
-## CHARGE_DAILY
+## CHARGE\_DAILY
 **Kind**: global variable  
 **Default**: <code>70</code>  
 <a name="CHARGE_STANDARD"></a>
 
-## CHARGE_STANDARD
+## CHARGE\_STANDARD
 **Kind**: global variable  
 **Default**: <code>90</code>  
 <a name="CHARGE_RANGE"></a>
 
-## CHARGE_RANGE
+## CHARGE\_RANGE
 **Kind**: global variable  
 **Default**: <code>100</code>  
 <a name="SUNROOF_VENT"></a>
 
-## SUNROOF_VENT
+## SUNROOF\_VENT
 **Kind**: global variable  
 **Default**: <code>vent</code>  
 <a name="SUNROOF_CLOSED"></a>
 
-## SUNROOF_CLOSED
+## SUNROOF\_CLOSED
 **Kind**: global variable  
 **Default**: <code>close</code>  
 <a name="MIN_TEMP"></a>
 
-## MIN_TEMP
+## MIN\_TEMP
 **Kind**: global variable  
 **Default**: <code>15</code>  
 <a name="MAX_TEMP"></a>
 
-## MAX_TEMP
+## MAX\_TEMP
 **Kind**: global variable  
 **Default**: <code>28</code>  
 <a name="FRUNK"></a>
@@ -671,7 +689,7 @@ Return vehicle information on ALL vehicles
 
 <a name="get_command"></a>
 
-## get_command(options, command, callback)
+## get\_command(options, command, callback)
 Generic REST call for GET commands
 
 **Kind**: global function  
@@ -684,7 +702,7 @@ Generic REST call for GET commands
 
 <a name="get_commandAsync"></a>
 
-## get_commandAsync(options, command) ⇒ <code>Promise</code>
+## get\_commandAsync(options, command) ⇒ <code>Promise</code>
 Generic Async REST call for GET commands
 
 **Kind**: global function  
@@ -697,7 +715,7 @@ Generic Async REST call for GET commands
 
 <a name="post_command"></a>
 
-## post_command(options, command, body, callback)
+## post\_command(options, command, body, callback)
 Generic REST call for POST commands
 
 **Kind**: global function  
@@ -711,7 +729,7 @@ Generic REST call for POST commands
 
 <a name="post_commandAsync"></a>
 
-## post_commandAsync(options, command, body) ⇒ <code>Promise</code>
+## post\_commandAsync(options, command, body) ⇒ <code>Promise</code>
 Generic Async REST call for POST commands
 
 **Kind**: global function  
@@ -1058,6 +1076,80 @@ Close the charge port for appropriately equipped vehicles
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="scheduleSoftwareUpdate"></a>
+
+## scheduleSoftwareUpdate(options) ⇒ <code>object</code>
+Schedule a firmware update
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="scheduleSoftwareUpdate"></a>
+
+## scheduleSoftwareUpdate(options) ⇒ <code>Promise</code>
+Schedule a firmware update
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="cancelSoftwareUpdate"></a>
+
+## cancelSoftwareUpdate(options) ⇒ <code>object</code>
+Cancel a scheduled software update
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="cancelSoftwareUpdate"></a>
+
+## cancelSoftwareUpdate(options) ⇒ <code>Promise</code>
+Cancel a scheduled software update
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="navigationRequest"></a>
+
+## navigationRequest(subject, text, locale)
+Send a navigation request to the car
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| subject | <code>string</code> | short-hand name for the destination |
+| text | <code>string</code> | address details including things like name, address, map link |
+| locale | <code>string</code> | the language locale, for example "en-US" |
+
+<a name="navigationRequest"></a>
+
+## navigationRequest(subject, text, locale)
+Send a navigation request to the car
+
+**Kind**: global function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| subject | <code>string</code> | short-hand name for the destination |
+| text | <code>string</code> | address details including things like name, address, map link |
+| locale | <code>string</code> | the language locale, for example "en-US" |
 
 <a name="setChargeLimit"></a>
 

@@ -268,81 +268,6 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-	describe('#scheduleSoftwareUpdate()', function () {
-	    it('should succeed', function (done) {
-	        tjs.scheduleSoftwareUpdate(options, 0, function (err, result) {
-				if (result.response.statusCode == 200) {
-					done();
-				} else {
-					done(err);
-				}
-	        });
-	    });
-
-	    it('should succeed with no callback', function (done) {
-	        tjs.scheduleSoftwareUpdate(options, 0);
-	        done();
-	    });
-	});
-
-	describe('#schedulSoftwareUpdateAsync()', function () {
-	    it('should succeed', function () {
-	        return tjs.schedulSoftwareUpdateAsync(options, 0).then(function (result) {
-				assert(result.response.statusCode, 200);
-			});
-	    });
-	});
-
-	describe('#cancelSoftwareUpdate()', function () {
-	    it('should succeed', function (done) {
-	        tjs.cancelSoftwareUpdate(options, function (err, result) {
-				if (result.response.statusCode == 200) {
-					done();
-				} else {
-					done(err);
-				}
-	        });
-	    });
-
-	    it('should succeed with no callback', function (done) {
-	        tjs.cancelSoftwareUpdate(options);
-	        done();
-	    });
-	});
-
-	describe('#cancelSoftwareUpdateAsync()', function () {
-	    it('should succeed', function () {
-	        return tjs.cancelSoftwareUpdateAsync(options).then(function (result) {
-				assert(result.response.statusCode, 200);
-			});
-	    });
-	});
-
-	describe('#navigationRequest()', function () {
-	    it('should succeed', function (done) {
-	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {
-				if (result.response.statusCode == 200) {
-					done();
-				} else {
-					done(err);
-				}
-	        });
-	    });
-
-	    it('should succeed with no callback', function (done) {
-	        tjs.navigationRequest(options, "subject", "text", "locale");
-	        done();
-	    });
-	});
-
-	describe('#navigationRequestAsync()', function () {
-	    it('should succeed', function () {
-	        return tjs.navigationRequestAsync(options, "subject", "text", "locale").then(function (result) {
-				assert(result.response.statusCode, 200);
-			});
-	    });
-	});
-
 	describe('#vehicleData()', function () {
 	    it('should succeed returning vehicle data', function (done) {
 	        tjs.vehicleData(options, function (err, vehicle) {
@@ -1194,6 +1119,81 @@ describe('TeslaJS', function () {
 	    it('should succeed with no callback', function (done) {
 	        tjs.startStreaming(options);
 			done();
+	    });
+	});
+
+	describe('#scheduleSoftwareUpdate()', function () {
+	    it('should succeed', function (done) {
+	        tjs.scheduleSoftwareUpdate(options, 0, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.scheduleSoftwareUpdate(options, 0);
+	        done();
+	    });
+	});
+
+	describe('#scheduleSoftwareUpdateAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.scheduleSoftwareUpdateAsync(options, 0).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#cancelSoftwareUpdate()', function () {
+	    it('should succeed', function (done) {
+	        tjs.cancelSoftwareUpdate(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.cancelSoftwareUpdate(options);
+	        done();
+	    });
+	});
+
+	describe('#cancelSoftwareUpdateAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.cancelSoftwareUpdateAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#navigationRequest()', function () {
+	    it('should succeed', function (done) {
+	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.navigationRequest(options, "subject", "text", "locale");
+	        done();
+	    });
+	});
+
+	describe('#navigationRequestAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.navigationRequestAsync(options, "subject", "text", "locale").then(function (result) {
+				assert(result.result, true);
+			});
 	    });
 	});
 });

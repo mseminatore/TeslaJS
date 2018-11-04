@@ -936,7 +936,7 @@ exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) 
  * @param {optionsType} options - options object
  * @returns {Promise} result
 */
-exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdateAsync);
+exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdat);
 
 /**
  * Send a navigation request to the car
@@ -969,7 +969,7 @@ exports.navigationRequest = function navigationRequest(options, subject, text, l
  * @param {string} text - address details including things like name, address, map link
  * @param {string} locale - the language locale, for example "en-US"
  */
-exports.navigationRequestAsync = Promise.denodeify(navigationRequest);
+exports.navigationRequestAsync = Promise.denodeify(exports.navigationRequest);
 
 //=====================
 // Charge limit constants

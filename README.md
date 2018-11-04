@@ -394,6 +394,7 @@ Sample | Description
 ------ | -----------
 [login](#loginjs) | Login and acquire an OAuth token.  Cached to the local directory
 [logout](#logoutjs) | Delete the locally cached OAuth token if present
+[cancelUpdate](#cancelupdatejs) | Cancels a previously scheduled software update
 [climate](#climatejs) | Display the current state of the HVAC system
 [climateStart](#climatestartjs) | Turn on the HVAC system
 [climateStop](#climatestopjs) | Turn off the HVAC system
@@ -409,6 +410,7 @@ Sample | Description
 [openTrunk](#opentrunkjs) | Opens the FRUNK or opens/closes the trunk
 [resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
+[scheduleUpdate](#scheduleupdatejs) | Schedules a software update for installation
 [setChargeLimit](#setchargelimitjs) | Set the battery charge limit to the given value
 [setTemps](#settempsjs) | Set the driver and passenger temperatures to the given value
 [simpleStreaming](#simplestreamingjs) | Demonstrates basic use of the streaming API
@@ -449,6 +451,24 @@ This sample deletes the locally cached **.token** file if present.
 Usage:
 
     node logout.js
+
+([top](#teslajs))
+	
+## cancelUpdate.js
+
+This sample cancels a previously scheduled software update for the vehicle.
+
+Usage:
+
+    node cancelUpdate.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ([top](#teslajs))
 	
@@ -718,6 +738,24 @@ This sample attempts to reset the current valet pin.
 Usage:
 
     node resetValetPin.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
+## scheduleUpdate.js
+
+This sample schedules a pending software update for installation.
+
+Usage:
+
+    node scheduleUpdate.js [options] delay
 	
 	Options:
 	

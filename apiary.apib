@@ -465,6 +465,85 @@ Wakes up the car from the sleep state. Necessary to get some data from the car.
               }
             }
 
+## Schedule Software Update [POST /api/1/vehicles/{vehicle_id}/command/schedule_software_update?offset_sec={offset_sec}]
+
+Schedules the car to install a pending firmware Update
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + offset_sec: `0` (number) - The number of ms before installation.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Cancel Software Update [POST /api/1/vehicles/{vehicle_id}/command/cancel_software_update]
+
+Cancels a pending firmware Update
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Navigation Request [POST /api/1/vehicles/{vehicle_id}/command/navigation_request?subject={subject}&text={text}&locale={locale}]
+
+Sends a navigation request to the car
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + subject: `Tesla` (string) - Short name of location.
+    + text: `Tesla Motors Corporation Freemont, CA` (string) - The name, address and map location of destination.
+    + locale: `en-US` (string) - The locale.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Set Valet Mode [POST /api/1/vehicles/{vehicle_id}/command/set_valet_mode?on={on}&password={password}]
 
 Sets valet mode on or off with a PIN to disable it from within the car. Reuses last PIN from previous valet session.

@@ -902,6 +902,75 @@ exports.closeChargePort = function closeChargePort(options, callback) {
  */
 exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
 
+/**
+ * Schedule a firmware update
+ * @function scheduleSoftwareUpdate
+ * @param {optionsType} options - options object
+ * @returns {object} result
+*/
+exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, offset, callback) {
+    post_command(options, "command/schedule_software_update", { "offset_sec": offset }, callback);
+}
+
+/**
+ * Schedule a firmware update
+ * @function scheduleSoftwareUpdate
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+*/
+exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftwareUpdate);
+
+/** 
+ * Cancel a scheduled software update
+ * @function cancelSoftwareUpdate
+ * @param {optionsType} options - options object
+ * @returns {object} result
+*/
+function cancelSoftwareUpdate(options, callback) {
+    post_command(options, "command/cancel_software_update", null, callback);
+}
+
+/** 
+ * Cancel a scheduled software update
+ * @function cancelSoftwareUpdate
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+*/
+exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdateAsync);
+
+/**
+ * Send a navigation request to the car
+ * @function navigationRequest
+ * @param {string} subject - short-hand name for the destination
+ * @param {string} text - address details including things like name, address, map link
+ * @param {string} locale - the language locale, for example "en-US"
+ */
+function navigationRequest(options, subject, text, locale, callback) {
+    var req =
+    {
+        "type": "share_ext_content_raw",
+        "value": {
+            "android.intent.ACTION": "android.intent.action.SEND",
+            "android.intent.TYPE": "text\/plain",
+            "android.intent.extra.SUBJECT": subject,
+            "android.intent.extra.TEXT": text
+        },
+        "locale": "en-US",
+        "timestamp_ms": Date.now()
+    };
+
+    post_command(options, "command/navigation_request", req, callback);
+}
+
+/**
+ * Send a navigation request to the car
+ * @function navigationRequest
+ * @param {string} subject - short-hand name for the destination
+ * @param {string} text - address details including things like name, address, map link
+ * @param {string} locale - the language locale, for example "en-US"
+ */
+exports.navigationRequestAsync = Promise.denodeify(navigationRequest);
+
 //=====================
 // Charge limit constants
 //=====================

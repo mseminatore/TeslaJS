@@ -906,6 +906,7 @@ exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
  * Schedule a firmware update
  * @function scheduleSoftwareUpdate
  * @param {optionsType} options - options object
+ * @param {number} offset - delay in ms before installation begins
  * @returns {object} result
 */
 exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, offset, callback) {
@@ -914,8 +915,9 @@ exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, offset
 
 /**
  * Schedule a firmware update
- * @function scheduleSoftwareUpdate
+ * @function scheduleSoftwareUpdateAsync
  * @param {optionsType} options - options object
+ * @param {number} offset - delay in ms before installation begins
  * @returns {Promise} result
 */
 exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftwareUpdate);
@@ -932,7 +934,7 @@ exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) 
 
 /** 
  * Cancel a scheduled software update
- * @function cancelSoftwareUpdate
+ * @function cancelSoftwareUpdateAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
 */
@@ -941,9 +943,11 @@ exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpda
 /**
  * Send a navigation request to the car
  * @function navigationRequest
+ * @param {optionsType} options - options object
  * @param {string} subject - short-hand name for the destination
  * @param {string} text - address details including things like name, address, map link
  * @param {string} locale - the language locale, for example "en-US"
+ * @returns {object} result
  */
 exports.navigationRequest = function navigationRequest(options, subject, text, locale, callback) {
     var req =
@@ -964,10 +968,12 @@ exports.navigationRequest = function navigationRequest(options, subject, text, l
 
 /**
  * Send a navigation request to the car
- * @function navigationRequest
+ * @function navigationRequestAsync
+ * @param {optionsType} options - options object
  * @param {string} subject - short-hand name for the destination
  * @param {string} text - address details including things like name, address, map link
  * @param {string} locale - the language locale, for example "en-US"
+ * @returns {Promise} result
  */
 exports.navigationRequestAsync = Promise.denodeify(exports.navigationRequest);
 

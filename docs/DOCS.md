@@ -203,22 +203,22 @@
 <dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
-<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options, offset)</a> ⇒ <code>object</code></dt>
 <dd><p>Schedule a firmware update</p>
 </dd>
-<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#scheduleSoftwareUpdateAsync">scheduleSoftwareUpdateAsync(options, offset)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Schedule a firmware update</p>
 </dd>
 <dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options)</a> ⇒ <code>object</code></dt>
 <dd><p>Cancel a scheduled software update</p>
 </dd>
-<dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#cancelSoftwareUpdateAsync">cancelSoftwareUpdateAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Cancel a scheduled software update</p>
 </dd>
-<dt><a href="#navigationRequest">navigationRequest(subject, text, locale)</a></dt>
+<dt><a href="#navigationRequest">navigationRequest(options, subject, text, locale)</a> ⇒ <code>object</code></dt>
 <dd><p>Send a navigation request to the car</p>
 </dd>
-<dt><a href="#navigationRequest">navigationRequest(subject, text, locale)</a></dt>
+<dt><a href="#navigationRequestAsync">navigationRequestAsync(options, subject, text, locale)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Send a navigation request to the car</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
@@ -1079,7 +1079,7 @@ Close the charge port for appropriately equipped vehicles
 
 <a name="scheduleSoftwareUpdate"></a>
 
-## scheduleSoftwareUpdate(options) ⇒ <code>object</code>
+## scheduleSoftwareUpdate(options, offset) ⇒ <code>object</code>
 Schedule a firmware update
 
 **Kind**: global function  
@@ -1088,10 +1088,11 @@ Schedule a firmware update
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| offset | <code>number</code> | delay in ms before installation begins |
 
-<a name="scheduleSoftwareUpdate"></a>
+<a name="scheduleSoftwareUpdateAsync"></a>
 
-## scheduleSoftwareUpdate(options) ⇒ <code>Promise</code>
+## scheduleSoftwareUpdateAsync(options, offset) ⇒ <code>Promise</code>
 Schedule a firmware update
 
 **Kind**: global function  
@@ -1100,6 +1101,7 @@ Schedule a firmware update
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| offset | <code>number</code> | delay in ms before installation begins |
 
 <a name="cancelSoftwareUpdate"></a>
 
@@ -1113,9 +1115,9 @@ Cancel a scheduled software update
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 
-<a name="cancelSoftwareUpdate"></a>
+<a name="cancelSoftwareUpdateAsync"></a>
 
-## cancelSoftwareUpdate(options) ⇒ <code>Promise</code>
+## cancelSoftwareUpdateAsync(options) ⇒ <code>Promise</code>
 Cancel a scheduled software update
 
 **Kind**: global function  
@@ -1127,26 +1129,30 @@ Cancel a scheduled software update
 
 <a name="navigationRequest"></a>
 
-## navigationRequest(subject, text, locale)
+## navigationRequest(options, subject, text, locale) ⇒ <code>object</code>
 Send a navigation request to the car
 
 **Kind**: global function  
+**Returns**: <code>object</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
 | subject | <code>string</code> | short-hand name for the destination |
 | text | <code>string</code> | address details including things like name, address, map link |
 | locale | <code>string</code> | the language locale, for example "en-US" |
 
-<a name="navigationRequest"></a>
+<a name="navigationRequestAsync"></a>
 
-## navigationRequest(subject, text, locale)
+## navigationRequestAsync(options, subject, text, locale) ⇒ <code>Promise</code>
 Send a navigation request to the car
 
 **Kind**: global function  
+**Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
 | subject | <code>string</code> | short-hand name for the destination |
 | text | <code>string</code> | address details including things like name, address, map link |
 | locale | <code>string</code> | the language locale, for example "en-US" |

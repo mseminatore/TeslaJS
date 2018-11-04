@@ -296,9 +296,12 @@ getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
-	
+
+> Promise-based versions have the suffix Async appended.
+
 Function | Description
 -------- | -----------
+cancelSoftwareUpdate() | cancels a previously scheduled software update
 chargeState() | retrieve the charge_state data
 chargeStandard() | set the charge limit to 90%
 chargeMaxRange() | sets the charge limit to 100%
@@ -314,60 +317,25 @@ guiSettings() | retrieves the GUI settings
 homelink() | Triggers homelink from the vehicle
 honkHorn() | honks the horn
 mobileEnabled() | returns whether mobile access is enabled
-startCharge() | initiates a charging session
-stopCharge() | terminates a charging session
+navigationRequest() | send a navigation request to the car
 openChargePort() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 openTrunk() | open the trunk or frunk
 refreshToken() | retrieve new OAuth token from refresh token
 remoteStart() | enables remote starting of the car
 resetValetPin() | reset the valet pin
+scheduleSoftwareUpdate() | schedule a firmware update
 setChargeLimit() | sets the charge limit to a specific amount
 setTemps() | set driver/passenger temp set points (in Deg.C)
 setValetMode() | set/reset valet mode
+startCharge() | initiates a charging session
 startStreaming() | initiate a streaming data session
+stopCharge() | terminates a charging session
 sunRoofControl() | put the sunroof into a specific state
 sunRoofMove() | open the sunroof to a specific percent
 vehicleData() | retrieve **all** vehicle state data in a single call
 vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
 wakeUp() | attempt to wake a sleeping vehicle
-
-**Promise based API calls for a given vehicle id**
-	
-Function | Description
--------- | -----------
-chargeStateAsync() | retrieve the charge_state data
-chargeStandardAsync() | set the charge limit to 90%
-chargeMaxRangeAsync() | sets the charge limit to 100%
-climateStateAsync() | retrieve the climate_state data
-climateStartAsync() | turn on the HVAC system
-climateStopAsync() | turn off the HVAC system
-closeChargePortAsync() | close the charge port on appropriately equipped vehicles
-doorLockAsync() | locks the doors
-doorUnlockAsync() | unlocks the doors
-driveStateAsync() | retrieve the drive_state data
-flashLightsAsync() | flashes the headlights
-guiSettingsAsync() | retrieves the GUI settings
-homelinkAsync() | Triggers homelink from the vehicle
-honkHornAsync() | honks the horn
-mobileEnabledAsync() | returns whether mobile access is enabled
-startChargeAsync() | initiates a charging session
-stopChargeAsync() | terminates a charging session
-openChargePortAsync() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
-openTrunkAsync() | open the trunk or frunk
-refreshTokenAsync() | retrieve new OAuth token from refresh token
-remoteStartAsync() | enables remote starting of the car
-resetValetPinAsync() | reset the valet pin
-setChargeLimitAsync() | sets the charge limit to a specific amount
-setTempsAsync() | set driver/passenger temp set points (in Deg.C)
-setValetModeAsync() | set/reset valet mode
-startStreamingAsync() | initiate a streaming data session
-sunRoofControlAsync() | put the sunroof into a specific state
-sunRoofMoveAsync() | open the sunroof to a specific percent
-vehicleDataAsync() | retrieve **all** vehicle state data in a single call
-vehicleConfigAsync() | retrieve the vehicle_config data
-vehicleStateAsync() | retrieve the vehicle_state data
-wakeUpAsync() | attempt to wake a sleeping vehicle
 
 **Library exported constants**
 

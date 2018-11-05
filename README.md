@@ -90,11 +90,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.42** merged PR's to improve streaming and fix JSON  request bodies
-2. In **2.1.41** updated [vehicle](#vehiclejs) sample to show vehicleData() call
-3. In **2.1.40** updated [wakeup](#wakeupjs) sample to better show result
-4. In **2.1.39** addressed #94 to make samples Model 3 aware
-5. In **2.1.38** fixed doc errors
+1. In **2.1.43** added support and samples for software update and navigation request endpoints
+2. In **2.1.42** merged PR's to improve streaming and fix JSON  request bodies
+3. In **2.1.41** updated [vehicle](#vehiclejs) sample to show vehicleData() call
+4. In **2.1.40** updated [wakeup](#wakeupjs) sample to better show result
+5. In **2.1.39** addressed #94 to make samples Model 3 aware
 
 ## Known Issues
 

@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.44
+* added minified version
+
 ## V2.1.43
 * added support for new software update and navigation endpoints
 * added samples that demonstrate new APIs

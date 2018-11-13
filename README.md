@@ -94,7 +94,7 @@ Here are some of the more recent features and fixes:
 2. In **2.1.44** added minified version
 3. In **2.1.43** added support and samples for software update and navigation request endpoints
 4. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
-5. In **2.1.41** updated [vehicle](#vehiclejs) sample to show vehicleData() call
+5. In **2.1.41** updated [vehicle](#vehiclejs) sample to show `vehicleData()` API call
 
 ## Known Issues
 
@@ -140,9 +140,9 @@ your vehicle, or cause damage, through actions including but not limited to:
 # Installation
 
 In order to use the library and/or samples you must first download and install
- [NodeJS](http://nodejs.org).
+[NodeJS](http://nodejs.org). An installable TeslaJS module for [npm](http://npmjs.org) 
+is now available.
 
-An installable TeslaJS module for [npm](http://npmjs.org) is now available.  
 To download and install the library and all of its dependencies to a local 
 project directory use the following:
 
@@ -150,7 +150,7 @@ project directory use the following:
 
 If you are building an npm package that depends upon this library then you 
 will want to use the **--save** parameter in order to update the 
-**package.json** file for your package as follows:
+**package.json** file for your project. For example:
 
     npm install teslajs --save
     
@@ -268,11 +268,11 @@ also responds to some environment variables.
 
 ENV variable | Description
 ------------ | -----------
-TESLAJS_LOG | if set defines the value of the default logging level (0 == none, 255 = all)
+TESLAJS_LOG | if set defines the value of the default logging level ([See constants](#library-exported-constants))
 TESLAJS_SERVER | if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
 TESLAJS_STREAMING | if set defines the URI for the Tesla streaming servers (e.g. set to http://127.0.0.1:3000)
 
-## General API calls
+## General API Calls
 
 Function | Description
 -------- | -----------
@@ -284,15 +284,20 @@ getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
-vehicles() | retrieve list of vehicles and return requested vehicle option data
+vehicles() | return information on the requested vehicle
 vehicle() | same as above
 allVehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
-	
-**NodeJS Callback (nodeback) style API calls for a given vehicle id**
 
-> Note: Promise-based versions have the suffix `Async` appended.  For example `vehicleAsync()`.
+> Note: In a future version `vehicles()` will return information on all vehicles,
+> the `allVehicles()` call will be removed and `vehicle()` will return information
+> on a specific vehicle.
+
+## Vehicle-specific API calls
+
+> Note: The promise-based versions of the APIs have the suffix **Async** appended.  
+> For example `vehicle()` and `vehicleAsync()`.
 
 Function | Description
 -------- | -----------
@@ -339,7 +344,7 @@ vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
 wakeUp() | attempt to wake a sleeping vehicle
 
-## Library exported constants
+## Library Exported Constants
 
 Constant | Description
 -------- | -----------

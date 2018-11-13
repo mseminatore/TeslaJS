@@ -693,9 +693,9 @@ Usage:
 
     node navRequest.js [options] subject text [locale]
 	
-    `subject` - the short-version of the destination name
-    `text` - the name and address of the destination
-    `locale` - the locale, if not present defaults to en-US
+    subject - the short-version of the destination name
+    text - the name and address of the destination
+    locale - the locale, if not present defaults to en-US
 
 	Options:
 	

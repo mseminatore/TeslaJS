@@ -212,7 +212,7 @@ As you can see below, it is very simple to login and acquire an OAuth token.
 
 ## Vehicles Example
 
-With the OAuth token from a successful `login()` call you can query the 
+With the OAuth token from a successful `login()` API call you can query the 
 vehicles for the account:
 
 ```javascript
@@ -222,7 +222,7 @@ vehicles for the account:
     });
 ```
 
-Or using the xxxAsync Promise-based calls:
+Or using the Async Promise-based calls:
 
 ```javascript
 	tjs.vehiclesAsync(options).done(function(vehicle) {
@@ -232,7 +232,7 @@ Or using the xxxAsync Promise-based calls:
 
 ## Charge State Example
 
-Adding the vehicle ID from a successful `vehicles()` call to options you can 
+Adding the vehicle ID from a successful `vehicles()` API call to options you can 
 make other Tesla REST calls:
 
 ```javascript
@@ -241,7 +241,7 @@ make other Tesla REST calls:
     });
 ```
 
-And using the new Async Promise-based calls:
+And using the Async Promise-based calls:
 
 ```javascript
 	tjs.chargeStateAsync(options).done(function(chargeState) {
@@ -249,7 +249,7 @@ And using the new Async Promise-based calls:
 	});
 ```
 
-Or using the new vehicleData API call:
+Or using the `vehicleData()` API call:
 
 ```javascript
     tjs.vehicleData(options).done(function(vehicleData) {
@@ -264,15 +264,15 @@ Or using the new vehicleData API call:
 The TeslaJS library exports a number of methods and constants.  The library 
 also responds to some environment variables.
 
-**Environment Variables**
+## Environment Variables
 
 ENV variable | Description
 ------------ | -----------
-TESLAJS_LOG | if set defines the value of the default logging level
+TESLAJS_LOG | if set defines the value of the default logging level (0 == none, 255 = all)
 TESLAJS_SERVER | if set defines the URI for the Tesla servers (e.g. set to http://127.0.0.1:3000)
 TESLAJS_STREAMING | if set defines the URI for the Tesla streaming servers (e.g. set to http://127.0.0.1:3000)
 
-**General API calls**
+## General API calls
 
 Function | Description
 -------- | -----------
@@ -283,21 +283,16 @@ getShortVin() | return short form VIN from the vehicle object
 getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
-loginAsync() | same as above but returns a Promise
 logout() | delete the current OAuth token
-logoutAsync() | same as above but returns a Promise
 vehicles() | retrieve list of vehicles and return requested vehicle option data
 vehicle() | same as above
-vehiclesAsync() | same as above but returns a Promise
-vehicleAsync() | same as above
 allVehicles() | return information and option data for all vehicles
-allVehiclesAsync() | same as above but returns a Promise
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 
-> Promise-based versions have the suffix `Async` appended.
+> Note: Promise-based versions have the suffix `Async` appended.  For example `vehicleAsync()`.
 
 Function | Description
 -------- | -----------
@@ -344,7 +339,7 @@ vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
 wakeUp() | attempt to wake a sleeping vehicle
 
-**Library exported constants**
+## Library exported constants
 
 Constant | Description
 -------- | -----------
@@ -371,12 +366,12 @@ TRUNK | constant for openTrunk API
 Most of the APIs take both an **options** parameter and an optional 
 **callback** function.  The **options** parameter must always contain a 
 property called **authToken** that contains the OAuth token returned 
-from a successfull **login()**.  For all APIs that act on a specific 
+from a successfull `login()`.  For all APIs that act on a specific 
 vehicle the **options** parameter must also contain a **vehicleID** 
 member that contains the long vehicle ID value returned from a successful 
-call to **vehicles()**.
+call to `vehicles()`.
 
-By default the **vehicles()** API returns information on the first vehicle 
+By default the `vehicles()` API returns information on the first vehicle 
 returned.  By providing a **carIndex** member in the **options** parameter 
 information on a specific vehicle can be queried.
 	
@@ -388,7 +383,7 @@ some basic usage scenarios for the library.  To use the samples first:
     cd Examples
     node sampleName
 
-After running the **login** sample an auth token will be cached locally.
+After running the [login](#loginjs) sample an auth token will be cached locally.
 
 If you prefer to avoid keeping an auth token on your machine, provide login 
 credentials on the command line for each sample.  This will perform a login 

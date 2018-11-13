@@ -1172,6 +1172,181 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#mediaTogglePlayback()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaTogglePlayback(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaTogglePlayback(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaTogglePlaybackAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaTogglePlaybackAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaPlayNext()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaPlayNext(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaPlayNext(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaPlayNextAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaPlayNextAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaPlayPrevious()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaPlayPrevious(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaPlayPrevious(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaPlayPreviousAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaPlayPreviousAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaPlayNextFavorite()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaPlayNextFavorite(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaPlayNextFavorite(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaPlayNextFavoriteAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaPlayNextFavoriteAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaPlayPreviousFavorite()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaPlayPreviousFavorite(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaPlayPreviousFavorite(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaPlayPreviousFavoriteAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaPlayPreviousFavoriteAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaVolumeUp()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaVolumeUp(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaVolumeUp(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaVolumeUpAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaVolumeUpAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#mediaVolumeDown()', function () {
+	    it('should succeed', function (done) {
+	        tjs.mediaVolumeDown(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.mediaVolumeDown(options);
+	        done();
+	    });
+	});
+
+	describe('#mediaVolumeDownAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.mediaVolumeDownAsync(options).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
 	describe('#navigationRequest()', function () {
 	    it('should succeed', function (done) {
 	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {

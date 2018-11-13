@@ -2,6 +2,8 @@
 
 ## V2.1.45
 * added navRequest sample
+* implemented media endpoints
+* added media samples
 
 ## V2.1.44
 * added minified version

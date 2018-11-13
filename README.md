@@ -90,11 +90,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.44** added minified version
-2. In **2.1.43** added support and samples for software update and navigation request endpoints
-3. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
-4. In **2.1.41** updated [vehicle](#vehiclejs) sample to show vehicleData() call
-5. In **2.1.40** updated [wakeup](#wakeupjs) sample to better show result
+1. In **2.1.45** added media playback sample and methods
+2. In **2.1.44** added minified version
+3. In **2.1.43** added support and samples for software update and navigation request endpoints
+4. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
+5. In **2.1.41** updated [vehicle](#vehiclejs) sample to show vehicleData() call
 
 ## Known Issues
 
@@ -222,7 +222,7 @@ vehicles for the account:
     });
 ```
 
-Or using the new Async Promise-based calls:
+Or using the xxxAsync Promise-based calls:
 
 ```javascript
 	tjs.vehiclesAsync(options).done(function(vehicle) {
@@ -297,7 +297,7 @@ getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 	
 **NodeJS Callback (nodeback) style API calls for a given vehicle id**
 
-> Promise-based versions have the suffix Async appended.
+> Promise-based versions have the suffix `Async` appended.
 
 Function | Description
 -------- | -----------
@@ -316,6 +316,13 @@ flashLights() | flashes the headlights
 guiSettings() | retrieves the GUI settings
 homelink() | Triggers homelink from the vehicle
 honkHorn() | honks the horn
+mediaTogglePlayback() | toggles media playback
+mediaPlayNext() | plays the next track
+mediaPlayPrevious() | plays the previous track
+mediaPlayNextFavorite() | plays the next favorite
+mediaPlayPreviousFavorite() | plays the previous favorite
+mediaVolumeUp() | increase the volume
+mediaVolumeDown() | decrease the volume
 mobileEnabled() | returns whether mobile access is enabled
 navigationRequest() | send a navigation request to the car
 openChargePort() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
@@ -375,12 +382,14 @@ information on a specific vehicle can be queried.
 	
 # Samples
 
-A number of samples are provided in the Examples directory.  These demonstrate 
+A collection of samples are provided in the Examples directory.  These demonstrate 
 some basic usage scenarios for the library.  To use the samples first:
 
     cd Examples
+    node sampleName
 
-After running the **login** sample an auth token will be cached locally.  
+After running the **login** sample an auth token will be cached locally.
+
 If you prefer to avoid keeping an auth token on your machine, provide login 
 credentials on the command line for each sample.  This will perform a login 
 request and keep the token only for the duration of the sample.  The 
@@ -404,7 +413,9 @@ Sample | Description
 [homelink](#homelinkjs) | Trigger homelink (note appears to require AP hardware)
 [honkHorn](#honkhornjs) | Honk the horn
 [lock](#lockjs) | Lock the car doors
+[media](#mediajs) | Sends commands to the vehicle media system
 [mobileEnabled](#mobileenabledjs) | Display whether remote access is enabled
+[navRequest](#navrequestjs) | Send an address to the vehicle
 [odometer](#odometerjs) | Displays the current odometer value
 [openChargePort](#openchargeportjs) | Opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 [openTrunk](#opentrunkjs) | Opens the FRUNK or opens/closes the trunk
@@ -638,6 +649,24 @@ Usage:
 
 ([top](#teslajs))
 
+## media.js
+
+This sample sends a command to the vehicle media system.
+
+Usage:
+
+    node media.js [options] toggle|next|prev|next_fav|prev_fav|up|down
+
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
 ## mobileEnabled.js
 
 This sample retrieves and displays whether mobile access is enabled.
@@ -646,6 +675,28 @@ Usage:
 
     node mobileEnabled.js [options]
 	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
+## navRequest.js
+
+This sample sends an address to the vehicle navigation system.
+
+Usage:
+
+    node navRequest.js [options] subject text [locale]
+	
+    `subject` - the short-version of the destination name
+    `text` - the name and address of the destination
+    `locale` - the locale, if not present defaults to en-US
+
 	Options:
 	
     -h, --help               output usage information

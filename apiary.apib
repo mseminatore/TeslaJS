@@ -516,6 +516,181 @@ Cancels a pending firmware Update
               }
             }
 
+## Media toggle playback [POST /api/1/vehicles/{vehicle_id}/command/media_toggle_playback]
+
+Toggles media playback
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media play next track [POST /api/1/vehicles/{vehicle_id}/command/media_next_track]
+
+Play the next track
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media play previous track [POST /api/1/vehicles/{vehicle_id}/command/media_previous_track]
+
+Play the previous track
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media play next favorite [POST /api/1/vehicles/{vehicle_id}/command/media_next_fav]
+
+Play the next favorite
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media play previous favorite [POST /api/1/vehicles/{vehicle_id}/command/media_previous_fav]
+
+Play the previous favorite
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media volume up [POST /api/1/vehicles/{vehicle_id}/command/media_volume_up]
+
+Increase media volume
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Media volume down [POST /api/1/vehicles/{vehicle_id}/command/media_volume_down]
+
+Decrease media volume
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Navigation Request [POST /api/1/vehicles/{vehicle_id}/command/navigation_request?subject={subject}&text={text}&locale={locale}]
 
 Sends a navigation request to the car

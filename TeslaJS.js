@@ -959,7 +959,7 @@ exports.navigationRequest = function navigationRequest(options, subject, text, l
             "android.intent.extra.SUBJECT": subject,
             "android.intent.extra.TEXT": text
         },
-        "locale": "en-US",
+        "locale": locale,
         "timestamp_ms": Date.now()
     };
 
@@ -976,6 +976,132 @@ exports.navigationRequest = function navigationRequest(options, subject, text, l
  * @returns {Promise} result
  */
 exports.navigationRequestAsync = Promise.denodeify(exports.navigationRequest);
+
+/**
+ * Toggle media playback
+ * @function mediaTogglePlayback
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaTogglePlayback = function mediaTogglePlayback(options, callback) {
+    post_command(options, "command/media_toggle_playback", null, callback);
+}
+
+/**
+ * Toggle media playback
+ * @function mediaTogglePlaybackAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaTogglePlaybackAsync = Promise.denodeify(exports.mediaTogglePlayback);
+
+/**
+ * Media play next track
+ * @function mediaPlayNext
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaPlayNext = function mediaPlayNext(options, callback) {
+    post_command(options, "command/media_next_track", null, callback);
+}
+
+/**
+ * Media play next track
+ * @function mediaPlayNextAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaPlayNextAsync = Promise.denodeify(exports.mediaPlayNext);
+
+/**
+ * Media play previous track
+ * @function mediaPlayPrevious
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaPlayPrevious = function mediaPlayPrevious(options, callback) {
+    post_command(options, "command/media_previous_track", null, callback);
+}
+
+/**
+ * Media play previous track
+ * @function mediaPlayPreviousAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaPlayPreviousAsync = Promise.denodeify(exports.mediaPlayPrevious);
+
+/**
+ * Media play next favorite
+ * @function mediaPlayNextFavorite
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaPlayNextFavorite = function mediaPlayNextFavorite(options, callback) {
+    post_command(options, "command/media_next_fav", null, callback);
+}
+
+/**
+ * Media play next favorite
+ * @function mediaPlayNextFavoriteAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaPlayNextFavoriteAsync = Promise.denodeify(exports.mediaPlayNextFavorite);
+
+/**
+ * Media play previous favorite
+ * @function mediaPlayPreviousFavorite
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaPlayPreviousFavorite = function mediaPlayPreviousFavorite(options, callback) {
+    post_command(options, "command/media_previous_fav", null, callback);
+}
+
+/**
+ * Media play previous favorite
+ * @function mediaPlayPreviousFavoriteAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaPlayPreviousFavoriteAsync = Promise.denodeify(exports.mediaPlayPreviousFavorite);
+
+/**
+ * Media volume up
+ * @function mediaVolumeUp
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaVolumeUp = function mediaVolumeUp(options, callback) {
+    post_command(options, "command/media_volume_up", null, callback);
+}
+
+/**
+ * Media volume up
+ * @function mediaVolumeUpAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaVolumeUpAsync = Promise.denodeify(exports.mediaVolumeUp);
+
+/**
+ * Media volume down
+ * @function mediaVolumeDown
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.mediaVolumeDown = function mediaVolumeDown(options, callback) {
+    post_command(options, "command/media_volume_down", null, callback);
+}
+
+/**
+ * Media volume down
+ * @function mediaVolumeDownAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
 
 //=====================
 // Charge limit constants

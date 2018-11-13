@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.45
+* added navRequest sample
+
 ## V2.1.44
 * added minified version
 

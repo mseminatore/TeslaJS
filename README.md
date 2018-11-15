@@ -236,6 +236,7 @@ Adding the vehicle ID from a successful `vehicles()` API call to options you can
 make other Tesla REST calls:
 
 ```javascript
+    var options = { authToken: result.authToken, vehicleID: vehicle.id_s };
     tjs.chargeState(options, function (err, chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
@@ -274,6 +275,8 @@ TESLAJS_STREAMING | if set defines the URI for the Tesla streaming servers (e.g.
 
 ## General API Calls
 
+These methods all require an `options` parameter with at least `options.authToken` defined.
+
 Function | Description
 -------- | -----------
 getLogLevel() | gets the level of debug logging
@@ -295,6 +298,10 @@ getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 > on a specific vehicle.
 
 ## Vehicle-specific API calls
+
+These methods all require an `options` parameter with at least `options.authToken` and `options.vehicleID` defined.
+
+> Note: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and **not** `id` or `vehicle_id`. Using the wrong ID will result in 404 errors.
 
 > Note: The promise-based versions of the APIs have the suffix **Async** appended.  
 > For example `vehicle()` and `vehicleAsync()`.

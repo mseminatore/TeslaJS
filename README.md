@@ -25,7 +25,7 @@ API, NodeJS, Express and Git/GitHub
 ## Notable Features
 
 With the introduction of the new OAuth-based owner API, one of the features I 
-wanted was the ability to make API callswithout having to login each time a 
+wanted was the ability to make API calls without having to login each time a 
 new process was invoked.  Many existing libraries require a login transaction 
 with each initiation of the library.  With the TeslaJS library, once an auth 
 token is retrieved it can be cached and used to make other Tesla REST API 
@@ -41,47 +41,6 @@ the account.
 Another feature that I wanted was API stateless-ness (achieved via an **options** 
 parameter to API calls) so that it was possible to use the library to make 
 multiple overlapping async calls for different vehicles for data-logging.
-
-## Library Users
-
-A growing number of projects use the library or are based on its code.  One project is
-the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store.  This 
-Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
-
-## Documentation
-
-We've recently added auto-generated documentation via jsdocs.  See the
- [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
-for a mostly complete reference.  Please let us know if you see something 
-missing and we'll continue to expand.
-
-## Project Principles
-
-This project has a few principles that have and will continue to guide its 
-development.
-
-1. **Dependency lean**.  Try to keep the required dependencies to a minimum.
-2. **Comprehensive**.  Attempt to expose the full Tesla REST API surface area.
-3. **Simple**.  Using the library should be simple and straightforward 
-following common conventions.
-4. **Server friendly**.  Provide for use based on auth tokens and avoid 
-requiring access to passwords.
-
-## Contributing
-
-Contributions are welcome, particularly bug fixes and enhancements!
-Refer to our [Contribution Guidelines](https://github.com/mseminatore/TeslaJS/blob/master/CONTRIBUTING.md) for details.
-
-> Please note that Project owners reserve the right to accept or reject any PR
-> for any reason.
-
-## Code of Conduct
-
-Before contributing or participating in the TeslaJS community please be sure to 
-familiarize yourself with our project 
-[CODE OF CONDUCT](https://github.com/mseminatore/TeslaJS/blob/master/CODE_OF_CONDUCT.md). 
-These guidelines are intended to govern interactions with and within the TeslaJS 
-community.
 
 ## What's New!
 
@@ -102,6 +61,47 @@ Here are some of the more recent features and fixes:
 AP test and report back?
 2. Calendar support not yet functional.  If someone can share the JSON for a 
 valid calendar request that would help!
+
+## Library Users
+
+A growing number of projects use the library or are based on its code.  One such project is
+the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store.  This 
+Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
+
+## Project Principles
+
+This project has a few principles that have and will continue to guide its 
+development.
+
+1. **Dependency lean**.  Try to keep the required dependencies to a minimum.
+2. **Comprehensive**.  Attempt to expose the full Tesla REST API surface area.
+3. **Simple**.  Using the library should be simple and straightforward 
+following common conventions.
+4. **Server friendly**.  Provide for use based on auth tokens and avoid 
+requiring access to passwords.
+
+## Documentation
+
+We've recently added auto-generated documentation via jsdocs.  See the
+ [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
+for a mostly complete reference.  Please let us know if you see something 
+missing and we will continue to expand.
+
+## Contributing
+
+Contributions are welcome, particularly bug fixes and enhancements!
+Refer to our [Contribution Guidelines](https://github.com/mseminatore/TeslaJS/blob/master/CONTRIBUTING.md) for details.
+
+> Please note that Project owners reserve the right to accept or reject any PR
+> for any reason.
+
+## Code of Conduct
+
+Before contributing or participating in the TeslaJS community please be sure to 
+familiarize yourself with our project 
+[CODE OF CONDUCT](https://github.com/mseminatore/TeslaJS/blob/master/CODE_OF_CONDUCT.md). 
+These guidelines are intended to govern interactions with and within the TeslaJS 
+community.
 
 # Tesla API Documentation
 
@@ -132,7 +132,7 @@ your vehicle, or cause damage, through actions including but not limited to:
 * Impacting the long-term health of your battery
 
 > Please be careful not to use this code in a way that loads the Tesla servers
-> with too many with requests. Calling the Tesla REST APIs at a very high 
+> with too many concurrent requests. Calling the Tesla REST APIs at a very high 
 > frequency will stress the Tesla servers and could get your IP or favorite
 > cloud service blocked by Tesla.  Or in the worst case it could cause Tesla 
 > to revoke the key that enables access via this and many other libraries.

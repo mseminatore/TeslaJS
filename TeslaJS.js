@@ -1020,7 +1020,7 @@ exports.mediaPlayNextAsync = Promise.denodeify(exports.mediaPlayNext);
  * @returns {object} result
  */
 exports.mediaPlayPrevious = function mediaPlayPrevious(options, callback) {
-    post_command(options, "command/media_previous_track", null, callback);
+    post_command(options, "command/media_prev_track", null, callback);
 }
 
 /**
@@ -1056,7 +1056,7 @@ exports.mediaPlayNextFavoriteAsync = Promise.denodeify(exports.mediaPlayNextFavo
  * @returns {object} result
  */
 exports.mediaPlayPreviousFavorite = function mediaPlayPreviousFavorite(options, callback) {
-    post_command(options, "command/media_previous_fav", null, callback);
+    post_command(options, "command/media_prev_fav", null, callback);
 }
 
 /**

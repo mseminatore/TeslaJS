@@ -1347,6 +1347,106 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#speedLimitActivate()', function () {
+	    it('should succeed', function (done) {
+	        tjs.speedLimitActivate(options, "1234", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.speedLimitActivate(options, "1234");
+	        done();
+	    });
+	});
+
+	describe('#speedLimitActivateAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.speedLimitActivateAsync(options, "1234").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#speedLimitDeactivate()', function () {
+	    it('should succeed', function (done) {
+	        tjs.speedLimitDeactivate(options, "1234", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.speedLimitDeactivate(options, "1234");
+	        done();
+	    });
+	});
+
+	describe('#speedLimitDeactivateAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.speedLimitDeactivateAsync(options, "1234").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#speedLimitClearPin()', function () {
+	    it('should succeed', function (done) {
+	        tjs.speedLimitClearPin(options, "1234", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.speedLimitClearPin(options, "1234");
+	        done();
+	    });
+	});
+
+	describe('#speedLimitClearPinAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.speedLimitClearPinAsync(options, "1234").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#speedLimitSetLimit()', function () {
+	    it('should succeed', function (done) {
+	        tjs.speedLimitSetLimit(options, "80.0", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.speedLimitSetLimit(options, "80.0");
+	        done();
+	    });
+	});
+
+	describe('#speedLimitSetLimitAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.speedLimitSetLimitAsync(options, "80.0").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
 	describe('#navigationRequest()', function () {
 	    it('should succeed', function (done) {
 	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {

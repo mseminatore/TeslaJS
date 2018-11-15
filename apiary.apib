@@ -691,6 +691,110 @@ Decrease media volume
               }
             }
 
+## Speed limit activate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_activate]
+
+Activate speed limitation
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + pin: '1234' (string) - The pin code.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Speed limit deactivate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_deactivate]
+
+Deactivate speed limitation
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + pin: '1234' (string) - The pin code.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Speed limit clear pin [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_clear_pin]
+
+Clear speed limitation pin
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + pin: '1234' (string) - The pin code.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Speed limit set limit [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_set_limit]
+
+Set speed limit
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + limit_mph: '80.0' (number) - The speed limit.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Navigation Request [POST /api/1/vehicles/{vehicle_id}/command/navigation_request?subject={subject}&text={text}&locale={locale}]
 
 Sends a navigation request to the car

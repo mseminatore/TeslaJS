@@ -1103,6 +1103,78 @@ exports.mediaVolumeDown = function mediaVolumeDown(options, callback) {
  */
 exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
 
+/**
+ * Activate speed limitation
+ * @function speedLimitActivate
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.speedLimitActivate = function speedLimitActivate(options, pin, callback) {
+    post_command(options, "command/speed_limit_activate", { pin: pin }, callback);
+}
+
+/**
+ * Media volume down
+ * @function speedLimitActivateAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
+
+/**
+ * Deactivate speed limitation
+ * @function speedLimitDeactivate
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.speedLimitDeactivate = function speedLimitDeactivate(options, pin, callback) {
+    post_command(options, "command/speed_limit_deactivate", { pin: pin }, callback);
+}
+
+/**
+ * Media volume down
+ * @function speedLimitDeactivateAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactivate);
+
+/**
+ * Clear speed limitation pin
+ * @function speedLimitClearPin
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.speedLimitClearPin = function speedLimitClearPin(options, pin, callback) {
+    post_command(options, "command/speed_limit_clear_pin", { pin: pin }, callback);
+}
+
+/**
+ * Media volume down
+ * @function speedLimitClearPinAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
+
+/**
+ * Set speed limit
+ * @function speedLimitSetLimit
+ * @param {optionsType} options - options object
+ * @returns {object} result
+ */
+exports.speedLimitSetLimit = function speedLimitSetLimit(options, limit, callback) {
+    post_command(options, "command/speed_limit_set_limit", { limit_mph: limit }, callback);
+}
+
+/**
+ * Media volume down
+ * @function speedLimitSetLimitAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} result
+ */
+exports.speedLimitSetLimitAsync = Promise.denodeify(exports.speedLimitSetLimit);
+
 //=====================
 // Charge limit constants
 //=====================

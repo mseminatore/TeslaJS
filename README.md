@@ -90,11 +90,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.45** added media playback sample and methods
-2. In **2.1.44** added minified version
-3. In **2.1.43** added support and samples for software update and navigation request endpoints
-4. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
-5. In **2.1.41** updated [vehicle](#vehiclejs) sample to show `vehicleData()` API call
+1. In **2.1.46** fix incorrect media endpoints
+2. In **2.1.45** added media playback sample and methods
+3. In **2.1.44** added minified version
+4. In **2.1.43** added support and samples for software update and navigation request endpoints
+5. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
 
 ## Known Issues
 

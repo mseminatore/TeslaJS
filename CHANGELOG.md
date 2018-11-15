@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.46
+* fix incorrect media endpoints
+
 ## V2.1.45
 * added navRequest sample
 * implemented media endpoints

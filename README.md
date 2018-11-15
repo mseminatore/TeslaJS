@@ -334,6 +334,10 @@ scheduleSoftwareUpdate() | schedule a firmware update
 setChargeLimit() | sets the charge limit to a specific amount
 setTemps() | set driver/passenger temp set points (in Deg.C)
 setValetMode() | set/reset valet mode
+speedLimitActivate() | activate the speed limit
+speedLimitDeactivate() | deactivate the speed limit
+speedLimitClearPin() | clear the speed limit pin
+speedLimitSetLimit() | set the speed limit
 startCharge() | initiates a charging session
 startStreaming() | initiate a streaming data session
 stopCharge() | terminates a charging session

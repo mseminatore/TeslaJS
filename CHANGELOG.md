@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.48
+* merged PR #101 to update README
+
 ## V2.1.47
 * added `setSpeed` sample
 

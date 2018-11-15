@@ -245,9 +245,9 @@ make other Tesla REST calls:
 And using the Async Promise-based calls:
 
 ```javascript
-	tjs.chargeStateAsync(options).done(function(chargeState) {
+    tjs.chargeStateAsync(options).done(function(chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
-	});
+    });
 ```
 
 Or using the `vehicleData()` API call:
@@ -293,7 +293,7 @@ allVehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 
-> Note: In a future version `vehicles()` will return information on all vehicles,
+> **Note**: In a future version `vehicles()` will return information on all vehicles,
 > the `allVehicles()` call will be removed and `vehicle()` will return information
 > on a specific vehicle.
 
@@ -301,9 +301,9 @@ getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 
 These methods all require an `options` parameter with at least `options.authToken` and `options.vehicleID` defined.
 
-> Note: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and **not** `id` or `vehicle_id`. Using the wrong ID will result in 404 errors.
+> **Note**: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and __**not**__ `id` or `vehicle_id`. Using the wrong ID will result in 404 errors!
 
-> Note: The promise-based versions of the APIs have the suffix **Async** appended.  
+> **Note**: The promise-based versions of the APIs have the suffix **Async** appended.  
 > For example `vehicle()` and `vehicleAsync()`.
 
 Function | Description

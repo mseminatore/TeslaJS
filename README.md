@@ -187,7 +187,7 @@ To do so, from your project directory type:
 As you can see below, it is very simple to login and acquire an OAuth token.
 
 ```javascript
-    var tjs = require('TeslaJS');
+    var tjs = require('teslajs');
 
     var username = "<your MyTesla email>";
     var password = "<your MyTesla password>";

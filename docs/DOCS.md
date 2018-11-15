@@ -1490,8 +1490,7 @@ Media volume down
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1505,8 +1504,7 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  

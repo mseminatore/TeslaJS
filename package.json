@@ -33,12 +33,12 @@
   "license": "MIT",
   "devDependencies": {
     "colors": "^1.1.2",
-    "commander": "^2.9.0",
-    "coveralls": "^2.12.0",
+    "commander": "^2.19.0",
+    "coveralls": "^3.0.2",
     "istanbul": "^0.4.5",
-    "jsdoc-to-markdown": "^3.0.0",
+    "jsdoc-to-markdown": "^4.0.1",
     "jshint": "^2.9.4",
-    "mocha": "^3.2.0",
+    "mocha": "^5.2.0",
     "sepia": "^2.0.2"
   }
 }

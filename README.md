@@ -427,6 +427,7 @@ Sample | Description
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
 [scheduleUpdate](#scheduleupdatejs) | Schedules a software update for installation
 [setChargeLimit](#setchargelimitjs) | Set the battery charge limit to the given value
+[setSpeed](#setspeedjs) | Sets the speed limit
 [setTemps](#settempsjs) | Set the driver and passenger temperatures to the given value
 [simpleStreaming](#simplestreamingjs) | Demonstrates basic use of the streaming API
 [soc](#socjs) | Displays the current battery State of Charge (SOC) for the vehicle
@@ -829,6 +830,24 @@ This sample sets the current battery charge limit to the given value.
 Usage:
 
     node setChargeLimit.js [options] number|standard|storage|range
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
+## setSpeed.js
+
+This sample sets the speed limit to the given value.
+
+Usage:
+
+    node setTemps.js [options] speed
 	
 	Options:
 	

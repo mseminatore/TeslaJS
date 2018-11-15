@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V2.1.47
+* added `setSpeed` sample
+
 ## V2.1.46
 * fix incorrect media endpoints
 

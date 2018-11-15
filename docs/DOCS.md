@@ -221,6 +221,72 @@
 <dt><a href="#navigationRequestAsync">navigationRequestAsync(options, subject, text, locale)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Send a navigation request to the car</p>
 </dd>
+<dt><a href="#mediaTogglePlayback">mediaTogglePlayback(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Toggle media playback</p>
+</dd>
+<dt><a href="#mediaTogglePlaybackAsync">mediaTogglePlaybackAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Toggle media playback</p>
+</dd>
+<dt><a href="#mediaPlayNext">mediaPlayNext(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media play next track</p>
+</dd>
+<dt><a href="#mediaPlayNextAsync">mediaPlayNextAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media play next track</p>
+</dd>
+<dt><a href="#mediaPlayPrevious">mediaPlayPrevious(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media play previous track</p>
+</dd>
+<dt><a href="#mediaPlayPreviousAsync">mediaPlayPreviousAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media play previous track</p>
+</dd>
+<dt><a href="#mediaPlayNextFavorite">mediaPlayNextFavorite(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media play next favorite</p>
+</dd>
+<dt><a href="#mediaPlayNextFavoriteAsync">mediaPlayNextFavoriteAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media play next favorite</p>
+</dd>
+<dt><a href="#mediaPlayPreviousFavorite">mediaPlayPreviousFavorite(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media play previous favorite</p>
+</dd>
+<dt><a href="#mediaPlayPreviousFavoriteAsync">mediaPlayPreviousFavoriteAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media play previous favorite</p>
+</dd>
+<dt><a href="#mediaVolumeUp">mediaVolumeUp(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media volume up</p>
+</dd>
+<dt><a href="#mediaVolumeUpAsync">mediaVolumeUpAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume up</p>
+</dd>
+<dt><a href="#mediaVolumeDown">mediaVolumeDown(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Media volume down</p>
+</dd>
+<dt><a href="#mediaVolumeDownAsync">mediaVolumeDownAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume down</p>
+</dd>
+<dt><a href="#speedLimitActivate">speedLimitActivate(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Activate speed limitation</p>
+</dd>
+<dt><a href="#speedLimitActivateAsync">speedLimitActivateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume down</p>
+</dd>
+<dt><a href="#speedLimitDeactivate">speedLimitDeactivate(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Deactivate speed limitation</p>
+</dd>
+<dt><a href="#speedLimitDeactivateAsync">speedLimitDeactivateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume down</p>
+</dd>
+<dt><a href="#speedLimitClearPin">speedLimitClearPin(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Clear speed limitation pin</p>
+</dd>
+<dt><a href="#speedLimitClearPinAsync">speedLimitClearPinAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume down</p>
+</dd>
+<dt><a href="#speedLimitSetLimit">speedLimitSetLimit(options)</a> ⇒ <code>object</code></dt>
+<dd><p>Set speed limit</p>
+</dd>
+<dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Media volume down</p>
+</dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
@@ -340,82 +406,82 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 **Default**: <code>https://owner-api.teslamotors.com</code>  
 <a name="API_LOG_ALWAYS"></a>
 
-## API\_LOG\_ALWAYS
+## API_LOG_ALWAYS
 **Kind**: global variable  
 **Default**: <code>0</code>  
 <a name="API_ERR_LEVEL"></a>
 
-## API\_ERR\_LEVEL
+## API_ERR_LEVEL
 **Kind**: global variable  
 **Default**: <code>1</code>  
 <a name="API_CALL_LEVEL"></a>
 
-## API\_CALL\_LEVEL
+## API_CALL_LEVEL
 **Kind**: global variable  
 **Default**: <code>2</code>  
 <a name="API_RETURN_LEVEL"></a>
 
-## API\_RETURN\_LEVEL
+## API_RETURN_LEVEL
 **Kind**: global variable  
 **Default**: <code>3</code>  
 <a name="API_BODY_LEVEL"></a>
 
-## API\_BODY\_LEVEL
+## API_BODY_LEVEL
 **Kind**: global variable  
 **Default**: <code>4</code>  
 <a name="API_REQUEST_LEVEL"></a>
 
-## API\_REQUEST\_LEVEL
+## API_REQUEST_LEVEL
 **Kind**: global variable  
 **Default**: <code>5</code>  
 <a name="API_RESPONSE_LEVEL"></a>
 
-## API\_RESPONSE\_LEVEL
+## API_RESPONSE_LEVEL
 **Kind**: global variable  
 **Default**: <code>6</code>  
 <a name="API_LOG_ALL"></a>
 
-## API\_LOG\_ALL
+## API_LOG_ALL
 **Kind**: global variable  
 **Default**: <code>255</code>  
 <a name="CHARGE_STORAGE"></a>
 
-## CHARGE\_STORAGE
+## CHARGE_STORAGE
 **Kind**: global variable  
 **Default**: <code>50</code>  
 <a name="CHARGE_DAILY"></a>
 
-## CHARGE\_DAILY
+## CHARGE_DAILY
 **Kind**: global variable  
 **Default**: <code>70</code>  
 <a name="CHARGE_STANDARD"></a>
 
-## CHARGE\_STANDARD
+## CHARGE_STANDARD
 **Kind**: global variable  
 **Default**: <code>90</code>  
 <a name="CHARGE_RANGE"></a>
 
-## CHARGE\_RANGE
+## CHARGE_RANGE
 **Kind**: global variable  
 **Default**: <code>100</code>  
 <a name="SUNROOF_VENT"></a>
 
-## SUNROOF\_VENT
+## SUNROOF_VENT
 **Kind**: global variable  
 **Default**: <code>vent</code>  
 <a name="SUNROOF_CLOSED"></a>
 
-## SUNROOF\_CLOSED
+## SUNROOF_CLOSED
 **Kind**: global variable  
 **Default**: <code>close</code>  
 <a name="MIN_TEMP"></a>
 
-## MIN\_TEMP
+## MIN_TEMP
 **Kind**: global variable  
 **Default**: <code>15</code>  
 <a name="MAX_TEMP"></a>
 
-## MAX\_TEMP
+## MAX_TEMP
 **Kind**: global variable  
 **Default**: <code>28</code>  
 <a name="FRUNK"></a>
@@ -689,7 +755,7 @@ Return vehicle information on ALL vehicles
 
 <a name="get_command"></a>
 
-## get\_command(options, command, callback)
+## get_command(options, command, callback)
 Generic REST call for GET commands
 
 **Kind**: global function  
@@ -702,7 +768,7 @@ Generic REST call for GET commands
 
 <a name="get_commandAsync"></a>
 
-## get\_commandAsync(options, command) ⇒ <code>Promise</code>
+## get_commandAsync(options, command) ⇒ <code>Promise</code>
 Generic Async REST call for GET commands
 
 **Kind**: global function  
@@ -715,7 +781,7 @@ Generic Async REST call for GET commands
 
 <a name="post_command"></a>
 
-## post\_command(options, command, body, callback)
+## post_command(options, command, body, callback)
 Generic REST call for POST commands
 
 **Kind**: global function  
@@ -729,7 +795,7 @@ Generic REST call for POST commands
 
 <a name="post_commandAsync"></a>
 
-## post\_commandAsync(options, command, body) ⇒ <code>Promise</code>
+## post_commandAsync(options, command, body) ⇒ <code>Promise</code>
 Generic Async REST call for POST commands
 
 **Kind**: global function  
@@ -1157,10 +1223,275 @@ Send a navigation request to the car
 | text | <code>string</code> | address details including things like name, address, map link |
 | locale | <code>string</code> | the language locale, for example "en-US" |
 
+<a name="mediaTogglePlayback"></a>
+
+## mediaTogglePlayback(options) ⇒ <code>object</code>
+Toggle media playback
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaTogglePlaybackAsync"></a>
+
+## mediaTogglePlaybackAsync(options) ⇒ <code>Promise</code>
+Toggle media playback
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayNext"></a>
+
+## mediaPlayNext(options) ⇒ <code>object</code>
+Media play next track
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayNextAsync"></a>
+
+## mediaPlayNextAsync(options) ⇒ <code>Promise</code>
+Media play next track
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayPrevious"></a>
+
+## mediaPlayPrevious(options) ⇒ <code>object</code>
+Media play previous track
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayPreviousAsync"></a>
+
+## mediaPlayPreviousAsync(options) ⇒ <code>Promise</code>
+Media play previous track
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayNextFavorite"></a>
+
+## mediaPlayNextFavorite(options) ⇒ <code>object</code>
+Media play next favorite
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayNextFavoriteAsync"></a>
+
+## mediaPlayNextFavoriteAsync(options) ⇒ <code>Promise</code>
+Media play next favorite
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayPreviousFavorite"></a>
+
+## mediaPlayPreviousFavorite(options) ⇒ <code>object</code>
+Media play previous favorite
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaPlayPreviousFavoriteAsync"></a>
+
+## mediaPlayPreviousFavoriteAsync(options) ⇒ <code>Promise</code>
+Media play previous favorite
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaVolumeUp"></a>
+
+## mediaVolumeUp(options) ⇒ <code>object</code>
+Media volume up
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaVolumeUpAsync"></a>
+
+## mediaVolumeUpAsync(options) ⇒ <code>Promise</code>
+Media volume up
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaVolumeDown"></a>
+
+## mediaVolumeDown(options) ⇒ <code>object</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="mediaVolumeDownAsync"></a>
+
+## mediaVolumeDownAsync(options) ⇒ <code>Promise</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitActivate"></a>
+
+## speedLimitActivate(options) ⇒ <code>object</code>
+Activate speed limitation
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitActivateAsync"></a>
+
+## speedLimitActivateAsync(options) ⇒ <code>Promise</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitDeactivate"></a>
+
+## speedLimitDeactivate(options) ⇒ <code>object</code>
+Deactivate speed limitation
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitDeactivateAsync"></a>
+
+## speedLimitDeactivateAsync(options) ⇒ <code>Promise</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitClearPin"></a>
+
+## speedLimitClearPin(options) ⇒ <code>object</code>
+Clear speed limitation pin
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitClearPinAsync"></a>
+
+## speedLimitClearPinAsync(options) ⇒ <code>Promise</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitSetLimit"></a>
+
+## speedLimitSetLimit(options) ⇒ <code>object</code>
+Set speed limit
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="speedLimitSetLimitAsync"></a>
+
+## speedLimitSetLimitAsync(options) ⇒ <code>Promise</code>
+Media volume down
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.
+Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1174,7 +1505,8 @@ Set the charge limit.Note: charging to 100% frequently is NOT recommended for l
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.
+Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  

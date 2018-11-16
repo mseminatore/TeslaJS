@@ -58,7 +58,7 @@ Here are some of the more recent features and fixes:
 ## Migrating major versions
 
 You can find instructions on how to migrate across major version changes by reading
-[MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md).
+the [MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md) guide.
 
 ## Known Issues
 

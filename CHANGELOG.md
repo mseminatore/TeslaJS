@@ -1,5 +1,11 @@
 # TeslaJS Change log
 
+## V3.0.0
+* addressed #47
+
+## V 2.1.49
+* updated dev dependencies to fix vulnerabilities #97
+
 ## V2.1.48
 * merged PR #101 to update README
 

@@ -414,12 +414,13 @@ exports.logoutAsync = Promise.denodeify(exports.logout);
 
 /**
  * Return vehicle information on the requested vehicle
+ * @function vehicle
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {Vehicle} vehicle JSON data
  */
-exports.vehicles = function vehicles(options, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.vehicles()");
+exports.vehicle = function vehicle(options, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.vehicle()");
 
     callback = callback || function (err, vehicle) { /* do nothing! */ }
 
@@ -461,37 +462,21 @@ exports.vehicles = function vehicles(options, callback) {
 
 /**
  * Return vehicle information on the requested vehicle
- * @function vehicle
- * @param {optionsType} options - options object
- * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicle} vehicle JSON data
- */
-exports.vehicle = exports.vehicles;
-
-/**
- * Return vehicle information on the requested vehicle
  * @function vehicleAsync
  * @param {optionsType} options - options object
  * @returns {Promise} vehicle JSON data
  */
-exports.vehicleAsync = Promise.denodeify(exports.vehicles);
-
-/**
- * Return vehicle information on the requested vehicle
- * @function vehiclesAsync
- * @param {optionsType} options - options object
- * @returns {Promise} vehicle JSON data
- */
-exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
+exports.vehicleAsync = Promise.denodeify(exports.vehicle);
 
 /**
  * Return vehicle information on ALL vehicles
+ * @function vehicles
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {Vehicles[]} array of vehicle JSON data
  */
-exports.allVehicles = function allVehicles(options, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.allVehicles()");
+exports.vehicles = function vehicles(options, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.vehicles()");
 
     callback = callback || function (err, vehicle) { /* do nothing! */ }
 
@@ -531,16 +516,16 @@ exports.allVehicles = function allVehicles(options, callback) {
 
 /**
  * Return vehicle information on ALL vehicles
- * @function allVehiclesAsync
+ * @function vehiclesAsync
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
  * @returns {Promise} array of vehicle JSON data
  */
-exports.allVehiclesAsync = Promise.denodeify(exports.allVehicles);
+exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
 
 /**
  * Generic REST call for GET commands
- * @function
+ * @function get_command
  * @param {optionsType} options - options object
  * @param {string} command - REST command
  * @param {nodeBack} callback - Node-style callback

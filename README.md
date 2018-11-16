@@ -49,11 +49,16 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.46** fix incorrect media endpoints
-2. In **2.1.45** added media playback sample and methods
-3. In **2.1.44** added minified version
-4. In **2.1.43** added support and samples for software update and navigation request endpoints
-5. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
+1. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+2. In **2.1.46** fix incorrect media endpoints
+3. In **2.1.45** added media playback sample and methods
+4. In **2.1.44** added minified version
+5. In **2.1.43** added support and samples for software update and navigation request endpoints
+
+## Migrating major versions
+
+You can find instructions on how to migrate across major version changes by reading
+[MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md).
 
 ## Known Issues
 
@@ -287,15 +292,10 @@ getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
-vehicles() | return information on the requested vehicle
-vehicle() | same as above
-allVehicles() | return information and option data for all vehicles
+vehicle() | return information on the requested vehicle
+vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
-
-> **Note**: In a future version `vehicles()` will return information on all vehicles,
-> the `allVehicles()` call will be removed and `vehicle()` will return information
-> on a specific vehicle.
 
 ## Vehicle-specific API calls
 

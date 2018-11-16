@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.0.0
+* migrated to all lower-case
+
 ## V3.0.0
 * addressed #47
 

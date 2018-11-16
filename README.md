@@ -215,14 +215,14 @@ As you can see below, it is very simple to login and acquire an OAuth token.
 > tokens.  Do not share them over an unsecure connection, or store them on a 
 > public machine.
 
-## Vehicles Example
+## Vehicle Example
 
 With the OAuth token from a successful `login()` API call you can query the 
-vehicles for the account:
+vehicle for the account:
 
 ```javascript
     var options = { authToken: result.authToken };
-    tjs.vehicles(options, function (err, vehicle) {
+    tjs.vehicle(options, function (err, vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
     });
 ```
@@ -230,14 +230,14 @@ vehicles for the account:
 Or using the Async Promise-based calls:
 
 ```javascript
-	tjs.vehiclesAsync(options).done(function(vehicle) {
+    tjs.vehicleAsync(options).done(function(vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
-	});
+    });
 ```
 
 ## Charge State Example
 
-Adding the vehicle ID from a successful `vehicles()` API call to options you can 
+Adding the vehicle ID from a successful `vehicle()` API call to options you can 
 make other Tesla REST calls:
 
 ```javascript
@@ -384,10 +384,10 @@ Most of the APIs take both an **options** parameter and an optional
 property called **authToken** that contains the OAuth token returned 
 from a successfull `login()`.  For all APIs that act on a specific 
 vehicle the **options** parameter must also contain a **vehicleID** 
-member that contains the long vehicle ID value returned from a successful 
-call to `vehicles()`.
+member that contains the long vehicle ID value (ie. `id_s`) returned from a successful 
+call to `vehicle()`.
 
-By default the `vehicles()` API returns information on the first vehicle 
+By default the `vehicle()` API returns information on the first vehicle 
 returned.  By providing a **carIndex** member in the **options** parameter 
 information on a specific vehicle can be queried.
 	

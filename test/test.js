@@ -294,7 +294,7 @@ describe('TeslaJS', function () {
 	});
 
 	describe('#vehicle()', function () {
-	    it('should succeed enumerating vehicles', function (done) {
+	    it('should succeed getting the vehicle', function (done) {
 	        tjs.vehicle(options, function (err, vehicle) {
 	            if (vehicle.vehicle_id) {
 	                done();
@@ -310,26 +310,17 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-	describe('#vehicles()', function () {
-	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.vehicles(options, function (err, vehicle) {
-	            if (vehicle.vehicle_id) {
-	                done();
-	            } else {
-	                done(vehicle.response.statusMessage);
-	            }
+	describe('#vehicleAsync()', function () {
+	    it('should succeed getting the vehicle', function () {
+	        return tjs.vehicleAsync(options).then(function (result) {
+	            assert(result.vehicle_id);
 	        });
-	    });
-
-	    it('should succeed with no callback', function (done) {
-	        tjs.vehicles(options);
-	        done();
 	    });
 	});
 
-	describe('#allVehicles()', function () {
+	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.allVehicles(options, function (err, vehicles) {
+	        tjs.vehicles(options, function (err, vehicles) {
 	            if (vehicles[0]) {
 	                done();
 	            } else {
@@ -347,7 +338,7 @@ describe('TeslaJS', function () {
 	describe('#vehiclesAsync()', function () {
 	    it('should succeed enumerating vehicles', function () {
 	        return tjs.vehiclesAsync(options).then(function (result) {
-	            assert(result.vehicle_id);
+	            assert(result.vehicles[0]);
 	        });
 	    });
 	});

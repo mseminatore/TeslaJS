@@ -292,15 +292,10 @@ getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
-vehicles() | return information on the requested vehicle
-vehicle() | same as above
-allVehicles() | return information and option data for all vehicles
+vehicle() | return information on the requested vehicle
+vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
-
-> **Note**: In a future version `vehicles()` will return information on all vehicles,
-> the `allVehicles()` call will be removed and `vehicle()` will return information
-> on a specific vehicle.
 
 ## Vehicle-specific API calls
 

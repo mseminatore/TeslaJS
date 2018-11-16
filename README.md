@@ -49,11 +49,16 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **2.1.46** fix incorrect media endpoints
-2. In **2.1.45** added media playback sample and methods
-3. In **2.1.44** added minified version
-4. In **2.1.43** added support and samples for software update and navigation request endpoints
-5. In **2.1.42** merged PR's to improve streaming and fix JSON request bodies
+1. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+2. In **2.1.46** fix incorrect media endpoints
+3. In **2.1.45** added media playback sample and methods
+4. In **2.1.44** added minified version
+5. In **2.1.43** added support and samples for software update and navigation request endpoints
+
+## Migrating major versions
+
+You can find instructions on how to migrate across major version changes by reading
+[MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md).
 
 ## Known Issues
 

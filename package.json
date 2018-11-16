@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.1",

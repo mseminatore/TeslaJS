@@ -1,6 +1,6 @@
 {
   "name": "teslajs",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.1",
@@ -13,11 +13,11 @@
     "type": "git",
     "url": "https://github.com/mseminatore/TeslaJS.git"
   },
-  "main": "TeslaJS.js",
+  "main": "teslajs.js",
   "scripts": {
-    "test": "jshint TeslaJS.js Examples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
-    "minify": "uglifyjs TeslaJS.js -c -m --comments -o TeslaJS.min.js",
-    "prepublishOnly": "uglifyjs TeslaJS.js -c -m --comments -o TeslaJS.min.js"
+    "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
+    "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
+    "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js"
   },
   "keywords": [
     "Tesla",

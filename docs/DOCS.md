@@ -96,22 +96,16 @@
 <dt><a href="#logoutAsync">logoutAsync(authToken)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Logout and invalidate the current auth token</p>
 </dd>
-<dt><a href="#vehicles">vehicles(options, callback)</a> ⇒ <code>Vehicle</code></dt>
-<dd><p>Return vehicle information on the requested vehicle</p>
-</dd>
 <dt><a href="#vehicle">vehicle(options, callback)</a> ⇒ <code>Vehicle</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
 </dd>
 <dt><a href="#vehicleAsync">vehicleAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
 </dd>
-<dt><a href="#vehiclesAsync">vehiclesAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Return vehicle information on the requested vehicle</p>
-</dd>
-<dt><a href="#allVehicles">allVehicles(options, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
+<dt><a href="#vehicles">vehicles(options, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
 </dd>
-<dt><a href="#allVehiclesAsync">allVehiclesAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehiclesAsync">vehiclesAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
 </dd>
 <dt><a href="#get_command">get_command(options, command, callback)</a></dt>
@@ -386,11 +380,11 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## Typedefs
 
 <dl>
-<dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
-<dd><p>TeslaJS options parameter</p>
-</dd>
 <dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
 <dd><p>Node-style callback function</p>
+</dd>
+<dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
+<dd><p>TeslaJS options parameter</p>
 </dd>
 </dl>
 
@@ -406,82 +400,82 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 **Default**: <code>https://owner-api.teslamotors.com</code>  
 <a name="API_LOG_ALWAYS"></a>
 
-## API_LOG_ALWAYS
+## API\_LOG\_ALWAYS
 **Kind**: global variable  
 **Default**: <code>0</code>  
 <a name="API_ERR_LEVEL"></a>
 
-## API_ERR_LEVEL
+## API\_ERR\_LEVEL
 **Kind**: global variable  
 **Default**: <code>1</code>  
 <a name="API_CALL_LEVEL"></a>
 
-## API_CALL_LEVEL
+## API\_CALL\_LEVEL
 **Kind**: global variable  
 **Default**: <code>2</code>  
 <a name="API_RETURN_LEVEL"></a>
 
-## API_RETURN_LEVEL
+## API\_RETURN\_LEVEL
 **Kind**: global variable  
 **Default**: <code>3</code>  
 <a name="API_BODY_LEVEL"></a>
 
-## API_BODY_LEVEL
+## API\_BODY\_LEVEL
 **Kind**: global variable  
 **Default**: <code>4</code>  
 <a name="API_REQUEST_LEVEL"></a>
 
-## API_REQUEST_LEVEL
+## API\_REQUEST\_LEVEL
 **Kind**: global variable  
 **Default**: <code>5</code>  
 <a name="API_RESPONSE_LEVEL"></a>
 
-## API_RESPONSE_LEVEL
+## API\_RESPONSE\_LEVEL
 **Kind**: global variable  
 **Default**: <code>6</code>  
 <a name="API_LOG_ALL"></a>
 
-## API_LOG_ALL
+## API\_LOG\_ALL
 **Kind**: global variable  
 **Default**: <code>255</code>  
 <a name="CHARGE_STORAGE"></a>
 
-## CHARGE_STORAGE
+## CHARGE\_STORAGE
 **Kind**: global variable  
 **Default**: <code>50</code>  
 <a name="CHARGE_DAILY"></a>
 
-## CHARGE_DAILY
+## CHARGE\_DAILY
 **Kind**: global variable  
 **Default**: <code>70</code>  
 <a name="CHARGE_STANDARD"></a>
 
-## CHARGE_STANDARD
+## CHARGE\_STANDARD
 **Kind**: global variable  
 **Default**: <code>90</code>  
 <a name="CHARGE_RANGE"></a>
 
-## CHARGE_RANGE
+## CHARGE\_RANGE
 **Kind**: global variable  
 **Default**: <code>100</code>  
 <a name="SUNROOF_VENT"></a>
 
-## SUNROOF_VENT
+## SUNROOF\_VENT
 **Kind**: global variable  
 **Default**: <code>vent</code>  
 <a name="SUNROOF_CLOSED"></a>
 
-## SUNROOF_CLOSED
+## SUNROOF\_CLOSED
 **Kind**: global variable  
 **Default**: <code>close</code>  
 <a name="MIN_TEMP"></a>
 
-## MIN_TEMP
+## MIN\_TEMP
 **Kind**: global variable  
 **Default**: <code>15</code>  
 <a name="MAX_TEMP"></a>
 
-## MAX_TEMP
+## MAX\_TEMP
 **Kind**: global variable  
 **Default**: <code>28</code>  
 <a name="FRUNK"></a>
@@ -677,19 +671,6 @@ Logout and invalidate the current auth token
 | --- | --- | --- |
 | authToken | <code>string</code> | Tesla provided OAuth token |
 
-<a name="vehicles"></a>
-
-## vehicles(options, callback) ⇒ <code>Vehicle</code>
-Return vehicle information on the requested vehicle
-
-**Kind**: global function  
-**Returns**: <code>Vehicle</code> - vehicle JSON data  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
-
 <a name="vehicle"></a>
 
 ## vehicle(options, callback) ⇒ <code>Vehicle</code>
@@ -715,21 +696,9 @@ Return vehicle information on the requested vehicle
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 
-<a name="vehiclesAsync"></a>
+<a name="vehicles"></a>
 
-## vehiclesAsync(options) ⇒ <code>Promise</code>
-Return vehicle information on the requested vehicle
-
-**Kind**: global function  
-**Returns**: <code>Promise</code> - vehicle JSON data  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | [<code>optionsType</code>](#optionsType) | options object |
-
-<a name="allVehicles"></a>
-
-## allVehicles(options, callback) ⇒ <code>Array.&lt;Vehicles&gt;</code>
+## vehicles(options, callback) ⇒ <code>Array.&lt;Vehicles&gt;</code>
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
@@ -740,9 +709,9 @@ Return vehicle information on ALL vehicles
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
-<a name="allVehiclesAsync"></a>
+<a name="vehiclesAsync"></a>
 
-## allVehiclesAsync(options, callback) ⇒ <code>Promise</code>
+## vehiclesAsync(options, callback) ⇒ <code>Promise</code>
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
@@ -755,7 +724,7 @@ Return vehicle information on ALL vehicles
 
 <a name="get_command"></a>
 
-## get_command(options, command, callback)
+## get\_command(options, command, callback)
 Generic REST call for GET commands
 
 **Kind**: global function  
@@ -768,7 +737,7 @@ Generic REST call for GET commands
 
 <a name="get_commandAsync"></a>
 
-## get_commandAsync(options, command) ⇒ <code>Promise</code>
+## get\_commandAsync(options, command) ⇒ <code>Promise</code>
 Generic Async REST call for GET commands
 
 **Kind**: global function  
@@ -781,7 +750,7 @@ Generic Async REST call for GET commands
 
 <a name="post_command"></a>
 
-## post_command(options, command, body, callback)
+## post\_command(options, command, body, callback)
 Generic REST call for POST commands
 
 **Kind**: global function  
@@ -795,7 +764,7 @@ Generic REST call for POST commands
 
 <a name="post_commandAsync"></a>
 
-## post_commandAsync(options, command, body) ⇒ <code>Promise</code>
+## post\_commandAsync(options, command, body) ⇒ <code>Promise</code>
 Generic Async REST call for POST commands
 
 **Kind**: global function  
@@ -1937,6 +1906,18 @@ Start streaming car data
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 | onDataCb | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
+<a name="nodeBack"></a>
+
+## nodeBack : <code>function</code>
+Node-style callback function
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>function</code> | function which receives the error result |
+| data | <code>function</code> | function which receives the data result |
+
 <a name="optionsType"></a>
 
 ## optionsType : <code>object</code>
@@ -1950,16 +1931,4 @@ TeslaJS options parameter
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | vehicleID | <code>string</code> | Tesla provided long vehicle id |
 | [carIndex] | <code>int</code> | index of vehicle within vehicles JSON |
-
-<a name="nodeBack"></a>
-
-## nodeBack : <code>function</code>
-Node-style callback function
-
-**Kind**: global typedef  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>function</code> | function which receives the error result |
-| data | <code>function</code> | function which receives the data result |
 

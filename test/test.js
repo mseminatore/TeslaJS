@@ -1,5 +1,5 @@
 var assert = require('assert');
-var tjs = require('../TeslaJS');
+var tjs = require('../teslajs');
 require('sepia');
 
 // be sure to set these to fake values in your environment before testing

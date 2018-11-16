@@ -10,7 +10,7 @@
 "use strict";
 
 var fs = require('fs');
-var tjs = require('../TeslaJS');
+var tjs = require('../teslajs');
 require('colors');
 
 function logo() {

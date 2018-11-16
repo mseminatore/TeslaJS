@@ -49,13 +49,13 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
-2. In **2.1.46** fix incorrect media endpoints
-3. In **2.1.45** added media playback sample and methods
-4. In **2.1.44** added minified version
-5. In **2.1.43** added support and samples for software update and navigation request endpoints
+1. In **4.0.0** migrated to lower-case lib name
+2. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+3. In **2.1.46** fix incorrect media endpoints
+4. In **2.1.45** added media playback sample and methods
+5. In **2.1.44** added minified version
 
-## Migrating major versions
+## Migrating Major Version Changes
 
 You can find instructions on how to migrate across major version changes by reading
 the [MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md) guide.
@@ -185,14 +185,14 @@ To do so, from your project directory type:
 
     npm update
 
-# Usage Examples
+# Library Usage Examples
 
 ## Login Example
 
 As you can see below, it is very simple to login and acquire an OAuth token.
 
 ```javascript
-    var tjs = require('TeslaJS');
+    var tjs = require('teslajs');
 
     var username = "<your MyTesla email>";
     var password = "<your MyTesla password>";
@@ -450,11 +450,11 @@ Sample | Description
 ## login.js
 
 This sample demonstrates the basic login process which returns the OAuth token required for other API calls.  The sample
-writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token if present 
-to avoid the need to enter the **username** and **password** and login via the Tesla servers.
+writes out a file called **.token** which stores the OAuth token.  Other samples will use this cached token, if present, 
+to avoid the need to request the **username** and **password** and login redundantly via the Tesla servers.
 
->If you prefer not to have your OAuth token stored locally do not run this sample.  Instead you may run the samples and provide 
->the **username** and **password** each time on the command line.
+> If you prefer not to have your OAuth token stored locally do not run this sample.  Instead you may run the samples and provide 
+> the **username** and **password** each time on the command line.
 
 Usage:
 

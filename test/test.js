@@ -330,7 +330,7 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.allVehicles(options);
+	        tjs.vehicles(options);
 	        done();
 	    });
 	});
@@ -338,7 +338,7 @@ describe('TeslaJS', function () {
 	describe('#vehiclesAsync()', function () {
 	    it('should succeed enumerating vehicles', function () {
 	        return tjs.vehiclesAsync(options).then(function (result) {
-	            assert(result.vehicles[0]);
+	            assert(result[0]);
 	        });
 	    });
 	});

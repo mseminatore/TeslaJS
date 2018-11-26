@@ -116,6 +116,10 @@ efforts!  The current REST API documentation can be found at:
 
     http://docs.timdorr.apiary.io/
 
+    ...AND...
+
+    https://tesla-api.timdorr.com/
+
 > Note that timdorr has announced plans to migrate the documentation to a new 
 > location.  This reference will be updated in the future once that migration 
 > is complete.

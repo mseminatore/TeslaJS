@@ -380,11 +380,11 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## Typedefs
 
 <dl>
-<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
-<dd><p>Node-style callback function</p>
-</dd>
 <dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
 <dd><p>TeslaJS options parameter</p>
+</dd>
+<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
+<dd><p>Node-style callback function</p>
 </dd>
 </dl>
 
@@ -1906,18 +1906,6 @@ Start streaming car data
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 | onDataCb | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
-<a name="nodeBack"></a>
-
-## nodeBack : <code>function</code>
-Node-style callback function
-
-**Kind**: global typedef  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>function</code> | function which receives the error result |
-| data | <code>function</code> | function which receives the data result |
-
 <a name="optionsType"></a>
 
 ## optionsType : <code>object</code>
@@ -1931,4 +1919,16 @@ TeslaJS options parameter
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | vehicleID | <code>string</code> | Tesla provided long vehicle id |
 | [carIndex] | <code>int</code> | index of vehicle within vehicles JSON |
+
+<a name="nodeBack"></a>
+
+## nodeBack : <code>function</code>
+Node-style callback function
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>function</code> | function which receives the error result |
+| data | <code>function</code> | function which receives the data result |
 

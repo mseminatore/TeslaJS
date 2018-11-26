@@ -39,7 +39,7 @@ tjs.loginAsync(username, password).done(
             process.exit(1);
         }
 
-        var token = result.body;
+        var token = JSON.stringify(result.body);
 
         if (token) {
             console.log("Login " + "Successfull.".green);

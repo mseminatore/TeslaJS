@@ -316,11 +316,12 @@ exports.login = function login(username, password, callback) {
 
     request(req, function (error, response, body) {
 
-        log(API_RESPONSE_LEVEL, "\nResponse: " + body);
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+        log(API_RESPONSE_LEVEL, "\nBody: " + JSON.stringify(body));
 
         var loginResult = body;
 
-        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
+        callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
 
         log(API_RETURN_LEVEL, "TeslaJS.login() completed.");
     });

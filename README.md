@@ -397,10 +397,10 @@ information on a specific vehicle can be queried.
 	
 # Samples
 
-A collection of samples are provided in the Examples directory.  These demonstrate 
+A collection of samples are provided in the `samples` directory.  These demonstrate 
 some basic usage scenarios for the library.  To use the samples first:
 
-    cd Examples
+    cd samples
     node sampleName
 
 After running the [login](#loginjs) sample an auth token will be cached locally.

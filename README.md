@@ -335,7 +335,7 @@ mediaPlayPreviousFavorite() | plays the previous favorite
 mediaVolumeUp() | increase the volume
 mediaVolumeDown() | decrease the volume
 mobileEnabled() | returns whether mobile access is enabled
-navigationRequest() | send a navigation request to the car
+navigationRequest() | send a navigation request to the vehicle
 openChargePort() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 openTrunk() | open the trunk or frunk
 refreshToken() | retrieve new OAuth token from refresh token

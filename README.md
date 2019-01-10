@@ -114,15 +114,7 @@ The Tesla REST API encapusulated by this library was documented through the
 collaboration of many Tesla owners.  Please thank and support them for their 
 efforts!  The current REST API documentation can be found at:
 
-    http://docs.timdorr.apiary.io/
-
-    ...AND...
-
     https://tesla-api.timdorr.com/
-
-> Note that timdorr has announced plans to migrate the documentation to a new 
-> location.  This reference will be updated in the future once that migration 
-> is complete.
 	
 # Warranty Disclaimer
 

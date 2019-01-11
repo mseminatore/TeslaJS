@@ -795,6 +795,59 @@ Set speed limit
               }
             }
 
+## Seat heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_seat_heater_request]
+
+Adjust seat heater levels
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + heater: '0' (number) - The heater to adjust.
+    + level: '1' (number) - The heater level.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
+## Steering heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_steering_wheel_heater_request]
+
+Adjust steering heater levels
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + on: '1' (number) - The heater level.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Navigation Request [POST /api/1/vehicles/{vehicle_id}/command/navigation_request?subject={subject}&text={text}&locale={locale}]
 
 Sends a navigation request to the car

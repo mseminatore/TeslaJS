@@ -1,5 +1,11 @@
 # TeslaJS Change log
 
+## V4.1.0
+* added seat heater and steering heater endpoints
+
+## V4.0.1
+* bumped version
+
 ## V4.0.0
 * migrated to all lower-case
 

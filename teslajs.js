@@ -1093,6 +1093,7 @@ exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
  * Activate speed limitation
  * @function speedLimitActivate
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {object} result
  */
 exports.speedLimitActivate = function speedLimitActivate(options, pin, callback) {
@@ -1100,9 +1101,10 @@ exports.speedLimitActivate = function speedLimitActivate(options, pin, callback)
 }
 
 /**
- * Media volume down
+ * Activate speed limitation
  * @function speedLimitActivateAsync
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
@@ -1111,6 +1113,7 @@ exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
  * Deactivate speed limitation
  * @function speedLimitDeactivate
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {object} result
  */
 exports.speedLimitDeactivate = function speedLimitDeactivate(options, pin, callback) {
@@ -1118,9 +1121,10 @@ exports.speedLimitDeactivate = function speedLimitDeactivate(options, pin, callb
 }
 
 /**
- * Media volume down
+ * Deactivate speed limitation
  * @function speedLimitDeactivateAsync
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactivate);
@@ -1129,6 +1133,7 @@ exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactiva
  * Clear speed limitation pin
  * @function speedLimitClearPin
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {object} result
  */
 exports.speedLimitClearPin = function speedLimitClearPin(options, pin, callback) {
@@ -1136,9 +1141,10 @@ exports.speedLimitClearPin = function speedLimitClearPin(options, pin, callback)
 }
 
 /**
- * Media volume down
+ * Clear speed limitation pin
  * @function speedLimitClearPinAsync
  * @param {optionsType} options - options object
+ * @param {number} pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
@@ -1147,6 +1153,7 @@ exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
  * Set speed limit
  * @function speedLimitSetLimit
  * @param {optionsType} options - options object
+ * @param {number} limit - Speed limit in mph
  * @returns {object} result
  */
 exports.speedLimitSetLimit = function speedLimitSetLimit(options, limit, callback) {
@@ -1154,12 +1161,55 @@ exports.speedLimitSetLimit = function speedLimitSetLimit(options, limit, callbac
 }
 
 /**
- * Media volume down
+ * Set speed limit
  * @function speedLimitSetLimitAsync
  * @param {optionsType} options - options object
+ * @param {number} limit - Speed limit in mph
  * @returns {Promise} result
  */
 exports.speedLimitSetLimitAsync = Promise.denodeify(exports.speedLimitSetLimit);
+
+/**
+ * Remote seat heater
+ * @function seatHeater
+ * @param {optionsType} options - options object
+ * @param {number} heater - Which heater to adjust (0-5)
+ * @param {number} level - Level for the heater (0-3)
+ * @returns {object} result
+ */
+exports.seatHeater = function seatHeater(options, heater, level, callback) {
+    post_command(options, "command/remote_seat_heater_request", { "heater": heater, "level": level }, callback);
+}
+
+/**
+ * Remote seat heater
+ * @function seatHeaterAsync
+ * @param {optionsType} options - options object
+ * @param {number} heater - Which heater to adjust (0-5)
+ * @param {number} level - Level for the heater (0-3)
+ * @returns {Promise} result
+ */
+exports.seatHeaterAsync = Promise.denodeify(exports.seatHeater);
+
+/**
+ * Remote steering heater
+ * @function steeringHeater
+ * @param {optionsType} options - options object
+ * @param {number} level - Level for the heater (0-3)
+ * @returns {object} result
+ */
+exports.steeringHeater = function steeringHeater(options, level, callback) {
+    post_command(options, "command/remote_steering_wheel_heater_request", { "on": level }, callback);
+}
+
+/**
+ * Remote steering heater
+ * @function seatHeaterAsync
+ * @param {optionsType} options - options object
+ * @param {number} level - Level for the heater (0-3)
+ * @returns {Promise} result
+ */
+exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
 
 //=====================
 // Charge limit constants

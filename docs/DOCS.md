@@ -257,29 +257,41 @@
 <dt><a href="#mediaVolumeDownAsync">mediaVolumeDownAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media volume down</p>
 </dd>
-<dt><a href="#speedLimitActivate">speedLimitActivate(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitActivate">speedLimitActivate(options, pin)</a> ⇒ <code>object</code></dt>
 <dd><p>Activate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitActivateAsync">speedLimitActivateAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Media volume down</p>
+<dt><a href="#speedLimitActivateAsync">speedLimitActivateAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Activate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitDeactivate">speedLimitDeactivate(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitDeactivate">speedLimitDeactivate(options, pin)</a> ⇒ <code>object</code></dt>
 <dd><p>Deactivate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitDeactivateAsync">speedLimitDeactivateAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Media volume down</p>
+<dt><a href="#speedLimitDeactivateAsync">speedLimitDeactivateAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Deactivate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitClearPin">speedLimitClearPin(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitClearPin">speedLimitClearPin(options, pin)</a> ⇒ <code>object</code></dt>
 <dd><p>Clear speed limitation pin</p>
 </dd>
-<dt><a href="#speedLimitClearPinAsync">speedLimitClearPinAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Media volume down</p>
+<dt><a href="#speedLimitClearPinAsync">speedLimitClearPinAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Clear speed limitation pin</p>
 </dd>
-<dt><a href="#speedLimitSetLimit">speedLimitSetLimit(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitSetLimit">speedLimitSetLimit(options, limit)</a> ⇒ <code>object</code></dt>
 <dd><p>Set speed limit</p>
 </dd>
-<dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options)</a> ⇒ <code>Promise</code></dt>
-<dd><p>Media volume down</p>
+<dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options, limit)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Set speed limit</p>
+</dd>
+<dt><a href="#seatHeater">seatHeater(options, heater, level)</a> ⇒ <code>object</code></dt>
+<dd><p>Remote seat heater</p>
+</dd>
+<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, heater, level)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Remote seat heater</p>
+</dd>
+<dt><a href="#steeringHeater">steeringHeater(options, level)</a> ⇒ <code>object</code></dt>
+<dd><p>Remote steering heater</p>
+</dd>
+<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, level)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Remote steering heater</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
@@ -380,11 +392,11 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## Typedefs
 
 <dl>
-<dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
-<dd><p>TeslaJS options parameter</p>
-</dd>
 <dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
 <dd><p>Node-style callback function</p>
+</dd>
+<dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
+<dd><p>TeslaJS options parameter</p>
 </dd>
 </dl>
 
@@ -1362,7 +1374,7 @@ Media volume down
 
 <a name="speedLimitActivate"></a>
 
-## speedLimitActivate(options) ⇒ <code>object</code>
+## speedLimitActivate(options, pin) ⇒ <code>object</code>
 Activate speed limitation
 
 **Kind**: global function  
@@ -1371,11 +1383,12 @@ Activate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitActivateAsync"></a>
 
-## speedLimitActivateAsync(options) ⇒ <code>Promise</code>
-Media volume down
+## speedLimitActivateAsync(options, pin) ⇒ <code>Promise</code>
+Activate speed limitation
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1383,10 +1396,11 @@ Media volume down
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitDeactivate"></a>
 
-## speedLimitDeactivate(options) ⇒ <code>object</code>
+## speedLimitDeactivate(options, pin) ⇒ <code>object</code>
 Deactivate speed limitation
 
 **Kind**: global function  
@@ -1395,11 +1409,12 @@ Deactivate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitDeactivateAsync"></a>
 
-## speedLimitDeactivateAsync(options) ⇒ <code>Promise</code>
-Media volume down
+## speedLimitDeactivateAsync(options, pin) ⇒ <code>Promise</code>
+Deactivate speed limitation
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1407,10 +1422,11 @@ Media volume down
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitClearPin"></a>
 
-## speedLimitClearPin(options) ⇒ <code>object</code>
+## speedLimitClearPin(options, pin) ⇒ <code>object</code>
 Clear speed limitation pin
 
 **Kind**: global function  
@@ -1419,11 +1435,12 @@ Clear speed limitation pin
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitClearPinAsync"></a>
 
-## speedLimitClearPinAsync(options) ⇒ <code>Promise</code>
-Media volume down
+## speedLimitClearPinAsync(options, pin) ⇒ <code>Promise</code>
+Clear speed limitation pin
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1431,10 +1448,11 @@ Media volume down
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitSetLimit"></a>
 
-## speedLimitSetLimit(options) ⇒ <code>object</code>
+## speedLimitSetLimit(options, limit) ⇒ <code>object</code>
 Set speed limit
 
 **Kind**: global function  
@@ -1443,11 +1461,12 @@ Set speed limit
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| limit | <code>number</code> | Speed limit in mph |
 
 <a name="speedLimitSetLimitAsync"></a>
 
-## speedLimitSetLimitAsync(options) ⇒ <code>Promise</code>
-Media volume down
+## speedLimitSetLimitAsync(options, limit) ⇒ <code>Promise</code>
+Set speed limit
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1455,6 +1474,61 @@ Media volume down
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| limit | <code>number</code> | Speed limit in mph |
+
+<a name="seatHeater"></a>
+
+## seatHeater(options, heater, level) ⇒ <code>object</code>
+Remote seat heater
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| heater | <code>number</code> | Which heater to adjust (0-5) |
+| level | <code>number</code> | Level for the heater (0-3) |
+
+<a name="seatHeaterAsync"></a>
+
+## seatHeaterAsync(options, heater, level) ⇒ <code>Promise</code>
+Remote seat heater
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| heater | <code>number</code> | Which heater to adjust (0-5) |
+| level | <code>number</code> | Level for the heater (0-3) |
+
+<a name="steeringHeater"></a>
+
+## steeringHeater(options, level) ⇒ <code>object</code>
+Remote steering heater
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| level | <code>number</code> | Level for the heater (0-3) |
+
+<a name="seatHeaterAsync"></a>
+
+## seatHeaterAsync(options, level) ⇒ <code>Promise</code>
+Remote steering heater
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| level | <code>number</code> | Level for the heater (0-3) |
 
 <a name="setChargeLimit"></a>
 
@@ -1906,6 +1980,18 @@ Start streaming car data
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 | onDataCb | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
+<a name="nodeBack"></a>
+
+## nodeBack : <code>function</code>
+Node-style callback function
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>function</code> | function which receives the error result |
+| data | <code>function</code> | function which receives the data result |
+
 <a name="optionsType"></a>
 
 ## optionsType : <code>object</code>
@@ -1919,16 +2005,4 @@ TeslaJS options parameter
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | vehicleID | <code>string</code> | Tesla provided long vehicle id |
 | [carIndex] | <code>int</code> | index of vehicle within vehicles JSON |
-
-<a name="nodeBack"></a>
-
-## nodeBack : <code>function</code>
-Node-style callback function
-
-**Kind**: global typedef  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>function</code> | function which receives the error result |
-| data | <code>function</code> | function which receives the data result |
 

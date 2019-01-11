@@ -49,11 +49,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.0.0** migrated to lower-case lib name
-2. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
-3. In **2.1.46** fix incorrect media endpoints
-4. In **2.1.45** added media playback sample and methods
-5. In **2.1.44** added minified version
+1. In **4.1.0** added seat and steering wheel heater endpoints
+2. In **4.0.0** migrated to lower-case lib name
+3. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+4. In **2.1.46** fix incorrect media endpoints
+5. In **2.1.45** added media playback sample and methods
 
 ## Migrating Major Version Changes
 
@@ -112,9 +112,7 @@ community.
 
 The Tesla REST API encapusulated by this library was documented through the 
 collaboration of many Tesla owners.  Please thank and support them for their 
-efforts!  The current REST API documentation can be found at:
-
-    https://tesla-api.timdorr.com/
+continued efforts! The latest REST API documentation can be found [here](https://tesla-api.timdorr.com/)
 	
 # Warranty Disclaimer
 
@@ -334,6 +332,7 @@ refreshToken() | retrieve new OAuth token from refresh token
 remoteStart() | enables remote starting of the car
 resetValetPin() | reset the valet pin
 scheduleSoftwareUpdate() | schedule a firmware update
+seatHeater() | adjust seat heating level
 setChargeLimit() | sets the charge limit to a specific amount
 setTemps() | set driver/passenger temp set points (in Deg.C)
 setValetMode() | set/reset valet mode
@@ -343,6 +342,7 @@ speedLimitClearPin() | clear the speed limit pin
 speedLimitSetLimit() | set the speed limit
 startCharge() | initiates a charging session
 startStreaming() | initiate a streaming data session
+steeringHeater() | adjust the steering wheel heater
 stopCharge() | terminates a charging session
 sunRoofControl() | put the sunroof into a specific state
 sunRoofMove() | open the sunroof to a specific percent

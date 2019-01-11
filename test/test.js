@@ -1440,6 +1440,56 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#seatHeater()', function () {
+	    it('should succeed', function (done) {
+	        tjs.seatHeater(options, "0", "1", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.seatHeater(options, "0", "1");
+	        done();
+	    });
+	});
+
+	describe('#seatHeaterAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.seatHeaterAsync(options, "0", "1").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
+	describe('#steeringHeater()', function () {
+	    it('should succeed', function (done) {
+	        tjs.steeringHeater(options, "1", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.steeringHeater(options, "1");
+	        done();
+	    });
+	});
+
+	describe('#steeringHeaterAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.steeringHeaterAsync(options, "1").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
 	describe('#navigationRequest()', function () {
 	    it('should succeed', function (done) {
 	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {

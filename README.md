@@ -49,7 +49,7 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.1.0** added seat and steering wheel heater endpoints
+1. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
 2. In **4.0.0** migrated to lower-case lib name
 3. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
 4. In **2.1.46** fix incorrect media endpoints

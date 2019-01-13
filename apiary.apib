@@ -691,7 +691,7 @@ Decrease media volume
               }
             }
 
-## Speed limit activate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_activate]
+## Speed limit activate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_activate?pin={pin}]
 
 Activate speed limitation
 
@@ -717,7 +717,7 @@ Activate speed limitation
               }
             }
 
-## Speed limit deactivate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_deactivate]
+## Speed limit deactivate [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_deactivate?pin={pin}]
 
 Deactivate speed limitation
 
@@ -743,7 +743,7 @@ Deactivate speed limitation
               }
             }
 
-## Speed limit clear pin [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_clear_pin]
+## Speed limit clear pin [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_clear_pin?pin={pin}]
 
 Clear speed limitation pin
 
@@ -769,7 +769,7 @@ Clear speed limitation pin
               }
             }
 
-## Speed limit set limit [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_set_limit]
+## Speed limit set limit [POST /api/1/vehicles/{vehicle_id}/command/speed_limit_set_limit?limit_mph={limit_mph}]
 
 Set speed limit
 
@@ -795,7 +795,37 @@ Set speed limit
               }
             }
 
-## Seat heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_seat_heater_request]
+## Nearby chargers request [GET /api/1/vehicles/{vehicle_id}/nearby_charging_sites]
+
+Return a list of nearby Destination and Superchargers
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                    "congestion_sync_time_utc_secs": 1547415712,
+                    "destination_charging": [
+                        {"location": {"lat":47.671225,"long":-122.122192},"name":"Seattle Marriott","type":"destination","distance_miles":21.744819}
+                    ],
+                    "superchargers":[
+                        {"location":{"lat":47.671225,"long":-122.122192},"name":"Seattle, WA","type":"supercharger","distance_miles":21.345058,"available_stalls":2,"total_stalls":8,"site_closed":false}
+                    ]
+              }
+            }
+
+## Seat heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_seat_heater_request?heater={heater}&level={level}]
 
 Adjust seat heater levels
 

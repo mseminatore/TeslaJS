@@ -708,11 +708,29 @@ exports.climateState = function climateState(options, callback) {
 }
 
 /**
+ * GET the climate state
  * @function climateStateAsync
  * @param {optionsType} options - options object
  * @returns {Promise} climate_state object
  */
 exports.climateStateAsync = Promise.denodeify(exports.climateState);
+
+/**
+ * GET nearby charging sites
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} climate_state object
+ */
+exports.nearbyChargers = function nearbyChargers(options, callback) {
+    get_command(options, "nearby_charging_sites", callback);
+}
+
+/**
+ * @function nearbyChargersAsync
+ * @param {optionsType} options - options object
+ * @returns {Promise} climate_state object
+ */
+exports.nearbyChargersAsync = Promise.denodeify(exports.nearbyChargers);
 
 /**
  * GET the drive state

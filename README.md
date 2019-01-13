@@ -49,11 +49,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
-2. In **4.0.0** migrated to lower-case lib name
-3. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
-4. In **2.1.46** fix incorrect media endpoints
-5. In **2.1.45** added media playback sample and methods
+1. In **4.2.0** added `nearbyChargers()` interface
+2. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
+3. In **4.0.0** migrated to lower-case lib name
+4. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+5. In **2.1.46** fix incorrect media endpoints
 
 ## Migrating Major Version Changes
 
@@ -326,6 +326,7 @@ mediaVolumeUp() | increase the volume
 mediaVolumeDown() | decrease the volume
 mobileEnabled() | returns whether mobile access is enabled
 navigationRequest() | send a navigation request to the vehicle
+nearbyChargers() | returns a list of nearby destination and superchargers
 openChargePort() | opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 openTrunk() | open the trunk or frunk
 refreshToken() | retrieve new OAuth token from refresh token

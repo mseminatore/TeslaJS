@@ -142,6 +142,12 @@
 <dd><p>GET the climate state</p>
 </dd>
 <dt><a href="#climateStateAsync">climateStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>GET the climate state</p>
+</dd>
+<dt><a href="#nearbyChargers">nearbyChargers(options, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>GET nearby charging sites</p>
+</dd>
+<dt><a href="#nearbyChargersAsync">nearbyChargersAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#driveState">driveState(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the drive state</p>
@@ -879,6 +885,31 @@ GET the climate state
 <a name="climateStateAsync"></a>
 
 ## climateStateAsync(options) ⇒ <code>Promise</code>
+GET the climate state
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - climate_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="nearbyChargers"></a>
+
+## nearbyChargers(options, callback) ⇒ <code>object</code>
+GET nearby charging sites
+
+**Kind**: global function  
+**Returns**: <code>object</code> - climate_state object  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="nearbyChargersAsync"></a>
+
+## nearbyChargersAsync(options) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - climate_state object  
 

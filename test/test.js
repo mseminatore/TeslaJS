@@ -1440,6 +1440,31 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#nearbyChargers()', function () {
+	    it('should succeed', function (done) {
+	        tjs.nearbyChargers(options, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.nearbyChargers(options);
+	        done();
+	    });
+	});
+
+	describe('#nearbyChargersAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.nearbyChargersAsync(options).then(function (result) {
+				assert(result.congestion_sync_time_utc_secs, 1547415712);
+			});
+	    });
+	});
+
 	describe('#seatHeater()', function () {
 	    it('should succeed', function (done) {
 	        tjs.seatHeater(options, "0", "1", function (err, result) {

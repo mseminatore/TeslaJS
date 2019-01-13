@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.2.0
+* added `nearbyChargers()`
+
 ## V4.1.0
 * added seat heater and steering heater endpoints
 

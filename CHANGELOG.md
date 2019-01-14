@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.2.1
+* updated teslajs.min.js
+
 ## V4.2.0
 * added `nearbyChargers()`
 

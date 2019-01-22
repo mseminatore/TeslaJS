@@ -6,15 +6,15 @@
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 [![Dependencies](https://david-dm.org/mseminatore/TeslaJS.svg)](https://david-dm.org/mseminatore/TeslaJS)
 
-An unofficial NodeJS library that encapsulates the Tesla RESTful API.  This 
+An unofficial NodeJS library that encapsulates the Tesla RESTful API. This 
 library currently supports all existing Tesla vehicles.
 
 [![NPM](https://nodei.co/npm/teslajs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/teslajs/)
 [![NPM](https://nodei.co/npm-dl/teslajs.png)](https://nodei.co/npm/teslajs/)
 
 First, it is important to acknowledge that there are already several very 
-good Javascript libraries available for the Tesla.  So why create another 
-one?  Rather than contribute to or modify one or more of the existing 
+good Javascript libraries available for the Tesla. So why create another 
+one? Rather than contribute to or modify one or more of the existing 
 libraries, this library was created for two main reasons:
 
 1. The anticipated need for a few small but important features that existing 
@@ -26,15 +26,15 @@ API, NodeJS, Express and Git/GitHub
 
 With the introduction of the new OAuth-based owner API, one of the features I 
 wanted was the ability to make API calls without having to login each time a 
-new process was invoked.  Many existing libraries require a login transaction 
-with each initiation of the library.  With the TeslaJS library, once an auth 
+new process was invoked. Many existing libraries require a login transaction 
+with each initiation of the library. With the TeslaJS library, once an auth 
 token is retrieved it can be cached and used to make other Tesla REST API 
-calls.  For certain use cases, notably server logging of multiple vehicles, 
-this can be important for moderating load on the Tesla login servers.  
+calls. For certain use cases, notably server logging of multiple vehicles, 
+this can be important for moderating load on the Tesla login servers. 
 
 This is also important if you want to use the library to do server-based data 
-logging.  It is generally safer to store an OAuth token on the server rather 
-than logon credentials.  If the server is compromised only the OAuth token is 
+logging. It is generally safer to store an OAuth token on the server rather 
+than logon credentials. If the server is compromised only the OAuth token is 
 at risk and all existing tokens can be invalidated by changing the password on 
 the account.
 
@@ -62,15 +62,15 @@ the [MIGRATION](https://github.com/mseminatore/TeslaJS/blob/master/MIGRATION.md)
 
 ## Known Issues
 
-1. The homelink API appears to require Autopilot hardware.  Can someone with 
+1. The homelink API appears to require Autopilot hardware. Can someone with 
 AP test and report back?
-2. Calendar support not yet functional.  If someone can share the JSON for a 
+2. Calendar support not yet functional. If someone can share the JSON for a 
 valid calendar request that would help!
 
 ## Library Users
 
-A growing number of projects use the library or are based on its code.  One such project is
-the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store.  This 
+A growing number of projects use the library or are based on its code. One such project is
+the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store. This 
 Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
 
 ## Project Principles
@@ -78,18 +78,18 @@ Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
 This project has a few principles that have and will continue to guide its 
 development.
 
-1. **Dependency lean**.  Try to keep the required dependencies to a minimum.
-2. **Comprehensive**.  Attempt to expose the full Tesla REST API surface area.
-3. **Simple**.  Using the library should be simple and straightforward 
+1. **Dependency lean**. Try to keep the required dependencies to a minimum.
+2. **Comprehensive**. Attempt to expose the full Tesla REST API surface area.
+3. **Simple**. Using the library should be simple and straightforward 
 following common conventions.
-4. **Server friendly**.  Provide for use based on auth tokens and avoid 
+4. **Server friendly**. Provide for use based on auth tokens and avoid 
 requiring access to passwords.
 
 ## Documentation
 
-We've recently added auto-generated documentation via jsdocs.  See the
+We've recently added auto-generated documentation via jsdocs. See the
  [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
-for a mostly complete reference.  Please let us know if you see something 
+for a mostly complete reference. Please let us know if you see something 
 missing and we will continue to expand.
 
 ## Contributing
@@ -111,14 +111,14 @@ community.
 # Tesla API Documentation
 
 The Tesla REST API encapusulated by this library was documented through the 
-collaboration of many Tesla owners.  Please thank and support them for their 
+collaboration of many Tesla owners. Please thank and support them for their 
 continued efforts! The latest REST API documentation can be found [here](https://tesla-api.timdorr.com/)
 	
 # Warranty Disclaimer
 
 You may use this library with the understanding that doing so is 
-**AT YOUR OWN RISK**.  No warranty, express or implied, is made with regards 
-to the fitness or safety of this code for any purpose.  If you use this 
+**AT YOUR OWN RISK**. No warranty, express or implied, is made with regards 
+to the fitness or safety of this code for any purpose. If you use this 
 library to query or change settings of your vehicle you understand that it 
 is possible to make changes that could inadvertently lower the security of 
 your vehicle, or cause damage, through actions including but not limited to:
@@ -133,7 +133,7 @@ your vehicle, or cause damage, through actions including but not limited to:
 > Please be careful not to use this code in a way that loads the Tesla servers
 > with too many concurrent requests. Calling the Tesla REST APIs at a very high 
 > frequency will stress the Tesla servers and could get your IP or favorite
-> cloud service blocked by Tesla.  Or in the worst case it could cause Tesla 
+> cloud service blocked by Tesla. Or in the worst case it could cause Tesla 
 > to revoke the key that enables access via this and many other libraries.
 
 # Installation

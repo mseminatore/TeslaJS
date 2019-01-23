@@ -159,7 +159,7 @@ node projects you may use:
     npm install -g teslajs
 
 You may also install directly from the GitHub 
-[source](https://github.com/mseminatore/TeslaJS).  Either download and unzip 
+[source](https://github.com/mseminatore/TeslaJS). Either download and unzip 
 the source, or clone the repository.
 
 > Remember, whether you install via ZIP source or Git clone you must install 

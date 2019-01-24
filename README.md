@@ -170,7 +170,7 @@ type:
 
     npm install
 
-This library and its accomanying samples are under active development.  New 
+This library and its accomanying samples are under active development. New 
 features, samples and bug fixes are being added regularly.  To ensure that 
 you have the very latest version of TeslaJS and it's dependencies be sure to 
 update frequently.

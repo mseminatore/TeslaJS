@@ -85,14 +85,15 @@ function sampleMain(tjs, options) {
 
             console.log("Heading: " + compassDirs(drive_state.heading).green);
 
-            var lat = drive_state.latitude || 0;
-            var long = drive_state.longitude || 0;
-            console.log("GPS: " + lat.toString().green + ", " + long.toString().green);
+            var latitude = drive_state.latitude || 0;
+            var longitude = drive_state.longitude || 0;
+
+            console.log("GPS: " + latitude.toString().green + ", " + longitude.toString().green);
 
             if (program.geocode) {
                 request({
                     method: 'GET',
-                    url: "http://api.geonames.org/findNearestAddressJSON?lat=" + lat + "&lng=" + long + "&username=demo",
+                    url: "http://api.geonames.org/findNearestAddressJSON?lat=" + latitude + "&lng=" + longitude + "&username=demo",
                     headers: { 'Content-Type': 'application/json; charset=utf-8' }
                 }, function (error, response, body) {
                     var res = JSON.parse(body).address;

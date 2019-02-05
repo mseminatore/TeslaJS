@@ -33,11 +33,11 @@ sample.run();
 function sampleMain(tjs, options) {
     tjs.driveState(options, function (err, drive_state) {
         if (drive_state) {
-            var lat = drive_state.latitude || 0;
-            var long = drive_state.longitude || 0;
+            var latitude = drive_state.latitude || 0;
+            var longitude = drive_state.longitude || 0;
             var token = options.tokens[0];
 
-            tjs.homelink(options, lat, long, token, function (err, result) {
+            tjs.homelink(options, latitude, longitude, token, function (err, result) {
                 if (result.result) {
                     console.log("\nHomelink: " + "Door signaled!".bold.green);
                 } else {

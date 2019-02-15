@@ -1454,7 +1454,7 @@ exports.MAX_TEMP = 28;    // 82.4 Deg.F
  * @returns {object} result
  */
 exports.setTemps = function setTemps(options, driver, pass, callback) {
-    if (pass === undefined) {
+    if (!pass) {
         pass = driver;
     }
 

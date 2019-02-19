@@ -38,7 +38,7 @@
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^4.0.1",
     "jshint": "^2.10.0",
-    "mocha": "^5.2.0",
+    "mocha": "^6.0.0",
     "sepia": "^2.0.2"
   }
 }

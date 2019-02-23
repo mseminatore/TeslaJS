@@ -795,6 +795,32 @@ Set speed limit
               }
             }
 
+## Sentry mode [POST /api/1/vehicles/{vehicle_id}/command/set_sentry_mode?on={onoff}]
+
+Enable or disable sentry mode.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + onoff: true (boolean) - Sentry mode state.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Nearby chargers request [GET /api/1/vehicles/{vehicle_id}/nearby_charging_sites]
 
 Return a list of nearby Destination and Superchargers

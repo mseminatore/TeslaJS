@@ -1440,6 +1440,31 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#setSentryMode()', function () {
+	    it('should succeed', function (done) {
+	        tjs.setSentryMode(options, true, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.setSentryMode(options, true);
+	        done();
+	    });
+	});
+
+	describe('#setSentryModeAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.setSentryModeAsync(options, true).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
 	describe('#nearbyChargers()', function () {
 	    it('should succeed', function (done) {
 	        tjs.nearbyChargers(options, function (err, result) {

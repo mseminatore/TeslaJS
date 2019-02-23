@@ -287,6 +287,12 @@
 <dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options, limit)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set speed limit</p>
 </dd>
+<dt><a href="#setSentryMode">setSentryMode(options, onoff)</a> ⇒ <code>object</code></dt>
+<dd><p>Enable or disable sentry mode</p>
+</dd>
+<dt><a href="#setSentryModeAsync">setSentryModeAsync(onoff)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Enable or disable sentry mode</p>
+</dd>
 <dt><a href="#seatHeater">seatHeater(options, heater, level)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote seat heater</p>
 </dd>
@@ -1507,6 +1513,31 @@ Set speed limit
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | limit | <code>number</code> | Speed limit in mph |
 
+<a name="setSentryMode"></a>
+
+## setSentryMode(options, onoff) ⇒ <code>object</code>
+Enable or disable sentry mode
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
+
+<a name="setSentryModeAsync"></a>
+
+## setSentryModeAsync(onoff) ⇒ <code>Promise</code>
+Enable or disable sentry mode
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
+
 <a name="seatHeater"></a>
 
 ## seatHeater(options, heater, level) ⇒ <code>object</code>
@@ -1564,7 +1595,8 @@ Remote steering heater
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.
+Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1578,7 +1610,8 @@ Set the charge limit.Note: charging to 100% frequently is NOT recommended for l
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.
+Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  

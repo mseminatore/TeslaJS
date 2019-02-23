@@ -1188,6 +1188,25 @@ exports.speedLimitSetLimit = function speedLimitSetLimit(options, limit, callbac
 exports.speedLimitSetLimitAsync = Promise.denodeify(exports.speedLimitSetLimit);
 
 /**
+ * Enable or disable sentry mode
+ * @function setSentryMode
+ * @param {optionsType} options - options object
+ * @param {boolean} onoff - true to turn on sentry mode, false to turn off
+ * @returns {object} result
+ */
+exports.setSentryMode = function setSentryMode(options, onoff, callback) {
+	post_command(options, "command/set_sentry_mode", { on: onoff }, callback);
+}
+
+/**
+ * Enable or disable sentry mode
+ * @function setSentryModeAsync
+ * @param {boolean} onoff - true to turn on sentry mode, false to turn off
+ * @returns {Promise} result
+ */
+exports.setSentryModeAsync = Promise.denodeify(exports.setSentryMode);
+
+/**
  * Remote seat heater
  * @function seatHeater
  * @param {optionsType} options - options object

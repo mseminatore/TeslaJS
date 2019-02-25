@@ -49,6 +49,7 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
+1. In **4.3.0** added `setSentryMode()`
 1. In **4.2.1** updated teslajs.min.js
 2. In **4.2.0** added `nearbyChargers()` interface
 3. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
@@ -335,6 +336,7 @@ resetValetPin() | reset the valet pin
 scheduleSoftwareUpdate() | schedule a firmware update
 seatHeater() | adjust seat heating level
 setChargeLimit() | sets the charge limit to a specific amount
+setSentryMode() | enables or disables sentry mode
 setTemps() | set driver/passenger temp set points (in Deg.C)
 setValetMode() | set/reset valet mode
 speedLimitActivate() | activate the speed limit

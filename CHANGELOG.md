@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.3.0
+* added `setSentryMode()`
+
 ## V4.2.1
 * updated teslajs.min.js
 

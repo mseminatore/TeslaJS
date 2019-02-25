@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.3.1
+* updated minified version
+
 ## V4.3.0
 * added `setSentryMode()`
 

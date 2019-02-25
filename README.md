@@ -49,12 +49,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.3.0** added `setSentryMode()`
-1. In **4.2.1** updated teslajs.min.js
-2. In **4.2.0** added `nearbyChargers()` interface
-3. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
-4. In **4.0.0** migrated to lower-case lib name
-5. In **3.0.0** rationalized the `vehicle()` and `vehicles()` interfaces
+1. In **4.3.1** updated minified version
+2. In **4.3.0** added `setSentryMode()`
+3. In **4.2.1** updated teslajs.min.js
+4. In **4.2.0** added `nearbyChargers()` interface
+5. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
 
 ## Migrating Major Version Changes
 

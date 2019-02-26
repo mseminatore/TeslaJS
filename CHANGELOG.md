@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.3.2
+* updated dev deps
+
 ## V4.3.1
 * updated minified version
 

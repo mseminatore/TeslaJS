@@ -1281,7 +1281,7 @@ exports.CHARGE_RANGE    = 100;
  * @returns {object} result
  */
 exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
-    amt = clamp(amt, exports.CHARGE_STANDARD, exports.CHARGE_RANGE);
+    amt = clamp(amt, exports.CHARGE_STORAGE, exports.CHARGE_RANGE);
     post_command(options, "command/set_charge_limit", { percent: amt }, callback);
 }
 

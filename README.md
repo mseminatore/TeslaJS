@@ -69,9 +69,12 @@ valid calendar request that would help!
 
 ## Library Users
 
-A growing number of projects use the library or are based on its code. One such project is
-the [Tesla Control](https://www.teslacontrol.app) app in the Windows Store. This 
+A growing number of projects use the library or are based on its code, examples:
+
+- [Tesla Control](https://www.teslacontrol.app) app in the Windows Store. This 
 Universal Windows App runs on Windows desktop, Windows Phone and Xbox.
+-  [Nikola](https://github.com/geraldoramos/nikola) app on Github. This is a cross-platform app built with [Electron](https://github.com/electron/electron), currently available for macOS and Windows.
+
 
 ## Project Principles
 

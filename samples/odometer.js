@@ -55,7 +55,7 @@ function sampleMain(tjs, options) {
 		var miles = addCommas(Math.round(vehicle_state.odometer).toString());
 		console.log(miles.green + " miles");
 		
-		var km = addCommas(Math.round(vehicle_state.odometer * 1.61).toString());
+		var km = addCommas(Math.round(vehicle_state.odometer * 1.609344).toString());
 		console.log(km.green + " KM");
     });
 }

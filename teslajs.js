@@ -650,7 +650,7 @@ exports.post_commandAsync = Promise.denodeify(exports.post_command);
  * @returns {object} vehicle_data object
  */
 exports.vehicleData = function vehicleData(options, callback){
-    get_command(options, "data", callback);
+    get_command(options, "vehicle_data", callback);
 }
 
 /**

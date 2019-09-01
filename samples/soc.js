@@ -27,6 +27,10 @@ program
 var sample = new framework.SampleFramework(program, sampleMain);
 sample.run();
 
+function milesToKms(miles){
+    return miles * 1.609344;
+}
+
 //
 //
 //
@@ -39,6 +43,8 @@ function sampleMain(tjs, options) {
 
         // get the charge state info from the vehicle data
         var chargeState = vehicleData.charge_state;
+
+        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
 
         var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);
@@ -72,10 +78,10 @@ function sampleMain(tjs, options) {
             console.log("Charge scheduled for " + scheduledChargeTime.toLocaleTimeString().toString().green);
         }
 
-        console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + '%'.green);
-        console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + '%'.green);
-        console.log("\nRated range: " + Math.round(chargeState.battery_range).toString().green + ' miles');
-        console.log("Projected range: " + Math.round(chargeState.est_battery_range).toString().green + ' miles');
-        console.log("Ideal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
+        console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + ' %'.green);
+        console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + ' %'.green);
+        console.log("\nRated range: " + (unitsInKms ? Math.round(milesToKms(chargeState.battery_range)).toString().green + ' km' : Math.round(chargeState.battery_range).toString().green + ' mi'));
+        console.log("Typical range: " + (unitsInKms ? Math.round(milesToKms(chargeState.ideal_battery_range)).toString().green + ' km' : Math.round(chargeState.ideal_battery_range).toString().green + ' mi'));
+        console.log("Estimated range: " + (unitsInKms ? Math.round(milesToKms(chargeState.est_battery_range)).toString().green + ' km' : Math.round(chargeState.est_battery_range).toString().green + ' mi'));
     });
 }

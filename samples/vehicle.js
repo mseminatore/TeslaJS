@@ -39,8 +39,8 @@ function sampleMain(tjs, options) {
         var vehicle_state = vehicleData.vehicle_state;
         var charge_state = vehicleData.charge_state;
 
-        const eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
-        const unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
+        var eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
+        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
 
         var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
 

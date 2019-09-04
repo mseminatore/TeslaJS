@@ -39,8 +39,8 @@ function sampleMain(tjs, options) {
         // get the charge state info from the vehicle data
         var chargeState = vehicleData.charge_state;
         
-        const eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
-        const unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
+        var eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
+        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
 
         var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);

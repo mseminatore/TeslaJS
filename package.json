@@ -1,6 +1,6 @@
 {
   "name": "geekdave-teslajs-fork",
-  "version": "4.3.13",
+  "version": "4.3.11",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.1",

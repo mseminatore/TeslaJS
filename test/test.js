@@ -141,13 +141,13 @@ describe('TeslaJS', function () {
         it('should return the VIN', function () {
             assert.equal("5YJSA1H16EFP12345", tjs.getVin({"vin": "5YJSA1H16EFP12345"}));
         });
-        
+
 		it('should throw with no input', function () {
             assert.throws( function() {
 				tjs.getVin();
 			});
         });
-        
+
 		it('should throw with no vin', function () {
             assert.throws( function() {
 				tjs.getVin( {} );
@@ -159,13 +159,13 @@ describe('TeslaJS', function () {
         it('should return the short VIN', function () {
             assert.equal("P12345", tjs.getShortVin({"vin": "5YJSA1H16EFP12345"}));
         });
-        
+
 		it('should throw with no input', function () {
             assert.throws( function() {
 				tjs.getShortVin();
 			});
         });
-        
+
 		it('should throw with no vin', function () {
             assert.throws( function() {
 				tjs.getShortVin( {} );
@@ -1095,7 +1095,7 @@ describe('TeslaJS', function () {
 
 	describe('#startStreaming()', function () {
 	    it('should succeed', function (done) {
-			tjs.startStreaming(options, 
+			tjs.startStreaming(options,
 				function (err, response, body) {
 					if (response) {
 						done();
@@ -1564,4 +1564,25 @@ describe('TeslaJS', function () {
 			});
 	    });
 	});
+
+	describe("#getSolarStatus()", function() {
+		it("should return the current solar production", function(done) {
+		  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+			assert.equal(1000, result.solar_power);
+			done();
+		  });
+		});
+		it("should return the current power consumption", function(done) {
+		  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+			assert.equal(750, result.load_power);
+			done();
+		  });
+		});
+		it("should return the current net grid power", function(done) {
+		  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+			assert.equal(250, result.grid_power);
+			done();
+		  });
+		});
+	  });
 });

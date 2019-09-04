@@ -38,7 +38,9 @@ function sampleMain(tjs, options) {
     tjs.vehicleDataAsync(options).then( function(vehicleData) {
         var vehicle_state = vehicleData.vehicle_state;
         var charge_state = vehicleData.charge_state;
-        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
+
+        const eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
+        const unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
 
         var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
 
@@ -46,8 +48,8 @@ function sampleMain(tjs, options) {
         console.log("Battery level: " + charge_state.battery_level.toString().green + ' / '.green + charge_state.charge_limit_soc.toString().green + ' %'.green);
         
         console.log("\nRated range: " + (unitsInKms ? Math.round(milesToKms(charge_state.battery_range)).toString().green + ' km' : Math.round(charge_state.battery_range).toString().green + ' mi'));
-        console.log("Typical range: " + (unitsInKms ? Math.round(milesToKms(charge_state.ideal_battery_range)).toString().green + ' km' : Math.round(charge_state.ideal_battery_range).toString().green + ' mi'));
-        console.log("Estimated range: " + (unitsInKms ? Math.round(milesToKms(charge_state.est_battery_range)).toString().green + ' km' : Math.round(charge_state.est_battery_range).toString().green + ' mi'));
+        console.log((eu_vehicle?"Typical":"Ideal")+" range: "  + (unitsInKms ? Math.round(milesToKms(charge_state.ideal_battery_range)).toString().green + ' km' : Math.round(charge_state.ideal_battery_range).toString().green + ' mi'));
+        console.log("Projected range: " + (unitsInKms ? Math.round(milesToKms(charge_state.est_battery_range)).toString().green + ' km' : Math.round(charge_state.est_battery_range).toString().green + ' mi'));
 
         console.log("\nDoors: " + str);
         if (vehicle_state.df) {

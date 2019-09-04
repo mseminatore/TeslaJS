@@ -37,7 +37,7 @@ exports.SampleFramework = function SampleFramework(program, main) {
             return;
         }
 
-        logo();
+        //logo();
 
         var options = { authToken: result.authToken };
         tjs.vehicles(options, function (err, vehicles) {

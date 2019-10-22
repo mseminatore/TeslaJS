@@ -878,6 +878,32 @@ Adjust seat heater levels
               }
             }
 
+## Window control request [POST /api/1/vehicles/{vehicle_id}/command/window_control]
+
+Control the windows
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + command: 'open' (string) - Action to take. Allowable values are 'vent' and 'close'
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+            
 ## Steering heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_steering_wheel_heater_request]
 
 Adjust steering heater levels

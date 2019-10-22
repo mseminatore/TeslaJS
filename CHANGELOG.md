@@ -1,5 +1,8 @@
 # TeslaJS Change log
 
+## V4.4.0
+* added `windowControl`
+
 ## V4.3.2
 * updated dev deps
 

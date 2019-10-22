@@ -1248,6 +1248,27 @@ exports.steeringHeater = function steeringHeater(options, level, callback) {
  */
 exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
 
+
+/**
+ * Window control
+ * @function windowControl
+ * @param {optionsType} options - options object
+ * @param {string} command - Allowable values are 'vent' and 'close'
+ * @returns {object} result
+ */
+exports.windowControl = function windowControl(options, command, callback) {
+    post_command(options, "command/window_control", { "command": command, "lat":0, "lon":0 }, callback);
+}
+
+/**
+ * Window control
+ * @function windowControlAsync
+ * @param {optionsType} options - options object
+ * @param {string} command - Allowable values are 'vent' and 'close'
+ * @returns {Promise} result
+ */
+exports.windowControlAsync = Promise.denodeify(exports.windowControl);
+
 //=====================
 // Charge limit constants
 //=====================

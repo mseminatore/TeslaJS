@@ -305,6 +305,12 @@
 <dt><a href="#seatHeaterAsync">seatHeaterAsync(options, level)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
+<dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
+<dd><p>Window control</p>
+</dd>
+<dt><a href="#windowControlAsync">windowControlAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Window control</p>
+</dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
@@ -404,11 +410,11 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 ## Typedefs
 
 <dl>
-<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
-<dd><p>Node-style callback function</p>
-</dd>
 <dt><a href="#optionsType">optionsType</a> : <code>object</code></dt>
 <dd><p>TeslaJS options parameter</p>
+</dd>
+<dt><a href="#nodeBack">nodeBack</a> : <code>function</code></dt>
+<dd><p>Node-style callback function</p>
 </dd>
 </dl>
 
@@ -424,82 +430,82 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 **Default**: <code>https://owner-api.teslamotors.com</code>  
 <a name="API_LOG_ALWAYS"></a>
 
-## API\_LOG\_ALWAYS
+## API_LOG_ALWAYS
 **Kind**: global variable  
 **Default**: <code>0</code>  
 <a name="API_ERR_LEVEL"></a>
 
-## API\_ERR\_LEVEL
+## API_ERR_LEVEL
 **Kind**: global variable  
 **Default**: <code>1</code>  
 <a name="API_CALL_LEVEL"></a>
 
-## API\_CALL\_LEVEL
+## API_CALL_LEVEL
 **Kind**: global variable  
 **Default**: <code>2</code>  
 <a name="API_RETURN_LEVEL"></a>
 
-## API\_RETURN\_LEVEL
+## API_RETURN_LEVEL
 **Kind**: global variable  
 **Default**: <code>3</code>  
 <a name="API_BODY_LEVEL"></a>
 
-## API\_BODY\_LEVEL
+## API_BODY_LEVEL
 **Kind**: global variable  
 **Default**: <code>4</code>  
 <a name="API_REQUEST_LEVEL"></a>
 
-## API\_REQUEST\_LEVEL
+## API_REQUEST_LEVEL
 **Kind**: global variable  
 **Default**: <code>5</code>  
 <a name="API_RESPONSE_LEVEL"></a>
 
-## API\_RESPONSE\_LEVEL
+## API_RESPONSE_LEVEL
 **Kind**: global variable  
 **Default**: <code>6</code>  
 <a name="API_LOG_ALL"></a>
 
-## API\_LOG\_ALL
+## API_LOG_ALL
 **Kind**: global variable  
 **Default**: <code>255</code>  
 <a name="CHARGE_STORAGE"></a>
 
-## CHARGE\_STORAGE
+## CHARGE_STORAGE
 **Kind**: global variable  
 **Default**: <code>50</code>  
 <a name="CHARGE_DAILY"></a>
 
-## CHARGE\_DAILY
+## CHARGE_DAILY
 **Kind**: global variable  
 **Default**: <code>70</code>  
 <a name="CHARGE_STANDARD"></a>
 
-## CHARGE\_STANDARD
+## CHARGE_STANDARD
 **Kind**: global variable  
 **Default**: <code>90</code>  
 <a name="CHARGE_RANGE"></a>
 
-## CHARGE\_RANGE
+## CHARGE_RANGE
 **Kind**: global variable  
 **Default**: <code>100</code>  
 <a name="SUNROOF_VENT"></a>
 
-## SUNROOF\_VENT
+## SUNROOF_VENT
 **Kind**: global variable  
 **Default**: <code>vent</code>  
 <a name="SUNROOF_CLOSED"></a>
 
-## SUNROOF\_CLOSED
+## SUNROOF_CLOSED
 **Kind**: global variable  
 **Default**: <code>close</code>  
 <a name="MIN_TEMP"></a>
 
-## MIN\_TEMP
+## MIN_TEMP
 **Kind**: global variable  
 **Default**: <code>15</code>  
 <a name="MAX_TEMP"></a>
 
-## MAX\_TEMP
+## MAX_TEMP
 **Kind**: global variable  
 **Default**: <code>28</code>  
 <a name="FRUNK"></a>
@@ -748,7 +754,7 @@ Return vehicle information on ALL vehicles
 
 <a name="get_command"></a>
 
-## get\_command(options, command, callback)
+## get_command(options, command, callback)
 Generic REST call for GET commands
 
 **Kind**: global function  
@@ -761,7 +767,7 @@ Generic REST call for GET commands
 
 <a name="get_commandAsync"></a>
 
-## get\_commandAsync(options, command) ⇒ <code>Promise</code>
+## get_commandAsync(options, command) ⇒ <code>Promise</code>
 Generic Async REST call for GET commands
 
 **Kind**: global function  
@@ -774,7 +780,7 @@ Generic Async REST call for GET commands
 
 <a name="post_command"></a>
 
-## post\_command(options, command, body, callback)
+## post_command(options, command, body, callback)
 Generic REST call for POST commands
 
 **Kind**: global function  
@@ -788,7 +794,7 @@ Generic REST call for POST commands
 
 <a name="post_commandAsync"></a>
 
-## post\_commandAsync(options, command, body) ⇒ <code>Promise</code>
+## post_commandAsync(options, command, body) ⇒ <code>Promise</code>
 Generic Async REST call for POST commands
 
 **Kind**: global function  
@@ -1592,11 +1598,36 @@ Remote steering heater
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | level | <code>number</code> | Level for the heater (0-3) |
 
+<a name="windowControl"></a>
+
+## windowControl(options, command) ⇒ <code>object</code>
+Window control
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| command | <code>string</code> | Allowable values are 'vent' and 'close' |
+
+<a name="windowControlAsync"></a>
+
+## windowControlAsync(options, command) ⇒ <code>Promise</code>
+Window control
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| command | <code>string</code> | Allowable values are 'vent' and 'close' |
+
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1610,8 +1641,7 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -2044,18 +2074,6 @@ Start streaming car data
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 | onDataCb | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
-<a name="nodeBack"></a>
-
-## nodeBack : <code>function</code>
-Node-style callback function
-
-**Kind**: global typedef  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| error | <code>function</code> | function which receives the error result |
-| data | <code>function</code> | function which receives the data result |
-
 <a name="optionsType"></a>
 
 ## optionsType : <code>object</code>
@@ -2069,4 +2087,16 @@ TeslaJS options parameter
 | authToken | <code>string</code> | Tesla provided OAuth token |
 | vehicleID | <code>string</code> | Tesla provided long vehicle id |
 | [carIndex] | <code>int</code> | index of vehicle within vehicles JSON |
+
+<a name="nodeBack"></a>
+
+## nodeBack : <code>function</code>
+Node-style callback function
+
+**Kind**: global typedef  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| error | <code>function</code> | function which receives the error result |
+| data | <code>function</code> | function which receives the data result |
 

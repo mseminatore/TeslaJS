@@ -1540,6 +1540,52 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+	describe('#windowControl()', function () {
+	    it('should succeed with "vent"', function (done) {
+	        tjs.windowControl(options, "vent", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+		});
+		
+	    it('should succeed with "close"', function (done) {
+	        tjs.windowControl(options, "vent", function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with "vent" and no callback', function (done) {
+	        tjs.windowControl(options, "vent");
+	        done();
+	    });
+
+	    it('should succeed with "close" and no callback', function (done) {
+	        tjs.windowControl(options, "close");
+	        done();
+	    });
+	});
+
+	describe('#windowControlAsync()', function () {
+	    it('should succeed with "vent"', function () {
+	        return tjs.windowControlAsync(options, "vent").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+
+		it('should succeed with "close"', function () {
+	        return tjs.windowControlAsync(options, "close").then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});
+
 	describe('#navigationRequest()', function () {
 	    it('should succeed', function (done) {
 	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {

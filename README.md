@@ -49,11 +49,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.4.0** added `windowControl` interface
-2. In **4.3.1** updated minified version
-3. In **4.3.0** added `setSentryMode()`
-4. In **4.2.1** updated teslajs.min.js
-5. In **4.2.0** added `nearbyChargers()` interface
+1. In **4.5.0** added `vinDecode` interface
+2. In **4.4.0** added `windowControl` interface
+3. In **4.3.1** updated minified version
+4. In **4.3.0** added `setSentryMode()`
+5. In **4.2.1** updated teslajs.min.js
 
 ## Migrating Major Version Changes
 
@@ -354,6 +354,7 @@ sunRoofMove() | open the sunroof to a specific percent
 vehicleData() | retrieve **all** vehicle state data in a single call
 vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
+vinDecode() | decode and return the vehicle VIN properties
 wakeUp() | attempt to wake a sleeping vehicle
 windowControl() | adjust windows to 'vent' or 'close' position
 

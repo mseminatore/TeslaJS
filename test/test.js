@@ -76,13 +76,31 @@ describe('TeslaJS', function () {
 
     describe('#getModel()', function () {
         it('should return Model S', function () {
-            assert.equal('Model S', tjs.getModel({"option_codes": ""}));
+            assert.equal('Model S', tjs.getModel({"vin": "5YJSA1CP6DFP1"}));
         });
         it('should return Model X', function () {
-            assert.equal('Model X', tjs.getModel({"option_codes": "MDLX"}));
+            assert.equal('Model X', tjs.getModel({"vin": "5YJXA1CP6DFP1"}));
         });
         it('should return Model 3', function () {
-            assert.equal('Model 3', tjs.getModel({"option_codes": "MDL3"}));
+            assert.equal('Model 3', tjs.getModel({"vin": "5YJ3A1CP6DFP1"}));
+        });
+    });
+
+    describe('#vinDecode()', function () {
+        it('should return Model S', function () {
+            assert.equal('Model S', tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).carType);
+        });
+        it('should return Model X', function () {
+            assert.equal('Model X', tjs.vinDecode({"vin": "5YJXA1CP6DFP1"}).carType);
+        });
+        it('should return Model 3', function () {
+            assert.equal('Model 3', tjs.vinDecode({"vin": "5YJ3A1CP6DFP1"}).carType);
+        });
+        it('should return 2013', function () {
+            assert.equal('2013', tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).year);
+        });
+        it('should return no AWD', function () {
+            assert.equal(false, tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).awd);
         });
     });
 

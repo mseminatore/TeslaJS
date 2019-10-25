@@ -69,6 +69,9 @@
 <dt><a href="#getModel">getModel(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the car model from vehicle JSON information</p>
 </dd>
+<dt><a href="#vinDecode">vinDecode(vehicle)</a> ⇒ <code>object</code></dt>
+<dd><p>Return an object containing properties decoded from the vehicle VIN</p>
+</dd>
 <dt><a href="#getPaintColor">getPaintColor(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the paint color from vehicle JSON information</p>
 </dd>
@@ -584,6 +587,18 @@ Return the car model from vehicle JSON information
 
 **Kind**: global function  
 **Returns**: <code>string</code> - vehicle model string  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| vehicle | <code>object</code> | vehicle JSON |
+
+<a name="vinDecode"></a>
+
+## vinDecode(vehicle) ⇒ <code>object</code>
+Return an object containing properties decoded from the vehicle VIN
+
+**Kind**: global function  
+**Returns**: <code>object</code> - vehicle properties  
 
 | Param | Type | Description |
 | --- | --- | --- |

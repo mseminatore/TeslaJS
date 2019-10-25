@@ -215,17 +215,50 @@ exports.getStreamingBaseURI = function getStreamingBaseURI() {
  * @return {string} vehicle model string
  */
 exports.getModel = function getModel(vehicle) {
-    var carType = "Unknown";
+    var result = exports.vinDecode(vehicle);
+    return result.carType;
+}
 
-    if (vehicle.option_codes.indexOf("MDLX") != -1) {
-        carType = "Model X";
-    } else if (vehicle.option_codes.indexOf("MDL3") != -1) {
-        carType = "Model 3";
-    } else {
-        carType = "Model S";
+/**
+ * Return an object containing properties decoded from the vehicle VIN
+ * @param {object} vehicle - vehicle JSON
+ * @return {object} vehicle properties
+ */
+exports.vinDecode = function vinDecode(vehicle) {
+    var result = {
+        carType: "Model S",
+        awd: false,
+        year: 2012
+    };
+
+    if (!vehicle || !vehicle.vin) {
+        return result;
     }
 
-    return carType;
+    result.year = 2010 + vehicle.vin.charCodeAt(9) - 'A'.charCodeAt(0);
+
+    var model = vehicle.vin.charAt(3);
+    switch (model) {
+        case "S":
+            result.carType = "Model S";
+            break;
+        case "3":
+            result.carType = "Model 3";
+            break;
+        case "X":
+            result.carType = "Model X";
+            break;
+        //case "Y":
+        //    result.carType = "Model Y";
+        //    break;
+    }
+
+    // Check for AWD config 2, 4 or B
+    if (vehicle.vin.charAt(7) == "2" || vehicle.vin.charAt(7) == "4" || vehicle.vin.charAt(7) == "B") {
+        result.awd = true;
+    }
+    
+    return result;
 }
 
 /**

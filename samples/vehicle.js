@@ -27,6 +27,10 @@ program
 var sample = new framework.SampleFramework(program, sampleMain);
 sample.run();
 
+function milesToKms(miles){
+    return miles * 1.609344;
+}
+
 //
 //
 //
@@ -35,13 +39,17 @@ function sampleMain(tjs, options) {
         var vehicle_state = vehicleData.vehicle_state;
         var charge_state = vehicleData.charge_state;
 
+        var eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
+        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
+
         var str = vehicle_state.locked ? "LOCKED".bgGreen : "UNLOCKED".yellow;
 
         console.log("\nCharging state: " + charge_state.charging_state.green);
-        console.log("Battery level: "+ charge_state.battery_level.toString().green);
-        console.log("Charge limit: " + charge_state.charge_limit_soc.toString().green);
-        console.log("Rated range: " + Math.round(charge_state.battery_range).toString().green);
-        console.log("Projected range: " + Math.round(charge_state.est_battery_range).toString().green);
+        console.log("Battery level: " + charge_state.battery_level.toString().green + ' / '.green + charge_state.charge_limit_soc.toString().green + ' %'.green);
+        
+        console.log("\nRated range: " + (unitsInKms ? Math.round(milesToKms(charge_state.battery_range)).toString().green + ' km' : Math.round(charge_state.battery_range).toString().green + ' mi'));
+        console.log((eu_vehicle?"Typical":"Ideal")+" range: "  + (unitsInKms ? Math.round(milesToKms(charge_state.ideal_battery_range)).toString().green + ' km' : Math.round(charge_state.ideal_battery_range).toString().green + ' mi'));
+        console.log("Projected range: " + (unitsInKms ? Math.round(milesToKms(charge_state.est_battery_range)).toString().green + ' km' : Math.round(charge_state.est_battery_range).toString().green + ' mi'));
 
         console.log("\nDoors: " + str);
         if (vehicle_state.df) {
@@ -74,6 +82,8 @@ function sampleMain(tjs, options) {
         }
 
         console.log("Firmware: " + vehicle_state.car_version.green);
+
+        console.log("\nIs user present? ", vehicle_state.is_user_present ? "YES".yellow : "NO".green);
 
         str = vehicle_state.valet_mode ? "ON".bgGreen : "OFF".green;
         console.log("Valet mode: " + str + "\n");

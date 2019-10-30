@@ -903,7 +903,33 @@ Control the windows
                 "reason": ""
               }
             }
-            
+      
+## Max Defrost request [POST /api/1/vehicles/{vehicle_id}/command/set_preconditioning_max]
+
+Toggles the climate controls between Max Defrost and the previous setting
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + vehicle_id: `1` (number) - The id of the Vehicle.
+    + command: true (boolean) - Action to take. True to turn on, false to turn off.
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "response": {
+                "result": true,
+                "reason": ""
+              }
+            }
+
 ## Steering heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_steering_wheel_heater_request]
 
 Adjust steering heater levels

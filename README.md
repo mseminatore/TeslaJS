@@ -49,11 +49,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.5.0** added `vinDecode` interface
-2. In **4.4.0** added `windowControl` interface
-3. In **4.3.1** updated minified version
-4. In **4.3.0** added `setSentryMode()`
-5. In **4.2.1** updated teslajs.min.js
+1. In **4.7.0** added `maxDefrost` interface
+2. In **4.5.0** added `vinDecode` interface
+3. In **4.4.0** added `windowControl` interface
+4. In **4.3.1** updated minified version
+5. In **4.3.0** added `setSentryMode()`
 
 ## Migrating Major Version Changes
 
@@ -318,8 +318,9 @@ doorUnlock() | unlocks the doors
 driveState() | retrieve the drive_state data
 flashLights() | flashes the headlights
 guiSettings() | retrieves the GUI settings
-homelink() | Triggers homelink from the vehicle
+homelink() | triggers homelink from the vehicle
 honkHorn() | honks the horn
+maxDefrost() | toggles climate between Max Defrost and the previous setting
 mediaTogglePlayback() | toggles media playback
 mediaPlayNext() | plays the next track
 mediaPlayPrevious() | plays the previous track

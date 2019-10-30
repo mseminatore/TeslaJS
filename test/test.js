@@ -84,6 +84,9 @@ describe('TeslaJS', function () {
         it('should return Model 3', function () {
             assert.equal('Model 3', tjs.getModel({"vin": "5YJ3A1CP6DFP1"}));
         });
+        it('should return Model Y', function () {
+            assert.equal('Model Y', tjs.getModel({"vin": "5YJYA1CP6DFP1"}));
+        });
     });
 
     describe('#vinDecode()', function () {
@@ -96,11 +99,17 @@ describe('TeslaJS', function () {
         it('should return Model 3', function () {
             assert.equal('Model 3', tjs.vinDecode({"vin": "5YJ3A1CP6DFP1"}).carType);
         });
+        it('should return Model Y', function () {
+            assert.equal('Model Y', tjs.vinDecode({"vin": "5YJYA1CP6DFP1"}).carType);
+        });
         it('should return 2013', function () {
             assert.equal('2013', tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).year);
         });
         it('should return no AWD', function () {
             assert.equal(false, tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).awd);
+        });
+        it('should return AWD', function () {
+            assert.equal(true, tjs.vinDecode({"vin": "5YJSA1C26DFP1"}).awd);
         });
     });
 
@@ -1486,7 +1495,7 @@ describe('TeslaJS', function () {
 	describe('#nearbyChargers()', function () {
 	    it('should succeed', function (done) {
 	        tjs.nearbyChargers(options, function (err, result) {
-				if (result.result) {
+				if (result.congestion_sync_time_utc_secs == 1547415712) {
 					done();
 				} else {
 					done(err);
@@ -1628,4 +1637,29 @@ describe('TeslaJS', function () {
 			});
 	    });
 	});
+
+	describe('#maxDefrost()', function () {
+	    it('should succeed', function (done) {
+	        tjs.maxDefrost(options, true, function (err, result) {
+				if (result.result) {
+					done();
+				} else {
+					done(err);
+				}
+	        });
+	    });
+
+	    it('should succeed with no callback', function (done) {
+	        tjs.maxDefrost(options, true);
+	        done();
+	    });
+	});
+
+	describe('#maxDefrostAsync()', function () {
+	    it('should succeed', function () {
+	        return tjs.maxDefrostAsync(options, true).then(function (result) {
+				assert(result.result, true);
+			});
+	    });
+	});	
 });

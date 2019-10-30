@@ -308,6 +308,12 @@
 <dt><a href="#seatHeaterAsync">seatHeaterAsync(options, level)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
+<dt><a href="#maxDefrost">maxDefrost(options, onoff)</a> ⇒ <code>object</code></dt>
+<dd><p>Max Defrost</p>
+</dd>
+<dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Remote steering heater</p>
+</dd>
 <dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
 <dd><p>Window control</p>
 </dd>
@@ -1612,6 +1618,32 @@ Remote steering heater
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | level | <code>number</code> | Level for the heater (0-3) |
+
+<a name="maxDefrost"></a>
+
+## maxDefrost(options, onoff) ⇒ <code>object</code>
+Max Defrost
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| onoff | <code>boolean</code> | true for on, false for off |
+
+<a name="maxDefrostAsync"></a>
+
+## maxDefrostAsync(options, onoff) ⇒ <code>Promise</code>
+Remote steering heater
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| onoff | <code>boolean</code> | true for on, false for off |
 
 <a name="windowControl"></a>
 

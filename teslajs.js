@@ -248,9 +248,9 @@ exports.vinDecode = function vinDecode(vehicle) {
         case "X":
             result.carType = "Model X";
             break;
-        //case "Y":
-        //    result.carType = "Model Y";
-        //    break;
+        case "Y":
+            result.carType = "Model Y";
+           break;
     }
 
     // Check for AWD config 2, 4 or B
@@ -1281,6 +1281,25 @@ exports.steeringHeater = function steeringHeater(options, level, callback) {
  */
 exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
 
+/**
+ * Max Defrost
+ * @function maxDefrost
+ * @param {optionsType} options - options object
+ * @param {boolean} onoff - true for on, false for off
+ * @returns {object} result
+ */
+exports.maxDefrost = function steeringHeater(options, onoff, callback) {
+    post_command(options, "command/set_preconditioning_max", { "on": onoff }, callback);
+}
+
+/**
+ * Remote steering heater
+ * @function maxDefrostAsync
+ * @param {optionsType} options - options object
+ * @param {boolean} onoff - true for on, false for off
+ * @returns {Promise} result
+ */
+exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
 
 /**
  * Window control

@@ -1,7 +1,13 @@
 # TeslaJS Change log
 
+## V4.7.0
+* added `maxDefrost()`
+
+## V4.5.0 / 4.6.0
+* added `vinDecode()`
+
 ## V4.4.0
-* added `windowControl`
+* added `windowControl()`
 
 ## V4.3.2
 * updated dev deps
@@ -71,7 +77,7 @@
 * fixed doc errors
 
 ## V2.1.37
-* merge PR to re-enable `openTrunk` API
+* merge PR to re-enable `openTrunk()` API
 * added `openTrunk` sample
 
 ## V2.1.36

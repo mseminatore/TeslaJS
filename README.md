@@ -298,7 +298,7 @@ getPaintColor(vehicle) | returns the paint color as a string from vehicle object
 
 These methods all require an `options` parameter with at least `options.authToken` and `options.vehicleID` defined.
 
-> **Note**: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and __**not**__ `id` or `vehicle_id`. Using the wrong ID will result in 404 errors!
+> **Note**: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and __**not**__ `id` or `vehicle_id`. Using the wrong ID will result in **404** errors!
 
 > **Note**: The promise-based versions of the APIs have the suffix **Async** appended.  
 > For example `vehicle()` and `vehicleAsync()`. Note that not all APIs have an Async version, for example streaming.

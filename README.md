@@ -6,11 +6,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 [![Dependencies](https://david-dm.org/mseminatore/TeslaJS.svg)](https://david-dm.org/mseminatore/TeslaJS)
 
-An unofficial NodeJS library that encapsulates the Tesla RESTful API. This 
-library currently supports all existing Tesla vehicles.
+## An unofficial NodeJS library that encapsulates the Tesla RESTful API.
 
-[![NPM](https://nodei.co/npm/teslajs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/teslajs/)
-[![NPM](https://nodei.co/npm-dl/teslajs.png)](https://nodei.co/npm/teslajs/)
+### This library currently supports all existing Tesla vehicles.
 
 First, it is important to acknowledge that there are already several very 
 good Javascript libraries available for the Tesla. So why create another 

@@ -975,7 +975,7 @@ Adjust seat heater levels
               }
             }
 
-## Window control request [POST /api/1/vehicles/{vehicle_id}/command/window_control]
+## Window control request [POST /api/1/vehicles/{vehicle_id}/command/window_control?command={command}]
 
 Control the windows
 
@@ -1001,7 +1001,7 @@ Control the windows
               }
             }
       
-## Max Defrost request [POST /api/1/vehicles/{vehicle_id}/command/set_preconditioning_max]
+## Max Defrost request [POST /api/1/vehicles/{vehicle_id}/command/set_preconditioning_max?command={command}]
 
 Toggles the climate controls between Max Defrost and the previous setting
 
@@ -1027,7 +1027,7 @@ Toggles the climate controls between Max Defrost and the previous setting
               }
             }
 
-## Steering heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_steering_wheel_heater_request]
+## Steering heater request [POST /api/1/vehicles/{vehicle_id}/command/remote_steering_wheel_heater_request?on={on}]
 
 Adjust steering heater levels
 

@@ -4,7 +4,8 @@
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.1",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "ws": "^7.2.1"
   },
   "bugs": {
     "url": "https://github.com/mseminatore/TeslaJS/issues"

@@ -1829,24 +1829,23 @@ exports.startStreaming = function startStreaming(options, callback, onDataCb) {
 
     options.values = options.values || exports.streamingColumns;
 
-    const ws = new websocket(streamingBaseURI, {
+    var ws = new websocket(streamingBaseURI, {
         perMessageDeflate: false
     });
 
     ws.on('message', function incoming(data) {
-        let d = JSON.parse(data);
-        console.log(d);
+        var d = JSON.parse(data);
         if (d.msg_type == 'control:hello') {
-            ws.send(`{
-                "msg_type": "data:subscribe",
-                "token": "${Buffer.from(options.username + ':' + options.password).toString('base64')}",
-                "value": "${options.values.join(',')}",
-                "tag": "${options.vehicle_id}"
-            }`);
+            ws.send(JSON.stringify({
+                msg_type: "data:subscribe",
+                token: Buffer.from(options.username + ':' + options.password).toString('base64'),
+                value: options.values.join(','),
+                tag: options.vehicle_id.toString()
+            }));
         } else if (d.msg_type == 'data:error') {
             callback('Error: ' + d.value);
         } else {
-            onDataCb(data.toString());
+            callback(null, null, d);
         }
     });
 

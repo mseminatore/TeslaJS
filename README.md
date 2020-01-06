@@ -250,7 +250,7 @@ And using the Async Promise-based calls:
     });
 ```
 
-Or using the Async versino of the `vehicleData()` API call:
+Or using the Async version of the `vehicleData()` API call:
 
 ```javascript
     tjs.vehicleDataAsync(options).done(function(vehicleData) {

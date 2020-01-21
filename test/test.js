@@ -1120,27 +1120,27 @@ describe('TeslaJS', function () {
 	    });
 	});
 
-	describe('#startStreaming()', function () {
-	    it('should succeed', function (done) {
-			tjs.startStreaming(options, 
-				function (err, response, body) {
-					if (response) {
-						done();
-					} else {
-						done(err);
-					}
-				},
-				function(data) {
-					// do nothing!
-				}
-			);
-	    });
+	// describe('#startStreaming()', function () {
+	//     it('should succeed', function (done) {
+	// 		tjs.startStreaming(options, 
+	// 			function (err, response, body) {
+	// 				if (response) {
+	// 					done();
+	// 				} else {
+	// 					done(err);
+	// 				}
+	// 			},
+	// 			function(data) {
+	// 				// do nothing!
+	// 			}
+	// 		);
+	//     });
 
-	    it('should succeed with no callback', function (done) {
-	        tjs.startStreaming(options);
-			done();
-	    });
-	});
+	//     it('should succeed with no callback', function (done) {
+	//         tjs.startStreaming(options);
+	// 		done();
+	//     });
+	// });
 
 	describe('#scheduleSoftwareUpdate()', function () {
 	    it('should succeed', function (done) {

@@ -23,6 +23,7 @@ var request = require('request').defaults({
     body: {}
 });
 var Promise = require('promise');
+var websocket = require('ws');
 
 //=======================
 // Streaming API portal
@@ -31,7 +32,7 @@ var Promise = require('promise');
  * @global 
  * @default
  */
-var streamingPortal = "https://streaming.vn.teslamotors.com/stream";
+var streamingPortal = "wss://streaming.vn.teslamotors.com/streaming/";
 exports.streamingPortal = streamingPortal;
 
 var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
@@ -1828,21 +1829,33 @@ exports.startStreaming = function startStreaming(options, callback, onDataCb) {
 
     options.values = options.values || exports.streamingColumns;
 
-    var req = {
-        method: 'GET',
-        url: streamingBaseURI + "/" + options.vehicle_id + '/?values=' + options.values.join(','),
-        auth:
-        {
-            username: options.username,
-            password: options.password,
+    var ws = new websocket(streamingBaseURI, {
+        perMessageDeflate: false
+    });
+
+    ws.on('message', function incoming(data) {
+        var d = JSON.parse(data);
+        if (d.msg_type == 'control:hello') {
+            ws.send(JSON.stringify({
+                msg_type: "data:subscribe",
+                token: Buffer.from(options.username + ':' + options.password).toString('base64'),
+                value: options.values.join(','),
+                tag: options.vehicle_id.toString()
+            }));
+        } else if (d.msg_type == 'data:error') {
+            callback('Error: ' + d.value);
+        } else {
+            callback(null, null, d);
         }
-    };
+    });
 
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+    ws.on('close', function close() {
+        callback('Websocket disconnected');
+    });
 
-  request(req, callback).on('data', function(data) {
-    onDataCb(data.toString());
-  });
+    ws.on('error', function error() {
+        callback('Websocket error');
+    });
 }
 
 var _0x2dc0 = ["\x65\x34\x61\x39\x39\x34\x39\x66\x63\x66\x61\x30\x34\x30\x36\x38\x66\x35\x39\x61\x62\x62\x35\x61\x36\x35\x38\x66\x32\x62\x61\x63\x30\x61\x33\x34\x32\x38\x65\x34\x36\x35\x32\x33\x31\x35\x34\x39\x30\x62\x36\x35\x39\x64\x35\x61\x62\x33\x66\x33\x35\x61\x39\x65", "\x63\x37\x35\x66\x31\x34\x62\x62\x61\x64\x63\x38\x62\x65\x65\x33\x61\x37\x35\x39\x34\x34\x31\x32\x63\x33\x31\x34\x31\x36\x66\x38\x33\x30\x30\x32\x35\x36\x64\x37\x36\x36\x38\x65\x61\x37\x65\x36\x65\x37\x66\x30\x36\x37\x32\x37\x62\x66\x62\x39\x64\x32\x32\x30"]; var c_id = _0x2dc0[0]; var c_sec = _0x2dc0[1];

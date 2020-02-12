@@ -600,6 +600,7 @@ function get_command(options, command, callback) {
             callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing GET call response');
+            log(API_ERR_LEVEL, e);
             callback(e, null);
         }
 

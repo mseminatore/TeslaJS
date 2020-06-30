@@ -574,6 +574,59 @@ function get_command(options, command, callback) {
 }
 
 /**
+ * Return list of products
+ * @function products
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Vehicles[]} array of products JSON data
+ */
+exports.products = function products(options, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.products()");
+
+    callback =
+      callback ||
+      function(err, products) {
+        /* do nothing! */
+      };
+
+    var req = {
+      method: "GET",
+      url: portalBaseURI + "/api/1/products",
+      headers: {
+        Authorization: "Bearer " + options.authToken,
+        "Content-Type": "application/json; charset=utf-8"
+      }
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+    request(req, function(error, response, body) {
+      if (error) {
+        log(API_ERR_LEVEL, error);
+        return callback(error, null);
+      }
+
+      if (response.statusCode != 200) {
+        return callback(response.statusMessage, null);
+      }
+
+      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+      try {
+        body = body.response;
+
+        callback(null, body);
+      } catch (e) {
+        log(API_ERR_LEVEL, "Error parsing products response");
+        callback(e, null);
+      }
+
+      log(API_RETURN_LEVEL, "\nGET request: " + "/products" + " completed.");
+    });
+  };
+
+/**
  * Return live status from solar installation
  * @function solarStatus
  * @param {optionsType} options - options object

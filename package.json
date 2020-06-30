@@ -11,13 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mseminatore/TeslaJS.git"
+    "url": "https://github.com/geekdave/TeslaJS.git"
   },
   "main": "teslajs.js",
   "scripts": {
     "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
-    "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
-    "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js"
+    "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js"
   },
   "keywords": [
     "Tesla",

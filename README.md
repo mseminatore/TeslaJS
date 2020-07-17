@@ -88,7 +88,7 @@ requiring access to passwords.
 
 ## Documentation
 
-We've recently added auto-generated documentation via jsdocs. See the
+We've recently added auto-generated documentation via [jsdocs](https://www.npmjs.com/package/jsdoc). See the
  [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
 for a mostly complete reference. Please let us know if you see something 
 missing and we will continue to expand.
@@ -111,7 +111,7 @@ community.
 
 # Tesla API Documentation
 
-The Tesla REST API encapusulated by this library was documented through the 
+The Tesla REST API encapsulated by this library was documented through the 
 collaboration of many Tesla owners. Please thank and support them for their 
 continued efforts! The latest REST API documentation can be found [here](https://tesla-api.timdorr.com/)
 	

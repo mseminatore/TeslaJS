@@ -251,7 +251,9 @@ exports.vinDecode = function vinDecode(vehicle) {
             break;
         case "Y":
             result.carType = "Model Y";
-           break;
+        case "R":
+            result.carType = "Roadster";
+               break;
     }
 
     // Check for AWD config 2, 4 or B

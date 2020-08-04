@@ -1686,3 +1686,29 @@ This models the streaming API interface.
             {
                 "result": "['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc']"            
             }
+
+## Get Current Solar Usage [GET /api/1/energy_sites/{site_id}/live_status]
+
+Get solar live status.
+
++ Request
+
+    + Headers
+
+            Authorization: Bearer {access_token}
+
++ Parameters
+
+    + site_id: `1` (number) - The id of the Vehicle.
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+              "response": {
+                "solar_power": 1000,
+                "load_power": 750,
+                "grid_power": 250
+              }
+            } 

@@ -1663,3 +1663,24 @@ describe('TeslaJS', function () {
 	    });
 	});	
 });
+
+describe("#getSolarStatus()", function() {
+	it("should return the current solar production", function(done) {
+	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+		assert.equal(1000, result.solar_power);
+		done();
+	  });
+	});
+	it("should return the current power consumption", function(done) {
+	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+		assert.equal(750, result.load_power);
+		done();
+	  });
+	});
+	it("should return the current net grid power", function(done) {
+	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
+		assert.equal(250, result.grid_power);
+		done();
+	  });
+	});
+  }); 

@@ -47,11 +47,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.7.0** added `maxDefrost` interface
-2. In **4.5.0** added `vinDecode` interface
-3. In **4.4.0** added `windowControl` interface
-4. In **4.3.1** updated minified version
-5. In **4.3.0** added `setSentryMode()`
+1. In **4.8.0** added Solar API's
+2. In **4.7.0** added `maxDefrost` interface
+3. In **4.5.0** added `vinDecode` interface
+4. In **4.4.0** added `windowControl` interface
+5. In **4.3.1** updated minified version
 
 ## Migrating Major Version Changes
 
@@ -287,10 +287,12 @@ getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
-vehicle() | return information on the requested vehicle
+vehicle() | return information on the requested vehicle defined by `carIndex` in `options`
 vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
+products() | returns an array of the Tesla products owned by the user
+solarStatus() | returns information on a particular solar site defined by `sideId` in `options`
 
 ## Vehicle-specific API calls
 
@@ -432,6 +434,7 @@ Sample | Description
 [odometer](#odometerjs) | Displays the current odometer value
 [openChargePort](#openchargeportjs) | Opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 [openTrunk](#opentrunkjs) | Opens the FRUNK or opens/closes the trunk
+[products](#productsjs) | Displays a list of Tesla products owned and their details
 [resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
 [scheduleUpdate](#scheduleupdatejs) | Schedules a software update for installation
@@ -773,6 +776,23 @@ Usage:
 	-u, --username [string]  username (needed only if token not cached)
 	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
+## products.js
+
+This sample requests information on the Tesla products owned by the authenticated user.
+
+Usage:
+
+    node products.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 
 ([top](#teslajs))

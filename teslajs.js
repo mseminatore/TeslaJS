@@ -1771,7 +1771,7 @@ exports.homelinkAsync = Promise.denodeify(exports.homelink);
  * @function products
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicles[]} array of products JSON data
+ * @returns {products[]} array of products JSON data
  */
 exports.products = function products(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.products()");
@@ -1811,6 +1811,7 @@ exports.products = function products(options, callback) {
 
         callback(null, body);
       } catch (e) {
+        console.log(e);
         log(API_ERR_LEVEL, "Error parsing products response");
         callback(e, null);
       }
@@ -1820,11 +1821,20 @@ exports.products = function products(options, callback) {
   };
 
 /**
+ * Return list of products
+ * @function productsAsync
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} array of products JSON data
+ */
+exports.productsAsync = Promise.denodeify(exports.products);
+
+/**
  * Return live status from solar installation
  * @function solarStatus
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicles[]} array of solarStatus JSON data
+ * @returns {solarStatus} solarStatus JSON data
  */
 exports.solarStatus = function solarStatus(options, callback) {
     log(API_CALL_LEVEL, "TeslaJS.solarStatus()");
@@ -1872,14 +1882,14 @@ exports.solarStatus = function solarStatus(options, callback) {
     });
   };
 
-  /**
-   * Return solar status information
-   * @function solarStatusAsync
-   * @param {optionsType} options - options object
-   * @param {nodeBack} callback - Node-style callback
-   * @returns {Promise} array of solar JSON data
-   */
-  exports.solarStatusAsync = Promise.denodeify(exports.solarStatus);
+/**
+ * Return solar status information
+ * @function solarStatusAsync
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} solar JSON data
+ */
+exports.solarStatusAsync = Promise.denodeify(exports.solarStatus);
 
 
 /*

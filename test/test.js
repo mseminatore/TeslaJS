@@ -1662,25 +1662,68 @@ describe('TeslaJS', function () {
 			});
 	    });
 	});	
-});
 
-describe("#getSolarStatus()", function() {
-	it("should return the current solar production", function(done) {
-	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
-		assert.equal(1000, result.solar_power);
-		done();
-	  });
+	describe("#products()", function () {
+		it("should succeed", function(done) {
+			tjs.products(options, function(err, result) {
+				if (Array.isArray(result)) {
+					done();
+				} else {
+					done(err);
+				}
+			});
+		});
 	});
-	it("should return the current power consumption", function(done) {
-	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
-		assert.equal(750, result.load_power);
-		done();
-	  });
+
+	describe("#productsAsync()", function () {
+		it("should succeed", function() {
+			return tjs.productsAsync(options).then( function(result) {
+				assert(Array.isArray(result), true);
+			});
+		});
 	});
-	it("should return the current net grid power", function(done) {
-	  tjs.solarStatus({ siteId: 1 }, function(err, result) {
-		assert.equal(250, result.grid_power);
-		done();
-	  });
-	});
-  }); 
+
+	describe("#solarStatus()", function() {
+		it("should return the current solar production", function(done) {
+			tjs.solarStatus({ siteId: 1 }, function(err, result) {
+				assert.equal(1000, result.solar_power);
+				done();
+			});
+		});
+
+		it("should return the current power consumption", function(done) {
+			tjs.solarStatus({ siteId: 1 }, function(err, result) {
+				assert.equal(750, result.load_power);
+				done();
+			});
+		});
+
+		it("should return the current net grid power", function(done) {
+			tjs.solarStatus({ siteId: 1 }, function(err, result) {
+				assert.equal(250, result.grid_power);
+				done();
+			});
+		});
+	}); 
+
+	describe("#solarStatusAsync()", function() {
+		it("should return the current solar production", function() {
+			return tjs.solarStatusAsync({ siteId: 1 }).then(function(result) {
+				assert.equal(1000, result.solar_power);
+			});
+		});
+
+		it("should return the current power consumption", function() {
+			return tjs.solarStatusAsync({ siteId: 1 }).then(function(result) {
+				assert.equal(750, result.load_power);
+			});
+		});
+
+		it("should return the current net grid power", function() {
+			return tjs.solarStatusAsync({ siteId: 1 }).then(function(result) {
+				assert.equal(250, result.grid_power);
+			});
+		});
+	}); 
+
+});

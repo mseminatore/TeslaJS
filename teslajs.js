@@ -243,14 +243,19 @@ exports.vinDecode = function vinDecode(vehicle) {
         case "S":
             result.carType = "Model S";
             break;
+
         case "3":
             result.carType = "Model 3";
             break;
+
         case "X":
             result.carType = "Model X";
             break;
+        
         case "Y":
             result.carType = "Model Y";
+            break;
+
         case "R":
             result.carType = "Roadster";
                break;

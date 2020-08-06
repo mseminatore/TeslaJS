@@ -31,13 +31,15 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.driveState(options, function (err, drive_state) {
-        if (drive_state) {
-            var latitude = drive_state.latitude || 0;
-            var longitude = drive_state.longitude || 0;
-            var token = options.tokens[0];
+    tjs.vehicleData(options, function (err, data) {
+        if (data.drive_state) {
+            var latitude = data.drive_state.latitude || 0;
+            var longitude = data.drive_state.longitude || 0;
 
-            tjs.homelink(options, latitude, longitude, token, function (err, result) {
+            console.log("\nHomelink devices: " + data.vehicle_state.homelink_device_count);
+            console.log("Homelink nearby: " + data.vehicle_state.homelink_nearby);
+
+            tjs.homelink(options, latitude, longitude, function (err, result) {
                 if (result.result) {
                     console.log("\nHomelink: " + "Door signaled!".bold.green);
                 } else {
@@ -46,7 +48,7 @@ function sampleMain(tjs, options) {
             });
         }
         else {
-            console.log("Drive State: " + drive_state.reason.red);
+            console.log("Drive State: " + data.drive_state.reason.red);
         }
     });
 }

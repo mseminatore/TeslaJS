@@ -1058,7 +1058,7 @@ describe('TeslaJS', function () {
 
 	describe('#homelink()', function () {
 	    it('should return true', function (done) {
-	        tjs.homelink(options, 75, 34, "token", function (err, result) {
+	        tjs.homelink(options, 75, 34, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1070,7 +1070,7 @@ describe('TeslaJS', function () {
 
 	describe('#homelinkAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.homelinkAsync(options, 75, 34, "token").then(function (result) {
+	        return tjs.homelinkAsync(options, 75, 34).then(function (result) {
 	            assert(result.result);
 	        });
 	    });

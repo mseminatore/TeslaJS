@@ -398,8 +398,6 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
         url: portalBaseURI + '/oauth/token',
         body: {
             "grant_type": "refresh_token",
-            "client_id": c_id,
-            "client_secret": c_sec,
             "refresh_token": refresh_token
         }
     };

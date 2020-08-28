@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 [![Dependencies](https://david-dm.org/mseminatore/TeslaJS.svg)](https://david-dm.org/mseminatore/TeslaJS)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mseminatore/TeslaJS)](https://dependabot.com)
 
 ## An unofficial NodeJS library that encapsulates the Tesla RESTful API.
 

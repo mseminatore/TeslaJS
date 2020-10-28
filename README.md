@@ -48,11 +48,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
-2. In **V4.8.1** merge PR to fix #92 homelink issue
-3. In **4.8.0** added Solar API's
-4. In **V4.7.9** added roadster to `vinDecode()`
-5. In **4.7.0** added `maxDefrost` interface
+1. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
+2. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
+3. In **V4.8.1** merge PR to fix #92 homelink issue
+4. In **4.8.0** added Solar API's
+5. In **V4.7.9** added roadster to `vinDecode()`
 
 ## Migrating Major Version Changes
 

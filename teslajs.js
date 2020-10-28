@@ -236,7 +236,13 @@ exports.vinDecode = function vinDecode(vehicle) {
         return result;
     }
 
-    result.year = 2010 + vehicle.vin.charCodeAt(9) - 'A'.charCodeAt(0);
+    var dateCode = vehicle.vin.charCodeAt(9);
+    result.year = 2010 + dateCode - 'A'.charCodeAt(0);
+
+    // handle the skipped 'I' code. We may also need to skip 'O'
+    if (dateCode > 73) {
+        result.year--;
+    }
 
     var model = vehicle.vin.charAt(3);
     switch (model) {
@@ -262,7 +268,13 @@ exports.vinDecode = function vinDecode(vehicle) {
     }
 
     // Check for AWD config 2, 4 or B
-    if (vehicle.vin.charAt(7) == "2" || vehicle.vin.charAt(7) == "4" || vehicle.vin.charAt(7) == "B") {
+    if (
+            vehicle.vin.charAt(7) == "2" || // Dual Motor (standard) (Designated for Model S & Model X)
+            vehicle.vin.charAt(7) == "4" || // Dual Motor (performance) (Designated for Model S & Model X)
+            vehicle.vin.charAt(7) == "B" || // Dual motor - standard Model 3
+            vehicle.vin.charAt(7) == "C" || // Dual motor - performance Model 3
+            vehicle.vin.charAt(7) == "E"    // Dual motor - Model Y
+        ) {
         result.awd = true;
     }
     

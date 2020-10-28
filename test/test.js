@@ -87,6 +87,9 @@ describe('TeslaJS', function () {
         it('should return Model Y', function () {
             assert.strictEqual('Model Y', tjs.getModel({"vin": "5YJYA1CP6DFP1"}));
         });
+        it('should return Roadster', function () {
+            assert.strictEqual('Roadster', tjs.getModel({"vin": "5YJRA1CP6DFP1"}));
+        });
     });
 
     describe('#vinDecode()', function () {
@@ -102,8 +105,20 @@ describe('TeslaJS', function () {
         it('should return Model Y', function () {
             assert.strictEqual('Model Y', tjs.vinDecode({"vin": "5YJYA1CP6DFP1"}).carType);
         });
+        it('should return Roadster', function () {
+            assert.strictEqual('Roadster', tjs.vinDecode({"vin": "5YJRA1CP6DFP1"}).carType);
+        });
         it('should return 2013', function () {
             assert.strictEqual(2013, tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).year);
+        });
+        it('should return 2017', function () {
+            assert.strictEqual(2017, tjs.vinDecode({"vin": "5YJYA1CP6HFP1"}).year);
+        });
+        it('should return 2018', function () {
+            assert.strictEqual(2018, tjs.vinDecode({"vin": "5YJYA1CP6JFP1"}).year);
+        });
+        it('should return 2020', function () {
+            assert.strictEqual(2020, tjs.vinDecode({"vin": "5YJYA1CP6LFP1"}).year);
         });
         it('should return no AWD', function () {
             assert.strictEqual(false, tjs.vinDecode({"vin": "5YJSA1CP6DFP1"}).awd);

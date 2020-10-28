@@ -1,5 +1,16 @@
 # TeslaJS Change log
 
+Note that missing version entries are typically dependency updates for security.
+
+## V4.9.2
+* merged PR #191 added exports.promises object avoiding Async suffixes
+
+## V4.8.1
+* merge PR to fix #92 homelink issue
+
+## V4.7.9
+* added roadster to `vinDecode()`
+
 ## V4.7.0
 * added `maxDefrost()`
 

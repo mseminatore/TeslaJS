@@ -48,11 +48,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.8.0** added Solar API's
-2. In **4.7.0** added `maxDefrost` interface
-3. In **4.5.0** added `vinDecode` interface
-4. In **4.4.0** added `windowControl` interface
-5. In **4.3.1** updated minified version
+1. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
+2. In **V4.8.1** merge PR to fix #92 homelink issue
+3. In **4.8.0** added Solar API's
+4. In **V4.7.9** added roadster to `vinDecode()`
+5. In **4.7.0** added `maxDefrost` interface
 
 ## Migrating Major Version Changes
 

@@ -2,6 +2,9 @@
 
 Note that missing version entries are typically dependency updates for security.
 
+## V4.9.4
+* fixed #210 streaming update to oauth
+
 ## V4.9.3
 * fixed #188 incorrect VIN for post 2018 cars
 

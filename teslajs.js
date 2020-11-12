@@ -1981,8 +1981,8 @@ exports.startStreaming = function startStreaming(options, callback, onDataCb) {
         var d = JSON.parse(data);
         if (d.msg_type == 'control:hello') {
             ws.send(JSON.stringify({
-                msg_type: "data:subscribe",
-                token: Buffer.from(options.username + ':' + options.password).toString('base64'),
+                msg_type: 'data:subscribe_oauth',
+                token: options.authToken,
                 value: options.values.join(','),
                 tag: options.vehicle_id.toString()
             }));

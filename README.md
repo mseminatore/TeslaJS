@@ -913,12 +913,11 @@ This sample demonstrates basic use of the streaming API to retrieve real-time ve
 
 Usage:
 
-    node simpleStreaming.js [options] username
+    node simpleStreaming.js [options]
 	
 	Options:
 	
     -h, --help               output usage information
-	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 

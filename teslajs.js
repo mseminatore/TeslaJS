@@ -338,22 +338,27 @@ exports.getShortVin = function getShortVin(vehicle) {
 
 /**
  * Login to the server and receive OAuth tokens
- * @param {string} username - Tesla.com username
- * @param {string} password - Tesla.com password
+ * @param {{username: string, password: string, mfaPassCode?: string, mfaDeviceName?: string}} credentials - Object of Tesla credentials
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} {response, body, authToken, refreshToken}
  */
-exports.login = function login(username, password, callback) {
+exports.login = function login(credentials, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()");
+    
+    // Compatibility with old username/password API
+    if (typeof arguments[0] == 'string' && typeof arguments[1] == 'string') {
+        credentials = {username: arguments[0], password: arguments[1]};
+        callback = arguments[2];
+    }
     
     callback = callback || function (err, result) { /* do nothing! */ }
 
-    if (!username || !password) {
+    if (!credentials.username || !credentials.password) {
         callback("login() requires username and password", null);
         return;
-    } 
+    }
 
-    require('./src/auth').login({identity: username, credential: password}, function (error, response, body) {
+    require('./src/auth').login({identity: credentials.username, credential: credentials.password, mfaPassCode: credentials.mfaPassCode, mfaDeviceName: credentials.mfaDeviceName}, function (error, response, body) {
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
         log(API_RESPONSE_LEVEL, "\nBody: " + JSON.stringify(body));
 
@@ -388,7 +393,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
     if (!refresh_token) {
         callback("refreshToken() requires a refresh_token", null);
         return;
-    } 
+    }
 
     var req = {
         method: 'POST',

@@ -27,6 +27,9 @@ exports.login = function login(credentials, callback) {
         scope: 'openid email offline_access',
         state: generateCodeChallenge(generateCodeVerifier())
     };
+    var transactionId = null;
+    var loginHost = null;
+    var loginUrl = null;
 
     req({
         method: 'GET',
@@ -40,7 +43,8 @@ exports.login = function login(credentials, callback) {
         }
     }).then(function (result) {
         // Record the final URL we got redirected to; this is where we will send our credentials
-        var loginUrl = result.response.request.href;
+        loginUrl = result.response.request.href;
+        loginHost = "https://" + require('url').parse(loginUrl).host;
         var form = {};
         
         var hiddenFormFields = result.body.match(/<input type="hidden" [^>]+>/g);
@@ -52,7 +56,10 @@ exports.login = function login(credentials, callback) {
             }
         });
 
-        Object.assign(form, credentials);
+        transactionId = form.transaction_id;
+        
+        form.identity = credentials.identity;
+        form.credential = credentials.credential;
 
         return req({
             method: 'POST',
@@ -64,9 +71,21 @@ exports.login = function login(credentials, callback) {
                 "sec-fetch-user": "?1",
                 "sec-fetch-dest": "document",
                 "referer": loginUrl,
-                "origin": "https://" + require('url').parse(loginUrl).host
+                "origin": loginHost
             }
         });
+    }).then(function (result) {
+        if (result.body.includes('/oauth2/v3/authorize/mfa/verify')) {
+            // MFA is required
+            if (!credentials.mfaPassCode) {
+                throw new Error("MFA passcode required");
+            }
+        
+            return mfaVerify(transactionId, loginHost, loginUrl, credentials.mfaPassCode, credentials.mfaDeviceName);
+        }
+    
+        // No need to handle MFA
+        return result;
     }).then(function (result) {
         var location = result.response.headers.location;
         if (!location) {
@@ -108,6 +127,75 @@ exports.login = function login(credentials, callback) {
         callback(null, result.response, result.body);
     }).catch(function (error) {
         callback(error);
+    });
+}
+
+function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
+    return req({
+        method: 'GET',
+        url: host + '/oauth2/v3/authorize/mfa/factors?transaction_id=' + transactionId,
+        headers: {
+            "x-requested-with": "XMLHttpRequest",
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-dest": "empty",
+            "referer": referer
+        },
+        json: true
+    }).then(function (result) {
+        if (!result.body || !result.body.data || result.body.data.length == 0) {
+            throw new Error('No MFA devices found');
+        }
+        
+        var device = result.body.data[0];
+        if (mfaDeviceName) {
+            // Find the specific device we're looking for
+            device = result.body.data.find(function (dev) { return dev.name == mfaDeviceName; });
+            if (!device) {
+                throw new Error('No MFA device found with name ' + mfaDeviceName);
+            }
+        }
+        
+        return req({
+            method: 'POST',
+            url: host + '/oauth2/v3/authorize/mfa/verify',
+            headers: {
+                "x-requested-with": "XMLHttpRequest",
+                "origin": host,
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-dest": "empty",
+                "referer": referer
+            },
+            json: true,
+            body: {
+                transaction_id: transactionId,
+                factor_id: device.id,
+                passcode: mfaPassCode
+            }
+        });
+    }).then(function (result) {
+        if (!result.body || !result.body.data || !result.body.data.approved || !result.body.data.valid) {
+            throw new Error('MFA passcode rejected');
+        }
+        
+        // MFA auth has succeeded, so now repeat the authorize request with just the transaction id
+        return req({
+            method: 'POST',
+            url: referer,
+            headers: {
+                "sec-fetch-site": "same-origin",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-user": "?1",
+                "sec-fetch-dest": "document",
+                "referer": referer,
+                "origin": host
+            },
+            form: {
+                transaction_id: transactionId
+            },
+            json: true
+        });
     });
 }
 

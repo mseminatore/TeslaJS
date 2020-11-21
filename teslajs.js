@@ -351,6 +351,7 @@ exports.login = function login(credentials, callback) {
         callback = arguments[2];
     }
     
+    credentials = credentials || {};
     callback = callback || function (err, result) { /* do nothing! */ }
 
     if (!credentials.username || !credentials.password) {

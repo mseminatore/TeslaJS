@@ -338,41 +338,32 @@ exports.getShortVin = function getShortVin(vehicle) {
 
 /**
  * Login to the server and receive OAuth tokens
- * @param {string} username - Tesla.com username
- * @param {string} password - Tesla.com password
+ * @param {{username: string, password: string, mfaPassCode?: string, mfaDeviceName?: string}} credentials - Object of Tesla credentials
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} {response, body, authToken, refreshToken}
  */
-exports.login = function login(username, password, callback) {
+exports.login = function login(credentials, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()");
     
+    // Compatibility with old username/password API
+    if (typeof arguments[0] == 'string' && typeof arguments[1] == 'string') {
+        credentials = {username: arguments[0], password: arguments[1]};
+        callback = arguments[2];
+    }
+    
+    credentials = credentials || {};
     callback = callback || function (err, result) { /* do nothing! */ }
 
-    if (!username || !password) {
+    if (!credentials.username || !credentials.password) {
         callback("login() requires username and password", null);
         return;
-    } 
+    }
 
-    var req = {
-        method: 'POST',
-        url: portalBaseURI + '/oauth/token',
-        body: {
-            "grant_type": "password",
-            "client_id": c_id,
-            "client_secret": c_sec,
-            "email": process.env.TESLAJS_USER || username,
-            "password": process.env.TESLAJS_PASS || password
-        }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function (error, response, body) {
-
+    require('./src/auth').login({identity: credentials.username, credential: credentials.password, mfaPassCode: credentials.mfaPassCode, mfaDeviceName: credentials.mfaDeviceName}, function (error, response, body) {
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
         log(API_RESPONSE_LEVEL, "\nBody: " + JSON.stringify(body));
 
-        var loginResult = body;
+        var loginResult = body || {};
 
         callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
 
@@ -403,7 +394,7 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
     if (!refresh_token) {
         callback("refreshToken() requires a refresh_token", null);
         return;
-    } 
+    }
 
     var req = {
         method: 'POST',
@@ -2001,9 +1992,6 @@ exports.startStreaming = function startStreaming(options, callback, onDataCb) {
         callback('Websocket error');
     });
 }
-
-var _0x2dc0 = ["\x65\x34\x61\x39\x39\x34\x39\x66\x63\x66\x61\x30\x34\x30\x36\x38\x66\x35\x39\x61\x62\x62\x35\x61\x36\x35\x38\x66\x32\x62\x61\x63\x30\x61\x33\x34\x32\x38\x65\x34\x36\x35\x32\x33\x31\x35\x34\x39\x30\x62\x36\x35\x39\x64\x35\x61\x62\x33\x66\x33\x35\x61\x39\x65", "\x63\x37\x35\x66\x31\x34\x62\x62\x61\x64\x63\x38\x62\x65\x65\x33\x61\x37\x35\x39\x34\x34\x31\x32\x63\x33\x31\x34\x31\x36\x66\x38\x33\x30\x30\x32\x35\x36\x64\x37\x36\x36\x38\x65\x61\x37\x65\x36\x65\x37\x66\x30\x36\x37\x32\x37\x62\x66\x62\x39\x64\x32\x32\x30"]; var c_id = _0x2dc0[0]; var c_sec = _0x2dc0[1];
-//var _0x2dc0 = ["\x38\x31\x35\x32\x37\x63\x66\x66\x30\x36\x38\x34\x33\x63\x38\x36\x33\x34\x66\x64\x63\x30\x39\x65\x38\x61\x63\x30\x61\x62\x65\x66\x62\x34\x36\x61\x63\x38\x34\x39\x66\x33\x38\x66\x65\x31\x65\x34\x33\x31\x63\x32\x65\x66\x32\x31\x30\x36\x37\x39\x36\x33\x38\x34", "\x63\x37\x32\x35\x37\x65\x62\x37\x31\x61\x35\x36\x34\x30\x33\x34\x66\x39\x34\x31\x39\x65\x65\x36\x35\x31\x63\x37\x64\x30\x65\x35\x66\x37\x61\x61\x36\x62\x66\x62\x64\x31\x38\x62\x61\x66\x62\x35\x63\x35\x63\x30\x33\x33\x62\x30\x39\x33\x62\x62\x32\x66\x61\x33"]; var c_id = _0x2dc0[0]; var c_sec = _0x2dc0[1];
 
 var promises = {};
 for (var name in exports) {

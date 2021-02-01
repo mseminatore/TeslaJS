@@ -192,8 +192,13 @@ As you can see below, it is very simple to login and acquire an OAuth token.
 
     var username = "<your MyTesla email>";
     var password = "<your MyTesla password>";
+    var mfaPassCode = "<your MFA passcode, if applicable>";
 
-    tjs.login(username, password, function(err, result) {
+    tjs.login({
+        username: username,
+        password: password,
+        mfaPassCode: mfaPassCode
+    }, function(err, result) {
         if (result.error) {
           console.log(JSON.stringify(result.error));
           process.exit(1);

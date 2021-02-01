@@ -33,7 +33,7 @@ exports.login = function login(credentials, callback) {
 
     req({
         method: 'GET',
-        url: 'https://auth.tesla.com/oauth2/v3/authorize',
+        url: 'https://auth-global.tesla.com/oauth2/v3/authorize',
         qs: queryString,
         headers: {
             "sec-fetch-site": "none",

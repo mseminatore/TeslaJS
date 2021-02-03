@@ -9,13 +9,13 @@
 //=====================================================================
 "use strict";
 
-var tjs = require('../TeslaJS');
+var tjs = require('../teslajs');
 var fs = require('fs');
 require('colors');
 var program = require('commander');
 
 program
-  .usage('[options] username password')
+  .usage('[options] username password [MFA code] [MFA device name]')
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
   .parse(process.argv);
 
@@ -25,13 +25,20 @@ if (program.args.length < 2) {
 
 var username = program.args[0];
 var password = program.args[1];
+var mfaPassCode = program.args[2];
+var mfaDeviceName = program.args[3];
 
 if (program.uri) {
     console.log("Setting portal URI to: " + program.uri);
     tjs.setPortalBaseURI(program.uri);
 }
 
-tjs.loginAsync(username, password).done(
+tjs.loginAsync({
+    username: username,
+    password: password,
+    mfaPassCode: mfaPassCode,
+    mfaDeviceName: mfaDeviceName
+}).done(
     // success!
     function (result) {
         if (!result.authToken) {

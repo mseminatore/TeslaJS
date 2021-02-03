@@ -5,12 +5,11 @@
 [![Build Status](https://travis-ci.org/mseminatore/TeslaJS.svg?branch=master)](https://travis-ci.org/mseminatore/TeslaJS)
 [![Coverage Status](https://coveralls.io/repos/github/mseminatore/TeslaJS/badge.svg?branch=master)](https://coveralls.io/github/mseminatore/TeslaJS?branch=master)
 [![Dependencies](https://david-dm.org/mseminatore/TeslaJS.svg)](https://david-dm.org/mseminatore/TeslaJS)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=mseminatore/TeslaJS)](https://dependabot.com)
 
-An unofficial NodeJS library that encapsulates the Tesla RESTful API. This 
-library currently supports all existing Tesla vehicles.
+## An unofficial NodeJS library that encapsulates the Tesla RESTful API.
 
-[![NPM](https://nodei.co/npm/teslajs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/teslajs/)
-[![NPM](https://nodei.co/npm-dl/teslajs.png)](https://nodei.co/npm/teslajs/)
+### This library currently supports all existing Tesla vehicles.
 
 First, it is important to acknowledge that there are already several very 
 good Javascript libraries available for the Tesla. So why create another 
@@ -49,11 +48,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **4.3.1** updated minified version
-2. In **4.3.0** added `setSentryMode()`
-3. In **4.2.1** updated teslajs.min.js
-4. In **4.2.0** added `nearbyChargers()` interface
-5. In **4.1.0** added `seatHeater()` and `steeringHeater()` interfaces
+1. In **V4.9.4** fixed #210 streaming update to oauth
+2. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
+3. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
+4. In **V4.8.1** merge PR to fix #92 homelink issue
+5. In **4.8.0** added Solar API's
 
 ## Migrating Major Version Changes
 
@@ -90,7 +89,7 @@ requiring access to passwords.
 
 ## Documentation
 
-We've recently added auto-generated documentation via jsdocs. See the
+We've recently added auto-generated documentation via [jsdocs](https://www.npmjs.com/package/jsdoc). See the
  [DOCS](https://github.com/mseminatore/TeslaJS/blob/master/docs/DOCS.md)
 for a mostly complete reference. Please let us know if you see something 
 missing and we will continue to expand.
@@ -113,7 +112,7 @@ community.
 
 # Tesla API Documentation
 
-The Tesla REST API encapusulated by this library was documented through the 
+The Tesla REST API encapsulated by this library was documented through the 
 collaboration of many Tesla owners. Please thank and support them for their 
 continued efforts! The latest REST API documentation can be found [here](https://tesla-api.timdorr.com/)
 	
@@ -193,8 +192,13 @@ As you can see below, it is very simple to login and acquire an OAuth token.
 
     var username = "<your MyTesla email>";
     var password = "<your MyTesla password>";
+    var mfaPassCode = "<your MFA passcode, if applicable>";
 
-    tjs.login(username, password, function(err, result) {
+    tjs.login({
+        username: username,
+        password: password,
+        mfaPassCode: mfaPassCode
+    }, function(err, result) {
         if (result.error) {
           console.log(JSON.stringify(result.error));
           process.exit(1);
@@ -252,10 +256,10 @@ And using the Async Promise-based calls:
     });
 ```
 
-Or using the `vehicleData()` API call:
+Or using the Async version of the `vehicleData()` API call:
 
 ```javascript
-    tjs.vehicleData(options).done(function(vehicleData) {
+    tjs.vehicleDataAsync(options).done(function(vehicleData) {
         var chargeState = vehicleData.charge_state;
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
@@ -289,19 +293,21 @@ getPortalBaseURI() | gets the server URI
 setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
-vehicle() | return information on the requested vehicle
+vehicle() | return information on the requested vehicle defined by `carIndex` in `options`
 vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
+products() | returns an array of the Tesla products owned by the user
+solarStatus() | returns information on a particular solar site defined by `sideId` in `options`
 
 ## Vehicle-specific API calls
 
 These methods all require an `options` parameter with at least `options.authToken` and `options.vehicleID` defined.
 
-> **Note**: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and __**not**__ `id` or `vehicle_id`. Using the wrong ID will result in 404 errors!
+> **Note**: Vehicle objects from the API contain *three* different strings that look like potential candidates for `vehicleID`. The correct one is `id_s`, and __**not**__ `id` or `vehicle_id`. Using the wrong ID will result in **404** errors!
 
 > **Note**: The promise-based versions of the APIs have the suffix **Async** appended.  
-> For example `vehicle()` and `vehicleAsync()`.
+> For example `vehicle()` and `vehicleAsync()`. Note that not all APIs have an Async version, for example streaming.
 
 Function | Description
 -------- | -----------
@@ -318,8 +324,9 @@ doorUnlock() | unlocks the doors
 driveState() | retrieve the drive_state data
 flashLights() | flashes the headlights
 guiSettings() | retrieves the GUI settings
-homelink() | Triggers homelink from the vehicle
+homelink() | triggers homelink from the vehicle
 honkHorn() | honks the horn
+maxDefrost() | toggles climate between Max Defrost and the previous setting
 mediaTogglePlayback() | toggles media playback
 mediaPlayNext() | plays the next track
 mediaPlayPrevious() | plays the previous track
@@ -354,7 +361,9 @@ sunRoofMove() | open the sunroof to a specific percent
 vehicleData() | retrieve **all** vehicle state data in a single call
 vehicleConfig() | retrieve the vehicle_config data
 vehicleState() | retrieve the vehicle_state data
+vinDecode() | decode and return the vehicle VIN properties
 wakeUp() | attempt to wake a sleeping vehicle
+windowControl() | adjust windows to 'vent' or 'close' position
 
 ## Library Exported Constants
 
@@ -431,6 +440,7 @@ Sample | Description
 [odometer](#odometerjs) | Displays the current odometer value
 [openChargePort](#openchargeportjs) | Opens the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 [openTrunk](#opentrunkjs) | Opens the FRUNK or opens/closes the trunk
+[products](#productsjs) | Displays a list of Tesla products owned and their details
 [resetValetPin](#resetvaletpinjs) | Resets the valet mode pin
 [remoteStart](#remotestartjs) | Enables driving without the key fob present
 [scheduleUpdate](#scheduleupdatejs) | Schedules a software update for installation
@@ -776,6 +786,23 @@ Usage:
 
 ([top](#teslajs))
 
+## products.js
+
+This sample requests information on the Tesla products owned by the authenticated user.
+
+Usage:
+
+    node products.js [options]
+	
+	Options:
+	
+    -h, --help               output usage information
+	-u, --username [string]  username (needed only if token not cached)
+	-p, --password [string]  password (needed only if token not cached)	
+    -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
+
+([top](#teslajs))
+
 ## remoteStart.js
 
 This sample enables remotely starting the vehicle without a key fob present.  
@@ -891,12 +918,11 @@ This sample demonstrates basic use of the streaming API to retrieve real-time ve
 
 Usage:
 
-    node simpleStreaming.js [options] username
+    node simpleStreaming.js [options]
 	
 	Options:
 	
     -h, --help               output usage information
-	-p, --password [string]  password (needed only if token not cached)	
     -i, --index <n>          vehicle index (first car by default)
     -U, --uri [string]       URI of test server (e.g. http://127.0.0.1:3000)
 

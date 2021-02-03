@@ -69,6 +69,9 @@
 <dt><a href="#getModel">getModel(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the car model from vehicle JSON information</p>
 </dd>
+<dt><a href="#vinDecode">vinDecode(vehicle)</a> ⇒ <code>object</code></dt>
+<dd><p>Return an object containing properties decoded from the vehicle VIN</p>
+</dd>
 <dt><a href="#getPaintColor">getPaintColor(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the paint color from vehicle JSON information</p>
 </dd>
@@ -305,6 +308,18 @@
 <dt><a href="#seatHeaterAsync">seatHeaterAsync(options, level)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
+<dt><a href="#maxDefrost">maxDefrost(options, onoff)</a> ⇒ <code>object</code></dt>
+<dd><p>Max Defrost</p>
+</dd>
+<dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Remote steering heater</p>
+</dd>
+<dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
+<dd><p>Window control</p>
+</dd>
+<dt><a href="#windowControlAsync">windowControlAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Window control</p>
+</dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
@@ -396,6 +411,18 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 </dd>
 <dt><a href="#homelinkAsync">homelinkAsync(options, lat, long, string)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
+<dt><a href="#products">products(options, callback)</a> ⇒ <code><a href="#products">Array.&lt;products&gt;</a></code></dt>
+<dd><p>Return list of products</p>
+</dd>
+<dt><a href="#productsAsync">productsAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Return list of products</p>
+</dd>
+<dt><a href="#solarStatus">solarStatus(options, callback)</a> ⇒ <code><a href="#solarStatus">solarStatus</a></code></dt>
+<dd><p>Return live status from solar installation</p>
+</dd>
+<dt><a href="#solarStatusAsync">solarStatusAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Return solar status information</p>
+</dd>
 <dt><a href="#startStreaming">startStreaming(options, callback, onDataCb)</a> ⇒ <code>object</code></dt>
 <dd><p>Start streaming car data</p>
 </dd>
@@ -416,7 +443,7 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 
 ## streamingPortal
 **Kind**: global variable  
-**Default**: <code>https://streaming.vn.teslamotors.com/stream</code>  
+**Default**: <code>wss://streaming.vn.teslamotors.com/streaming/</code>  
 <a name="portal"></a>
 
 ## portal
@@ -578,6 +605,18 @@ Return the car model from vehicle JSON information
 
 **Kind**: global function  
 **Returns**: <code>string</code> - vehicle model string  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| vehicle | <code>object</code> | vehicle JSON |
+
+<a name="vinDecode"></a>
+
+## vinDecode(vehicle) ⇒ <code>object</code>
+Return an object containing properties decoded from the vehicle VIN
+
+**Kind**: global function  
+**Returns**: <code>object</code> - vehicle properties  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1592,11 +1631,62 @@ Remote steering heater
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | level | <code>number</code> | Level for the heater (0-3) |
 
+<a name="maxDefrost"></a>
+
+## maxDefrost(options, onoff) ⇒ <code>object</code>
+Max Defrost
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| onoff | <code>boolean</code> | true for on, false for off |
+
+<a name="maxDefrostAsync"></a>
+
+## maxDefrostAsync(options, onoff) ⇒ <code>Promise</code>
+Remote steering heater
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| onoff | <code>boolean</code> | true for on, false for off |
+
+<a name="windowControl"></a>
+
+## windowControl(options, command) ⇒ <code>object</code>
+Window control
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| command | <code>string</code> | Allowable values are 'vent' and 'close' |
+
+<a name="windowControlAsync"></a>
+
+## windowControlAsync(options, command) ⇒ <code>Promise</code>
+Window control
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| command | <code>string</code> | Allowable values are 'vent' and 'close' |
+
 <a name="setChargeLimit"></a>
 
 ## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
-Set the charge limit.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>object</code> - result  
@@ -1610,8 +1700,7 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 <a name="setChargeLimitAsync"></a>
 
 ## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
-Set the charge limit async and return Promise.
-Note: charging to 100% frequently is NOT recommended for long-term battery health!
+Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -2029,6 +2118,58 @@ Trigger homelink
 | lat | <code>number</code> | vehicle GPS latitude |
 | long | <code>number</code> | vehicle GPS longitude |
 | string | <code>string</code> | one of the tokens from vehicle JSON |
+
+<a name="products"></a>
+
+## products(options, callback) ⇒ [<code>Array.&lt;products&gt;</code>](#products)
+Return list of products
+
+**Kind**: global function  
+**Returns**: [<code>Array.&lt;products&gt;</code>](#products) - array of products JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="productsAsync"></a>
+
+## productsAsync(options, callback) ⇒ <code>Promise</code>
+Return list of products
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - array of products JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="solarStatus"></a>
+
+## solarStatus(options, callback) ⇒ [<code>solarStatus</code>](#solarStatus)
+Return live status from solar installation
+
+**Kind**: global function  
+**Returns**: [<code>solarStatus</code>](#solarStatus) - solarStatus JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="solarStatusAsync"></a>
+
+## solarStatusAsync(options, callback) ⇒ <code>Promise</code>
+Return solar status information
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - solar JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="startStreaming"></a>
 

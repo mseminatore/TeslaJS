@@ -9,7 +9,7 @@
 //=====================================================================
 "use strict";
 
-var tjs = require('../TeslaJS');
+var tjs = require('../teslajs');
 var fs = require('fs');
 
 //

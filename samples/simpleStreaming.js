@@ -17,8 +17,7 @@ var framework = require('./sampleFramework.js');
 //
 //
 program
-  .usage('[options] username')
-  .option('-p, --password [string]', 'password (needed only if token not cached)')
+  .usage('[options]')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
   .parse(process.argv);
@@ -32,14 +31,9 @@ sample.run();
 //
 function sampleMain(tjs, options) {
 
-    if (program.args.length < 1) {
-        program.help();
-    }
-
     var streamingOptions = {
-        username: program.args[0],
-        password: options.tokens[0],
-        vehicle_id: options.vehicle_id
+        vehicle_id: options.vehicle_id,
+        authToken: options.authToken
     };
 
     console.log("\nNote: " + "Inactive vehicle streaming responses can take up to several minutes.".green);

@@ -27,18 +27,20 @@ program
 var sample = new framework.SampleFramework(program, sampleMain);
 sample.run();
 
+function milesToKms(miles){
+    return miles * 1.609344;
+}
+
 //
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleData(options, function (err, vehicleData) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-
+    tjs.vehicleDataAsync(options).then( function(vehicleData) {        
         // get the charge state info from the vehicle data
         var chargeState = vehicleData.charge_state;
+        
+        var eu_vehicle = vehicleData.vehicle_config.eu_vehicle;
+        var unitsInKms = vehicleData.gui_settings.gui_distance_units === "km/hr";
 
         var str = chargeState.charge_port_door_open === true ? "OPEN" : "CLOSED";
         console.log("\nCharge port: " + str.green);
@@ -72,10 +74,15 @@ function sampleMain(tjs, options) {
             console.log("Charge scheduled for " + scheduledChargeTime.toLocaleTimeString().toString().green);
         }
 
-        console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + '%'.green);
-        console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + '%'.green);
-        console.log("\nRated range: " + Math.round(chargeState.battery_range).toString().green + ' miles');
-        console.log("Projected range: " + Math.round(chargeState.est_battery_range).toString().green + ' miles');
-        console.log("Ideal range: " + Math.round(chargeState.ideal_battery_range).toString().green + ' miles');
+        console.log("\nCurrent charge level: " + chargeState.battery_level.toString().green + ' %'.green);
+        console.log("Target charge level: " + chargeState.charge_limit_soc.toString().green + ' %'.green);
+        
+        console.log("\nRated range: " + (unitsInKms ? Math.round(milesToKms(chargeState.battery_range)).toString().green + ' km' : Math.round(chargeState.battery_range).toString().green + ' mi'));
+        console.log((eu_vehicle?"Typical":"Ideal")+" range: " + (unitsInKms ? Math.round(milesToKms(chargeState.ideal_battery_range)).toString().green + ' km' : Math.round(chargeState.ideal_battery_range).toString().green + ' mi'));
+        console.log("Projected range: " + (unitsInKms ? Math.round(milesToKms(chargeState.est_battery_range)).toString().green + ' km' : Math.round(chargeState.est_battery_range).toString().green + ' mi'));
+
+        //console.log("\nRated - how far "+(eu_vehicle?"NEDC":"the EPA") + " says the car will go given their tests.");
+        //console.log((eu_vehicle?"Typical":"Ideal")+" - how far the car will go if driven at a steady " + (unitsInKms? "88 km/h":"55 mph") + " on level ground at moderate temperatures.");
+        //console.log("Projected - how far the car calculates you will go if you keep consuming power at the rate you are currently\n");
     });
 }

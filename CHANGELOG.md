@@ -1,5 +1,31 @@
 # TeslaJS Change log
 
+Note that missing version entries are typically dependency updates for security.
+
+## V4.9.4
+* fixed #210 streaming update to oauth
+
+## V4.9.3
+* fixed #188 incorrect VIN for post 2018 cars
+
+## V4.9.2
+* merged PR #191 added exports.promises object avoiding Async suffixes
+
+## V4.8.1
+* merge PR to fix #92 homelink issue
+
+## V4.7.9
+* added roadster to `vinDecode()`
+
+## V4.7.0
+* added `maxDefrost()`
+
+## V4.5.0 / 4.6.0
+* added `vinDecode()`
+
+## V4.4.0
+* added `windowControl()`
+
 ## V4.3.2
 * updated dev deps
 
@@ -68,7 +94,7 @@
 * fixed doc errors
 
 ## V2.1.37
-* merge PR to re-enable `openTrunk` API
+* merge PR to re-enable `openTrunk()` API
 * added `openTrunk` sample
 
 ## V2.1.36

@@ -1,6 +1,10 @@
 {
   "name": "teslajs",
+<<<<<<< HEAD
   "version": "4.9.7",
+=======
+  "version": "4.9.8",
+>>>>>>> v3_token_refresh
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.3",

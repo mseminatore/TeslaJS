@@ -110,20 +110,7 @@ exports.login = function login(credentials, callback) {
                 redirect_uri: url.protocol + '//' + url.host + url.pathname
             }
         });
-    }).then(function (result) {
-        return req({
-            method: 'POST',
-            url: 'https://owner-api.teslamotors.com/oauth/token',
-            headers: {
-                authorization: 'bearer ' + result.body.access_token
-            },
-            json: true,
-            body: {
-                grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-                client_id: _0x2dc0[0]
-            }
-        });
-    }).then(function (result) {
+    }).then(bearerForAccessToken).then(function (result) {
         callback(null, result.response, result.body);
     }).catch(function (error) {
         callback(error);
@@ -199,6 +186,24 @@ function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
     });
 }
 
+function bearerForAccessToken(bearerResult) {
+    return req({
+        method: 'POST',
+        url: 'https://owner-api.teslamotors.com/oauth/token',
+        headers: {
+            authorization: 'bearer ' + bearerResult.body.access_token
+        },
+        json: true,
+        body: {
+            grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            client_id: _0x2dc0[0]
+        }
+    }).then(function (result) {
+        result.body.refresh_token = bearerResult.body.refresh_token;
+        return result;
+    });
+}
+
 function generateCodeVerifier() {
     // Tesla might use something more sophisticated, but in my experience it's a 112-char alphanumeric string so let's just do that
     var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -217,6 +222,24 @@ function generateCodeChallenge(verifier) {
         .replace(/=/g, '')
         .replace(/\+/g, '-')
         .replace(/\//g, '_');
+}
+
+exports.refresh = function refresh(refresh_token, callback) {
+    req({
+        method: 'POST',
+        url: 'https://auth.tesla.com/oauth2/v3/token',
+        json: true,
+        body: {
+            "grant_type": "refresh_token",
+            "client_id": "ownerapi",
+            "refresh_token": refresh_token,
+            "scope": "openid email offline_access"
+        }
+    }).then(bearerForAccessToken).then(function (result) {
+        callback(null, result.response, result.body);
+    }).catch(function (error) {
+        callback(error);
+    });
 }
 
 function req(parameters) {

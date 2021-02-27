@@ -2,9 +2,7 @@
 
 var request = require('request').defaults({
     headers: {
-        "x-tesla-user-agent": "TeslaApp/3.10.8-421/adff2e065/android/8.1.0",
-        "user-agent": "Mozilla/5.0 (Linux; Android 8.1.0; Pixel XL Build/OPM4.171019.021.D1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/68.0.3440.91 Mobile Safari/537.36",
-        "x-requested-with": "com.teslamotors.tesla"
+        "Accept" : "*/*"
     },
     gzip: true,
     jar: true
@@ -102,6 +100,11 @@ exports.login = function login(credentials, callback) {
             url: (url.query.issuer || 'https://auth.tesla.com/oauth2/v3') + '/token',
             jar: false,
             json: true,
+            headers: {
+                "Accept": "*/*",
+                "Content-Type" : "application/json",
+                "Connection" : "keep-alive"
+            },
             body: {
                 grant_type: 'authorization_code',
                 client_id: 'ownerapi',

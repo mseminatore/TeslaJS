@@ -1,13 +1,13 @@
 /**
  * @file This is a Node.js module encapsulating the unofficial Tesla API set
- * 
+ *
  * Github: https://github.com/mseminatore/TeslaJS
  * NPM: https://www.npmjs.com/package/teslajs
- * 
+ *
  * @copyright Copyright (c) 2016 Mark Seminatore
- * 
+ *
  * @license MIT
- * 
+ *
  * Refer to included LICENSE file for usage rights and restrictions
  */
 
@@ -20,7 +20,8 @@ var request = require('request').defaults({
     },
     json: true,
     gzip: true,
-    body: {}
+    body: {},
+
 });
 var Promise = require('promise');
 var websocket = require('ws');
@@ -28,8 +29,8 @@ var websocket = require('ws');
 //=======================
 // Streaming API portal
 //=======================
-/** 
- * @global 
+/**
+ * @global
  * @default
  */
 var streamingPortal = "wss://streaming.vn.teslamotors.com/streaming/";
@@ -40,9 +41,9 @@ var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
 //===========================
 // New OAuth-based API portal
 //===========================
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var portal = "https://owner-api.teslamotors.com";
 exports.portal = portal;
@@ -52,58 +53,58 @@ var portalBaseURI = process.env.TESLAJS_SERVER || portal;
 //=======================
 // Log levels
 //=======================
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_LOG_ALWAYS = 0;
 exports.API_LOG_ALWAYS = API_LOG_ALWAYS;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_ERR_LEVEL = 1;
 exports.API_ERR_LEVEL = API_ERR_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_CALL_LEVEL = 2;
 exports.API_CALL_LEVEL = API_CALL_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_RETURN_LEVEL = 3;
 exports.API_RETURN_LEVEL = API_RETURN_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_BODY_LEVEL = 4;
 exports.API_BODY_LEVEL = API_BODY_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_REQUEST_LEVEL = 5;
 exports.API_REQUEST_LEVEL = API_REQUEST_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_RESPONSE_LEVEL = 6;
 exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
@@ -257,7 +258,7 @@ exports.vinDecode = function vinDecode(vehicle) {
         case "X":
             result.carType = "Model X";
             break;
-        
+
         case "Y":
             result.carType = "Model Y";
             break;
@@ -277,7 +278,7 @@ exports.vinDecode = function vinDecode(vehicle) {
         ) {
         result.awd = true;
     }
-    
+
     return result;
 }
 
@@ -344,13 +345,13 @@ exports.getShortVin = function getShortVin(vehicle) {
  */
 exports.login = function login(credentials, callback) {
     log(API_CALL_LEVEL, "TeslaJS.login()");
-    
+
     // Compatibility with old username/password API
     if (typeof arguments[0] == 'string' && typeof arguments[1] == 'string') {
         credentials = {username: arguments[0], password: arguments[1]};
         callback = arguments[2];
     }
-    
+
     credentials = credentials || {};
     callback = callback || function (err, result) { /* do nothing! */ }
 
@@ -388,7 +389,7 @@ exports.loginAsync = Promise.denodeify(exports.login);
  */
 exports.refreshToken = function refreshToken(refresh_token, callback) {
     log(API_CALL_LEVEL, "TeslaJS.refreshToken()");
-    
+
     callback = callback || function (err, result) { /* do nothing! */ }
 
     if (!refresh_token) {
@@ -492,7 +493,7 @@ exports.vehicle = function vehicle(options, callback) {
             body = body.response[options.carIndex || 0];
             body.id = body.id_s;
             options.vehicleID = body.id;
-            
+
             callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
@@ -546,7 +547,7 @@ exports.vehicles = function vehicles(options, callback) {
 
         try {
             body = body.response;
-            
+
             callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
@@ -924,7 +925,7 @@ exports.openChargePort = function openChargePort(options, callback) {
 }
 
 /**
- * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped 
+ * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
  * @function openChargePortAsync
  * @param {optionsType} options - options object
  * @returns {Promise} result
@@ -969,7 +970,7 @@ exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, offset
 */
 exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftwareUpdate);
 
-/** 
+/**
  * Cancel a scheduled software update
  * @function cancelSoftwareUpdate
  * @param {optionsType} options - options object
@@ -979,7 +980,7 @@ exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) 
     post_command(options, "command/cancel_software_update", null, callback);
 }
 
-/** 
+/**
  * Cancel a scheduled software update
  * @function cancelSoftwareUpdateAsync
  * @param {optionsType} options - options object
@@ -1334,24 +1335,24 @@ exports.windowControlAsync = Promise.denodeify(exports.windowControl);
 //=====================
 // Charge limit constants
 //=====================
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.CHARGE_STORAGE  = 50;
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.CHARGE_DAILY    = 70;
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.CHARGE_STANDARD = 90;
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.CHARGE_RANGE    = 100;
 
@@ -1483,14 +1484,14 @@ exports.climateStopAsync = Promise.denodeify(exports.climateStop);
 //==================================
 // Set the sun roof to specific mode
 //==================================
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.SUNROOF_VENT = "vent";
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.SUNROOF_CLOSED = "close";
 
@@ -1536,14 +1537,14 @@ exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
 // Temperature Limits
 //==============================================
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.MIN_TEMP = 15;    // 59 Deg.F
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.MAX_TEMP = 28;    // 82.4 Deg.F
 
@@ -1599,14 +1600,14 @@ exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
 // Trunk/Frunk constants
 //=====================
 
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.FRUNK = "front";
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.TRUNK = "rear";
 
@@ -1943,9 +1944,9 @@ exports.autoPark = function autoPark(options, lat, long, action, callback) {
 //=================================
 // Available streaming data options
 //=================================
-/**   
- * @global   
- * @default  
+/**
+ * @global
+ * @default
  */
 exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'est_range', 'heading', 'odometer', 'power', 'range', 'shift_state', 'speed', 'soc'];
 

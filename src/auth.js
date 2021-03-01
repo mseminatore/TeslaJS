@@ -4,52 +4,45 @@
 
 var request = require('request').defaults({
     headers: {
-        "x-tesla-user-agent": "TeslaApp/3.10.8-421/adff2e065/android/8.1.0",
-        "user-agent": "TeslaApp",
-        "x-requested-with": "com.teslamotors.tesla"
+        'User-Agent': 'hackney/1.17.0',
     },
-    gzip: true,
-    jar: true
+    jar: true,
+    timeout: 60000,
+    followRedirect: false
 //    ,proxy: "http://127.0.0.1:8888" // Note the fully-qualified path to Fiddler proxy. No "https" is required, even for https connections to outside.
 });
 var crypto = require('crypto');
 var Promise = require('promise');
+var qs = require('query-string');
 
 exports.login = function login(credentials, callback) {
-    var codeVerifier = generateCodeVerifier();
+    var codeVerifier = (generateCodeVerifier()).substr(0,86);
     var codeChallenge = generateCodeChallenge(codeVerifier);
+    var state = (generateCodeVerifier()).substr(0,20);
+
     var queryString = {
-        audience: '',
         client_id: 'ownerapi',
         code_challenge: codeChallenge,
         code_challenge_method: 'S256',
-        locale: 'en',
         prompt: 'login',
         redirect_uri: 'https://auth.tesla.com/void/callback',
         response_type: 'code',
         scope: 'openid email offline_access',
-        state: generateCodeChallenge(generateCodeVerifier())
+        state: state
     };
     var transactionId = null;
     var loginHost = null;
     var loginUrl = null;
-
     req({
         method: 'GET',
-        url: 'https://auth-global.tesla.com/oauth2/v3/authorize',
-        qs: queryString,
-        headers: {
-            "sec-fetch-site": "none",
-            "sec-fetch-mode": "navigate",
-            "sec-fetch-user": "?1",
-            "sec-fetch-dest": "document"
-        }
+        url: `https://auth.tesla.com/oauth2/v3/authorize`,
+        qs: queryString
     }).then(function (result) {
-        // Record the final URL we got redirected to; this is where we will send our credentials
+         // Record the final URL we got redirected to; this is where we will send our credentials
         loginUrl = result.response.request.href;
         loginHost = "https://" + require('url').parse(loginUrl).host;
         var form = {};
-        
+
         var hiddenFormFields = result.body.match(/<input type="hidden" [^>]+>/g);
         hiddenFormFields.forEach(function (field) {
             var name = field.match(/name="([^"]+)"/);
@@ -60,22 +53,13 @@ exports.login = function login(credentials, callback) {
         });
 
         transactionId = form.transaction_id;
-        
         form.identity = credentials.identity;
         form.credential = credentials.credential;
 
-        return req({
+         return req({
             method: 'POST',
             url: loginUrl,
             form: form,
-            headers: {
-                "sec-fetch-site": "same-origin",
-                "sec-fetch-mode": "navigate",
-                "sec-fetch-user": "?1",
-                "sec-fetch-dest": "document",
-                "referer": loginUrl,
-                "origin": loginHost
-            }
         });
     }).then(function (result) {
         if (result.body.includes('/oauth2/v3/authorize/mfa/verify')) {
@@ -83,10 +67,10 @@ exports.login = function login(credentials, callback) {
             if (!credentials.mfaPassCode) {
                 throw new Error("MFA passcode required");
             }
-        
+
             return mfaVerify(transactionId, loginHost, loginUrl, credentials.mfaPassCode, credentials.mfaDeviceName);
         }
-    
+
         // No need to handle MFA
         return result;
     }).then(function (result) {
@@ -102,8 +86,7 @@ exports.login = function login(credentials, callback) {
 
         return req({
             method: 'POST',
-            url: (url.query.issuer || 'https://auth.tesla.com/oauth2/v3') + '/token',
-            jar: false,
+            url: 'https://auth.tesla.com/oauth2/v3/token',
             json: true,
             body: {
                 grant_type: 'authorization_code',
@@ -118,16 +101,15 @@ exports.login = function login(credentials, callback) {
             method: 'POST',
             url: 'https://owner-api.teslamotors.com/oauth/token',
             headers: {
-                authorization: 'bearer ' + result.body.access_token
+                Authorization: 'Bearer ' + result.body.access_token
             },
-            json: true,
-            body: {
+            form: {
                 grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
                 client_id: _0x2dc0[0]
             }
         });
     }).then(function (result) {
-        callback(null, result.response, result.body);
+        callback(null, result.response, JSON.parse(result.body));
     }).catch(function (error) {
         callback(error);
     });
@@ -137,19 +119,12 @@ function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
     return req({
         method: 'GET',
         url: host + '/oauth2/v3/authorize/mfa/factors?transaction_id=' + transactionId,
-        headers: {
-            "x-requested-with": "XMLHttpRequest",
-            "sec-fetch-site": "same-origin",
-            "sec-fetch-mode": "cors",
-            "sec-fetch-dest": "empty",
-            "referer": referer
-        },
         json: true
     }).then(function (result) {
         if (!result.body || !result.body.data || result.body.data.length == 0) {
             throw new Error('No MFA devices found');
         }
-        
+
         var device = result.body.data[0];
         if (mfaDeviceName) {
             // Find the specific device we're looking for
@@ -158,18 +133,10 @@ function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
                 throw new Error('No MFA device found with name ' + mfaDeviceName);
             }
         }
-        
+
         return req({
             method: 'POST',
             url: host + '/oauth2/v3/authorize/mfa/verify',
-            headers: {
-                "x-requested-with": "XMLHttpRequest",
-                "origin": host,
-                "sec-fetch-site": "same-origin",
-                "sec-fetch-mode": "cors",
-                "sec-fetch-dest": "empty",
-                "referer": referer
-            },
             json: true,
             body: {
                 transaction_id: transactionId,
@@ -181,19 +148,11 @@ function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
         if (!result.body || !result.body.data || !result.body.data.approved || !result.body.data.valid) {
             throw new Error('MFA passcode rejected');
         }
-        
+
         // MFA auth has succeeded, so now repeat the authorize request with just the transaction id
         return req({
             method: 'POST',
             url: referer,
-            headers: {
-                "sec-fetch-site": "same-origin",
-                "sec-fetch-mode": "navigate",
-                "sec-fetch-user": "?1",
-                "sec-fetch-dest": "document",
-                "referer": referer,
-                "origin": host
-            },
             form: {
                 transaction_id: transactionId
             },

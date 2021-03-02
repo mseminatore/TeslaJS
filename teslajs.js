@@ -338,7 +338,12 @@ exports.getShortVin = function getShortVin(vehicle) {
 
 /**
  * Login to the server and receive OAuth tokens
- * @param {{username: string, password: string, mfaPassCode?: string, mfaDeviceName?: string}} credentials - Object of Tesla credentials
+ * @function login
+ * @param {Object} credentials - object of Tesla credentials
+ * @param {string} credentials.username - email address used on Tesla.com
+ * @param {string} credentials.password - password used on Tesla.command
+ * @param {string} credentials.mfaPassCode - MFA password
+ * @param {string} credentials.mfaDeviceName - MFA device name
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} {response, body, authToken, refreshToken}
  */

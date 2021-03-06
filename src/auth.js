@@ -5,6 +5,7 @@
 var request = require('request').defaults({
     headers: {
         'User-Agent': 'hackney/1.17.0',
+        "Accept" : "*/*"
     },
     jar: true,
     timeout: 60000,
@@ -87,6 +88,11 @@ exports.login = function login(credentials, callback) {
             method: 'POST',
             url: 'https://auth.tesla.com/oauth2/v3/token',
             json: true,
+            headers: {
+                "Accept": "*/*",
+                "Content-Type" : "application/json",
+                "Connection" : "keep-alive"
+            },
             body: {
                 grant_type: 'authorization_code',
                 client_id: 'ownerapi',

@@ -13,7 +13,6 @@ var request = require('request').defaults({
 });
 var crypto = require('crypto');
 var Promise = require('promise');
-var qs = require('query-string');
 
 exports.login = function login(credentials, callback) {
     var codeVerifier = (generateCodeVerifier()).substr(0,86);

@@ -379,8 +379,11 @@ exports.login = function login(credentials, callback) {
 /**
  * Login to the server and receive OAuth tokens
  * @function loginAsync
- * @param {string} username - Tesla.com username
- * @param {string} password - Tesla.com password
+ * @param {Object} credentials - object of Tesla credentials
+ * @param {string} credentials.username - email address used on Tesla.com
+ * @param {string} credentials.password - password used on Tesla.command
+ * @param {string} credentials.mfaPassCode - MFA password
+ * @param {string} credentials.mfaDeviceName - MFA device name
  * @returns {Promise} {response, body, authToken, refreshToken}
  */
 exports.loginAsync = Promise.denodeify(exports.login);

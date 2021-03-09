@@ -84,7 +84,7 @@
 <dt><a href="#login">login(credentials, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
-<dt><a href="#loginAsync">loginAsync(username, password)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#loginAsync">loginAsync(credentials)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
 <dt><a href="#refreshToken">refreshToken(refresh_token, callback)</a> ⇒ <code>object</code></dt>
@@ -677,7 +677,7 @@ Login to the server and receive OAuth tokens
 
 <a name="loginAsync"></a>
 
-## loginAsync(username, password) ⇒ <code>Promise</code>
+## loginAsync(credentials) ⇒ <code>Promise</code>
 Login to the server and receive OAuth tokens
 
 **Kind**: global function  
@@ -685,8 +685,11 @@ Login to the server and receive OAuth tokens
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>string</code> | Tesla.com username |
-| password | <code>string</code> | Tesla.com password |
+| credentials | <code>Object</code> | object of Tesla credentials |
+| credentials.username | <code>string</code> | email address used on Tesla.com |
+| credentials.password | <code>string</code> | password used on Tesla.command |
+| credentials.mfaPassCode | <code>string</code> | MFA password |
+| credentials.mfaDeviceName | <code>string</code> | MFA device name |
 
 <a name="refreshToken"></a>
 

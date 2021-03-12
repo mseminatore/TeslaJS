@@ -4,7 +4,8 @@
 
 var request = require('request').defaults({
     headers: {
-        'User-Agent': 'hackney/1.17.0',
+        'Connection' : 'keep-alive',
+        'Accept' : '*/*',
     },
     jar: true,
     timeout: 60000,

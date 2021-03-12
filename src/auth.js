@@ -7,6 +7,7 @@ var request = require('request').defaults({
         'User-Agent': 'hackney/1.17.0',
     },
     jar: true,
+    gzip: true,
     timeout: 60000,
     followRedirect: false
 //    ,proxy: "http://127.0.0.1:8888" // Note the fully-qualified path to Fiddler proxy. No "https" is required, even for https connections to outside.

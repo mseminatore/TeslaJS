@@ -7,6 +7,8 @@ var request = require('request').defaults({
         "Accept" : "*/*"
     },
     gzip: true,
+//    timeout: 60000,
+//    followRedirect: false,
     jar: true
 //    ,proxy: "http://127.0.0.1:8888" // Note the fully-qualified path to Fiddler proxy. No "https" is required, even for https connections to outside.
 });
@@ -17,7 +19,7 @@ exports.login = function login(credentials, callback) {
     var codeVerifier = generateCodeVerifier();
     var codeChallenge = generateCodeChallenge(codeVerifier);
     var queryString = {
-        audience: '',
+//        audience: '',
         client_id: 'ownerapi',
         code_challenge: codeChallenge,
         code_challenge_method: 'S256',
@@ -34,7 +36,7 @@ exports.login = function login(credentials, callback) {
 
     req({
         method: 'GET',
-        url: 'https://auth-global.tesla.com/oauth2/v3/authorize',
+        url: 'https://auth.tesla.com/oauth2/v3/authorize',
         qs: queryString,
         headers: {
             "sec-fetch-site": "none",
@@ -121,7 +123,7 @@ exports.login = function login(credentials, callback) {
             method: 'POST',
             url: 'https://owner-api.teslamotors.com/oauth/token',
             headers: {
-                authorization: 'bearer ' + result.body.access_token
+                Authorization: 'Bearer ' + result.body.access_token
             },
             json: true,
             body: {
@@ -208,7 +210,7 @@ function mfaVerify(transactionId, host, referer, mfaPassCode, mfaDeviceName) {
 function generateCodeVerifier() {
     // Tesla might use something more sophisticated, but in my experience it's a 112-char alphanumeric string so let's just do that
     var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    var random = crypto.randomBytes(112);
+    var random = crypto.randomBytes(86);
     var output = '';
     for (var i = 0; i < random.length; i++) {
         output += chars[random[i] % chars.length];

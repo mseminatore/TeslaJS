@@ -215,77 +215,77 @@ describe('TeslaJS', function () {
         });
 	});
 
-	describe('#login()', function() {
-	    it('should succeed with valid user and pwd', function (done) {
-			tjs.login(user, pass, function(err, result) {
-				if (result.response.statusCode == 200) {
-				    options.authToken = result.authToken;
-                    done();
-				} else {
-				    done(result.response.statusMessage);
-				}
-			});
-		});
+	// describe('#login()', function() {
+	//     it('should succeed with valid user and pwd', function (done) {
+	// 		tjs.login(user, pass, function(err, result) {
+	// 			if (result.response.statusCode == 200) {
+	// 			    options.authToken = result.authToken;
+    //                 done();
+	// 			} else {
+	// 			    done(result.response.statusMessage);
+	// 			}
+	// 		});
+	// 	});
 
-	    it('should succeed with valid user and pwd and no callback', function (done) {
-	        tjs.login(user, pass);
-	        done();
-	    });
+	//     it('should succeed with valid user and pwd and no callback', function (done) {
+	//         tjs.login(user, pass);
+	//         done();
+	//     });
 
-	    it('should fail with invalid user or pwd', function (done) {
-	        tjs.login(null, null, function(err, result){
-				if (err) {
-			        done();
-				} else {
-					done(result);
-				}
-			});
-	    });
-	});
+	//     it('should fail with invalid user or pwd', function (done) {
+	//         tjs.login(null, null, function(err, result){
+	// 			if (err) {
+	// 		        done();
+	// 			} else {
+	// 				done(result);
+	// 			}
+	// 		});
+	//     });
+	// });
 
-	describe('#loginAsync()', function () {
-	    it('should succeed with valid user and pwd', function () {
-	        return tjs.loginAsync(user, pass).then(function (result) {
-	            assert.strictEqual(result.response.statusCode, 200);
-	        });
-	    });
-	});
+	// describe('#loginAsync()', function () {
+	//     it('should succeed with valid user and pwd', function () {
+	//         return tjs.loginAsync(user, pass).then(function (result) {
+	//             assert.strictEqual(result.response.statusCode, 200);
+	//         });
+	//     });
+	// });
 
-	describe('#refreshToken()', function() {
-	    it('should succeed with valid refresh token', function (done) {
-			tjs.refreshToken("faketoken", function(err, result) {
-				if (result.response.statusCode == 200) {
-				    options.authToken = result.authToken;
-                    done();
-				} else {
-				    done(result.response.statusMessage);
-				}
-			});
-		});
+	// describe('#refreshToken()', function() {
+	//     it('should succeed with valid refresh token', function (done) {
+	// 		tjs.refreshToken("faketoken", function(err, result) {
+	// 			if (result.response.statusCode == 200) {
+	// 			    options.authToken = result.authToken;
+    //                 done();
+	// 			} else {
+	// 			    done(result.response.statusMessage);
+	// 			}
+	// 		});
+	// 	});
 
-	    it('should succeed with valid refresh token and no callback', function (done) {
-	        tjs.refreshToken("faketoken");
-	        done();
-	    });
+	//     it('should succeed with valid refresh token and no callback', function (done) {
+	//         tjs.refreshToken("faketoken");
+	//         done();
+	//     });
 
-	    it('should fail with missing refresh token', function (done) {
-	        tjs.refreshToken(null, function(err, result){
-				if (err) {
-			        done();
-				} else {
-					done(result);
-				}
-			});
-	    });
-	});
+	//     it('should fail with missing refresh token', function (done) {
+	//         tjs.refreshToken(null, function(err, result){
+	// 			if (err) {
+	// 		        done();
+	// 			} else {
+	// 				done(result);
+	// 			}
+	// 		});
+	//     });
+	// });
 
-	describe('#refreshTokenAsync()', function () {
-	    it('should succeed with valid user and pwd', function () {
-	        return tjs.refreshTokenAsync("faketoken").then(function (result) {
-	            assert.strictEqual(result.response.statusCode, 200);
-	        });
-	    });
-	});
+	// describe('#refreshTokenAsync()', function () {
+	//     it('should succeed with valid user and pwd', function () {
+	//         return tjs.refreshTokenAsync("faketoken").then(function (result) {
+	//             assert.strictEqual(result.response.statusCode, 200);
+	//         });
+	//     });
+	// });
 
 	describe('#logout()', function () {
 	    it('should succeed', function (done) {

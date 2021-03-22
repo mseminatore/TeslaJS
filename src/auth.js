@@ -1,18 +1,32 @@
 "use strict";
+var Agent = require('socks5-https-client/lib/Agent');
 
-//process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'; // Ignore 'UNABLE_TO_VERIFY_LEAF_SIGNATURE' authorization error
-
-var request = require('request').defaults({
-    headers: {
-        'Connection' : 'keep-alive',
-        'Accept' : '*/*',
-    },
-    jar: true,
-    gzip: true,
-    timeout: 60000,
-    followRedirect: false
+function getRequestDefaultOptions() {
+    const socksHost = process.env.PROXY_HOST;
+    const socksPort = process.env.PROXY_PORT;
+    const proxyAgentOptions = {
+        agentClass: Agent,
+        agentOptions: {
+            socksHost,
+            socksPort,
+        },
+        rejectUnauthorized: false
+    }
+    const defaultHeaders = {
+        headers: {
+            'Connection' : 'keep-alive',
+            'Accept' : '*/*',
+        },
+        jar: true,
+        gzip: true,
+        timeout: 60000,
+        followRedirect: false,
 //    ,proxy: "http://127.0.0.1:8888" // Note the fully-qualified path to Fiddler proxy. No "https" is required, even for https connections to outside.
-});
+    }
+    return  socksHost ? { ...defaultHeaders, ...proxyAgentOptions } : defaultHeaders
+}
+
+var request = require('request').defaults(getRequestDefaultOptions());
 var crypto = require('crypto');
 var Promise = require('promise');
 

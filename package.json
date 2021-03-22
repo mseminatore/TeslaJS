@@ -1,10 +1,11 @@
 {
   "name": "@autofleet/teslajs",
-  "version": "4.9.10",
+  "version": "4.9.15",
   "description": "Full-featured Tesla REST API NodeJS package",
   "dependencies": {
     "promise": "^8.0.3",
     "request": "^2.88.2",
+    "socks5-https-client": "^1.2.1",
     "ws": "^7.2.1"
   },
   "bugs": {

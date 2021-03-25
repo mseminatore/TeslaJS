@@ -9,7 +9,7 @@
 
 ## An unofficial NodeJS library that encapsulates the Tesla RESTful API.
 
-> Note: If you are planning to purchase a Tesla you can get 1,000 miles of free supercharging by using this [link](http://ts.la/mark5257).
+> Note: If you are planning to purchase a Tesla you can get 1,000 miles of free supercharging using this referral [link](http://ts.la/mark5257).
 
 ### This library currently supports all existing Tesla vehicles.
 

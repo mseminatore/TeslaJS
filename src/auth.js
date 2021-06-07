@@ -230,7 +230,7 @@ function generateCodeChallenge(verifier) {
 function req(parameters) {
     return new Promise(function (resolve, reject) {
         request(parameters, function (error, response, body) {
-            if (error || response.statusCode >= 400) {
+            if (error /*|| response.statusCode >= 400*/) {
                 return reject(error || new Error("HTTP error " + response.statusCode));
             }
 

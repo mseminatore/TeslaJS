@@ -28,7 +28,8 @@ exports.login = function login(credentials, callback) {
         redirect_uri: 'https://auth.tesla.com/void/callback',
         response_type: 'code',
         scope: 'openid email offline_access',
-        state: generateCodeChallenge(generateCodeVerifier())
+        state: generateCodeChallenge(generateCodeVerifier()),
+        login_hint: credentials.identity
     };
     var transactionId = null;
     var loginHost = null;

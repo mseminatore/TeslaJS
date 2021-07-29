@@ -5,7 +5,7 @@
   "dependencies": {
     "promise": "^8.0.3",
     "request": "^2.88.2",
-    "ws": "^7.5.0"
+    "ws": "^8.0.0"
   },
   "bugs": {
     "url": "https://github.com/mseminatore/TeslaJS/issues"

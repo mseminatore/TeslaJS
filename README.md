@@ -296,6 +296,7 @@ setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
 vehicle() | return information on the requested vehicle defined by `carIndex` in `options`
+vehicleById() | return information on the requested vehicle defined by `vehicleID` in `options`
 vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object

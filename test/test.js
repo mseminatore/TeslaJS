@@ -18,7 +18,7 @@ function failure(msg) {
 }
 
 describe('TeslaJS', function () {
-	var options = {authToken: "abc123", vehicleID: "1234", vehicle_id: "1", token: "1", username: user, password: pass};
+	var options = {authToken: "abc123", vehicleID: "1234567890", vehicle_id: "1", token: "1", username: user, password: pass};
     this.timeout(7500);
 
     describe('#getStreamingBaseURI()', function () {
@@ -361,6 +361,31 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
+
+  describe('#vehicleById()', function () {
+    it('should succeed getting the vehicle', function (done) {
+        tjs.vehicleById(options, function (err, vehicle) {
+            if (vehicle.vehicle_id) {
+                done();
+            } else {
+                done(vehicle.response.statusMessage);
+            }
+        });
+    });
+
+    it('should succeed with no callback', function (done) {
+        tjs.vehicleById(options);
+        done();
+    });
+});
+
+describe('#vehicleByIdAsync()', function () {
+    it('should succeed getting the vehicle', function () {
+        return tjs.vehicleById(options).then(function (result) {
+            assert(result.vehicle_id);
+        });
+    });
+});
 
 	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {

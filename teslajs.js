@@ -404,13 +404,18 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
         return;
     }
 
+    var url = portalBaseURI + '/oauth/token';
+    var body = {"grant_type": "refresh_token", "refresh_token": refresh_token};
+    // If this refresh token is a JWT, we want to use the SSO refresh endpoint
+    if (refresh_token.split('.').length == 3) {
+        url = 'https://auth.tesla.com/oauth2/v3/token';
+        body.client_id = "ownerapi";
+    }
+
     var req = {
         method: 'POST',
-        url: portalBaseURI + '/oauth/token',
-        body: {
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token
-        }
+        url: url,
+        body: body
     };
 
     log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));

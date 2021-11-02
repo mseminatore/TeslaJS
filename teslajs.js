@@ -1421,6 +1421,26 @@ exports.chargeMaxRange = function chargeMaxRange(options, callback) {
 exports.chargeMaxRangeAsync = Promise.denodeify(exports.chargeMaxRange);
 
 /**
+ * Set the charging amps.
+ * @param {optionsType} options - options object
+ * @param {int} amps - charging amps
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setChargingAmps = function setChargingAmps(options, amps, callback) {
+    post_command(options, "command/set_charging_amps", { charging_amps: amps }, callback);
+}
+
+/**
+ * Set the charging amps async and return Promise.
+ * @function setChargingAmpsAsync
+ * @param {optionsType} options - options object
+ * @param {int} amps - charging amps
+ * @returns {Promise} result
+ */
+exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
+
+/**
  * Lock the car doors
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback

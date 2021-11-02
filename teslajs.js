@@ -1463,6 +1463,45 @@ exports.setScheduledCharging = function setScheduledCharging(options, enable, ti
 exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledCharging);
 
 /**
+ * Set the scheduled departure.
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} preconditioning_enabled - true for on, false for off
+ * @param {boolean} preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setScheduledDeparture = function setScheduledDeparture(options, enable, departure_time, callback) {
+    post_command(options, "command/set_scheduled_departure", {
+	    "enable":enable,
+	    "departure_time":departure_time,
+	    "preconditioning_enabled":preconditioning_enabled,
+	    "preconditioning_weekdays_only":preconditioning_weekdays_only,
+	    "off_peak_charging_enabled":off_peak_charging_enabled,
+	    "off_peak_charging_weekdays_only":off_peak_charging_weekdays_only,
+	    "end_off_peak_time":end_off_peak_time }, callback);
+}
+
+/**
+ * Set the scheduled departure async and return Promise.
+ * @function setScheduledDeparture
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} preconditioning_enabled - true for on, false for off
+ * @param {boolean} preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @returns {Promise} result
+ */
+exports.setScheduledDepartureAsync = Promise.denodeify(exports.setScheduledDeparture);
+
+/**
  * Lock the car doors
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback

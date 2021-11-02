@@ -1441,6 +1441,28 @@ exports.setChargingAmps = function setChargingAmps(options, amps, callback) {
 exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
 
 /**
+ * Set the scheduled charging time.
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} time - time in minutes since midnight, 15min step
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setScheduledCharging = function setScheduledCharging(options, enable, time, callback) {
+    post_command(options, "command/set_scheduled_charging", { enable: enable, time: time }, callback);
+}
+
+/**
+ * Set the scheduled charging time async and return Promise.
+ * @function setScheduledCharging
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} time - time in minutes since midnight, 15min step
+ * @returns {Promise} result
+ */
+exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledCharging);
+
+/**
  * Lock the car doors
  * @param {optionsType} options - options object
  * @param {nodeBack} callback - Node-style callback

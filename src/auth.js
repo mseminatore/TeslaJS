@@ -16,12 +16,6 @@ var crypto = require('crypto');
 var Promise = require('promise');
 
 exports.login = function login(credentials, callback) {
-    // Consider username/password as access/refresh tokens when username does not include '@' (email address)
-    if (!credentials.identity.includes('@')) {
-        callback(null, {}, { access_token: credentials.identity, refresh_token: credentials.credential });
-        return;
-    }
-
     var codeVerifier = generateCodeVerifier();
     var codeChallenge = generateCodeChallenge(codeVerifier);
     var queryString = {

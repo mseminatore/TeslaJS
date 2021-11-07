@@ -1475,7 +1475,7 @@ exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledChargi
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setScheduledDeparture = function setScheduledDeparture(options, enable, departure_time, callback) {
+exports.setScheduledDeparture = function setScheduledDeparture(options, enable, departure_time, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) {
     post_command(options, "command/set_scheduled_departure", {
 	    "enable":enable,
 	    "departure_time":departure_time,

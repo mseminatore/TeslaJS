@@ -1762,6 +1762,101 @@ Set charge limit to 100%
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 
+<a name="setChargingAmps"></a>
+
+## setChargingAmps(options, amps, callback) ⇒ <code>object</code>
+Sets the charge amps limit to a custom value.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | The max amps to use during charging. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setChargingAmpsAsync"></a>
+
+## setChargingAmpsAsync(options, amps) ⇒ <code>Promise</code>
+Sets the charge amps limit to a custom value.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | The max amps to use during charging. |
+
+<a name="setScheduledCharging"></a>
+
+## setScheduledCharging(options, enable, time, callback) ⇒ <code>object</code>
+Set the scheduled charging time.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| time | <code>int</code> | time in minutes since midnight, 15min step. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledChargingAsync"></a>
+
+## setScheduledChargingAsync(options, enable, time) ⇒ <code>Promise</code>
+Set the scheduled charging time.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| time | <code>int</code> | time in minutes since midnight, 15min step. |
+
+<a name="setScheduledDeparture"></a>
+
+## setScheduledDeparture(options, enable, departure_time, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) ⇒ <code>object</code>
+Set the scheduled departure.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| departure_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledDepartureAsync"></a>
+
+## setScheduledDepartureAsync(options, enable, departure_time, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time) ⇒ <code>Promise</code>
+Set the scheduled departure.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| departure_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step. |
+
 <a name="doorLock"></a>
 
 ## doorLock(options, callback) ⇒ <code>object</code>

@@ -1801,7 +1801,7 @@ Set the scheduled charging time.
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | enable | <code>boolean</code> | true for on, false for off. |
-| time | <code>int</code> | time in minutes since midnight, 15min step. |
+| time | <code>int</code> | time in minutes since midnight local time. |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setScheduledChargingAsync"></a>
@@ -1816,7 +1816,7 @@ Set the scheduled charging time.
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | enable | <code>boolean</code> | true for on, false for off. |
-| time | <code>int</code> | time in minutes since midnight, 15min step. |
+| time | <code>int</code> | time in minutes since midnight local time. |
 
 <a name="setScheduledDeparture"></a>
 
@@ -1830,12 +1830,12 @@ Set the scheduled departure.
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | enable | <code>boolean</code> | true for on, false for off. |
-| departure_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| departure_time | <code>int</code> | time in minutes since midnight local time. |
 | preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
 | preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
 | off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
 | off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
-| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight local time. |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setScheduledDepartureAsync"></a>
@@ -1850,12 +1850,12 @@ Set the scheduled departure.
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | enable | <code>boolean</code> | true for on, false for off. |
-| departure_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| departure_time | <code>int</code> | time in minutes since midnight local time. |
 | preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
 | preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
 | off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
 | off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
-| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight local time. |
 
 <a name="doorLock"></a>
 

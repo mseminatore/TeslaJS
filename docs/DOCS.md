@@ -1653,7 +1653,7 @@ Max Defrost
 <a name="maxDefrostAsync"></a>
 
 ## maxDefrostAsync(options, onoff) ⇒ <code>Promise</code>
-Remote steering heater
+Remote Defrost
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1675,6 +1675,8 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="windowControlAsync"></a>
 
@@ -1688,6 +1690,8 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="setChargeLimit"></a>
 

@@ -1324,10 +1324,12 @@ exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
  * @function windowControl
  * @param {optionsType} options - options object
  * @param {string} command - Allowable values are 'vent' and 'close'
+ * @param {number} lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} lon - User longitude (can be 0 if not 'close' command)
  * @returns {object} result
  */
-exports.windowControl = function windowControl(options, command, callback) {
-    post_command(options, "command/window_control", { "command": command, "lat":0, "lon":0 }, callback);
+exports.windowControl = function windowControl(options, command, lat, lon, callback) {
+    post_command(options, "command/window_control", { "command": command, "lat":lat ?? 0, "lon":lon ?? 0 }, callback);
 }
 
 /**

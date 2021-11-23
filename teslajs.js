@@ -1306,7 +1306,7 @@ exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
  * @param {boolean} onoff - true for on, false for off
  * @returns {object} result
  */
-exports.maxDefrost = function steeringHeater(options, onoff, callback) {
+exports.maxDefrost = function maxDefrost(options, onoff, callback) {
     post_command(options, "command/set_preconditioning_max", { "on": onoff }, callback);
 }
 

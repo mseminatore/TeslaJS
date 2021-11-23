@@ -520,6 +520,62 @@ exports.vehicle = function vehicle(options, callback) {
 exports.vehicleAsync = Promise.denodeify(exports.vehicle);
 
 /**
+ * Return vehicle information on the requested vehicle. Uses options.vehicleID
+ * to determine which vehicle to fetch data for.
+ * @function vehicleById
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Vehicle} vehicle JSON data
+ */
+ exports.vehicleById = function vehicle(options, callback) {
+  log(API_CALL_LEVEL, "TeslaJS.vehicleById()");
+
+  callback = callback || function (err, vehicle) { /* do nothing! */ }
+
+  var req = {
+      method: 'GET',
+      url: portalBaseURI + '/api/1/vehicles/' + options.vehicleID,
+      headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+  };
+
+  log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+  request(req, function (error, response, body) {
+      if (error) {
+          log(API_ERR_LEVEL, error);
+          return callback(error, null);
+      }
+
+      if (response.statusCode != 200) {
+          return callback(response.statusMessage, null);
+      }
+
+      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+      try {
+        body = body.response;
+        
+        callback(null, body);
+    } catch (e) {
+        log(API_ERR_LEVEL, 'Error parsing vehicle response');
+        callback(e, null);
+    }
+
+      log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles/" + options.vehicleID + " completed.");
+  });
+}
+
+/**
+* Return vehicle information on the requested vehicle. Uses options.vehicleID
+* to determine which vehicle to fetch data for.
+* @function vehicleByIdAsync
+* @param {optionsType} options - options object
+* @returns {Promise} vehicle JSON data
+*/
+exports.vehicleByIdAsync = Promise.denodeify(exports.vehicleById);
+
+/**
  * Return vehicle information on ALL vehicles
  * @function vehicles
  * @param {optionsType} options - options object

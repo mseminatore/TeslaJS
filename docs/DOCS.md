@@ -1833,7 +1833,7 @@ Set the scheduled departure.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true for on, false for off. |
+| enable | <code>boolean</code> | true if (preconditioning_enabled or off_peak_charging_enabled), false otherwise (this condition may change in the future). |
 | departure_time | <code>int</code> | time in minutes since midnight local time. |
 | preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
 | preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
@@ -1853,7 +1853,7 @@ Set the scheduled departure.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true for on, false for off. |
+| enable | <code>boolean</code> | true if (preconditioning_enabled or off_peak_charging_enabled), false otherwise (this condition may change in the future). |
 | departure_time | <code>int</code> | time in minutes since midnight local time. |
 | preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
 | preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |

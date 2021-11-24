@@ -1523,7 +1523,7 @@ exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledChargi
 /**
  * Set the scheduled departure.
  * @param {optionsType} options - options object
- * @param {boolean} enable - true for on, false for off
+ * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
  * @param {int} departure_time - time in minutes since midnight, 15min step
  * @param {boolean} preconditioning_enabled - true for on, false for off
  * @param {boolean} preconditioning_weekdays_only - true for on, false for off
@@ -1548,7 +1548,7 @@ exports.setScheduledDeparture = function setScheduledDeparture(options, enable, 
  * Set the scheduled departure async and return Promise.
  * @function setScheduledDeparture
  * @param {optionsType} options - options object
- * @param {boolean} enable - true for on, false for off
+ * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
  * @param {int} departure_time - time in minutes since midnight, 15min step
  * @param {boolean} preconditioning_enabled - true for on, false for off
  * @param {boolean} preconditioning_weekdays_only - true for on, false for off

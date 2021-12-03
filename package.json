@@ -1,40 +1,17 @@
 {
-  "_from": "@gaphi/teslajs@>=4.9.12-0",
-  "_inBundle": false,
-  "_integrity": "sha512-8oPS4wPlbOa67ZcztzV0SYFXvl4pbVWbWEkjOp/a6ulOXxkVuj4HnqVMW1WecXe45WkTkPDbRYcS/ncfyn3otA==",
-  "_location": "/@gaphi/teslajs",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "range",
-    "registry": true,
-    "raw": "@gaphi/teslajs@>=4.9.12-0",
-    "name": "@gaphi/teslajs",
-    "escapedName": "@gaphi%2fteslajs",
-    "scope": "@gaphi",
-    "rawSpec": ">=4.9.12-0",
-    "saveSpec": null,
-    "fetchSpec": ">=4.9.12-0"
-  },
-  "_requiredBy": [
-    "/@gaphi/node-red-contrib-tesla"
-  ],
-  "_resolved": "https://registry.npmjs.org/@gaphi/teslajs/-/teslajs-4.9.12-0.tgz",
-  "_shasum": "a816b253d39593cb9a075f4d5d93efa58c1acb5b",
-  "_spec": "@gaphi/teslajs@>=4.9.12-0",
-  "_where": "/data/node_modules/@gaphi/node-red-contrib-tesla",
   "author": {
     "name": "Mark Seminatore",
     "url": "https://github.com/mseminatore/TeslaJS"
   },
+  "bugs": {
+    "url": "https://github.com/GaPhi/TeslaJS/issues"
+  },
+  "bundleDependencies": [],
   "contributors": [
     {
       "name": "Philippe Gressé-Lugué"
     }
   ],
-  "bugs": {
-    "url": "https://github.com/GaPhi/TeslaJS/issues"
-  },
-  "bundleDependencies": [],
   "dependencies": {
     "promise": "^8.0.3",
     "request": "^2.88.2",
@@ -76,5 +53,5 @@
     "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
     "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose"
   },
-  "version": "4.9.12-2"
+  "version": "4.9.12-3"
 }

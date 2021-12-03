@@ -373,10 +373,10 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 </dd>
 <dt><a href="#setTempsAsync">setTempsAsync(options, driver, pass)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#remoteStart">remoteStart(options, password, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#remoteStart">remoteStart(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote start the car</p>
 </dd>
-<dt><a href="#remoteStartAsync">remoteStartAsync(options, password)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#remoteStartAsync">remoteStartAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#openTrunk">openTrunk(options, which, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the trunk/frunk</p>
@@ -2032,7 +2032,7 @@ Set the driver/passenger climate temperatures
 
 <a name="remoteStart"></a>
 
-## remoteStart(options, password, callback) ⇒ <code>object</code>
+## remoteStart(options, callback) ⇒ <code>object</code>
 Remote start the car
 
 **Kind**: global function  
@@ -2041,19 +2041,17 @@ Remote start the car
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="remoteStartAsync"></a>
 
-## remoteStartAsync(options, password) ⇒ <code>Promise</code>
+## remoteStartAsync(options) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 
 <a name="openTrunk"></a>
 

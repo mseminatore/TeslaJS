@@ -1726,18 +1726,16 @@ exports.setTempsAsync = Promise.denodeify(exports.setTemps);
 /**
  * Remote start the car
  * @param {optionsType} options - options object
- * @param {string} password - Tesla.com password
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.remoteStart = function remoteStartDrive(options, password, callback) {
-    post_command(options, "command/remote_start_drive", { "password": password }, callback);
+exports.remoteStart = function remoteStartDrive(options, callback) {
+    post_command(options, "command/remote_start_drive", null, callback);
 }
 
 /**
  * @function remoteStartAsync
  * @param {optionsType} options - options object
- * @param {string} password - Tesla.com password
  * @returns {Promise} result
  */
 exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);

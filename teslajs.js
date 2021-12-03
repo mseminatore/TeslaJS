@@ -1393,6 +1393,8 @@ exports.windowControl = function windowControl(options, command, lat, lon, callb
  * @function windowControlAsync
  * @param {optionsType} options - options object
  * @param {string} command - Allowable values are 'vent' and 'close'
+ * @param {number} lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} lon - User longitude (can be 0 if not 'close' command)
  * @returns {Promise} result
  */
 exports.windowControlAsync = Promise.denodeify(exports.windowControl);

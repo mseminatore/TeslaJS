@@ -314,10 +314,10 @@
 <dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
+<dt><a href="#windowControl">windowControl(options, command, lat, lon)</a> ⇒ <code>object</code></dt>
 <dd><p>Window control</p>
 </dd>
-<dt><a href="#windowControlAsync">windowControlAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#windowControlAsync">windowControlAsync(options, command, lat, lon)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Window control</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
@@ -1665,7 +1665,7 @@ Remote Defrost
 
 <a name="windowControl"></a>
 
-## windowControl(options, command) ⇒ <code>object</code>
+## windowControl(options, command, lat, lon) ⇒ <code>object</code>
 Window control
 
 **Kind**: global function  
@@ -1680,7 +1680,7 @@ Window control
 
 <a name="windowControlAsync"></a>
 
-## windowControlAsync(options, command) ⇒ <code>Promise</code>
+## windowControlAsync(options, command, lat, lon) ⇒ <code>Promise</code>
 Window control
 
 **Kind**: global function  

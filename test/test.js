@@ -979,7 +979,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.remoteStart(options, "password", function (err, result) {
+	        tjs.remoteStart(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -991,7 +991,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#remoteStartAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.remoteStartAsync(options, "password").then(function (result) {
+	        return tjs.remoteStartAsync(options).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1609,7 +1609,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#windowControl()', function () {
 	    it('should succeed with "vent"', function (done) {
-	        tjs.windowControl(options, "vent", function (err, result) {
+	        tjs.windowControl(options, "vent", 0, 0, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1619,7 +1619,7 @@ describe('#vehicleByIdAsync()', function () {
 		});
 		
 	    it('should succeed with "close"', function (done) {
-	        tjs.windowControl(options, "vent", function (err, result) {
+	        tjs.windowControl(options, "close", 0, 0, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1629,25 +1629,25 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with "vent" and no callback', function (done) {
-	        tjs.windowControl(options, "vent");
+	        tjs.windowControl(options, "vent", 0, 0);
 	        done();
 	    });
 
 	    it('should succeed with "close" and no callback', function (done) {
-	        tjs.windowControl(options, "close");
+	        tjs.windowControl(options, "close", 0, 0);
 	        done();
 	    });
 	});
 
 	describe('#windowControlAsync()', function () {
 	    it('should succeed with "vent"', function () {
-	        return tjs.windowControlAsync(options, "vent").then(function (result) {
+	        return tjs.windowControlAsync(options, "vent", 0, 0).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
 
 		it('should succeed with "close"', function () {
-	        return tjs.windowControlAsync(options, "close").then(function (result) {
+	        return tjs.windowControlAsync(options, "close", 0, 0).then(function (result) {
 				assert(result.result, true);
 			});
 	    });

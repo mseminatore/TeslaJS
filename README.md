@@ -810,11 +810,9 @@ Usage:
 
 This sample enables remotely starting the vehicle without a key fob present.  
 
->Note that the **password** parameter is **required** in this sample.
-
 Usage:
 
-    node remoteStart.js [options] password
+    node remoteStart.js [options]
 	
 	Options:
 	

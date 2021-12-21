@@ -1385,7 +1385,7 @@ exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
  * @returns {object} result
  */
 exports.windowControl = function windowControl(options, command, lat, lon, callback) {
-    post_command(options, "command/window_control", { "command": command, "lat":lat ?? 0, "lon":lon ?? 0 }, callback);
+    post_command(options, "command/window_control", { "command": command, "lat":lat || 0, "lon":lon || 0 }, callback);
 }
 
 /**

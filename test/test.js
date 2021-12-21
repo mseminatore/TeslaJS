@@ -381,7 +381,7 @@ describe('TeslaJS', function () {
 
 describe('#vehicleByIdAsync()', function () {
     it('should succeed getting the vehicle', function () {
-        return tjs.vehicleById(options).then(function (result) {
+        return tjs.vehicleByIdAsync(options).then(function (result) {
             assert(result.vehicle_id);
         });
     });

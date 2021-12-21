@@ -314,10 +314,10 @@
 <dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
+<dt><a href="#windowControl">windowControl(options, command, lat, lon)</a> ⇒ <code>object</code></dt>
 <dd><p>Window control</p>
 </dd>
-<dt><a href="#windowControlAsync">windowControlAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#windowControlAsync">windowControlAsync(options, command, lat, lon)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Window control</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
@@ -373,10 +373,10 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 </dd>
 <dt><a href="#setTempsAsync">setTempsAsync(options, driver, pass)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#remoteStart">remoteStart(options, password, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#remoteStart">remoteStart(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote start the car</p>
 </dd>
-<dt><a href="#remoteStartAsync">remoteStartAsync(options, password)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#remoteStartAsync">remoteStartAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#openTrunk">openTrunk(options, which, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the trunk/frunk</p>
@@ -1653,7 +1653,7 @@ Max Defrost
 <a name="maxDefrostAsync"></a>
 
 ## maxDefrostAsync(options, onoff) ⇒ <code>Promise</code>
-Remote steering heater
+Remote Defrost
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
@@ -1665,7 +1665,7 @@ Remote steering heater
 
 <a name="windowControl"></a>
 
-## windowControl(options, command) ⇒ <code>object</code>
+## windowControl(options, command, lat, lon) ⇒ <code>object</code>
 Window control
 
 **Kind**: global function  
@@ -1675,10 +1675,12 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="windowControlAsync"></a>
 
-## windowControlAsync(options, command) ⇒ <code>Promise</code>
+## windowControlAsync(options, command, lat, lon) ⇒ <code>Promise</code>
 Window control
 
 **Kind**: global function  
@@ -1688,6 +1690,8 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="setChargeLimit"></a>
 
@@ -1761,6 +1765,101 @@ Set charge limit to 100%
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="setChargingAmps"></a>
+
+## setChargingAmps(options, amps, callback) ⇒ <code>object</code>
+Sets the charge amps limit to a custom value.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | The max amps to use during charging. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setChargingAmpsAsync"></a>
+
+## setChargingAmpsAsync(options, amps) ⇒ <code>Promise</code>
+Sets the charge amps limit to a custom value.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | The max amps to use during charging. |
+
+<a name="setScheduledCharging"></a>
+
+## setScheduledCharging(options, enable, time, callback) ⇒ <code>object</code>
+Set the scheduled charging time.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| time | <code>int</code> | time in minutes since midnight local time. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledChargingAsync"></a>
+
+## setScheduledChargingAsync(options, enable, time) ⇒ <code>Promise</code>
+Set the scheduled charging time.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off. |
+| time | <code>int</code> | time in minutes since midnight local time. |
+
+<a name="setScheduledDeparture"></a>
+
+## setScheduledDeparture(options, enable, departure_time, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) ⇒ <code>object</code>
+Set the scheduled departure.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true if (preconditioning_enabled or off_peak_charging_enabled), false otherwise (this condition may change in the future). |
+| departure_time | <code>int</code> | time in minutes since midnight local time. |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight local time. |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledDepartureAsync"></a>
+
+## setScheduledDepartureAsync(options, enable, departure_time, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time) ⇒ <code>Promise</code>
+Set the scheduled departure.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true if (preconditioning_enabled or off_peak_charging_enabled), false otherwise (this condition may change in the future). |
+| departure_time | <code>int</code> | time in minutes since midnight local time. |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off. |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off. |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off. |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight local time. |
 
 <a name="doorLock"></a>
 
@@ -1933,7 +2032,7 @@ Set the driver/passenger climate temperatures
 
 <a name="remoteStart"></a>
 
-## remoteStart(options, password, callback) ⇒ <code>object</code>
+## remoteStart(options, callback) ⇒ <code>object</code>
 Remote start the car
 
 **Kind**: global function  
@@ -1942,19 +2041,17 @@ Remote start the car
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="remoteStartAsync"></a>
 
-## remoteStartAsync(options, password) ⇒ <code>Promise</code>
+## remoteStartAsync(options) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 
 <a name="openTrunk"></a>
 

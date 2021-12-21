@@ -1,37 +1,24 @@
 {
-  "name": "teslajs",
-  "version": "4.9.11",
-  "description": "Full-featured Tesla REST API NodeJS package",
+  "author": {
+    "name": "Mark Seminatore",
+    "url": "https://github.com/mseminatore/TeslaJS"
+  },
+  "bugs": {
+    "url": "https://github.com/GaPhi/TeslaJS/issues"
+  },
+  "bundleDependencies": [],
+  "contributors": [
+    {
+      "name": "Philippe Gressé-Lugué"
+    }
+  ],
   "dependencies": {
     "promise": "^8.0.3",
     "request": "^2.88.2",
     "ws": "^8.0.0"
   },
-  "bugs": {
-    "url": "https://github.com/mseminatore/TeslaJS/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mseminatore/TeslaJS.git"
-  },
-  "main": "teslajs.js",
-  "scripts": {
-    "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
-    "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
-    "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js"
-  },
-  "keywords": [
-    "Tesla",
-    "Model S",
-    "Model X",
-    "Model 3",
-    "REST"
-  ],
-  "author": {
-    "name": "Mark Seminatore",
-    "url": "https://github.com/mseminatore/TeslaJS"
-  },
-  "license": "MIT",
+  "deprecated": false,
+  "description": "Full-featured Tesla REST API NodeJS package",
   "devDependencies": {
     "colors": "^1.4.0",
     "commander": "^8.0.0",
@@ -41,5 +28,30 @@
     "jshint": "^2.13.0",
     "mocha": "^9.0.0",
     "sepia": "^2.0.2"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "homepage": "https://github.com/GaPhi/TeslaJS#readme",
+  "keywords": [
+    "Tesla",
+    "Model S",
+    "Model X",
+    "Model 3",
+    "REST"
+  ],
+  "license": "MIT",
+  "main": "teslajs.js",
+  "name": "@gaphi/teslajs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaPhi/TeslaJS.git"
+  },
+  "scripts": {
+    "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
+    "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
+    "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose"
+  },
+  "version": "4.9.12-4"
 }

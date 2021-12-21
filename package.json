@@ -4,14 +4,9 @@
     "url": "https://github.com/mseminatore/TeslaJS"
   },
   "bugs": {
-    "url": "https://github.com/GaPhi/TeslaJS/issues"
+    "url": "https://github.com/mseminatore/TeslaJS/issues"
   },
   "bundleDependencies": [],
-  "contributors": [
-    {
-      "name": "Philippe Gress�-Lugu�"
-    }
-  ],
   "dependencies": {
     "promise": "^8.0.3",
     "request": "^2.88.2",
@@ -33,7 +28,7 @@
     "doc": "docs",
     "test": "test"
   },
-  "homepage": "https://github.com/GaPhi/TeslaJS#readme",
+  "homepage": "https://www.teslajs.org",
   "keywords": [
     "Tesla",
     "Model S",
@@ -43,10 +38,10 @@
   ],
   "license": "MIT",
   "main": "teslajs.js",
-  "name": "@gaphi/teslajs",
+  "name": "teslajs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GaPhi/TeslaJS.git"
+    "url": "https://github.com/mseminatore/TeslaJS.git"
   },
   "scripts": {
     "minify": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",

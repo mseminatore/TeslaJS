@@ -2,6 +2,9 @@
 
 Note that missing version entries are typically dependency updates for security.
 
+## V4.10.0
+* merged several pull requests for new endpoints, remove password from remote start, bug fixes and added `vehicleById()`
+
 ## V4.9.8
 * Updated for latest changes to Tesla auth flow
 

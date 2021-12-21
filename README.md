@@ -50,11 +50,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **V4.9.8** updated for latest changes to Tesla auth flow
-2. In **V4.9.4** fixed #210 streaming update to oauth
-3. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
-4. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
-5. In **V4.8.1** merge PR to fix #92 homelink issue
+1. In **V4.10.0** merged #275 to fix #273, added new endpoints, bug fixes
+2. In **V4.9.8** updated for latest changes to Tesla auth flow
+3. In **V4.9.4** fixed #210 streaming update to oauth
+4. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
+5. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
 
 ## Migrating Major Version Changes
 

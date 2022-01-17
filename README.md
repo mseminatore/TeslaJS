@@ -9,6 +9,8 @@
 
 ## An unofficial NodeJS library that encapsulates the Tesla RESTful API.
 
+> Note: If you are planning to purchase a Tesla you can get 1,000 miles of free supercharging using this referral [link](http://ts.la/mark5257).
+
 ### This library currently supports all existing Tesla vehicles.
 
 First, it is important to acknowledge that there are already several very 
@@ -48,11 +50,11 @@ You can read the complete history of changes in the
 
 Here are some of the more recent features and fixes:
 
-1. In **V4.9.4** fixed #210 streaming update to oauth
-2. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
-3. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
-4. In **V4.8.1** merge PR to fix #92 homelink issue
-5. In **4.8.0** added Solar API's
+1. In **V4.10.0** merged #275 to fix #273, added new endpoints, bug fixes
+2. In **V4.9.8** updated for latest changes to Tesla auth flow
+3. In **V4.9.4** fixed #210 streaming update to oauth
+4. In **V4.9.3** fixed #188 incorrect VIN for post 2018 cars
+5. In **V4.9.2** merged PR #191 added exports.promises object avoiding Async suffixes
 
 ## Migrating Major Version Changes
 
@@ -294,6 +296,7 @@ setPortalBaseURI() | sets the server for testing, pass null to reset
 login() | authenticate with Tesla servers and retrieve the OAuth token
 logout() | delete the current OAuth token
 vehicle() | return information on the requested vehicle defined by `carIndex` in `options`
+vehicleById() | return information on the requested vehicle defined by `vehicleID` in `options`
 vehicles() | return information and option data for all vehicles
 getModel(vehicle) | returns the Tesla model as a string from vehicle object
 getPaintColor(vehicle) | returns the paint color as a string from vehicle object
@@ -807,11 +810,9 @@ Usage:
 
 This sample enables remotely starting the vehicle without a key fob present.  
 
->Note that the **password** parameter is **required** in this sample.
-
 Usage:
 
-    node remoteStart.js [options] password
+    node remoteStart.js [options]
 	
 	Options:
 	

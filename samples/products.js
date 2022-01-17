@@ -20,6 +20,7 @@ program
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-p, --password [string]', 'password (needed only if token not cached)')
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
+  .option('-v, --verbose', 'show detailed results')
   .parse(process.argv);
 
 //
@@ -31,7 +32,10 @@ sample.run();
 //
 function sampleMain(tjs, options) {
     tjs.productsAsync(options).then( function(products) {
-        console.log("\nOwned Tesla products returned:\n");
-        console.log(products);
+        console.log("\nTesla products returned: " + products.length + "\n");
+
+        if (program.verbose) {
+          console.log(products);
+        }
     });
 }

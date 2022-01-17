@@ -17,7 +17,7 @@ var framework = require('./sampleFramework.js');
 //
 //
 program
-  .usage('[options] password')
+  .usage('[options]')
   .option('-u, --username [string]', 'username (needed only if token not cached)')
   .option('-i, --index <n>', 'vehicle index (first car by default)', parseInt)
   .option('-U, --uri [string]', 'URI of test server (e.g. http://127.0.0.1:3000)')
@@ -32,13 +32,7 @@ sample.run();
 //
 function sampleMain(tjs, options) {
 
-    var password = program.args[0]
-
-    if (!password) {
-        program.help();
-    }
-
-    tjs.remoteStart(options, password, function (err, result) {
+    tjs.remoteStart(options, function (err, result) {
         if (err) {
             console.log(err);
             return;

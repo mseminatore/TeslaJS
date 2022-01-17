@@ -18,7 +18,7 @@ function failure(msg) {
 }
 
 describe('TeslaJS', function () {
-	var options = {authToken: "abc123", vehicleID: "1234", vehicle_id: "1", token: "1", username: user, password: pass};
+	var options = {authToken: "abc123", vehicleID: "1234567890", vehicle_id: "1", token: "1", username: user, password: pass};
     this.timeout(7500);
 
     describe('#getStreamingBaseURI()', function () {
@@ -215,77 +215,77 @@ describe('TeslaJS', function () {
         });
 	});
 
-	describe('#login()', function() {
-	    it('should succeed with valid user and pwd', function (done) {
-			tjs.login(user, pass, function(err, result) {
-				if (result.response.statusCode == 200) {
-				    options.authToken = result.authToken;
-                    done();
-				} else {
-				    done(result.response.statusMessage);
-				}
-			});
-		});
+	// describe('#login()', function() {
+	//     it('should succeed with valid user and pwd', function (done) {
+	// 		tjs.login(user, pass, function(err, result) {
+	// 			if (result.response.statusCode == 200) {
+	// 			    options.authToken = result.authToken;
+    //                 done();
+	// 			} else {
+	// 			    done(result.response.statusMessage);
+	// 			}
+	// 		});
+	// 	});
 
-	    it('should succeed with valid user and pwd and no callback', function (done) {
-	        tjs.login(user, pass);
-	        done();
-	    });
+	//     it('should succeed with valid user and pwd and no callback', function (done) {
+	//         tjs.login(user, pass);
+	//         done();
+	//     });
 
-	    it('should fail with invalid user or pwd', function (done) {
-	        tjs.login(null, null, function(err, result){
-				if (err) {
-			        done();
-				} else {
-					done(result);
-				}
-			});
-	    });
-	});
+	//     it('should fail with invalid user or pwd', function (done) {
+	//         tjs.login(null, null, function(err, result){
+	// 			if (err) {
+	// 		        done();
+	// 			} else {
+	// 				done(result);
+	// 			}
+	// 		});
+	//     });
+	// });
 
-	describe('#loginAsync()', function () {
-	    it('should succeed with valid user and pwd', function () {
-	        return tjs.loginAsync(user, pass).then(function (result) {
-	            assert.strictEqual(result.response.statusCode, 200);
-	        });
-	    });
-	});
+	// describe('#loginAsync()', function () {
+	//     it('should succeed with valid user and pwd', function () {
+	//         return tjs.loginAsync(user, pass).then(function (result) {
+	//             assert.strictEqual(result.response.statusCode, 200);
+	//         });
+	//     });
+	// });
 
-	describe('#refreshToken()', function() {
-	    it('should succeed with valid refresh token', function (done) {
-			tjs.refreshToken("faketoken", function(err, result) {
-				if (result.response.statusCode == 200) {
-				    options.authToken = result.authToken;
-                    done();
-				} else {
-				    done(result.response.statusMessage);
-				}
-			});
-		});
+	// describe('#refreshToken()', function() {
+	//     it('should succeed with valid refresh token', function (done) {
+	// 		tjs.refreshToken("faketoken", function(err, result) {
+	// 			if (result.response.statusCode == 200) {
+	// 			    options.authToken = result.authToken;
+    //                 done();
+	// 			} else {
+	// 			    done(result.response.statusMessage);
+	// 			}
+	// 		});
+	// 	});
 
-	    it('should succeed with valid refresh token and no callback', function (done) {
-	        tjs.refreshToken("faketoken");
-	        done();
-	    });
+	//     it('should succeed with valid refresh token and no callback', function (done) {
+	//         tjs.refreshToken("faketoken");
+	//         done();
+	//     });
 
-	    it('should fail with missing refresh token', function (done) {
-	        tjs.refreshToken(null, function(err, result){
-				if (err) {
-			        done();
-				} else {
-					done(result);
-				}
-			});
-	    });
-	});
+	//     it('should fail with missing refresh token', function (done) {
+	//         tjs.refreshToken(null, function(err, result){
+	// 			if (err) {
+	// 		        done();
+	// 			} else {
+	// 				done(result);
+	// 			}
+	// 		});
+	//     });
+	// });
 
-	describe('#refreshTokenAsync()', function () {
-	    it('should succeed with valid user and pwd', function () {
-	        return tjs.refreshTokenAsync("faketoken").then(function (result) {
-	            assert.strictEqual(result.response.statusCode, 200);
-	        });
-	    });
-	});
+	// describe('#refreshTokenAsync()', function () {
+	//     it('should succeed with valid user and pwd', function () {
+	//         return tjs.refreshTokenAsync("faketoken").then(function (result) {
+	//             assert.strictEqual(result.response.statusCode, 200);
+	//         });
+	//     });
+	// });
 
 	describe('#logout()', function () {
 	    it('should succeed', function (done) {
@@ -362,6 +362,31 @@ describe('TeslaJS', function () {
 	    });
 	});
 
+  describe('#vehicleById()', function () {
+    it('should succeed getting the vehicle', function (done) {
+        tjs.vehicleById(options, function (err, vehicle) {
+            if (vehicle.vehicle_id) {
+                done();
+            } else {
+                done(vehicle.response.statusMessage);
+            }
+        });
+    });
+
+    it('should succeed with no callback', function (done) {
+        tjs.vehicleById(options);
+        done();
+    });
+});
+
+describe('#vehicleByIdAsync()', function () {
+    it('should succeed getting the vehicle', function () {
+        return tjs.vehicleByIdAsync(options).then(function (result) {
+            assert(result.vehicle_id);
+        });
+    });
+});
+
 	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
 	        tjs.vehicles(options, function (err, vehicles) {
@@ -386,6 +411,31 @@ describe('TeslaJS', function () {
 	        });
 	    });
 	});
+
+    describe('#vehicleById()', function () {
+        it('should succeed getting the vehicle', function (done) {
+            tjs.vehicleById(options, function (err, vehicle) {
+                if (vehicle.vehicle_id) {
+                    done();
+                } else {
+                    done(vehicle.response.statusMessage);
+                }
+            });
+        });
+
+        it('should succeed with no callback', function (done) {
+            tjs.vehicleById(options);
+            done();
+        });
+    });
+
+    describe('#vehicleByIdAsync()', function () {
+        it('should succeed getting the vehicle', function () {
+            return tjs.vehicleByIdAsync(options).then(function (result) {
+                assert(result.vehicle_id);
+            });
+        });
+    });
 
     describe('#vehicleConfig()', function () {
         it('should return vehicle config', function (done) {
@@ -954,7 +1004,7 @@ describe('TeslaJS', function () {
 
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.remoteStart(options, "password", function (err, result) {
+	        tjs.remoteStart(options, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -966,7 +1016,7 @@ describe('TeslaJS', function () {
 
 	describe('#remoteStartAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.remoteStartAsync(options, "password").then(function (result) {
+	        return tjs.remoteStartAsync(options).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1584,7 +1634,7 @@ describe('TeslaJS', function () {
 
 	describe('#windowControl()', function () {
 	    it('should succeed with "vent"', function (done) {
-	        tjs.windowControl(options, "vent", function (err, result) {
+	        tjs.windowControl(options, "vent", 0, 0, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1594,7 +1644,7 @@ describe('TeslaJS', function () {
 		});
 		
 	    it('should succeed with "close"', function (done) {
-	        tjs.windowControl(options, "vent", function (err, result) {
+	        tjs.windowControl(options, "close", 0, 0, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1604,25 +1654,25 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with "vent" and no callback', function (done) {
-	        tjs.windowControl(options, "vent");
+	        tjs.windowControl(options, "vent", 0, 0);
 	        done();
 	    });
 
 	    it('should succeed with "close" and no callback', function (done) {
-	        tjs.windowControl(options, "close");
+	        tjs.windowControl(options, "close", 0, 0);
 	        done();
 	    });
 	});
 
 	describe('#windowControlAsync()', function () {
 	    it('should succeed with "vent"', function () {
-	        return tjs.windowControlAsync(options, "vent").then(function (result) {
+	        return tjs.windowControlAsync(options, "vent", 0, 0).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
 
 		it('should succeed with "close"', function () {
-	        return tjs.windowControlAsync(options, "close").then(function (result) {
+	        return tjs.windowControlAsync(options, "close", 0, 0).then(function (result) {
 				assert(result.result, true);
 			});
 	    });

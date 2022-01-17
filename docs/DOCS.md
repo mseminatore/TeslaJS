@@ -81,10 +81,10 @@
 <dt><a href="#getShortVin">getShortVin(vehicle)</a> ⇒ <code>string</code></dt>
 <dd><p>Return the vehicle VIN from vehicle JSON information</p>
 </dd>
-<dt><a href="#login">login(username, password, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#login">login(credentials, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
-<dt><a href="#loginAsync">loginAsync(username, password)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#loginAsync">loginAsync(credentials)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Login to the server and receive OAuth tokens</p>
 </dd>
 <dt><a href="#refreshToken">refreshToken(refresh_token, callback)</a> ⇒ <code>object</code></dt>
@@ -104,6 +104,14 @@
 </dd>
 <dt><a href="#vehicleAsync">vehicleAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
+</dd>
+<dt><a href="#vehicleById">vehicleById(options, callback)</a> ⇒ <code>Vehicle</code></dt>
+<dd><p>Return vehicle information on the requested vehicle. Uses options.vehicleID
+to determine which vehicle to fetch data for.</p>
+</dd>
+<dt><a href="#vehicleByIdAsync">vehicleByIdAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Return vehicle information on the requested vehicle. Uses options.vehicleID
+to determine which vehicle to fetch data for.</p>
 </dd>
 <dt><a href="#vehicles">vehicles(options, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
@@ -314,10 +322,10 @@
 <dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#windowControl">windowControl(options, command)</a> ⇒ <code>object</code></dt>
+<dt><a href="#windowControl">windowControl(options, command, lat, lon)</a> ⇒ <code>object</code></dt>
 <dd><p>Window control</p>
 </dd>
-<dt><a href="#windowControlAsync">windowControlAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#windowControlAsync">windowControlAsync(options, command, lat, lon)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Window control</p>
 </dd>
 <dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
@@ -338,6 +346,24 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 </dd>
 <dt><a href="#chargeMaxRangeAsync">chargeMaxRangeAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
+<dt><a href="#setChargingAmps">setChargingAmps(options, amps, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>Set the charging amps.</p>
+</dd>
+<dt><a href="#setChargingAmpsAsync">setChargingAmpsAsync(options, amps)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Set the charging amps async and return Promise.</p>
+</dd>
+<dt><a href="#setScheduledCharging">setScheduledCharging(options, enable, time, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>Set the scheduled charging time.</p>
+</dd>
+<dt><a href="#setScheduledCharging">setScheduledCharging(options, enable, time)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Set the scheduled charging time async and return Promise.</p>
+</dd>
+<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback)</a> ⇒ <code>object</code></dt>
+<dd><p>Set the scheduled departure.</p>
+</dd>
+<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time)</a> ⇒ <code>Promise</code></dt>
+<dd><p>Set the scheduled departure async and return Promise.</p>
+</dd>
 <dt><a href="#doorLock">doorLock(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Lock the car doors</p>
 </dd>
@@ -373,10 +399,10 @@ Note: charging to 100% frequently is NOT recommended for long-term battery healt
 </dd>
 <dt><a href="#setTempsAsync">setTempsAsync(options, driver, pass)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#remoteStart">remoteStart(options, password, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#remoteStart">remoteStart(options, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote start the car</p>
 </dd>
-<dt><a href="#remoteStartAsync">remoteStartAsync(options, password)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#remoteStartAsync">remoteStartAsync(options)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#openTrunk">openTrunk(options, which, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the trunk/frunk</p>
@@ -660,7 +686,7 @@ Return the vehicle VIN from vehicle JSON information
 
 <a name="login"></a>
 
-## login(username, password, callback) ⇒ <code>object</code>
+## login(credentials, callback) ⇒ <code>object</code>
 Login to the server and receive OAuth tokens
 
 **Kind**: global function  
@@ -668,13 +694,16 @@ Login to the server and receive OAuth tokens
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>string</code> | Tesla.com username |
-| password | <code>string</code> | Tesla.com password |
+| credentials | <code>Object</code> | object of Tesla credentials |
+| credentials.username | <code>string</code> | email address used on Tesla.com |
+| credentials.password | <code>string</code> | password used on Tesla.command |
+| credentials.mfaPassCode | <code>string</code> | MFA password |
+| credentials.mfaDeviceName | <code>string</code> | MFA device name |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="loginAsync"></a>
 
-## loginAsync(username, password) ⇒ <code>Promise</code>
+## loginAsync(credentials) ⇒ <code>Promise</code>
 Login to the server and receive OAuth tokens
 
 **Kind**: global function  
@@ -682,8 +711,11 @@ Login to the server and receive OAuth tokens
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username | <code>string</code> | Tesla.com username |
-| password | <code>string</code> | Tesla.com password |
+| credentials | <code>Object</code> | object of Tesla credentials |
+| credentials.username | <code>string</code> | email address used on Tesla.com |
+| credentials.password | <code>string</code> | password used on Tesla.command |
+| credentials.mfaPassCode | <code>string</code> | MFA password |
+| credentials.mfaDeviceName | <code>string</code> | MFA device name |
 
 <a name="refreshToken"></a>
 
@@ -751,6 +783,31 @@ Return vehicle information on the requested vehicle
 
 ## vehicleAsync(options) ⇒ <code>Promise</code>
 Return vehicle information on the requested vehicle
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="vehicleById"></a>
+
+## vehicleById(options, callback) ⇒ <code>Vehicle</code>
+Return vehicle information on the requested vehicle. Uses options.vehicleIDto determine which vehicle to fetch data for.
+
+**Kind**: global function  
+**Returns**: <code>Vehicle</code> - vehicle JSON data  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="vehicleByIdAsync"></a>
+
+## vehicleByIdAsync(options) ⇒ <code>Promise</code>
+Return vehicle information on the requested vehicle. Uses options.vehicleIDto determine which vehicle to fetch data for.
 
 **Kind**: global function  
 **Returns**: <code>Promise</code> - vehicle JSON data  
@@ -1659,7 +1716,7 @@ Remote steering heater
 
 <a name="windowControl"></a>
 
-## windowControl(options, command) ⇒ <code>object</code>
+## windowControl(options, command, lat, lon) ⇒ <code>object</code>
 Window control
 
 **Kind**: global function  
@@ -1669,10 +1726,12 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="windowControlAsync"></a>
 
-## windowControlAsync(options, command) ⇒ <code>Promise</code>
+## windowControlAsync(options, command, lat, lon) ⇒ <code>Promise</code>
 Window control
 
 **Kind**: global function  
@@ -1682,6 +1741,8 @@ Window control
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
 | command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="setChargeLimit"></a>
 
@@ -1755,6 +1816,101 @@ Set charge limit to 100%
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+
+<a name="setChargingAmps"></a>
+
+## setChargingAmps(options, amps, callback) ⇒ <code>object</code>
+Set the charging amps.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | charging amps |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setChargingAmpsAsync"></a>
+
+## setChargingAmpsAsync(options, amps) ⇒ <code>Promise</code>
+Set the charging amps async and return Promise.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| amps | <code>int</code> | charging amps |
+
+<a name="setScheduledCharging"></a>
+
+## setScheduledCharging(options, enable, time, callback) ⇒ <code>object</code>
+Set the scheduled charging time.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off |
+| time | <code>int</code> | time in minutes since midnight, 15min step |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledCharging"></a>
+
+## setScheduledCharging(options, enable, time) ⇒ <code>Promise</code>
+Set the scheduled charging time async and return Promise.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true for on, false for off |
+| time | <code>int</code> | time in minutes since midnight, 15min step |
+
+<a name="setScheduledDeparture"></a>
+
+## setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) ⇒ <code>object</code>
+Set the scheduled departure.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
+| departure_time | <code>int</code> | time in minutes since midnight, 15min step |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
+
+<a name="setScheduledDeparture"></a>
+
+## setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time) ⇒ <code>Promise</code>
+Set the scheduled departure async and return Promise.
+
+**Kind**: global function  
+**Returns**: <code>Promise</code> - result  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
+| departure_time | <code>int</code> | time in minutes since midnight, 15min step |
+| preconditioning_enabled | <code>boolean</code> | true for on, false for off |
+| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
+| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
+| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
+| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
 
 <a name="doorLock"></a>
 
@@ -1927,7 +2083,7 @@ Set the driver/passenger climate temperatures
 
 <a name="remoteStart"></a>
 
-## remoteStart(options, password, callback) ⇒ <code>object</code>
+## remoteStart(options, callback) ⇒ <code>object</code>
 Remote start the car
 
 **Kind**: global function  
@@ -1936,19 +2092,17 @@ Remote start the car
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="remoteStartAsync"></a>
 
-## remoteStartAsync(options, password) ⇒ <code>Promise</code>
+## remoteStartAsync(options) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| password | <code>string</code> | Tesla.com password |
 
 <a name="openTrunk"></a>
 

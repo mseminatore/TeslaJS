@@ -338,7 +338,12 @@ exports.getShortVin = function getShortVin(vehicle) {
 
 /**
  * Login to the server and receive OAuth tokens
- * @param {{username: string, password: string, mfaPassCode?: string, mfaDeviceName?: string}} credentials - Object of Tesla credentials
+ * @function login
+ * @param {Object} credentials - object of Tesla credentials
+ * @param {string} credentials.username - email address used on Tesla.com
+ * @param {string} credentials.password - password used on Tesla.command
+ * @param {string} credentials.mfaPassCode - MFA password
+ * @param {string} credentials.mfaDeviceName - MFA device name
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} {response, body, authToken, refreshToken}
  */
@@ -374,8 +379,11 @@ exports.login = function login(credentials, callback) {
 /**
  * Login to the server and receive OAuth tokens
  * @function loginAsync
- * @param {string} username - Tesla.com username
- * @param {string} password - Tesla.com password
+ * @param {Object} credentials - object of Tesla credentials
+ * @param {string} credentials.username - email address used on Tesla.com
+ * @param {string} credentials.password - password used on Tesla.command
+ * @param {string} credentials.mfaPassCode - MFA password
+ * @param {string} credentials.mfaDeviceName - MFA device name
  * @returns {Promise} {response, body, authToken, refreshToken}
  */
 exports.loginAsync = Promise.denodeify(exports.login);
@@ -500,6 +508,62 @@ exports.vehicle = function vehicle(options, callback) {
  * @returns {Promise} vehicle JSON data
  */
 exports.vehicleAsync = Promise.denodeify(exports.vehicle);
+
+/**
+ * Return vehicle information on the requested vehicle. Uses options.vehicleID
+ * to determine which vehicle to fetch data for.
+ * @function vehicleById
+ * @param {optionsType} options - options object
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Vehicle} vehicle JSON data
+ */
+ exports.vehicleById = function vehicle(options, callback) {
+  log(API_CALL_LEVEL, "TeslaJS.vehicleById()");
+
+  callback = callback || function (err, vehicle) { /* do nothing! */ }
+
+  var req = {
+      method: 'GET',
+      url: portalBaseURI + '/api/1/vehicles/' + options.vehicleID,
+      headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+  };
+
+  log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+  request(req, function (error, response, body) {
+      if (error) {
+          log(API_ERR_LEVEL, error);
+          return callback(error, null);
+      }
+
+      if (response.statusCode != 200) {
+          return callback(response.statusMessage, null);
+      }
+
+      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+      try {
+        body = body.response;
+        
+        callback(null, body);
+    } catch (e) {
+        log(API_ERR_LEVEL, 'Error parsing vehicle response');
+        callback(e, null);
+    }
+
+      log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles/" + options.vehicleID + " completed.");
+  });
+}
+
+/**
+* Return vehicle information on the requested vehicle. Uses options.vehicleID
+* to determine which vehicle to fetch data for.
+* @function vehicleByIdAsync
+* @param {optionsType} options - options object
+* @returns {Promise} vehicle JSON data
+*/
+exports.vehicleByIdAsync = Promise.denodeify(exports.vehicleById);
 
 /**
  * Return vehicle information on ALL vehicles
@@ -1288,7 +1352,7 @@ exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
  * @param {boolean} onoff - true for on, false for off
  * @returns {object} result
  */
-exports.maxDefrost = function steeringHeater(options, onoff, callback) {
+exports.maxDefrost = function maxDefrost(options, onoff, callback) {
     post_command(options, "command/set_preconditioning_max", { "on": onoff }, callback);
 }
 
@@ -1306,10 +1370,12 @@ exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
  * @function windowControl
  * @param {optionsType} options - options object
  * @param {string} command - Allowable values are 'vent' and 'close'
+ * @param {number} lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} lon - User longitude (can be 0 if not 'close' command)
  * @returns {object} result
  */
-exports.windowControl = function windowControl(options, command, callback) {
-    post_command(options, "command/window_control", { "command": command, "lat":0, "lon":0 }, callback);
+exports.windowControl = function windowControl(options, command, lat, lon, callback) {
+    post_command(options, "command/window_control", { "command": command, "lat":lat || 0, "lon":lon || 0 }, callback);
 }
 
 /**
@@ -1317,6 +1383,8 @@ exports.windowControl = function windowControl(options, command, callback) {
  * @function windowControlAsync
  * @param {optionsType} options - options object
  * @param {string} command - Allowable values are 'vent' and 'close'
+ * @param {number} lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} lon - User longitude (can be 0 if not 'close' command)
  * @returns {Promise} result
  */
 exports.windowControlAsync = Promise.denodeify(exports.windowControl);
@@ -1401,6 +1469,87 @@ exports.chargeMaxRange = function chargeMaxRange(options, callback) {
  * @returns {Promise} result
  */
 exports.chargeMaxRangeAsync = Promise.denodeify(exports.chargeMaxRange);
+
+/**
+ * Set the charging amps.
+ * @param {optionsType} options - options object
+ * @param {int} amps - charging amps
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setChargingAmps = function setChargingAmps(options, amps, callback) {
+    post_command(options, "command/set_charging_amps", { charging_amps: amps }, callback);
+}
+
+/**
+ * Set the charging amps async and return Promise.
+ * @function setChargingAmpsAsync
+ * @param {optionsType} options - options object
+ * @param {int} amps - charging amps
+ * @returns {Promise} result
+ */
+exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
+
+/**
+ * Set the scheduled charging time.
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} time - time in minutes since midnight, 15min step
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setScheduledCharging = function setScheduledCharging(options, enable, time, callback) {
+    post_command(options, "command/set_scheduled_charging", { enable: enable, time: time }, callback);
+}
+
+/**
+ * Set the scheduled charging time async and return Promise.
+ * @function setScheduledCharging
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true for on, false for off
+ * @param {int} time - time in minutes since midnight, 15min step
+ * @returns {Promise} result
+ */
+exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledCharging);
+
+/**
+ * Set the scheduled departure.
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
+ * @param {int} departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} preconditioning_enabled - true for on, false for off
+ * @param {boolean} preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} result
+ */
+exports.setScheduledDeparture = function setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) {
+    post_command(options, "command/set_scheduled_departure", {
+	    "enable":enable,
+	    "departure_time":departure_time,
+	    "preconditioning_enabled":preconditioning_enabled,
+	    "preconditioning_weekdays_only":preconditioning_weekdays_only,
+	    "off_peak_charging_enabled":off_peak_charging_enabled,
+	    "off_peak_charging_weekdays_only":off_peak_charging_weekdays_only,
+	    "end_off_peak_time":end_off_peak_time }, callback);
+}
+
+/**
+ * Set the scheduled departure async and return Promise.
+ * @function setScheduledDeparture
+ * @param {optionsType} options - options object
+ * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
+ * @param {int} departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} preconditioning_enabled - true for on, false for off
+ * @param {boolean} preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @returns {Promise} result
+ */
+exports.setScheduledDepartureAsync = Promise.denodeify(exports.setScheduledDeparture);
 
 /**
  * Lock the car doors
@@ -1569,18 +1718,16 @@ exports.setTempsAsync = Promise.denodeify(exports.setTemps);
 /**
  * Remote start the car
  * @param {optionsType} options - options object
- * @param {string} password - Tesla.com password
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.remoteStart = function remoteStartDrive(options, password, callback) {
-    post_command(options, "command/remote_start_drive", { "password": password }, callback);
+exports.remoteStart = function remoteStartDrive(options, callback) {
+    post_command(options, "command/remote_start_drive", null, callback);
 }
 
 /**
  * @function remoteStartAsync
  * @param {optionsType} options - options object
- * @param {string} password - Tesla.com password
  * @returns {Promise} result
  */
 exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);

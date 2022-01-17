@@ -409,7 +409,12 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        if (error) {
+            callback(error)
+        }
+        else {
+            callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        }
 
         log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
     });

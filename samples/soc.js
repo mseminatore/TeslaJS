@@ -35,7 +35,7 @@ function milesToKms(miles){
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleDataAsync(options).then( function(vehicleData) {        
+    tjs.vehicleDataAsync(options, null, null).then( function(vehicleData) {        
         // get the charge state info from the vehicle data
         var chargeState = vehicleData.charge_state;
         

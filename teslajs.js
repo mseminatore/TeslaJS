@@ -756,8 +756,10 @@ exports.post_commandAsync = Promise.denodeify(exports.post_command);
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} vehicle_data object
  */
-exports.vehicleData = function vehicleData(options, callback){
-    get_command(options, "vehicle_data", callback);
+exports.vehicleData = function vehicleData(options, endpoints, let_sleep, callback){
+    endpoints = endpoints ?? "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config"
+    let_sleep = (let_sleep !== false)
+    get_command(options, `vehicle_data?endpoints=${endpoints}&let_sleep=${let_sleep}`, callback);
 }
 
 /**

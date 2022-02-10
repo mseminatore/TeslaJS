@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleData(options, function (err, data) {
+    tjs.vehicleData(options, null, null, function (err, data) {
         if (data.drive_state) {
             var latitude = data.drive_state.latitude || 0;
             var longitude = data.drive_state.longitude || 0;

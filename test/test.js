@@ -314,7 +314,7 @@ describe('TeslaJS', function () {
 
 	describe('#vehicleData()', function () {
 	    it('should succeed returning vehicle data', function (done) {
-	        tjs.vehicleData(options, function (err, vehicle) {
+	        tjs.vehicleData(options, null, null, function (err, vehicle) {
 	            if (vehicle.vehicle_id) {
 	                done();
 	            } else {
@@ -324,14 +324,14 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicleData(options);
+	        tjs.vehicleData(options, null, null);
 	        done();
 	    });
 	});
 
 	describe('#vehicleDataAsync()', function () {
 	    it('should succeed returning vehicle data', function () {
-	        return tjs.vehicleDataAsync(options).then(function (result) {
+	        return tjs.vehicleDataAsync(options, null, null).then(function (result) {
 	            assert(result.vehicle_id);
 	        });
 	    });

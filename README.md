@@ -261,7 +261,7 @@ And using the Async Promise-based calls:
 Or using the Async version of the `vehicleData()` API call:
 
 ```javascript
-    tjs.vehicleDataAsync(options).done(function(vehicleData) {
+    tjs.vehicleDataAsync(options, null, null).done(function(vehicleData) {
         var chargeState = vehicleData.charge_state;
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });

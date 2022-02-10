@@ -131,10 +131,10 @@ to determine which vehicle to fetch data for.</p>
 <dt><a href="#post_commandAsync">post_commandAsync(options, command, body)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Generic Async REST call for POST commands</p>
 </dd>
-<dt><a href="#vehicleData">vehicleData(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#vehicleData">vehicleData(options, endpoints, let_sleep, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET all vehicle data in a single call</p>
 </dd>
-<dt><a href="#vehicleDataAsync">vehicleDataAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleDataAsync">vehicleDataAsync(options, endpoints, let_sleep)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Async version to GET all vehicle data in a single call</p>
 </dd>
 <dt><a href="#vehicleConfig">vehicleConfig(options, callback)</a> ⇒ <code>object</code></dt>
@@ -907,6 +907,8 @@ GET all vehicle data in a single call
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| endpoints | Endpoints to query | Defaults to "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config" |
+| let_sleep | The call shall let the car sleep if it wants to | Defaults to true |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="vehicleDataAsync"></a>
@@ -920,6 +922,8 @@ Async version to GET all vehicle data in a single call
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| endpoints | Endpoints to query | Defaults to "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config" |
+| let_sleep | The call shall let the car sleep if it wants to | Defaults to true |
 
 <a name="vehicleConfig"></a>
 

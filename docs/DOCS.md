@@ -99,343 +99,343 @@
 <dt><a href="#logoutAsync">logoutAsync(authToken)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Logout and invalidate the current auth token</p>
 </dd>
-<dt><a href="#vehicle">vehicle(options, callback)</a> ⇒ <code>Vehicle</code></dt>
+<dt><a href="#vehicle">vehicle(options, args, callback)</a> ⇒ <code>Vehicle</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
 </dd>
-<dt><a href="#vehicleAsync">vehicleAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleAsync">vehicleAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on the requested vehicle</p>
 </dd>
-<dt><a href="#vehicleById">vehicleById(options, callback)</a> ⇒ <code>Vehicle</code></dt>
+<dt><a href="#vehicleById">vehicleById(options, args, callback)</a> ⇒ <code>Vehicle</code></dt>
 <dd><p>Return vehicle information on the requested vehicle. Uses options.vehicleID
 to determine which vehicle to fetch data for.</p>
 </dd>
-<dt><a href="#vehicleByIdAsync">vehicleByIdAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleByIdAsync">vehicleByIdAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on the requested vehicle. Uses options.vehicleID
 to determine which vehicle to fetch data for.</p>
 </dd>
-<dt><a href="#vehicles">vehicles(options, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
+<dt><a href="#vehicles">vehicles(options, args, callback)</a> ⇒ <code>Array.&lt;Vehicles&gt;</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
 </dd>
-<dt><a href="#vehiclesAsync">vehiclesAsync(options, callback)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehiclesAsync">vehiclesAsync(options, args, callback)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Return vehicle information on ALL vehicles</p>
 </dd>
-<dt><a href="#get_command">get_command(options, command, callback)</a></dt>
+<dt><a href="#get_command">get_command(options, command, qs, callback)</a></dt>
 <dd><p>Generic REST call for GET commands</p>
 </dd>
-<dt><a href="#get_commandAsync">get_commandAsync(options, command)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#get_commandAsync">get_commandAsync(options, qs, command)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Generic Async REST call for GET commands</p>
 </dd>
-<dt><a href="#post_command">post_command(options, command, body, callback)</a></dt>
+<dt><a href="#post_command">post_command(options, command, args, body, callback)</a></dt>
 <dd><p>Generic REST call for POST commands</p>
 </dd>
-<dt><a href="#post_commandAsync">post_commandAsync(options, command, body)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#post_commandAsync">post_commandAsync(options, command, args, body)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Generic Async REST call for POST commands</p>
 </dd>
-<dt><a href="#vehicleData">vehicleData(options, endpoints, let_sleep, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#vehicleData">vehicleData(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET all vehicle data in a single call</p>
 </dd>
-<dt><a href="#vehicleDataAsync">vehicleDataAsync(options, endpoints, let_sleep)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleDataAsync">vehicleDataAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Async version to GET all vehicle data in a single call</p>
 </dd>
-<dt><a href="#vehicleConfig">vehicleConfig(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#vehicleConfig">vehicleConfig(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle config</p>
 </dd>
-<dt><a href="#vehicleConfigAsync">vehicleConfigAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleConfigAsync">vehicleConfigAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Async version to GET the vehicle config</p>
 </dd>
-<dt><a href="#vehicleState">vehicleState(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#vehicleState">vehicleState(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the vehicle state</p>
 </dd>
-<dt><a href="#vehicleStateAsync">vehicleStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#vehicleStateAsync">vehicleStateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Async version to GET the vehicle state</p>
 </dd>
-<dt><a href="#climateState">climateState(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#climateState">climateState(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the climate state</p>
 </dd>
-<dt><a href="#climateStateAsync">climateStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#climateStateAsync">climateStateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>GET the climate state</p>
 </dd>
-<dt><a href="#nearbyChargers">nearbyChargers(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#nearbyChargers">nearbyChargers(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET nearby charging sites</p>
 </dd>
-<dt><a href="#nearbyChargersAsync">nearbyChargersAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#nearbyChargersAsync">nearbyChargersAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#driveState">driveState(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#driveState">driveState(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the drive state</p>
 </dd>
-<dt><a href="#driveStateAsync">driveStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#driveStateAsync">driveStateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#chargeState">chargeState(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#chargeState">chargeState(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the charge state</p>
 </dd>
-<dt><a href="#chargeStateAsync">chargeStateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#chargeStateAsync">chargeStateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#guiSettings">guiSettings(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#guiSettings">guiSettings(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the GUI settings</p>
 </dd>
-<dt><a href="#guiSettingsAsync">guiSettingsAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#guiSettingsAsync">guiSettingsAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#mobileEnabled">mobileEnabled(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mobileEnabled">mobileEnabled(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>GET the mobile enabled status</p>
 </dd>
-<dt><a href="#mobileEnabledAsync">mobileEnabledAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mobileEnabledAsync">mobileEnabledAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#honkHorn">honkHorn(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#honkHorn">honkHorn(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Honk the horn</p>
 </dd>
-<dt><a href="#honkHornAsync">honkHornAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#honkHornAsync">honkHornAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#flashLights">flashLights(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#flashLights">flashLights(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Flash the lights</p>
 </dd>
-<dt><a href="#flashLightsAsync">flashLightsAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#flashLightsAsync">flashLightsAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#startCharge">startCharge(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#startCharge">startCharge(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Start charging the car</p>
 </dd>
-<dt><a href="#startChargeAsync">startChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#startChargeAsync">startChargeAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Start charging the car</p>
 </dd>
-<dt><a href="#stopCharge">stopCharge(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#stopCharge">stopCharge(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Stop charging the car</p>
 </dd>
-<dt><a href="#stopChargeAsync">stopChargeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#stopChargeAsync">stopChargeAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Stop charging the car</p>
 </dd>
-<dt><a href="#openChargePort">openChargePort(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#openChargePort">openChargePort(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped</p>
 </dd>
-<dt><a href="#openChargePortAsync">openChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#openChargePortAsync">openChargePortAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped</p>
 </dd>
-<dt><a href="#closeChargePort">closeChargePort(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#closeChargePort">closeChargePort(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
-<dt><a href="#closeChargePortAsync">closeChargePortAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#closeChargePortAsync">closeChargePortAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Close the charge port for appropriately equipped vehicles</p>
 </dd>
-<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options, offset)</a> ⇒ <code>object</code></dt>
+<dt><a href="#scheduleSoftwareUpdate">scheduleSoftwareUpdate(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Schedule a firmware update</p>
 </dd>
-<dt><a href="#scheduleSoftwareUpdateAsync">scheduleSoftwareUpdateAsync(options, offset)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#scheduleSoftwareUpdateAsync">scheduleSoftwareUpdateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Schedule a firmware update</p>
 </dd>
-<dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#cancelSoftwareUpdate">cancelSoftwareUpdate(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Cancel a scheduled software update</p>
 </dd>
-<dt><a href="#cancelSoftwareUpdateAsync">cancelSoftwareUpdateAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#cancelSoftwareUpdateAsync">cancelSoftwareUpdateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Cancel a scheduled software update</p>
 </dd>
-<dt><a href="#navigationRequest">navigationRequest(options, subject, text, locale)</a> ⇒ <code>object</code></dt>
+<dt><a href="#navigationRequest">navigationRequest(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Send a navigation request to the car</p>
 </dd>
-<dt><a href="#navigationRequestAsync">navigationRequestAsync(options, subject, text, locale)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#navigationRequestAsync">navigationRequestAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Send a navigation request to the car</p>
 </dd>
-<dt><a href="#mediaTogglePlayback">mediaTogglePlayback(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaTogglePlayback">mediaTogglePlayback(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Toggle media playback</p>
 </dd>
-<dt><a href="#mediaTogglePlaybackAsync">mediaTogglePlaybackAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaTogglePlaybackAsync">mediaTogglePlaybackAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Toggle media playback</p>
 </dd>
-<dt><a href="#mediaPlayNext">mediaPlayNext(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaPlayNext">mediaPlayNext(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media play next track</p>
 </dd>
-<dt><a href="#mediaPlayNextAsync">mediaPlayNextAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaPlayNextAsync">mediaPlayNextAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media play next track</p>
 </dd>
-<dt><a href="#mediaPlayPrevious">mediaPlayPrevious(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaPlayPrevious">mediaPlayPrevious(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media play previous track</p>
 </dd>
-<dt><a href="#mediaPlayPreviousAsync">mediaPlayPreviousAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaPlayPreviousAsync">mediaPlayPreviousAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media play previous track</p>
 </dd>
-<dt><a href="#mediaPlayNextFavorite">mediaPlayNextFavorite(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaPlayNextFavorite">mediaPlayNextFavorite(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media play next favorite</p>
 </dd>
-<dt><a href="#mediaPlayNextFavoriteAsync">mediaPlayNextFavoriteAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaPlayNextFavoriteAsync">mediaPlayNextFavoriteAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media play next favorite</p>
 </dd>
-<dt><a href="#mediaPlayPreviousFavorite">mediaPlayPreviousFavorite(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaPlayPreviousFavorite">mediaPlayPreviousFavorite(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media play previous favorite</p>
 </dd>
-<dt><a href="#mediaPlayPreviousFavoriteAsync">mediaPlayPreviousFavoriteAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaPlayPreviousFavoriteAsync">mediaPlayPreviousFavoriteAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media play previous favorite</p>
 </dd>
-<dt><a href="#mediaVolumeUp">mediaVolumeUp(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaVolumeUp">mediaVolumeUp(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media volume up</p>
 </dd>
-<dt><a href="#mediaVolumeUpAsync">mediaVolumeUpAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaVolumeUpAsync">mediaVolumeUpAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media volume up</p>
 </dd>
-<dt><a href="#mediaVolumeDown">mediaVolumeDown(options)</a> ⇒ <code>object</code></dt>
+<dt><a href="#mediaVolumeDown">mediaVolumeDown(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Media volume down</p>
 </dd>
-<dt><a href="#mediaVolumeDownAsync">mediaVolumeDownAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#mediaVolumeDownAsync">mediaVolumeDownAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Media volume down</p>
 </dd>
-<dt><a href="#speedLimitActivate">speedLimitActivate(options, pin)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitActivate">speedLimitActivate(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Activate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitActivateAsync">speedLimitActivateAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#speedLimitActivateAsync">speedLimitActivateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Activate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitDeactivate">speedLimitDeactivate(options, pin)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitDeactivate">speedLimitDeactivate(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Deactivate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitDeactivateAsync">speedLimitDeactivateAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#speedLimitDeactivateAsync">speedLimitDeactivateAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Deactivate speed limitation</p>
 </dd>
-<dt><a href="#speedLimitClearPin">speedLimitClearPin(options, pin)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitClearPin">speedLimitClearPin(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Clear speed limitation pin</p>
 </dd>
-<dt><a href="#speedLimitClearPinAsync">speedLimitClearPinAsync(options, pin)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#speedLimitClearPinAsync">speedLimitClearPinAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Clear speed limitation pin</p>
 </dd>
-<dt><a href="#speedLimitSetLimit">speedLimitSetLimit(options, limit)</a> ⇒ <code>object</code></dt>
+<dt><a href="#speedLimitSetLimit">speedLimitSetLimit(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Set speed limit</p>
 </dd>
-<dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options, limit)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#speedLimitSetLimitAsync">speedLimitSetLimitAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set speed limit</p>
 </dd>
-<dt><a href="#setSentryMode">setSentryMode(options, onoff)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setSentryMode">setSentryMode(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Enable or disable sentry mode</p>
 </dd>
-<dt><a href="#setSentryModeAsync">setSentryModeAsync(onoff)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setSentryModeAsync">setSentryModeAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Enable or disable sentry mode</p>
 </dd>
-<dt><a href="#seatHeater">seatHeater(options, heater, level)</a> ⇒ <code>object</code></dt>
+<dt><a href="#seatHeater">seatHeater(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote seat heater</p>
 </dd>
-<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, heater, level)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote seat heater</p>
 </dd>
-<dt><a href="#steeringHeater">steeringHeater(options, level)</a> ⇒ <code>object</code></dt>
+<dt><a href="#steeringHeater">steeringHeater(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, level)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#seatHeaterAsync">seatHeaterAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#maxDefrost">maxDefrost(options, onoff)</a> ⇒ <code>object</code></dt>
+<dt><a href="#maxDefrost">maxDefrost(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Max Defrost</p>
 </dd>
-<dt><a href="#maxDefrostAsync">maxDefrostAsync(options, onoff)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#maxDefrostAsync">maxDefrostAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Remote steering heater</p>
 </dd>
-<dt><a href="#windowControl">windowControl(options, command, lat, lon)</a> ⇒ <code>object</code></dt>
+<dt><a href="#windowControl">windowControl(options, args)</a> ⇒ <code>object</code></dt>
 <dd><p>Window control</p>
 </dd>
-<dt><a href="#windowControlAsync">windowControlAsync(options, command, lat, lon)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#windowControlAsync">windowControlAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Window control</p>
 </dd>
-<dt><a href="#setChargeLimit">setChargeLimit(options, amt, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setChargeLimit">setChargeLimit(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
 </dd>
-<dt><a href="#setChargeLimitAsync">setChargeLimitAsync(options, amt)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setChargeLimitAsync">setChargeLimitAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set the charge limit async and return Promise.
 Note: charging to 100% frequently is NOT recommended for long-term battery health!</p>
 </dd>
-<dt><a href="#chargeStandard">chargeStandard(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#chargeStandard">chargeStandard(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charge limit to (standard) 90%</p>
 </dd>
-<dt><a href="#chargeStandardAsync">chargeStandardAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#chargeStandardAsync">chargeStandardAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#chargeMaxRange">chargeMaxRange(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#chargeMaxRange">chargeMaxRange(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set charge limit to 100%</p>
 </dd>
-<dt><a href="#chargeMaxRangeAsync">chargeMaxRangeAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#chargeMaxRangeAsync">chargeMaxRangeAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#setChargingAmps">setChargingAmps(options, amps, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setChargingAmps">setChargingAmps(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the charging amps.</p>
 </dd>
-<dt><a href="#setChargingAmpsAsync">setChargingAmpsAsync(options, amps)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setChargingAmpsAsync">setChargingAmpsAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set the charging amps async and return Promise.</p>
 </dd>
-<dt><a href="#setScheduledCharging">setScheduledCharging(options, enable, time, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setScheduledCharging">setScheduledCharging(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the scheduled charging time.</p>
 </dd>
-<dt><a href="#setScheduledCharging">setScheduledCharging(options, enable, time)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setScheduledCharging">setScheduledCharging(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set the scheduled charging time async and return Promise.</p>
 </dd>
-<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the scheduled departure.</p>
 </dd>
-<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setScheduledDeparture">setScheduledDeparture(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd><p>Set the scheduled departure async and return Promise.</p>
 </dd>
-<dt><a href="#doorLock">doorLock(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#doorLock">doorLock(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Lock the car doors</p>
 </dd>
-<dt><a href="#doorLockAsync">doorLockAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#doorLockAsync">doorLockAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#doorUnlock">doorUnlock(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#doorUnlock">doorUnlock(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Unlock the car doors</p>
 </dd>
-<dt><a href="#doorUnlockAsync">doorUnlockAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#doorUnlockAsync">doorUnlockAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#climateStart">climateStart(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#climateStart">climateStart(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn on HVAC system</p>
 </dd>
-<dt><a href="#climateStartAsync">climateStartAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#climateStartAsync">climateStartAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#climateStop">climateStop(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#climateStop">climateStop(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn off HVAC system</p>
 </dd>
-<dt><a href="#climateStopAsync">climateStopAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#climateStopAsync">climateStopAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#sunRoofControl">sunRoofControl(options, state, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#sunRoofControl">sunRoofControl(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set sun roof mode</p>
 </dd>
-<dt><a href="#sunRoofControlAsync">sunRoofControlAsync(options, state)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#sunRoofControlAsync">sunRoofControlAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#sunRoofMove">sunRoofMove(options, percent, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#sunRoofMove">sunRoofMove(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set sun roof position</p>
 </dd>
-<dt><a href="#sunRoofMoveAsync">sunRoofMoveAsync(options, percent)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#sunRoofMoveAsync">sunRoofMoveAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#setTemps">setTemps(options, driver, pass, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setTemps">setTemps(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set the driver/passenger climate temperatures</p>
 </dd>
-<dt><a href="#setTempsAsync">setTempsAsync(options, driver, pass)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setTempsAsync">setTempsAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#remoteStart">remoteStart(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#remoteStart">remoteStart(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Remote start the car</p>
 </dd>
-<dt><a href="#remoteStartAsync">remoteStartAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#remoteStartAsync">remoteStartAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#openTrunk">openTrunk(options, which, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#openTrunk">openTrunk(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Open the trunk/frunk</p>
 </dd>
-<dt><a href="#openTrunkAsync">openTrunkAsync(options, which)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#openTrunkAsync">openTrunkAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#wakeUp">wakeUp(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#wakeUp">wakeUp(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Wake up a car that is sleeping</p>
 </dd>
-<dt><a href="#wakeUpAsync">wakeUpAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#wakeUpAsync">wakeUpAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#setValetMode">setValetMode(options, onoff, pin, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#setValetMode">setValetMode(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Turn valet mode on/off</p>
 </dd>
-<dt><a href="#setValetModeAsync">setValetModeAsync(options, onoff, pin)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#setValetModeAsync">setValetModeAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#resetValetPin">resetValetPin(options, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#resetValetPin">resetValetPin(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Reset the valet pin</p>
 </dd>
-<dt><a href="#resetValetPinAsync">resetValetPinAsync(options)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#resetValetPinAsync">resetValetPinAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
-<dt><a href="#calendar">calendar(options, entry, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#calendar">calendar(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Set a calendar entry</p>
 </dd>
-<dt><a href="#calendarAsync">calendarAsync(options, entry)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#calendarAsync">calendarAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#makeCalendarEntry">makeCalendarEntry(eventName, location, startTime, endTime, accountName, phoneName)</a> ⇒ <code>object</code></dt>
 <dd><p>Create a calendar entry</p>
 </dd>
-<dt><a href="#homelink">homelink(options, lat, long, string, callback)</a> ⇒ <code>object</code></dt>
+<dt><a href="#homelink">homelink(options, args, callback)</a> ⇒ <code>object</code></dt>
 <dd><p>Trigger homelink</p>
 </dd>
-<dt><a href="#homelinkAsync">homelinkAsync(options, lat, long, string)</a> ⇒ <code>Promise</code></dt>
+<dt><a href="#homelinkAsync">homelinkAsync(options, args)</a> ⇒ <code>Promise</code></dt>
 <dd></dd>
 <dt><a href="#products">products(options, callback)</a> ⇒ <code><a href="#products">Array.&lt;products&gt;</a></code></dt>
 <dd><p>Return list of products</p>
@@ -768,7 +768,7 @@ Logout and invalidate the current auth token
 
 <a name="vehicle"></a>
 
-## vehicle(options, callback) ⇒ <code>Vehicle</code>
+## vehicle(options, args, callback) ⇒ <code>Vehicle</code>
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
@@ -781,7 +781,7 @@ Return vehicle information on the requested vehicle
 
 <a name="vehicleAsync"></a>
 
-## vehicleAsync(options) ⇒ <code>Promise</code>
+## vehicleAsync(options, args) ⇒ <code>Promise</code>
 Return vehicle information on the requested vehicle
 
 **Kind**: global function  
@@ -793,7 +793,7 @@ Return vehicle information on the requested vehicle
 
 <a name="vehicleById"></a>
 
-## vehicleById(options, callback) ⇒ <code>Vehicle</code>
+## vehicleById(options, args, callback) ⇒ <code>Vehicle</code>
 Return vehicle information on the requested vehicle. Uses options.vehicleIDto determine which vehicle to fetch data for.
 
 **Kind**: global function  
@@ -806,7 +806,7 @@ Return vehicle information on the requested vehicle. Uses options.vehicleIDto d
 
 <a name="vehicleByIdAsync"></a>
 
-## vehicleByIdAsync(options) ⇒ <code>Promise</code>
+## vehicleByIdAsync(options, args) ⇒ <code>Promise</code>
 Return vehicle information on the requested vehicle. Uses options.vehicleIDto determine which vehicle to fetch data for.
 
 **Kind**: global function  
@@ -818,7 +818,7 @@ Return vehicle information on the requested vehicle. Uses options.vehicleIDto d
 
 <a name="vehicles"></a>
 
-## vehicles(options, callback) ⇒ <code>Array.&lt;Vehicles&gt;</code>
+## vehicles(options, args, callback) ⇒ <code>Array.&lt;Vehicles&gt;</code>
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
@@ -831,7 +831,7 @@ Return vehicle information on ALL vehicles
 
 <a name="vehiclesAsync"></a>
 
-## vehiclesAsync(options, callback) ⇒ <code>Promise</code>
+## vehiclesAsync(options, args, callback) ⇒ <code>Promise</code>
 Return vehicle information on ALL vehicles
 
 **Kind**: global function  
@@ -844,7 +844,7 @@ Return vehicle information on ALL vehicles
 
 <a name="get_command"></a>
 
-## get\_command(options, command, callback)
+## get\_command(options, command, qs, callback)
 Generic REST call for GET commands
 
 **Kind**: global function  
@@ -857,7 +857,7 @@ Generic REST call for GET commands
 
 <a name="get_commandAsync"></a>
 
-## get\_commandAsync(options, command) ⇒ <code>Promise</code>
+## get\_commandAsync(options, command, qs) ⇒ <code>Promise</code>
 Generic Async REST call for GET commands
 
 **Kind**: global function  
@@ -870,7 +870,7 @@ Generic Async REST call for GET commands
 
 <a name="post_command"></a>
 
-## post\_command(options, command, body, callback)
+## post\_command(options, command, qs, body, callback)
 Generic REST call for POST commands
 
 **Kind**: global function  
@@ -884,7 +884,7 @@ Generic REST call for POST commands
 
 <a name="post_commandAsync"></a>
 
-## post\_commandAsync(options, command, body) ⇒ <code>Promise</code>
+## post\_commandAsync(options, command, qs, body) ⇒ <code>Promise</code>
 Generic Async REST call for POST commands
 
 **Kind**: global function  
@@ -898,7 +898,7 @@ Generic Async REST call for POST commands
 
 <a name="vehicleData"></a>
 
-## vehicleData(options, callback) ⇒ <code>object</code>
+## vehicleData(options, args, callback) ⇒ <code>object</code>
 GET all vehicle data in a single call
 
 **Kind**: global function  
@@ -913,7 +913,7 @@ GET all vehicle data in a single call
 
 <a name="vehicleDataAsync"></a>
 
-## vehicleDataAsync(options) ⇒ <code>Promise</code>
+## vehicleDataAsync(options, args) ⇒ <code>Promise</code>
 Async version to GET all vehicle data in a single call
 
 **Kind**: global function  
@@ -927,7 +927,7 @@ Async version to GET all vehicle data in a single call
 
 <a name="vehicleConfig"></a>
 
-## vehicleConfig(options, callback) ⇒ <code>object</code>
+## vehicleConfig(options, args, callback) ⇒ <code>object</code>
 GET the vehicle config
 
 **Kind**: global function  
@@ -940,7 +940,7 @@ GET the vehicle config
 
 <a name="vehicleConfigAsync"></a>
 
-## vehicleConfigAsync(options) ⇒ <code>Promise</code>
+## vehicleConfigAsync(options, args) ⇒ <code>Promise</code>
 Async version to GET the vehicle config
 
 **Kind**: global function  
@@ -952,7 +952,7 @@ Async version to GET the vehicle config
 
 <a name="vehicleState"></a>
 
-## vehicleState(options, callback) ⇒ <code>object</code>
+## vehicleState(options, args, callback) ⇒ <code>object</code>
 GET the vehicle state
 
 **Kind**: global function  
@@ -965,7 +965,7 @@ GET the vehicle state
 
 <a name="vehicleStateAsync"></a>
 
-## vehicleStateAsync(options) ⇒ <code>Promise</code>
+## vehicleStateAsync(options, args) ⇒ <code>Promise</code>
 Async version to GET the vehicle state
 
 **Kind**: global function  
@@ -977,7 +977,7 @@ Async version to GET the vehicle state
 
 <a name="climateState"></a>
 
-## climateState(options, callback) ⇒ <code>object</code>
+## climateState(options, args, callback) ⇒ <code>object</code>
 GET the climate state
 
 **Kind**: global function  
@@ -990,7 +990,7 @@ GET the climate state
 
 <a name="climateStateAsync"></a>
 
-## climateStateAsync(options) ⇒ <code>Promise</code>
+## climateStateAsync(options, args) ⇒ <code>Promise</code>
 GET the climate state
 
 **Kind**: global function  
@@ -1002,7 +1002,7 @@ GET the climate state
 
 <a name="nearbyChargers"></a>
 
-## nearbyChargers(options, callback) ⇒ <code>object</code>
+## nearbyChargers(options, args, callback) ⇒ <code>object</code>
 GET nearby charging sites
 
 **Kind**: global function  
@@ -1015,7 +1015,7 @@ GET nearby charging sites
 
 <a name="nearbyChargersAsync"></a>
 
-## nearbyChargersAsync(options) ⇒ <code>Promise</code>
+## nearbyChargersAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - climate_state object  
 
@@ -1025,7 +1025,7 @@ GET nearby charging sites
 
 <a name="driveState"></a>
 
-## driveState(options, callback) ⇒ <code>object</code>
+## driveState(options, args, callback) ⇒ <code>object</code>
 GET the drive state
 
 **Kind**: global function  
@@ -1038,7 +1038,7 @@ GET the drive state
 
 <a name="driveStateAsync"></a>
 
-## driveStateAsync(options) ⇒ <code>Promise</code>
+## driveStateAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - drive_state object  
 
@@ -1048,7 +1048,7 @@ GET the drive state
 
 <a name="chargeState"></a>
 
-## chargeState(options, callback) ⇒ <code>object</code>
+## chargeState(options, args, callback) ⇒ <code>object</code>
 GET the charge state
 
 **Kind**: global function  
@@ -1061,7 +1061,7 @@ GET the charge state
 
 <a name="chargeStateAsync"></a>
 
-## chargeStateAsync(options) ⇒ <code>Promise</code>
+## chargeStateAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - charge_state object  
 
@@ -1071,7 +1071,7 @@ GET the charge state
 
 <a name="guiSettings"></a>
 
-## guiSettings(options, callback) ⇒ <code>object</code>
+## guiSettings(options, args, callback) ⇒ <code>object</code>
 GET the GUI settings
 
 **Kind**: global function  
@@ -1084,7 +1084,7 @@ GET the GUI settings
 
 <a name="guiSettingsAsync"></a>
 
-## guiSettingsAsync(options) ⇒ <code>Promise</code>
+## guiSettingsAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - gui_settings object  
 
@@ -1094,7 +1094,7 @@ GET the GUI settings
 
 <a name="mobileEnabled"></a>
 
-## mobileEnabled(options, callback) ⇒ <code>object</code>
+## mobileEnabled(options, args, callback) ⇒ <code>object</code>
 GET the mobile enabled status
 
 **Kind**: global function  
@@ -1107,7 +1107,7 @@ GET the mobile enabled status
 
 <a name="mobileEnabledAsync"></a>
 
-## mobileEnabledAsync(options) ⇒ <code>Promise</code>
+## mobileEnabledAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - mobile_enabled object  
 
@@ -1117,7 +1117,7 @@ GET the mobile enabled status
 
 <a name="honkHorn"></a>
 
-## honkHorn(options, callback) ⇒ <code>object</code>
+## honkHorn(options, args, callback) ⇒ <code>object</code>
 Honk the horn
 
 **Kind**: global function  
@@ -1130,7 +1130,7 @@ Honk the horn
 
 <a name="honkHornAsync"></a>
 
-## honkHornAsync(options) ⇒ <code>Promise</code>
+## honkHornAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1140,7 +1140,7 @@ Honk the horn
 
 <a name="flashLights"></a>
 
-## flashLights(options, callback) ⇒ <code>object</code>
+## flashLights(options, args, callback) ⇒ <code>object</code>
 Flash the lights
 
 **Kind**: global function  
@@ -1153,7 +1153,7 @@ Flash the lights
 
 <a name="flashLightsAsync"></a>
 
-## flashLightsAsync(options) ⇒ <code>Promise</code>
+## flashLightsAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1163,7 +1163,7 @@ Flash the lights
 
 <a name="startCharge"></a>
 
-## startCharge(options, callback) ⇒ <code>object</code>
+## startCharge(options, args, callback) ⇒ <code>object</code>
 Start charging the car
 
 **Kind**: global function  
@@ -1176,7 +1176,7 @@ Start charging the car
 
 <a name="startChargeAsync"></a>
 
-## startChargeAsync(options) ⇒ <code>Promise</code>
+## startChargeAsync(options, args) ⇒ <code>Promise</code>
 Start charging the car
 
 **Kind**: global function  
@@ -1188,7 +1188,7 @@ Start charging the car
 
 <a name="stopCharge"></a>
 
-## stopCharge(options, callback) ⇒ <code>object</code>
+## stopCharge(options, args, callback) ⇒ <code>object</code>
 Stop charging the car
 
 **Kind**: global function  
@@ -1201,7 +1201,7 @@ Stop charging the car
 
 <a name="stopChargeAsync"></a>
 
-## stopChargeAsync(options) ⇒ <code>Promise</code>
+## stopChargeAsync(options, args) ⇒ <code>Promise</code>
 Stop charging the car
 
 **Kind**: global function  
@@ -1213,7 +1213,7 @@ Stop charging the car
 
 <a name="openChargePort"></a>
 
-## openChargePort(options, callback) ⇒ <code>object</code>
+## openChargePort(options, args, callback) ⇒ <code>object</code>
 Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 
 **Kind**: global function  
@@ -1226,7 +1226,7 @@ Open the charge port, or releases the latch if the charge port is open, a cable 
 
 <a name="openChargePortAsync"></a>
 
-## openChargePortAsync(options) ⇒ <code>Promise</code>
+## openChargePortAsync(options, args) ⇒ <code>Promise</code>
 Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
 
 **Kind**: global function  
@@ -1238,7 +1238,7 @@ Open the charge port, or releases the latch if the charge port is open, a cable 
 
 <a name="closeChargePort"></a>
 
-## closeChargePort(options, callback) ⇒ <code>object</code>
+## closeChargePort(options, args, callback) ⇒ <code>object</code>
 Close the charge port for appropriately equipped vehicles
 
 **Kind**: global function  
@@ -1251,7 +1251,7 @@ Close the charge port for appropriately equipped vehicles
 
 <a name="closeChargePortAsync"></a>
 
-## closeChargePortAsync(options) ⇒ <code>Promise</code>
+## closeChargePortAsync(options, args) ⇒ <code>Promise</code>
 Close the charge port for appropriately equipped vehicles
 
 **Kind**: global function  
@@ -1263,7 +1263,7 @@ Close the charge port for appropriately equipped vehicles
 
 <a name="scheduleSoftwareUpdate"></a>
 
-## scheduleSoftwareUpdate(options, offset) ⇒ <code>object</code>
+## scheduleSoftwareUpdate(options, args, callback) ⇒ <code>object</code>
 Schedule a firmware update
 
 **Kind**: global function  
@@ -1272,11 +1272,12 @@ Schedule a firmware update
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| offset | <code>number</code> | delay in ms before installation begins |
+| args.offset | <code>number</code> | delay in ms before installation begins |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="scheduleSoftwareUpdateAsync"></a>
 
-## scheduleSoftwareUpdateAsync(options, offset) ⇒ <code>Promise</code>
+## scheduleSoftwareUpdateAsync(options, args) ⇒ <code>Promise</code>
 Schedule a firmware update
 
 **Kind**: global function  
@@ -1285,11 +1286,11 @@ Schedule a firmware update
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| offset | <code>number</code> | delay in ms before installation begins |
+| args.offset | <code>number</code> | delay in ms before installation begins |
 
 <a name="cancelSoftwareUpdate"></a>
 
-## cancelSoftwareUpdate(options) ⇒ <code>object</code>
+## cancelSoftwareUpdate(options, args, callback) ⇒ <code>object</code>
 Cancel a scheduled software update
 
 **Kind**: global function  
@@ -1298,10 +1299,11 @@ Cancel a scheduled software update
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="cancelSoftwareUpdateAsync"></a>
 
-## cancelSoftwareUpdateAsync(options) ⇒ <code>Promise</code>
+## cancelSoftwareUpdateAsync(options, args) ⇒ <code>Promise</code>
 Cancel a scheduled software update
 
 **Kind**: global function  
@@ -1313,7 +1315,7 @@ Cancel a scheduled software update
 
 <a name="navigationRequest"></a>
 
-## navigationRequest(options, subject, text, locale) ⇒ <code>object</code>
+## navigationRequest(options, args, callback) ⇒ <code>object</code>
 Send a navigation request to the car
 
 **Kind**: global function  
@@ -1322,13 +1324,14 @@ Send a navigation request to the car
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| subject | <code>string</code> | short-hand name for the destination |
-| text | <code>string</code> | address details including things like name, address, map link |
-| locale | <code>string</code> | the language locale, for example "en-US" |
+| args.subject | <code>string</code> | short-hand name for the destination |
+| args.text | <code>string</code> | address details including things like name, address, map link |
+| args.locale | <code>string</code> | the language locale, for example "en-US" |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="navigationRequestAsync"></a>
 
-## navigationRequestAsync(options, subject, text, locale) ⇒ <code>Promise</code>
+## navigationRequestAsync(options, args) ⇒ <code>Promise</code>
 Send a navigation request to the car
 
 **Kind**: global function  
@@ -1337,13 +1340,13 @@ Send a navigation request to the car
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| subject | <code>string</code> | short-hand name for the destination |
-| text | <code>string</code> | address details including things like name, address, map link |
-| locale | <code>string</code> | the language locale, for example "en-US" |
+| args.subject | <code>string</code> | short-hand name for the destination |
+| args.text | <code>string</code> | address details including things like name, address, map link |
+| args.locale | <code>string</code> | the language locale, for example "en-US" |
 
 <a name="mediaTogglePlayback"></a>
 
-## mediaTogglePlayback(options) ⇒ <code>object</code>
+## mediaTogglePlayback(options, args, callback) ⇒ <code>object</code>
 Toggle media playback
 
 **Kind**: global function  
@@ -1352,10 +1355,11 @@ Toggle media playback
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaTogglePlaybackAsync"></a>
 
-## mediaTogglePlaybackAsync(options) ⇒ <code>Promise</code>
+## mediaTogglePlaybackAsync(options, args) ⇒ <code>Promise</code>
 Toggle media playback
 
 **Kind**: global function  
@@ -1367,7 +1371,7 @@ Toggle media playback
 
 <a name="mediaPlayNext"></a>
 
-## mediaPlayNext(options) ⇒ <code>object</code>
+## mediaPlayNext(options, args, callback) ⇒ <code>object</code>
 Media play next track
 
 **Kind**: global function  
@@ -1376,10 +1380,11 @@ Media play next track
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaPlayNextAsync"></a>
 
-## mediaPlayNextAsync(options) ⇒ <code>Promise</code>
+## mediaPlayNextAsync(options, args) ⇒ <code>Promise</code>
 Media play next track
 
 **Kind**: global function  
@@ -1391,7 +1396,7 @@ Media play next track
 
 <a name="mediaPlayPrevious"></a>
 
-## mediaPlayPrevious(options) ⇒ <code>object</code>
+## mediaPlayPrevious(options, args, callback) ⇒ <code>object</code>
 Media play previous track
 
 **Kind**: global function  
@@ -1400,10 +1405,11 @@ Media play previous track
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaPlayPreviousAsync"></a>
 
-## mediaPlayPreviousAsync(options) ⇒ <code>Promise</code>
+## mediaPlayPreviousAsync(options, args) ⇒ <code>Promise</code>
 Media play previous track
 
 **Kind**: global function  
@@ -1415,7 +1421,7 @@ Media play previous track
 
 <a name="mediaPlayNextFavorite"></a>
 
-## mediaPlayNextFavorite(options) ⇒ <code>object</code>
+## mediaPlayNextFavorite(options, args, callback) ⇒ <code>object</code>
 Media play next favorite
 
 **Kind**: global function  
@@ -1424,10 +1430,11 @@ Media play next favorite
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaPlayNextFavoriteAsync"></a>
 
-## mediaPlayNextFavoriteAsync(options) ⇒ <code>Promise</code>
+## mediaPlayNextFavoriteAsync(options, args) ⇒ <code>Promise</code>
 Media play next favorite
 
 **Kind**: global function  
@@ -1439,7 +1446,7 @@ Media play next favorite
 
 <a name="mediaPlayPreviousFavorite"></a>
 
-## mediaPlayPreviousFavorite(options) ⇒ <code>object</code>
+## mediaPlayPreviousFavorite(options, args, callback) ⇒ <code>object</code>
 Media play previous favorite
 
 **Kind**: global function  
@@ -1448,10 +1455,11 @@ Media play previous favorite
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaPlayPreviousFavoriteAsync"></a>
 
-## mediaPlayPreviousFavoriteAsync(options) ⇒ <code>Promise</code>
+## mediaPlayPreviousFavoriteAsync(options, args) ⇒ <code>Promise</code>
 Media play previous favorite
 
 **Kind**: global function  
@@ -1463,7 +1471,7 @@ Media play previous favorite
 
 <a name="mediaVolumeUp"></a>
 
-## mediaVolumeUp(options) ⇒ <code>object</code>
+## mediaVolumeUp(options, args, callback) ⇒ <code>object</code>
 Media volume up
 
 **Kind**: global function  
@@ -1472,10 +1480,11 @@ Media volume up
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaVolumeUpAsync"></a>
 
-## mediaVolumeUpAsync(options) ⇒ <code>Promise</code>
+## mediaVolumeUpAsync(options, args) ⇒ <code>Promise</code>
 Media volume up
 
 **Kind**: global function  
@@ -1487,7 +1496,7 @@ Media volume up
 
 <a name="mediaVolumeDown"></a>
 
-## mediaVolumeDown(options) ⇒ <code>object</code>
+## mediaVolumeDown(options, args, callback) ⇒ <code>object</code>
 Media volume down
 
 **Kind**: global function  
@@ -1496,10 +1505,11 @@ Media volume down
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="mediaVolumeDownAsync"></a>
 
-## mediaVolumeDownAsync(options) ⇒ <code>Promise</code>
+## mediaVolumeDownAsync(options, args) ⇒ <code>Promise</code>
 Media volume down
 
 **Kind**: global function  
@@ -1511,7 +1521,7 @@ Media volume down
 
 <a name="speedLimitActivate"></a>
 
-## speedLimitActivate(options, pin) ⇒ <code>object</code>
+## speedLimitActivate(options, args, callback) ⇒ <code>object</code>
 Activate speed limitation
 
 **Kind**: global function  
@@ -1520,11 +1530,12 @@ Activate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="speedLimitActivateAsync"></a>
 
-## speedLimitActivateAsync(options, pin) ⇒ <code>Promise</code>
+## speedLimitActivateAsync(options, args) ⇒ <code>Promise</code>
 Activate speed limitation
 
 **Kind**: global function  
@@ -1533,11 +1544,11 @@ Activate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitDeactivate"></a>
 
-## speedLimitDeactivate(options, pin) ⇒ <code>object</code>
+## speedLimitDeactivate(options, args, callback) ⇒ <code>object</code>
 Deactivate speed limitation
 
 **Kind**: global function  
@@ -1546,11 +1557,12 @@ Deactivate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="speedLimitDeactivateAsync"></a>
 
-## speedLimitDeactivateAsync(options, pin) ⇒ <code>Promise</code>
+## speedLimitDeactivateAsync(options, args.pin) ⇒ <code>Promise</code>
 Deactivate speed limitation
 
 **Kind**: global function  
@@ -1559,11 +1571,11 @@ Deactivate speed limitation
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitClearPin"></a>
 
-## speedLimitClearPin(options, pin) ⇒ <code>object</code>
+## speedLimitClearPin(options, args, callback) ⇒ <code>object</code>
 Clear speed limitation pin
 
 **Kind**: global function  
@@ -1572,11 +1584,12 @@ Clear speed limitation pin
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="speedLimitClearPinAsync"></a>
 
-## speedLimitClearPinAsync(options, pin) ⇒ <code>Promise</code>
+## speedLimitClearPinAsync(options, args) ⇒ <code>Promise</code>
 Clear speed limitation pin
 
 **Kind**: global function  
@@ -1585,11 +1598,11 @@ Clear speed limitation pin
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| pin | <code>number</code> | Activation pin code. Not the same as valet pin |
+| args.pin | <code>number</code> | Activation pin code. Not the same as valet pin |
 
 <a name="speedLimitSetLimit"></a>
 
-## speedLimitSetLimit(options, limit) ⇒ <code>object</code>
+## speedLimitSetLimit(options, args, callback) ⇒ <code>object</code>
 Set speed limit
 
 **Kind**: global function  
@@ -1598,11 +1611,12 @@ Set speed limit
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| limit | <code>number</code> | Speed limit in mph |
+| args.limit | <code>number</code> | Speed limit in mph |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="speedLimitSetLimitAsync"></a>
 
-## speedLimitSetLimitAsync(options, limit) ⇒ <code>Promise</code>
+## speedLimitSetLimitAsync(options, args) ⇒ <code>Promise</code>
 Set speed limit
 
 **Kind**: global function  
@@ -1611,11 +1625,11 @@ Set speed limit
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| limit | <code>number</code> | Speed limit in mph |
+| args.limit | <code>number</code> | Speed limit in mph |
 
 <a name="setSentryMode"></a>
 
-## setSentryMode(options, onoff) ⇒ <code>object</code>
+## setSentryMode(options, args, callback) ⇒ <code>object</code>
 Enable or disable sentry mode
 
 **Kind**: global function  
@@ -1624,11 +1638,12 @@ Enable or disable sentry mode
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
+| args.onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setSentryModeAsync"></a>
 
-## setSentryModeAsync(onoff) ⇒ <code>Promise</code>
+## setSentryModeAsync(options, args) ⇒ <code>Promise</code>
 Enable or disable sentry mode
 
 **Kind**: global function  
@@ -1636,11 +1651,12 @@ Enable or disable sentry mode
 
 | Param | Type | Description |
 | --- | --- | --- |
-| onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
+| options | [<code>optionsType</code>](#optionsType) | options object |
+| args.onoff | <code>boolean</code> | true to turn on sentry mode, false to turn off |
 
 <a name="seatHeater"></a>
 
-## seatHeater(options, heater, level) ⇒ <code>object</code>
+## seatHeater(options, args, callback) ⇒ <code>object</code>
 Remote seat heater
 
 **Kind**: global function  
@@ -1649,12 +1665,13 @@ Remote seat heater
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| heater | <code>number</code> | Which heater to adjust (0-5) |
-| level | <code>number</code> | Level for the heater (0-3) |
+| args.heater | <code>number</code> | Which heater to adjust (0-5) |
+| args.level | <code>number</code> | Level for the heater (0-3) |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="seatHeaterAsync"></a>
 
-## seatHeaterAsync(options, heater, level) ⇒ <code>Promise</code>
+## seatHeaterAsync(options, args) ⇒ <code>Promise</code>
 Remote seat heater
 
 **Kind**: global function  
@@ -1663,12 +1680,12 @@ Remote seat heater
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| heater | <code>number</code> | Which heater to adjust (0-5) |
-| level | <code>number</code> | Level for the heater (0-3) |
+| args.heater | <code>number</code> | Which heater to adjust (0-5) |
+| args.level | <code>number</code> | Level for the heater (0-3) |
 
 <a name="steeringHeater"></a>
 
-## steeringHeater(options, level) ⇒ <code>object</code>
+## steeringHeater(options, args, callback) ⇒ <code>object</code>
 Remote steering heater
 
 **Kind**: global function  
@@ -1677,11 +1694,12 @@ Remote steering heater
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| level | <code>number</code> | Level for the heater (0-3) |
+| args.level | <code>number</code> | Level for the heater (0-3) |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="seatHeaterAsync"></a>
 
-## seatHeaterAsync(options, level) ⇒ <code>Promise</code>
+## seatHeaterAsync(options, args) ⇒ <code>Promise</code>
 Remote steering heater
 
 **Kind**: global function  
@@ -1690,11 +1708,11 @@ Remote steering heater
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| level | <code>number</code> | Level for the heater (0-3) |
+| args.level | <code>number</code> | Level for the heater (0-3) |
 
 <a name="maxDefrost"></a>
 
-## maxDefrost(options, onoff) ⇒ <code>object</code>
+## maxDefrost(options, args, callback) ⇒ <code>object</code>
 Max Defrost
 
 **Kind**: global function  
@@ -1703,11 +1721,12 @@ Max Defrost
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| onoff | <code>boolean</code> | true for on, false for off |
+| args.onoff | <code>boolean</code> | true for on, false for off |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="maxDefrostAsync"></a>
 
-## maxDefrostAsync(options, onoff) ⇒ <code>Promise</code>
+## maxDefrostAsync(options, args) ⇒ <code>Promise</code>
 Remote Defrost
 
 **Kind**: global function  
@@ -1716,11 +1735,11 @@ Remote Defrost
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| onoff | <code>boolean</code> | true for on, false for off |
+| args.onoff | <code>boolean</code> | true for on, false for off |
 
 <a name="windowControl"></a>
 
-## windowControl(options, command, lat, lon) ⇒ <code>object</code>
+## windowControl(options, args, callback) ⇒ <code>object</code>
 Window control
 
 **Kind**: global function  
@@ -1729,13 +1748,14 @@ Window control
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| command | <code>string</code> | Allowable values are 'vent' and 'close' |
-| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
-| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
+| args.command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| args.lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| args.lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
+| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="windowControlAsync"></a>
 
-## windowControlAsync(options, command, lat, lon) ⇒ <code>Promise</code>
+## windowControlAsync(options, args) ⇒ <code>Promise</code>
 Window control
 
 **Kind**: global function  
@@ -1744,13 +1764,13 @@ Window control
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| command | <code>string</code> | Allowable values are 'vent' and 'close' |
-| lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
-| lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
+| args.command | <code>string</code> | Allowable values are 'vent' and 'close' |
+| args.lat | <code>number</code> | User latitude (can be 0 if not 'close' command) |
+| args.lon | <code>number</code> | User longitude (can be 0 if not 'close' command) |
 
 <a name="setChargeLimit"></a>
 
-## setChargeLimit(options, amt, callback) ⇒ <code>object</code>
+## setChargeLimit(options, args, callback) ⇒ <code>object</code>
 Set the charge limit.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
@@ -1759,12 +1779,12 @@ Set the charge limit.Note: charging to 100% frequently is NOT recommended for l
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| amt | <code>int</code> | charge limit in percent |
+| args.amt | <code>int</code> | charge limit in percent |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setChargeLimitAsync"></a>
 
-## setChargeLimitAsync(options, amt) ⇒ <code>Promise</code>
+## setChargeLimitAsync(options, args) ⇒ <code>Promise</code>
 Set the charge limit async and return Promise.Note: charging to 100% frequently is NOT recommended for long-term battery health!
 
 **Kind**: global function  
@@ -1773,11 +1793,11 @@ Set the charge limit async and return Promise.Note: charging to 100% frequently
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| amt | <code>int</code> | charge limit in percent |
+| args.amt | <code>int</code> | charge limit in percent |
 
 <a name="chargeStandard"></a>
 
-## chargeStandard(options, callback) ⇒ <code>object</code>
+## chargeStandard(options, args, callback) ⇒ <code>object</code>
 Set the charge limit to (standard) 90%
 
 **Kind**: global function  
@@ -1790,7 +1810,7 @@ Set the charge limit to (standard) 90%
 
 <a name="chargeStandardAsync"></a>
 
-## chargeStandardAsync(options) ⇒ <code>Promise</code>
+## chargeStandardAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1800,7 +1820,7 @@ Set the charge limit to (standard) 90%
 
 <a name="chargeMaxRange"></a>
 
-## chargeMaxRange(options, callback) ⇒ <code>object</code>
+## chargeMaxRange(options, args, callback) ⇒ <code>object</code>
 Set charge limit to 100%
 
 **Kind**: global function  
@@ -1813,7 +1833,7 @@ Set charge limit to 100%
 
 <a name="chargeMaxRangeAsync"></a>
 
-## chargeMaxRangeAsync(options) ⇒ <code>Promise</code>
+## chargeMaxRangeAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1823,7 +1843,7 @@ Set charge limit to 100%
 
 <a name="setChargingAmps"></a>
 
-## setChargingAmps(options, amps, callback) ⇒ <code>object</code>
+## setChargingAmps(options, args, callback) ⇒ <code>object</code>
 Set the charging amps.
 
 **Kind**: global function  
@@ -1832,12 +1852,12 @@ Set the charging amps.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| amps | <code>int</code> | charging amps |
+| args.amps | <code>int</code> | charging amps |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setChargingAmpsAsync"></a>
 
-## setChargingAmpsAsync(options, amps) ⇒ <code>Promise</code>
+## setChargingAmpsAsync(options, args) ⇒ <code>Promise</code>
 Set the charging amps async and return Promise.
 
 **Kind**: global function  
@@ -1846,11 +1866,11 @@ Set the charging amps async and return Promise.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| amps | <code>int</code> | charging amps |
+| args.amps | <code>int</code> | charging amps |
 
 <a name="setScheduledCharging"></a>
 
-## setScheduledCharging(options, enable, time, callback) ⇒ <code>object</code>
+## setScheduledCharging(options, args, callback) ⇒ <code>object</code>
 Set the scheduled charging time.
 
 **Kind**: global function  
@@ -1859,13 +1879,13 @@ Set the scheduled charging time.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true for on, false for off |
-| time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.enable | <code>boolean</code> | true for on, false for off |
+| args.time | <code>int</code> | time in minutes since midnight, 15min step |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setScheduledCharging"></a>
 
-## setScheduledCharging(options, enable, time) ⇒ <code>Promise</code>
+## setScheduledCharging(options, args) ⇒ <code>Promise</code>
 Set the scheduled charging time async and return Promise.
 
 **Kind**: global function  
@@ -1874,12 +1894,12 @@ Set the scheduled charging time async and return Promise.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true for on, false for off |
-| time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.enable | <code>boolean</code> | true for on, false for off |
+| args.time | <code>int</code> | time in minutes since midnight, 15min step |
 
 <a name="setScheduledDeparture"></a>
 
-## setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) ⇒ <code>object</code>
+## setScheduledDeparture(options, args, callback) ⇒ <code>object</code>
 Set the scheduled departure.
 
 **Kind**: global function  
@@ -1888,18 +1908,18 @@ Set the scheduled departure.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
-| departure_time | <code>int</code> | time in minutes since midnight, 15min step |
-| preconditioning_enabled | <code>boolean</code> | true for on, false for off |
-| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
-| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
-| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
-| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
+| args.departure_time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.preconditioning_enabled | <code>boolean</code> | true for on, false for off |
+| args.preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
+| args.off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
+| args.off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
+| args.end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setScheduledDeparture"></a>
 
-## setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time) ⇒ <code>Promise</code>
+## setScheduledDeparture(options, args) ⇒ <code>Promise</code>
 Set the scheduled departure async and return Promise.
 
 **Kind**: global function  
@@ -1908,17 +1928,17 @@ Set the scheduled departure async and return Promise.
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
-| departure_time | <code>int</code> | time in minutes since midnight, 15min step |
-| preconditioning_enabled | <code>boolean</code> | true for on, false for off |
-| preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
-| off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
-| off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
-| end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.enable | <code>boolean</code> | true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future) |
+| args.departure_time | <code>int</code> | time in minutes since midnight, 15min step |
+| args.preconditioning_enabled | <code>boolean</code> | true for on, false for off |
+| args.preconditioning_weekdays_only | <code>boolean</code> | true for on, false for off |
+| args.off_peak_charging_enabled | <code>boolean</code> | true for on, false for off |
+| args.off_peak_charging_weekdays_only | <code>boolean</code> | true for on, false for off |
+| args.end_off_peak_time | <code>int</code> | time in minutes since midnight, 15min step |
 
 <a name="doorLock"></a>
 
-## doorLock(options, callback) ⇒ <code>object</code>
+## doorLock(options, args, callback) ⇒ <code>object</code>
 Lock the car doors
 
 **Kind**: global function  
@@ -1931,7 +1951,7 @@ Lock the car doors
 
 <a name="doorLockAsync"></a>
 
-## doorLockAsync(options) ⇒ <code>Promise</code>
+## doorLockAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1941,7 +1961,7 @@ Lock the car doors
 
 <a name="doorUnlock"></a>
 
-## doorUnlock(options, callback) ⇒ <code>object</code>
+## doorUnlock(options, args, callback) ⇒ <code>object</code>
 Unlock the car doors
 
 **Kind**: global function  
@@ -1954,7 +1974,7 @@ Unlock the car doors
 
 <a name="doorUnlockAsync"></a>
 
-## doorUnlockAsync(options) ⇒ <code>Promise</code>
+## doorUnlockAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1964,7 +1984,7 @@ Unlock the car doors
 
 <a name="climateStart"></a>
 
-## climateStart(options, callback) ⇒ <code>object</code>
+## climateStart(options, args, callback) ⇒ <code>object</code>
 Turn on HVAC system
 
 **Kind**: global function  
@@ -1977,7 +1997,7 @@ Turn on HVAC system
 
 <a name="climateStartAsync"></a>
 
-## climateStartAsync(options) ⇒ <code>Promise</code>
+## climateStartAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -1987,7 +2007,7 @@ Turn on HVAC system
 
 <a name="climateStop"></a>
 
-## climateStop(options, callback) ⇒ <code>object</code>
+## climateStop(options, args, callback) ⇒ <code>object</code>
 Turn off HVAC system
 
 **Kind**: global function  
@@ -2000,7 +2020,7 @@ Turn off HVAC system
 
 <a name="climateStopAsync"></a>
 
-## climateStopAsync(options) ⇒ <code>Promise</code>
+## climateStopAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -2010,7 +2030,7 @@ Turn off HVAC system
 
 <a name="sunRoofControl"></a>
 
-## sunRoofControl(options, state, callback) ⇒ <code>object</code>
+## sunRoofControl(options, args, callback) ⇒ <code>object</code>
 Set sun roof mode
 
 **Kind**: global function  
@@ -2019,23 +2039,23 @@ Set sun roof mode
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| state | <code>string</code> | one of "vent", "close" |
+| args.state | <code>string</code> | one of "vent", "close" |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="sunRoofControlAsync"></a>
 
-## sunRoofControlAsync(options, state) ⇒ <code>Promise</code>
+## sunRoofControlAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| state | <code>string</code> | one of "vent", "close" |
+| args.state | <code>string</code> | one of "vent", "close" |
 
 <a name="sunRoofMove"></a>
 
-## sunRoofMove(options, percent, callback) ⇒ <code>object</code>
+## sunRoofMove(options, args, callback) ⇒ <code>object</code>
 Set sun roof position
 
 **Kind**: global function  
@@ -2044,23 +2064,23 @@ Set sun roof position
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| percent | <code>int</code> | position in percent |
+| args.percent | <code>int</code> | position in percent |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="sunRoofMoveAsync"></a>
 
-## sunRoofMoveAsync(options, percent) ⇒ <code>Promise</code>
+## sunRoofMoveAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| percent | <code>int</code> | position in percent |
+| args.percent | <code>int</code> | position in percent |
 
 <a name="setTemps"></a>
 
-## setTemps(options, driver, pass, callback) ⇒ <code>object</code>
+## setTemps(options, args, callback) ⇒ <code>object</code>
 Set the driver/passenger climate temperatures
 
 **Kind**: global function  
@@ -2069,25 +2089,25 @@ Set the driver/passenger climate temperatures
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| driver | <code>number</code> | driver temp in Deg.C |
-| pass | <code>number</code> | passenger temp in Deg.C |
+| args.driver | <code>number</code> | driver temp in Deg.C |
+| args.pass | <code>number</code> | passenger temp in Deg.C |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setTempsAsync"></a>
 
-## setTempsAsync(options, driver, pass) ⇒ <code>Promise</code>
+## setTempsAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| driver | <code>number</code> | driver temp in Deg.C |
+| args.driver | <code>number</code> | driver temp in Deg.C |
 | pass | <code>number</code> | passenger temp in Deg.C |
 
 <a name="remoteStart"></a>
 
-## remoteStart(options, callback) ⇒ <code>object</code>
+## remoteStart(options, args, callback) ⇒ <code>object</code>
 Remote start the car
 
 **Kind**: global function  
@@ -2100,7 +2120,7 @@ Remote start the car
 
 <a name="remoteStartAsync"></a>
 
-## remoteStartAsync(options) ⇒ <code>Promise</code>
+## remoteStartAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -2110,7 +2130,7 @@ Remote start the car
 
 <a name="openTrunk"></a>
 
-## openTrunk(options, which, callback) ⇒ <code>object</code>
+## openTrunk(options, args, callback) ⇒ <code>object</code>
 Open the trunk/frunk
 
 **Kind**: global function  
@@ -2119,23 +2139,23 @@ Open the trunk/frunk
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| which | <code>string</code> | FRUNK or TRUNK constant |
+| args.which | <code>string</code> | FRUNK or TRUNK constant |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="openTrunkAsync"></a>
 
-## openTrunkAsync(options, which) ⇒ <code>Promise</code>
+## openTrunkAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| which | <code>string</code> | one of "trunk", "frunk" |
+| args.which | <code>string</code> | one of "trunk", "frunk" |
 
 <a name="wakeUp"></a>
 
-## wakeUp(options, callback) ⇒ <code>object</code>
+## wakeUp(options, args, callback) ⇒ <code>object</code>
 Wake up a car that is sleeping
 
 **Kind**: global function  
@@ -2148,7 +2168,7 @@ Wake up a car that is sleeping
 
 <a name="wakeUpAsync"></a>
 
-## wakeUpAsync(options) ⇒ <code>Promise</code>
+## wakeUpAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -2158,7 +2178,7 @@ Wake up a car that is sleeping
 
 <a name="setValetMode"></a>
 
-## setValetMode(options, onoff, pin, callback) ⇒ <code>object</code>
+## setValetMode(options, args, callback) ⇒ <code>object</code>
 Turn valet mode on/off
 
 **Kind**: global function  
@@ -2167,25 +2187,25 @@ Turn valet mode on/off
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| onoff | <code>boolean</code> | true for on, false for off |
-| pin | <code>int</code> | pin code |
+| args.onoff | <code>boolean</code> | true for on, false for off |
+| args.pin | <code>int</code> | pin code |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="setValetModeAsync"></a>
 
-## setValetModeAsync(options, onoff, pin) ⇒ <code>Promise</code>
+## setValetModeAsync(options, args, pin) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| onoff | <code>boolean</code> | true for on, false for off |
+| args.onoff | <code>boolean</code> | true for on, false for off |
 | pin | <code>int</code> | pin code |
 
 <a name="resetValetPin"></a>
 
-## resetValetPin(options, callback) ⇒ <code>object</code>
+## resetValetPin(options, args, callback) ⇒ <code>object</code>
 Reset the valet pin
 
 **Kind**: global function  
@@ -2198,7 +2218,7 @@ Reset the valet pin
 
 <a name="resetValetPinAsync"></a>
 
-## resetValetPinAsync(options) ⇒ <code>Promise</code>
+## resetValetPinAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
@@ -2208,7 +2228,7 @@ Reset the valet pin
 
 <a name="calendar"></a>
 
-## calendar(options, entry, callback) ⇒ <code>object</code>
+## calendar(options, args, callback) ⇒ <code>object</code>
 Set a calendar entry
 
 **Kind**: global function  
@@ -2217,19 +2237,19 @@ Set a calendar entry
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| entry | <code>object</code> | calendar entry object |
+| args.entry | <code>object</code> | calendar entry object |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="calendarAsync"></a>
 
-## calendarAsync(options, entry) ⇒ <code>Promise</code>
+## calendarAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| entry | <code>object</code> | calendar entry object |
+| args.entry | <code>object</code> | calendar entry object |
 
 <a name="makeCalendarEntry"></a>
 
@@ -2250,7 +2270,7 @@ Create a calendar entry
 
 <a name="homelink"></a>
 
-## homelink(options, lat, long, string, callback) ⇒ <code>object</code>
+## homelink(options, args, callback) ⇒ <code>object</code>
 Trigger homelink
 
 **Kind**: global function  
@@ -2259,23 +2279,21 @@ Trigger homelink
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| lat | <code>number</code> | vehicle GPS latitude |
-| long | <code>number</code> | vehicle GPS longitude |
-| string | <code>string</code> | one of the tokens from vehicle JSON |
+| args.lat | <code>number</code> | vehicle GPS latitude |
+| args.long | <code>number</code> | vehicle GPS longitude |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="homelinkAsync"></a>
 
-## homelinkAsync(options, lat, long, string) ⇒ <code>Promise</code>
+## homelinkAsync(options, args) ⇒ <code>Promise</code>
 **Kind**: global function  
 **Returns**: <code>Promise</code> - result  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| lat | <code>number</code> | vehicle GPS latitude |
-| long | <code>number</code> | vehicle GPS longitude |
-| string | <code>string</code> | one of the tokens from vehicle JSON |
+| args.lat | <code>number</code> | vehicle GPS latitude |
+| args.long | <code>number</code> | vehicle GPS longitude |
 
 <a name="products"></a>
 
@@ -2292,7 +2310,7 @@ Return list of products
 
 <a name="productsAsync"></a>
 
-## productsAsync(options, callback) ⇒ <code>Promise</code>
+## productsAsync(options) ⇒ <code>Promise</code>
 Return list of products
 
 **Kind**: global function  
@@ -2301,7 +2319,6 @@ Return list of products
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="solarStatus"></a>
 
@@ -2318,7 +2335,7 @@ Return live status from solar installation
 
 <a name="solarStatusAsync"></a>
 
-## solarStatusAsync(options, callback) ⇒ <code>Promise</code>
+## solarStatusAsync(options) ⇒ <code>Promise</code>
 Return solar status information
 
 **Kind**: global function  
@@ -2327,7 +2344,6 @@ Return solar status information
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
 <a name="startStreaming"></a>
 

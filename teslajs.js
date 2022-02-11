@@ -1385,7 +1385,7 @@ exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
  * @returns {object} result
  */
 exports.speedLimitSetLimit = function speedLimitSetLimit(options, args, callback) {
-    post_command(options, "command/speed_limit_set_limit", null, { limit_mph: args.limit }, callback);
+    post_command(options, "command/speed_limit_set_limit", null, { limit_mph: args?.limit }, callback);
 }
 
 /**
@@ -1858,7 +1858,7 @@ exports.setTemps = function setTemps(options, args, callback) {
     args.driver = clamp(args.driver, exports.MIN_TEMP, exports.MAX_TEMP);
     args.pass = clamp(args.pass, exports.MIN_TEMP, exports.MAX_TEMP);
 
-    post_command(options, "command/set_temps", null, { driver_temp: args.driver, passenger_temp: args.pass }, callback);
+    post_command(options, "command/set_temps", null, { driver_temp: args?.driver, passenger_temp: args?.pass }, callback);
 }
 
 /**

@@ -467,10 +467,11 @@ exports.logoutAsync = Promise.denodeify(exports.logout);
  * Return vehicle information on the requested vehicle
  * @function vehicle
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {Vehicle} vehicle JSON data
  */
-exports.vehicle = function vehicle(options, callback) {
+exports.vehicle = function vehicle(options, args, callback) {
     log(API_CALL_LEVEL, "TeslaJS.vehicle()");
 
     callback = callback || function (err, vehicle) { /* do nothing! */ }
@@ -515,6 +516,7 @@ exports.vehicle = function vehicle(options, callback) {
  * Return vehicle information on the requested vehicle
  * @function vehicleAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} vehicle JSON data
  */
 exports.vehicleAsync = Promise.denodeify(exports.vehicle);
@@ -524,10 +526,11 @@ exports.vehicleAsync = Promise.denodeify(exports.vehicle);
  * to determine which vehicle to fetch data for.
  * @function vehicleById
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {Vehicle} vehicle JSON data
  */
- exports.vehicleById = function vehicle(options, callback) {
+exports.vehicleById = function vehicle(options, args, callback) {
   log(API_CALL_LEVEL, "TeslaJS.vehicleById()");
 
   callback = callback || function (err, vehicle) { /* do nothing! */ }
@@ -567,22 +570,24 @@ exports.vehicleAsync = Promise.denodeify(exports.vehicle);
 }
 
 /**
-* Return vehicle information on the requested vehicle. Uses options.vehicleID
-* to determine which vehicle to fetch data for.
-* @function vehicleByIdAsync
-* @param {optionsType} options - options object
-* @returns {Promise} vehicle JSON data
-*/
+ * Return vehicle information on the requested vehicle. Uses options.vehicleID
+ * to determine which vehicle to fetch data for.
+ * @function vehicleByIdAsync
+ * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @returns {Promise} vehicle JSON data
+ */
 exports.vehicleByIdAsync = Promise.denodeify(exports.vehicleById);
 
 /**
  * Return vehicle information on ALL vehicles
  * @function vehicles
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {Vehicles[]} array of vehicle JSON data
  */
-exports.vehicles = function vehicles(options, callback) {
+exports.vehicles = function vehicles(options, args, callback) {
     log(API_CALL_LEVEL, "TeslaJS.vehicles()");
 
     callback = callback || function (err, vehicle) { /* do nothing! */ }
@@ -625,7 +630,7 @@ exports.vehicles = function vehicles(options, callback) {
  * Return vehicle information on ALL vehicles
  * @function vehiclesAsync
  * @param {optionsType} options - options object
- * @param {nodeBack} callback - Node-style callback
+ * @param {object} args - command arguments
  * @returns {Promise} array of vehicle JSON data
  */
 exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
@@ -635,10 +640,11 @@ exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
  * @function get_command
  * @param {optionsType} options - options object
  * @param {string} command - REST command
+ * @param {object} qs - URL query string parameters
  * @param {nodeBack} callback - Node-style callback
  */
 exports.get_command = get_command;
-function get_command(options, command, callback) {
+function get_command(options, command, qs, callback) {
     log(API_CALL_LEVEL, "GET call: " + command + " start.");
 
     callback = callback || function (err, data) { /* do nothing! */ }
@@ -646,6 +652,7 @@ function get_command(options, command, callback) {
     var req = {
         method: "GET",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
+        qs: qs,
         headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
     };
 
@@ -685,6 +692,7 @@ function get_command(options, command, callback) {
  * @function get_commandAsync
  * @param {optionsType} options - options object
  * @param {string} command - REST command
+ * @param {object} qs - URL query string parameters
  * @returns {Promise} result
  */
 exports.get_commandAsync = Promise.denodeify(exports.get_command);
@@ -694,11 +702,12 @@ exports.get_commandAsync = Promise.denodeify(exports.get_command);
  * @function
  * @param {optionsType} options - options object
  * @param {string} command - REST command
+ * @param {object} qs - URL query string parameters
  * @param {object} body - JSON payload
  * @param {nodeBack} callback - Node-style callback
  */
 exports.post_command = post_command;
-function post_command(options, command, body, callback) {
+function post_command(options, command, qs, body, callback) {
     log(API_CALL_LEVEL, "POST call: " + command + " start.");
 
     callback = callback || function (err, data) { /* do nothing! */ }
@@ -706,6 +715,7 @@ function post_command(options, command, body, callback) {
     var cmd = {
         method: "POST",
         url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
+        qs: qs,
         headers: { Authorization: "Bearer " + options.authToken, 'content-type': 'application/json; charset=UTF-8' },
         body: body || null
     };
@@ -745,6 +755,7 @@ function post_command(options, command, body, callback) {
  * @function post_commandAsync
  * @param {optionsType} options - options object
  * @param {string} command - REST command
+ * @param {object} qs - URL query string parameters
  * @param {object} body - JSON payload
  * @returns {Promise} result
  */
@@ -753,19 +764,40 @@ exports.post_commandAsync = Promise.denodeify(exports.post_command);
 /**
  * GET all vehicle data in a single call
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {array} args.endpoints - endpoints to get
+ * @param {boolean} args.let_sleep - null or true 
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} vehicle_data object
  */
-exports.vehicleData = function vehicleData(options, endpoints, let_sleep, callback){
-    endpoints = endpoints ?? "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config"
-    let_sleep = (let_sleep !== false)
-    get_command(options, `vehicle_data?endpoints=${endpoints}&let_sleep=${let_sleep}`, callback);
+exports.vehicleData = function vehicleData(options, args, callback){
+    /*
+      null or array of individual endpoints:
+      - charge_state
+      - climate_state
+      - closures_state
+      - drive_state
+      - gui_settings
+      - location_state
+      - vehicle_state
+      - vehicle_config
+    */
+    var endpoints = args?.endpoints ?? [ 'climate_state', 'charge_state', 'drive_state', 'gui_settings', 'vehicle_state', 'vehicle_config' ]
+    if (Array.isArray(endpoints)) endpoints = endpoints.join(';')
+    /*
+      null or true
+    */
+    var let_sleep = args?.let_sleep
+    get_command(options, 'vehicle_data', { endpoints, let_sleep }, callback);
 }
 
 /**
  * Async version to GET all vehicle data in a single call
  * @function vehicleDataAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {array} args.endpoints - endpoints to get
+ * @param {boolean} args.let_sleep - null or true 
  * @returns {Promise} vehicle_data object
  */
 exports.vehicleDataAsync = Promise.denodeify(exports.vehicleData);
@@ -773,17 +805,19 @@ exports.vehicleDataAsync = Promise.denodeify(exports.vehicleData);
 /**
  * GET the vehicle config
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} vehicle_config object
  */
-exports.vehicleConfig = function vehicleConfig(options, callback) {
-    get_command(options, "data_request/vehicle_config", callback);
+exports.vehicleConfig = function vehicleConfig(options, args, callback) {
+    get_command(options, "data_request/vehicle_config", null, callback);
 }
 
 /**
  * Async version to GET the vehicle config
  * @function vehicleConfigAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} vehicle_config object
  */
 exports.vehicleConfigAsync = Promise.denodeify(exports.vehicleConfig);
@@ -791,17 +825,19 @@ exports.vehicleConfigAsync = Promise.denodeify(exports.vehicleConfig);
 /**
  * GET the vehicle state
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} vehicle_state object
  */
-exports.vehicleState = function vehicleState(options, callback) {
-    get_command(options, "data_request/vehicle_state", callback);
+exports.vehicleState = function vehicleState(options, args, callback) {
+    get_command(options, "data_request/vehicle_state", null, callback);
 }
 
 /**
  * Async version to GET the vehicle state
  * @function vehicleStateAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} vehicle_state object
  */
 exports.vehicleStateAsync = Promise.denodeify(exports.vehicleState);
@@ -809,17 +845,19 @@ exports.vehicleStateAsync = Promise.denodeify(exports.vehicleState);
 /**
  * GET the climate state
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} climate_state object
  */
-exports.climateState = function climateState(options, callback) {
-    get_command(options, "data_request/climate_state", callback);
+exports.climateState = function climateState(options, args, callback) {
+    get_command(options, "data_request/climate_state", null, callback);
 }
 
 /**
  * GET the climate state
  * @function climateStateAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} climate_state object
  */
 exports.climateStateAsync = Promise.denodeify(exports.climateState);
@@ -827,16 +865,18 @@ exports.climateStateAsync = Promise.denodeify(exports.climateState);
 /**
  * GET nearby charging sites
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} climate_state object
  */
-exports.nearbyChargers = function nearbyChargers(options, callback) {
-    get_command(options, "nearby_charging_sites", callback);
+exports.nearbyChargers = function nearbyChargers(options, args, callback) {
+    get_command(options, "nearby_charging_sites", null, callback);
 }
 
 /**
  * @function nearbyChargersAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} climate_state object
  */
 exports.nearbyChargersAsync = Promise.denodeify(exports.nearbyChargers);
@@ -844,16 +884,18 @@ exports.nearbyChargersAsync = Promise.denodeify(exports.nearbyChargers);
 /**
  * GET the drive state
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} drive_state object
  */
-exports.driveState = function driveState(options, callback) {
-    get_command(options, "data_request/drive_state", callback);
+exports.driveState = function driveState(options, args, callback) {
+    get_command(options, "data_request/drive_state", null, callback);
 }
 
 /**
  * @function driveStateAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} drive_state object
  */
 exports.driveStateAsync = Promise.denodeify(exports.driveState);
@@ -861,16 +903,18 @@ exports.driveStateAsync = Promise.denodeify(exports.driveState);
 /**
  * GET the charge state
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} charge_state object
  */
-exports.chargeState = function chargeState(options, callback) {
-    get_command(options, "data_request/charge_state", callback);
+exports.chargeState = function chargeState(options, args, callback) {
+    get_command(options, "data_request/charge_state", null, callback);
 }
 
 /**
  * @function chargeStateAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} charge_state object
  */
 exports.chargeStateAsync = Promise.denodeify(exports.chargeState);
@@ -878,16 +922,18 @@ exports.chargeStateAsync = Promise.denodeify(exports.chargeState);
 /**
  * GET the GUI settings
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} gui_settings object
  */
-exports.guiSettings = function guiSettings(options, callback) {
-    get_command(options, "data_request/gui_settings", callback);
+exports.guiSettings = function guiSettings(options, args, callback) {
+    get_command(options, "data_request/gui_settings", null, callback);
 }
 
 /**
  * @function guiSettingsAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} gui_settings object
  */
 exports.guiSettingsAsync = Promise.denodeify(exports.guiSettings);
@@ -895,16 +941,18 @@ exports.guiSettingsAsync = Promise.denodeify(exports.guiSettings);
 /**
  * GET the mobile enabled status
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} mobile_enabled object
  */
-exports.mobileEnabled = function mobileEnabled(options, callback) {
-    get_command(options, "mobile_enabled", callback);
+exports.mobileEnabled = function mobileEnabled(options, args, callback) {
+    get_command(options, "mobile_enabled", null, callback);
 }
 
 /**
  * @function mobileEnabledAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} mobile_enabled object
  */
 exports.mobileEnabledAsync = Promise.denodeify(exports.mobileEnabled);
@@ -912,16 +960,18 @@ exports.mobileEnabledAsync = Promise.denodeify(exports.mobileEnabled);
 /**
  * Honk the horn
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.honkHorn = function honk(options, callback) {
-    post_command(options, "command/honk_horn", null, callback);
+exports.honkHorn = function honk(options, args, callback) {
+    post_command(options, "command/honk_horn", null, null, callback);
 }
 
 /**
  * @function honkHornAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.honkHornAsync = Promise.denodeify(exports.honkHorn);
@@ -929,16 +979,18 @@ exports.honkHornAsync = Promise.denodeify(exports.honkHorn);
 /**
  * Flash the lights
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.flashLights = function flashLights(options, callback) {
-    post_command(options, "command/flash_lights", null, callback);
+exports.flashLights = function flashLights(options, args, callback) {
+    post_command(options, "command/flash_lights", null, null, callback);
 }
 
 /**
  * @function flashLightsAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.flashLightsAsync = Promise.denodeify(exports.flashLights);
@@ -946,17 +998,19 @@ exports.flashLightsAsync = Promise.denodeify(exports.flashLights);
 /**
  * Start charging the car
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.startCharge = function startCharge(options, callback) {
-    post_command(options, "command/charge_start", null, callback);
+exports.startCharge = function startCharge(options, args, callback) {
+    post_command(options, "command/charge_start", null, null, callback);
 }
 
 /**
  * Start charging the car
  * @function startChargeAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.startChargeAsync = Promise.denodeify(exports.startCharge);
@@ -964,17 +1018,19 @@ exports.startChargeAsync = Promise.denodeify(exports.startCharge);
 /**
  * Stop charging the car
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.stopCharge = function stopCharge(options, callback) {
-    post_command(options, "command/charge_stop", null, callback);
+exports.stopCharge = function stopCharge(options, args, callback) {
+    post_command(options, "command/charge_stop", null, null, callback);
 }
 
 /**
  * Stop charging the car
  * @function stopChargeAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.stopChargeAsync = Promise.denodeify(exports.stopCharge);
@@ -982,17 +1038,19 @@ exports.stopChargeAsync = Promise.denodeify(exports.stopCharge);
 /**
  * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.openChargePort = function openChargePort(options, callback) {
-    post_command(options, "command/charge_port_door_open", null, callback);
+exports.openChargePort = function openChargePort(options, args, callback) {
+    post_command(options, "command/charge_port_door_open", null, null, callback);
 }
 
 /**
  * Open the charge port, or releases the latch if the charge port is open, a cable is plugged in, and charging is stopped 
  * @function openChargePortAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.openChargePortAsync = Promise.denodeify(exports.openChargePort);
@@ -1000,17 +1058,19 @@ exports.openChargePortAsync = Promise.denodeify(exports.openChargePort);
 /**
  * Close the charge port for appropriately equipped vehicles
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.closeChargePort = function closeChargePort(options, callback) {
-    post_command(options, "command/charge_port_door_close", null, callback);
+exports.closeChargePort = function closeChargePort(options, args, callback) {
+    post_command(options, "command/charge_port_door_close", null, null, callback);
 }
 
 /**
  * Close the charge port for appropriately equipped vehicles
  * @function closeChargePortAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
@@ -1019,18 +1079,21 @@ exports.closeChargePortAsync = Promise.denodeify(exports.closeChargePort);
  * Schedule a firmware update
  * @function scheduleSoftwareUpdate
  * @param {optionsType} options - options object
- * @param {number} offset - delay in ms before installation begins
+ * @param {object} args - command arguments
+ * @param {number} args.offset - delay in ms before installation begins
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
 */
-exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, offset, callback) {
-    post_command(options, "command/schedule_software_update", { "offset_sec": offset }, callback);
+exports.scheduleSoftwareUpdate = function scheduleSoftwareUpdate(options, args, callback) {
+    post_command(options, "command/schedule_software_update", null, { "offset_sec": args?.offset }, callback);
 }
 
 /**
  * Schedule a firmware update
  * @function scheduleSoftwareUpdateAsync
  * @param {optionsType} options - options object
- * @param {number} offset - delay in ms before installation begins
+ * @param {object} args - command arguments
+ * @param {number} args.offset - delay in ms before installation begins
  * @returns {Promise} result
 */
 exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftwareUpdate);
@@ -1039,16 +1102,19 @@ exports.scheduleSoftwareUpdateAsync = Promise.denodeify(exports.scheduleSoftware
  * Cancel a scheduled software update
  * @function cancelSoftwareUpdate
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
 */
-exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, callback) {
-    post_command(options, "command/cancel_software_update", null, callback);
+exports.cancelSoftwareUpdate = function cancelSoftwareUpdate(options, args, callback) {
+    post_command(options, "command/cancel_software_update", null, null, callback);
 }
 
 /** 
  * Cancel a scheduled software update
  * @function cancelSoftwareUpdateAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
 */
 exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpdate);
@@ -1057,35 +1123,38 @@ exports.cancelSoftwareUpdateAsync = Promise.denodeify(exports.cancelSoftwareUpda
  * Send a navigation request to the car
  * @function navigationRequest
  * @param {optionsType} options - options object
- * @param {string} subject - short-hand name for the destination
- * @param {string} text - address details including things like name, address, map link
- * @param {string} locale - the language locale, for example "en-US"
+ * @param {object} args - command arguments
+ * @param {string} args.subject - short-hand name for the destination
+ * @param {string} args.text - address details including things like name, address, map link
+ * @param {string} args.locale - the language locale, for example "en-US"
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.navigationRequest = function navigationRequest(options, subject, text, locale, callback) {
+exports.navigationRequest = function navigationRequest(options, args, callback) {
     var req =
     {
         "type": "share_ext_content_raw",
         "value": {
             "android.intent.ACTION": "android.intent.action.SEND",
             "android.intent.TYPE": "text\/plain",
-            "android.intent.extra.SUBJECT": subject,
-            "android.intent.extra.TEXT": text
+            "android.intent.extra.SUBJECT": args?.subject,
+            "android.intent.extra.TEXT": args?.text
         },
-        "locale": locale,
+        "locale": args?.locale,
         "timestamp_ms": Date.now()
     };
 
-    post_command(options, "command/navigation_request", req, callback);
+    post_command(options, "command/navigation_request", null, req, callback);
 }
 
 /**
  * Send a navigation request to the car
  * @function navigationRequestAsync
  * @param {optionsType} options - options object
- * @param {string} subject - short-hand name for the destination
- * @param {string} text - address details including things like name, address, map link
- * @param {string} locale - the language locale, for example "en-US"
+ * @param {object} args - command arguments
+ * @param {string} args.subject - short-hand name for the destination
+ * @param {string} args.text - address details including things like name, address, map link
+ * @param {string} args.locale - the language locale, for example "en-US"
  * @returns {Promise} result
  */
 exports.navigationRequestAsync = Promise.denodeify(exports.navigationRequest);
@@ -1094,16 +1163,19 @@ exports.navigationRequestAsync = Promise.denodeify(exports.navigationRequest);
  * Toggle media playback
  * @function mediaTogglePlayback
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaTogglePlayback = function mediaTogglePlayback(options, callback) {
-    post_command(options, "command/media_toggle_playback", null, callback);
+exports.mediaTogglePlayback = function mediaTogglePlayback(options, args, callback) {
+    post_command(options, "command/media_toggle_playback", null, null, callback);
 }
 
 /**
  * Toggle media playback
  * @function mediaTogglePlaybackAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaTogglePlaybackAsync = Promise.denodeify(exports.mediaTogglePlayback);
@@ -1112,16 +1184,19 @@ exports.mediaTogglePlaybackAsync = Promise.denodeify(exports.mediaTogglePlayback
  * Media play next track
  * @function mediaPlayNext
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaPlayNext = function mediaPlayNext(options, callback) {
-    post_command(options, "command/media_next_track", null, callback);
+exports.mediaPlayNext = function mediaPlayNext(options, args, callback) {
+    post_command(options, "command/media_next_track", null, null, callback);
 }
 
 /**
  * Media play next track
  * @function mediaPlayNextAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaPlayNextAsync = Promise.denodeify(exports.mediaPlayNext);
@@ -1130,16 +1205,19 @@ exports.mediaPlayNextAsync = Promise.denodeify(exports.mediaPlayNext);
  * Media play previous track
  * @function mediaPlayPrevious
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaPlayPrevious = function mediaPlayPrevious(options, callback) {
-    post_command(options, "command/media_prev_track", null, callback);
+exports.mediaPlayPrevious = function mediaPlayPrevious(options, args, callback) {
+    post_command(options, "command/media_prev_track", null, null, callback);
 }
 
 /**
  * Media play previous track
  * @function mediaPlayPreviousAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaPlayPreviousAsync = Promise.denodeify(exports.mediaPlayPrevious);
@@ -1148,16 +1226,19 @@ exports.mediaPlayPreviousAsync = Promise.denodeify(exports.mediaPlayPrevious);
  * Media play next favorite
  * @function mediaPlayNextFavorite
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaPlayNextFavorite = function mediaPlayNextFavorite(options, callback) {
-    post_command(options, "command/media_next_fav", null, callback);
+exports.mediaPlayNextFavorite = function mediaPlayNextFavorite(options, args, callback) {
+    post_command(options, "command/media_next_fav", null, null, callback);
 }
 
 /**
  * Media play next favorite
  * @function mediaPlayNextFavoriteAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaPlayNextFavoriteAsync = Promise.denodeify(exports.mediaPlayNextFavorite);
@@ -1166,16 +1247,19 @@ exports.mediaPlayNextFavoriteAsync = Promise.denodeify(exports.mediaPlayNextFavo
  * Media play previous favorite
  * @function mediaPlayPreviousFavorite
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaPlayPreviousFavorite = function mediaPlayPreviousFavorite(options, callback) {
-    post_command(options, "command/media_prev_fav", null, callback);
+exports.mediaPlayPreviousFavorite = function mediaPlayPreviousFavorite(options, args, callback) {
+    post_command(options, "command/media_prev_fav", null, null, callback);
 }
 
 /**
  * Media play previous favorite
  * @function mediaPlayPreviousFavoriteAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaPlayPreviousFavoriteAsync = Promise.denodeify(exports.mediaPlayPreviousFavorite);
@@ -1184,16 +1268,19 @@ exports.mediaPlayPreviousFavoriteAsync = Promise.denodeify(exports.mediaPlayPrev
  * Media volume up
  * @function mediaVolumeUp
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaVolumeUp = function mediaVolumeUp(options, callback) {
-    post_command(options, "command/media_volume_up", null, callback);
+exports.mediaVolumeUp = function mediaVolumeUp(options, args, callback) {
+    post_command(options, "command/media_volume_up", null, null, callback);
 }
 
 /**
  * Media volume up
  * @function mediaVolumeUpAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaVolumeUpAsync = Promise.denodeify(exports.mediaVolumeUp);
@@ -1202,16 +1289,19 @@ exports.mediaVolumeUpAsync = Promise.denodeify(exports.mediaVolumeUp);
  * Media volume down
  * @function mediaVolumeDown
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.mediaVolumeDown = function mediaVolumeDown(options, callback) {
-    post_command(options, "command/media_volume_down", null, callback);
+exports.mediaVolumeDown = function mediaVolumeDown(options, args, callback) {
+    post_command(options, "command/media_volume_down", null, null, callback);
 }
 
 /**
  * Media volume down
  * @function mediaVolumeDownAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
@@ -1220,18 +1310,21 @@ exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
  * Activate speed limitation
  * @function speedLimitActivate
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.speedLimitActivate = function speedLimitActivate(options, pin, callback) {
-    post_command(options, "command/speed_limit_activate", { pin: pin }, callback);
+exports.speedLimitActivate = function speedLimitActivate(options, args, callback) {
+    post_command(options, "command/speed_limit_activate", null, { pin: args?.pin }, callback);
 }
 
 /**
  * Activate speed limitation
  * @function speedLimitActivateAsync
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
@@ -1240,18 +1333,21 @@ exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
  * Deactivate speed limitation
  * @function speedLimitDeactivate
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.speedLimitDeactivate = function speedLimitDeactivate(options, pin, callback) {
-    post_command(options, "command/speed_limit_deactivate", { pin: pin }, callback);
+exports.speedLimitDeactivate = function speedLimitDeactivate(options, args, callback) {
+    post_command(options, "command/speed_limit_deactivate", null, { pin: args?.pin }, callback);
 }
 
 /**
  * Deactivate speed limitation
  * @function speedLimitDeactivateAsync
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactivate);
@@ -1260,18 +1356,21 @@ exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactiva
  * Clear speed limitation pin
  * @function speedLimitClearPin
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.speedLimitClearPin = function speedLimitClearPin(options, pin, callback) {
-    post_command(options, "command/speed_limit_clear_pin", { pin: pin }, callback);
+exports.speedLimitClearPin = function speedLimitClearPin(options, args, callback) {
+    post_command(options, "command/speed_limit_clear_pin", null, { pin: args?.pin }, callback);
 }
 
 /**
  * Clear speed limitation pin
  * @function speedLimitClearPinAsync
  * @param {optionsType} options - options object
- * @param {number} pin - Activation pin code. Not the same as valet pin
+ * @param {object} args - command arguments
+ * @param {number} args.pin - Activation pin code. Not the same as valet pin
  * @returns {Promise} result
  */
 exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
@@ -1280,18 +1379,21 @@ exports.speedLimitClearPinAsync = Promise.denodeify(exports.speedLimitClearPin);
  * Set speed limit
  * @function speedLimitSetLimit
  * @param {optionsType} options - options object
- * @param {number} limit - Speed limit in mph
+ * @param {object} args - command arguments
+ * @param {number} args.limit - Speed limit in mph
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.speedLimitSetLimit = function speedLimitSetLimit(options, limit, callback) {
-    post_command(options, "command/speed_limit_set_limit", { limit_mph: limit }, callback);
+exports.speedLimitSetLimit = function speedLimitSetLimit(options, args, callback) {
+    post_command(options, "command/speed_limit_set_limit", null, { limit_mph: args.limit }, callback);
 }
 
 /**
  * Set speed limit
  * @function speedLimitSetLimitAsync
  * @param {optionsType} options - options object
- * @param {number} limit - Speed limit in mph
+ * @param {object} args - command arguments
+ * @param {number} args.limit - Speed limit in mph
  * @returns {Promise} result
  */
 exports.speedLimitSetLimitAsync = Promise.denodeify(exports.speedLimitSetLimit);
@@ -1300,17 +1402,20 @@ exports.speedLimitSetLimitAsync = Promise.denodeify(exports.speedLimitSetLimit);
  * Enable or disable sentry mode
  * @function setSentryMode
  * @param {optionsType} options - options object
- * @param {boolean} onoff - true to turn on sentry mode, false to turn off
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true to turn on sentry mode, false to turn off
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setSentryMode = function setSentryMode(options, onoff, callback) {
-	post_command(options, "command/set_sentry_mode", { on: onoff }, callback);
+exports.setSentryMode = function setSentryMode(options, args, callback) {
+	post_command(options, "command/set_sentry_mode", null, { on: args?.onoff }, callback);
 }
 
 /**
  * Enable or disable sentry mode
  * @function setSentryModeAsync
- * @param {boolean} onoff - true to turn on sentry mode, false to turn off
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true to turn on sentry mode, false to turn off
  * @returns {Promise} result
  */
 exports.setSentryModeAsync = Promise.denodeify(exports.setSentryMode);
@@ -1319,20 +1424,23 @@ exports.setSentryModeAsync = Promise.denodeify(exports.setSentryMode);
  * Remote seat heater
  * @function seatHeater
  * @param {optionsType} options - options object
- * @param {number} heater - Which heater to adjust (0-5)
- * @param {number} level - Level for the heater (0-3)
+ * @param {object} args - command arguments
+ * @param {number} args.heater - Which heater to adjust (0-5)
+ * @param {number} args.level - Level for the heater (0-3)
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.seatHeater = function seatHeater(options, heater, level, callback) {
-    post_command(options, "command/remote_seat_heater_request", { "heater": heater, "level": level }, callback);
+exports.seatHeater = function seatHeater(options, args, callback) {
+    post_command(options, "command/remote_seat_heater_request", null, { "heater": args?.heater, "level": args?.level }, callback);
 }
 
 /**
  * Remote seat heater
  * @function seatHeaterAsync
  * @param {optionsType} options - options object
- * @param {number} heater - Which heater to adjust (0-5)
- * @param {number} level - Level for the heater (0-3)
+ * @param {object} args - command arguments
+ * @param {number} args.heater - Which heater to adjust (0-5)
+ * @param {number} args.level - Level for the heater (0-3)
  * @returns {Promise} result
  */
 exports.seatHeaterAsync = Promise.denodeify(exports.seatHeater);
@@ -1341,18 +1449,21 @@ exports.seatHeaterAsync = Promise.denodeify(exports.seatHeater);
  * Remote steering heater
  * @function steeringHeater
  * @param {optionsType} options - options object
- * @param {number} level - Level for the heater (0-3)
+ * @param {object} args - command arguments
+ * @param {number} args.level - Level for the heater (0-3)
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.steeringHeater = function steeringHeater(options, level, callback) {
-    post_command(options, "command/remote_steering_wheel_heater_request", { "on": level }, callback);
+exports.steeringHeater = function steeringHeater(options, args, callback) {
+    post_command(options, "command/remote_steering_wheel_heater_request", null, { "on": args?.level }, callback);
 }
 
 /**
  * Remote steering heater
  * @function seatHeaterAsync
  * @param {optionsType} options - options object
- * @param {number} level - Level for the heater (0-3)
+ * @param {object} args - command arguments
+ * @param {number} args.level - Level for the heater (0-3)
  * @returns {Promise} result
  */
 exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
@@ -1361,18 +1472,21 @@ exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
  * Max Defrost
  * @function maxDefrost
  * @param {optionsType} options - options object
- * @param {boolean} onoff - true for on, false for off
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true for on, false for off
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
 exports.maxDefrost = function maxDefrost(options, onoff, callback) {
-    post_command(options, "command/set_preconditioning_max", { "on": onoff }, callback);
+    post_command(options, "command/set_preconditioning_max", null, { "on": args?.onoff }, callback);
 }
 
 /**
  * Remote steering heater
  * @function maxDefrostAsync
  * @param {optionsType} options - options object
- * @param {boolean} onoff - true for on, false for off
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true for on, false for off
  * @returns {Promise} result
  */
 exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
@@ -1381,22 +1495,25 @@ exports.maxDefrostAsync = Promise.denodeify(exports.maxDefrost);
  * Window control
  * @function windowControl
  * @param {optionsType} options - options object
- * @param {string} command - Allowable values are 'vent' and 'close'
- * @param {number} lat - User latitude (can be 0 if not 'close' command)
- * @param {number} lon - User longitude (can be 0 if not 'close' command)
+ * @param {object} args - command arguments
+ * @param {string} args.command - Allowable values are 'vent' and 'close'
+ * @param {number} args.lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} args.lon - User longitude (can be 0 if not 'close' command)
+ * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.windowControl = function windowControl(options, command, lat, lon, callback) {
-    post_command(options, "command/window_control", { "command": command, "lat":lat ?? 0, "lon":lon ?? 0 }, callback);
+exports.windowControl = function windowControl(options, args, callback) {
+    post_command(options, "command/window_control", null, { "command": args?.command, "lat": args?.lat ?? 0, "lon": args?.lon ?? 0 }, callback);
 }
 
 /**
  * Window control
  * @function windowControlAsync
  * @param {optionsType} options - options object
- * @param {string} command - Allowable values are 'vent' and 'close'
- * @param {number} lat - User latitude (can be 0 if not 'close' command)
- * @param {number} lon - User longitude (can be 0 if not 'close' command)
+ * @param {object} args - command arguments
+ * @param {string} args.command - Allowable values are 'vent' and 'close'
+ * @param {number} args.lat - User latitude (can be 0 if not 'close' command)
+ * @param {number} args.lon - User longitude (can be 0 if not 'close' command)
  * @returns {Promise} result
  */
 exports.windowControlAsync = Promise.denodeify(exports.windowControl);
@@ -1429,13 +1546,14 @@ exports.CHARGE_RANGE    = 100;
  * Set the charge limit.
  * Note: charging to 100% frequently is NOT recommended for long-term battery health!
  * @param {optionsType} options - options object
- * @param {int} amt - charge limit in percent
+ * @param {object} args - command arguments
+ * @param {int} args.amt - charge limit in percent
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
+exports.setChargeLimit = function setChargeLimit(options, args, callback) {
     amt = clamp(amt, exports.CHARGE_STORAGE, exports.CHARGE_RANGE);
-    post_command(options, "command/set_charge_limit", { percent: amt }, callback);
+    post_command(options, "command/set_charge_limit", null, { percent: args?.amt }, callback);
 }
 
 /**
@@ -1443,7 +1561,8 @@ exports.setChargeLimit = function setChargeLimit(options, amt, callback) {
  * Note: charging to 100% frequently is NOT recommended for long-term battery health!
  * @function setChargeLimitAsync
  * @param {optionsType} options - options object
- * @param {int} amt - charge limit in percent
+ * @param {object} args - command arguments
+ * @param {int} args.amt - charge limit in percent
  * @returns {Promise} result
  */
 exports.setChargeLimitAsync = Promise.denodeify(exports.setChargeLimit);
@@ -1451,16 +1570,18 @@ exports.setChargeLimitAsync = Promise.denodeify(exports.setChargeLimit);
 /**
  * Set the charge limit to (standard) 90%
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.chargeStandard = function chargeStandard(options, callback) {
-    post_command(options, "command/charge_standard", null, callback);
+exports.chargeStandard = function chargeStandard(options, args, callback) {
+    post_command(options, "command/charge_standard", null, null, callback);
 }
 
 /**
  * @function chargeStandardAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.chargeStandardAsync = Promise.denodeify(exports.chargeStandard);
@@ -1468,16 +1589,18 @@ exports.chargeStandardAsync = Promise.denodeify(exports.chargeStandard);
 /**
  * Set charge limit to 100%
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.chargeMaxRange = function chargeMaxRange(options, callback) {
-    post_command(options, "command/charge_max_range", null, callback);
+exports.chargeMaxRange = function chargeMaxRange(options, args, callback) {
+    post_command(options, "command/charge_max_range", null, null, callback);
 }
 
 /**
  * @function chargeMaxRangeAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.chargeMaxRangeAsync = Promise.denodeify(exports.chargeMaxRange);
@@ -1485,19 +1608,21 @@ exports.chargeMaxRangeAsync = Promise.denodeify(exports.chargeMaxRange);
 /**
  * Set the charging amps.
  * @param {optionsType} options - options object
- * @param {int} amps - charging amps
+ * @param {object} args - command arguments
+ * @param {int} args.amps - charging amps
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setChargingAmps = function setChargingAmps(options, amps, callback) {
-    post_command(options, "command/set_charging_amps", { charging_amps: amps }, callback);
+exports.setChargingAmps = function setChargingAmps(options, args, callback) {
+    post_command(options, "command/set_charging_amps", null, { charging_amps: args?.amps }, callback);
 }
 
 /**
  * Set the charging amps async and return Promise.
  * @function setChargingAmpsAsync
  * @param {optionsType} options - options object
- * @param {int} amps - charging amps
+ * @param {object} args - command arguments
+ * @param {int} args.amps - charging amps
  * @returns {Promise} result
  */
 exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
@@ -1505,21 +1630,23 @@ exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
 /**
  * Set the scheduled charging time.
  * @param {optionsType} options - options object
- * @param {boolean} enable - true for on, false for off
- * @param {int} time - time in minutes since midnight, 15min step
+ * @param {object} args - command arguments
+ * @param {boolean} args.enable - true for on, false for off
+ * @param {int} args.time - time in minutes since midnight, 15min step
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setScheduledCharging = function setScheduledCharging(options, enable, time, callback) {
-    post_command(options, "command/set_scheduled_charging", { enable: enable, time: time }, callback);
+exports.setScheduledCharging = function setScheduledCharging(options, args, callback) {
+    post_command(options, "command/set_scheduled_charging", null, { enable: args?.enable, time: args?.time }, callback);
 }
 
 /**
  * Set the scheduled charging time async and return Promise.
  * @function setScheduledCharging
  * @param {optionsType} options - options object
- * @param {boolean} enable - true for on, false for off
- * @param {int} time - time in minutes since midnight, 15min step
+ * @param {object} args - command arguments
+ * @param {boolean} args.enable - true for on, false for off
+ * @param {int} args.time - time in minutes since midnight, 15min step
  * @returns {Promise} result
  */
 exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledCharging);
@@ -1527,38 +1654,40 @@ exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledChargi
 /**
  * Set the scheduled departure.
  * @param {optionsType} options - options object
- * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
- * @param {int} departure_time - time in minutes since midnight, 15min step
- * @param {boolean} preconditioning_enabled - true for on, false for off
- * @param {boolean} preconditioning_weekdays_only - true for on, false for off
- * @param {boolean} off_peak_charging_enabled - true for on, false for off
- * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
- * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @param {object} args - command arguments
+ * @param {boolean} args.enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
+ * @param {int} args.departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} args.preconditioning_enabled - true for on, false for off
+ * @param {boolean} args.preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} args.off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} args.off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} args.end_off_peak_time - time in minutes since midnight, 15min step
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setScheduledDeparture = function setScheduledDeparture(options, enable, departure_time, preconditioning_enabled, preconditioning_weekdays_only, off_peak_charging_enabled, off_peak_charging_weekdays_only, end_off_peak_time, callback) {
-    post_command(options, "command/set_scheduled_departure", {
-	    "enable":enable,
-	    "departure_time":departure_time,
-	    "preconditioning_enabled":preconditioning_enabled,
-	    "preconditioning_weekdays_only":preconditioning_weekdays_only,
-	    "off_peak_charging_enabled":off_peak_charging_enabled,
-	    "off_peak_charging_weekdays_only":off_peak_charging_weekdays_only,
-	    "end_off_peak_time":end_off_peak_time }, callback);
+exports.setScheduledDeparture = function setScheduledDeparture(options, args, callback) {
+    post_command(options, "command/set_scheduled_departure", null, {
+	    "enable": args?.enable,
+	    "departure_time": args?.departure_time,
+	    "preconditioning_enabled": args?.preconditioning_enabled,
+	    "preconditioning_weekdays_only": args?.preconditioning_weekdays_only,
+	    "off_peak_charging_enabled": args?.off_peak_charging_enabled,
+	    "off_peak_charging_weekdays_only": args?.off_peak_charging_weekdays_only,
+	    "end_off_peak_time": args?.end_off_peak_time }, callback);
 }
 
 /**
  * Set the scheduled departure async and return Promise.
  * @function setScheduledDeparture
  * @param {optionsType} options - options object
- * @param {boolean} enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
- * @param {int} departure_time - time in minutes since midnight, 15min step
- * @param {boolean} preconditioning_enabled - true for on, false for off
- * @param {boolean} preconditioning_weekdays_only - true for on, false for off
- * @param {boolean} off_peak_charging_enabled - true for on, false for off
- * @param {boolean} off_peak_charging_weekdays_only - true for on, false for off
- * @param {int} end_off_peak_time - time in minutes since midnight, 15min step
+ * @param {object} args - command arguments
+ * @param {boolean} args.enable - true if (preconditioning_enabled || off_peak_charging_enabled), false otherwise (this condition may change in the future)
+ * @param {int} args.departure_time - time in minutes since midnight, 15min step
+ * @param {boolean} args.preconditioning_enabled - true for on, false for off
+ * @param {boolean} args.preconditioning_weekdays_only - true for on, false for off
+ * @param {boolean} args.off_peak_charging_enabled - true for on, false for off
+ * @param {boolean} args.off_peak_charging_weekdays_only - true for on, false for off
+ * @param {int} args.end_off_peak_time - time in minutes since midnight, 15min step
  * @returns {Promise} result
  */
 exports.setScheduledDepartureAsync = Promise.denodeify(exports.setScheduledDeparture);
@@ -1566,16 +1695,18 @@ exports.setScheduledDepartureAsync = Promise.denodeify(exports.setScheduledDepar
 /**
  * Lock the car doors
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.doorLock = function doorLock(options, callback) {
-    post_command(options, "command/door_lock", null, callback);
+exports.doorLock = function doorLock(options, args, callback) {
+    post_command(options, "command/door_lock", null, null, callback);
 }
 
 /**
  * @function doorLockAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.doorLockAsync = Promise.denodeify(exports.doorLock);
@@ -1583,16 +1714,18 @@ exports.doorLockAsync = Promise.denodeify(exports.doorLock);
 /**
  * Unlock the car doors
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.doorUnlock = function doorUnlock(options, callback) {
-    post_command(options, "command/door_unlock", null, callback);
+exports.doorUnlock = function doorUnlock(options, args, callback) {
+    post_command(options, "command/door_unlock", null, null, callback);
 }
 
 /**
  * @function doorUnlockAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.doorUnlockAsync = Promise.denodeify(exports.doorUnlock);
@@ -1600,16 +1733,18 @@ exports.doorUnlockAsync = Promise.denodeify(exports.doorUnlock);
 /**
  * Turn on HVAC system
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.climateStart = function climateStart(options, callback) {
-    post_command(options, "command/auto_conditioning_start", null, callback);
+exports.climateStart = function climateStart(options, args, callback) {
+    post_command(options, "command/auto_conditioning_start", null, null, callback);
 }
 
 /**
  * @function climateStartAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.climateStartAsync = Promise.denodeify(exports.climateStart);
@@ -1617,16 +1752,18 @@ exports.climateStartAsync = Promise.denodeify(exports.climateStart);
 /**
  * Turn off HVAC system
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.climateStop = function climateStop(options, callback) {
-    post_command(options, "command/auto_conditioning_stop", null, callback);
+exports.climateStop = function climateStop(options, args, callback) {
+    post_command(options, "command/auto_conditioning_stop", null, null, callback);
 }
 
 /**
  * @function climateStopAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.climateStopAsync = Promise.denodeify(exports.climateStop);
@@ -1648,18 +1785,20 @@ exports.SUNROOF_CLOSED = "close";
 /**
  * Set sun roof mode
  * @param {optionsType} options - options object
- * @param {string} state - one of "vent", "close"
+ * @param {object} args - command arguments
+ * @param {string} args.state - one of "vent", "close"
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.sunRoofControl = function sunRoofControl(options, state, callback) {
-    post_command(options, "command/sun_roof_control", { "state": state }, callback);
+exports.sunRoofControl = function sunRoofControl(options, args, callback) {
+    post_command(options, "command/sun_roof_control", null, { "state": args?.state }, callback);
 }
 
 /**
  * @function sunRoofControlAsync
  * @param {optionsType} options - options object
- * @param {string} state - one of "vent", "close"
+ * @param {object} args - command arguments
+ * @param {string} args.state - one of "vent", "close"
  * @returns {Promise} result
  */
 exports.sunRoofControlAsync = Promise.denodeify(exports.sunRoofControl);
@@ -1667,18 +1806,20 @@ exports.sunRoofControlAsync = Promise.denodeify(exports.sunRoofControl);
 /**
  * Set sun roof position
  * @param {optionsType} options - options object
- * @param {int} percent - position in percent
+ * @param {object} args - command arguments
+ * @param {int} args.percent - position in percent
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.sunRoofMove = function sunRoofMove(options, percent, callback) {
-    post_command(options, "command/sun_roof_control", { "state": "move", "percent": percent }, callback);
+exports.sunRoofMove = function sunRoofMove(options, args, callback) {
+    post_command(options, "command/sun_roof_control", null, { "state": "move", "percent": args?.percent }, callback);
 }
 
 /**
  * @function sunRoofMoveAsync
  * @param {optionsType} options - options object
- * @param {int} percent - position in percent
+ * @param {object} args - command arguments
+ * @param {int} args.percent - position in percent
  * @returns {Promise} result
  */
 exports.sunRoofMoveAsync = Promise.denodeify(exports.sunRoofMove);
@@ -1701,28 +1842,31 @@ exports.MAX_TEMP = 28;    // 82.4 Deg.F
 /**
  * Set the driver/passenger climate temperatures
  * @param {optionsType} options - options object
- * @param {number} driver - driver temp in Deg.C
- * @param {number} pass - passenger temp in Deg.C
+ * @param {object} args - command arguments
+ * @param {number} args.driver - driver temp in Deg.C
+ * @param {number} args.pass - passenger temp in Deg.C
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setTemps = function setTemps(options, driver, pass, callback) {
-    if (!pass) {
-        pass = driver;
+exports.setTemps = function setTemps(options, args, callback) {
+    args = args ?? {}
+    if (args.pass == null) {
+        args.pass = args.driver;
     }
 
     // ensure valid temp range
-    driver = clamp(driver, exports.MIN_TEMP, exports.MAX_TEMP);
-    pass = clamp(pass, exports.MIN_TEMP, exports.MAX_TEMP);
+    args.driver = clamp(args.driver, exports.MIN_TEMP, exports.MAX_TEMP);
+    args.pass = clamp(args.pass, exports.MIN_TEMP, exports.MAX_TEMP);
 
-    post_command(options, "command/set_temps", { driver_temp: driver, passenger_temp: pass }, callback);
+    post_command(options, "command/set_temps", null, { driver_temp: args.driver, passenger_temp: args.pass }, callback);
 }
 
 /**
  * @function setTempsAsync
  * @param {optionsType} options - options object
- * @param {number} driver - driver temp in Deg.C
- * @param {number} pass - passenger temp in Deg.C
+ * @param {object} args - command arguments
+ * @param {number} args.driver - driver temp in Deg.C
+ * @param {number} args.pass - passenger temp in Deg.C
  * @returns {Promise} result
  */
 exports.setTempsAsync = Promise.denodeify(exports.setTemps);
@@ -1730,16 +1874,18 @@ exports.setTempsAsync = Promise.denodeify(exports.setTemps);
 /**
  * Remote start the car
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.remoteStart = function remoteStartDrive(options, callback) {
-    post_command(options, "command/remote_start_drive", null, callback);
+exports.remoteStart = function remoteStartDrive(options, args, callback) {
+    post_command(options, "command/remote_start_drive", null, null, callback);
 }
 
 /**
  * @function remoteStartAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.remoteStartAsync = Promise.denodeify(exports.remoteStart);
@@ -1762,18 +1908,20 @@ exports.TRUNK = "rear";
 /**
  * Open the trunk/frunk
  * @param {optionsType} options - options object
- * @param {string} which - FRUNK or TRUNK constant
+ * @param {object} args - command arguments
+ * @param {string} args.which - FRUNK or TRUNK constant
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.openTrunk = function openTrunk(options, which, callback) {
-    post_command(options, "command/actuate_trunk", { which_trunk: which }, callback);
+exports.openTrunk = function openTrunk(options, args, callback) {
+    post_command(options, "command/actuate_trunk", null, { which_trunk: args?.which }, callback);
 }
 
 /**
  * @function openTrunkAsync
  * @param {optionsType} options - options object
- * @param {string} which - one of "trunk", "frunk"
+ * @param {object} args - command arguments
+ * @param {string} args.which - one of "trunk", "frunk"
  * @returns {Promise} result
  */
 exports.openTrunkAsync = Promise.denodeify(exports.openTrunk);
@@ -1781,16 +1929,18 @@ exports.openTrunkAsync = Promise.denodeify(exports.openTrunk);
 /**
  * Wake up a car that is sleeping
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.wakeUp = function wakeUp(options, callback) {
-    post_command(options, "wake_up", null, callback);
+exports.wakeUp = function wakeUp(options, args, callback) {
+    post_command(options, "wake_up", null, null, callback);
 }
 
 /**
  * @function wakeUpAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.wakeUpAsync = Promise.denodeify(exports.wakeUp);
@@ -1798,20 +1948,22 @@ exports.wakeUpAsync = Promise.denodeify(exports.wakeUp);
 /**
  * Turn valet mode on/off
  * @param {optionsType} options - options object
- * @param {boolean} onoff - true for on, false for off
- * @param {int} pin - pin code
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true for on, false for off
+ * @param {int} args.pin - pin code
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.setValetMode = function setValetMode(options, onoff, pin, callback) {
-    post_command(options, "command/set_valet_mode", { on : onoff, password : pin }, callback);
+exports.setValetMode = function setValetMode(options, args, callback) {
+    post_command(options, "command/set_valet_mode", null, { on: args?.onoff, password: args?.pin }, callback);
 }
 
 /**
  * @function setValetModeAsync
  * @param {optionsType} options - options object
- * @param {boolean} onoff - true for on, false for off
- * @param {int} pin - pin code
+ * @param {object} args - command arguments
+ * @param {boolean} args.onoff - true for on, false for off
+ * @param {int} args.pin - pin code
  * @returns {Promise} result
  */
 exports.setValetModeAsync = Promise.denodeify(exports.setValetMode);
@@ -1819,16 +1971,18 @@ exports.setValetModeAsync = Promise.denodeify(exports.setValetMode);
 /**
  * Reset the valet pin
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.resetValetPin = function resetValetPin(options, callback) {
-    post_command(options, "command/reset_valet_pin", null, callback);
+exports.resetValetPin = function resetValetPin(options, args, callback) {
+    post_command(options, "command/reset_valet_pin", null, null, callback);
 }
 
 /**
  * @function resetValetPinAsync
  * @param {optionsType} options - options object
+ * @param {object} args - command arguments
  * @returns {Promise} result
  */
 exports.resetValetPinAsync = Promise.denodeify(exports.resetValetPin);
@@ -1836,18 +1990,20 @@ exports.resetValetPinAsync = Promise.denodeify(exports.resetValetPin);
 /**
  * Set a calendar entry
  * @param {optionsType} options - options object
- * @param {object} entry - calendar entry object
+ * @param {object} args - command arguments
+ * @param {object} args.entry - calendar entry object
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.calendar = function calendar(options, entry, callback) {
-    post_command(options, "command/upcoming_calendar_entries", entry, callback);
+exports.calendar = function calendar(options, args, callback) {
+    post_command(options, "command/upcoming_calendar_entries", null, args?.entry, callback);
 }
 
 /**
  * @function calendarAsync
  * @param {optionsType} options - options object
- * @param {object} entry - calendar entry object
+ * @param {object} args - command arguments
+ * @param {object} args.entry - calendar entry object
  * @returns {Promise} result
  */
 exports.calendarAsync = Promise.denodeify(exports.calendar);
@@ -1873,16 +2029,16 @@ exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, star
                         {
                             "allday": false,
                             "color": "ff9a9cff",
-                            "end": endTime || new Date().getTime(),
-                            "start": startTime || new Date().getTime(),
+                            "end": endTime ?? Date.now(),
+                            "start": startTime ?? Date.now(),
                             "cancelled": false,
                             "tentative": false,
-                            "location": location || "",
-                            "name": eventName || "Event name",
+                            "location": location ?? "",
+                            "name": eventName ?? "Event name",
                             "organizer": ""
                         }
                     ],
-                    "name": accountName || ""    // calendar account name?
+                    "name": accountName ?? ""    // calendar account name?
                 }
             ],
             "phone_name": phoneName,    // Bluetooth name of phone
@@ -1896,22 +2052,22 @@ exports.makeCalendarEntry = function makeCalendarEntry(eventName, location, star
 /**
  * Trigger homelink
  * @param {optionsType} options - options object
- * @param {number} lat - vehicle GPS latitude
- * @param {number} long - vehicle GPS longitude
- * @param {string} string - one of the tokens from vehicle JSON
+ * @param {object} args - command arguments
+ * @param {number} args.lat - vehicle GPS latitude
+ * @param {number} args.long - vehicle GPS longitude
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.homelink = function homelink(options, lat, long, callback) {
-    post_command(options, "command/trigger_homelink", { lat: lat, lon: long } , callback);
+exports.homelink = function homelink(options, args, callback) {
+    post_command(options, "command/trigger_homelink", null, { lat: args?.lat, lon: args?.long } , callback);
 }
 
 /**
  * @function homelinkAsync
  * @param {optionsType} options - options object
- * @param {number} lat - vehicle GPS latitude
- * @param {number} long - vehicle GPS longitude
- * @param {string} string - one of the tokens from vehicle JSON
+ * @param {object} args - command arguments
+ * @param {number} args.lat - vehicle GPS latitude
+ * @param {number} args.long - vehicle GPS longitude
  * @returns {Promise} result
  */
 exports.homelinkAsync = Promise.denodeify(exports.homelink);
@@ -2046,29 +2202,29 @@ exports.solarStatusAsync = Promise.denodeify(exports.solarStatus);
 //
 // [Alpha impl] Not yet supported
 //
-exports.frontDefrostOn = function frontDefrostOn(options, callback) {
-    post_command(options, "command/front_defrost_on", null, callback);
+exports.frontDefrostOn = function frontDefrostOn(options, args, callback) {
+    post_command(options, "command/front_defrost_on", null, null, callback);
 }
 
 //
 // [Alpha impl] Not yet supported
 //
-exports.frontDefrostOff = function frontDefrostOff(options, callback) {
-    post_command(options, "command/front_defrost_off", null, callback);
+exports.frontDefrostOff = function frontDefrostOff(options, args, callback) {
+    post_command(options, "command/front_defrost_off", null, null, callback);
 }
 
 //
 // [Alpha impl] Not yet supported
 //
-exports.rearDefrostOn = function rearDefrostOn(options, callback) {
-    post_command(options, "command/rear_defrost_on", null, callback);
+exports.rearDefrostOn = function rearDefrostOn(options, args, callback) {
+    post_command(options, "command/rear_defrost_on", null, null, callback);
 }
 
 //
 // [Alpha impl] Not yet supported
 //
-exports.rearDefrostOff = function rearDefrostOff(options, callback) {
-    post_command(options, "command/rear_defrost_off", null, callback);
+exports.rearDefrostOff = function rearDefrostOff(options, args, callback) {
+    post_command(options, "command/rear_defrost_off", null, null, callback);
 }
 */
 
@@ -2076,16 +2232,16 @@ exports.rearDefrostOff = function rearDefrostOff(options, callback) {
 // [Alpha impl] Auto Park
 //
 /*
-exports.autoParkForward = function autoParkForward(options, lat, long, callback) {
-    autoPark(options, lat, long, "start_forward", callback);
+exports.autoParkForward = function autoParkForward(options, args, callback) {
+    autoPark(options, args, "start_forward", callback);
 }
 
-exports.autoParkBackward = function autoParkBackward(options, lat, long, callback) {
-    autoPark(options, lat, long, "start_reverse", callback);
+exports.autoParkBackward = function autoParkBackward(options, args, callback) {
+    autoPark(options, args, "start_reverse", callback);
 }
 
-exports.autoPark = function autoPark(options, lat, long, action, callback) {
-    post_command(options, "command/autopark_request", { lat: lat, long: long, action: action}, callback);
+exports.autoPark = function autoPark(options, args, action, callback) {
+    post_command(options, "command/autopark_request", null, { lat: args?.lat, long: args?.long, action: action}, callback);
 }
 */
 

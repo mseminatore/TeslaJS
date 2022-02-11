@@ -31,15 +31,15 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleData(options, null, null, function (err, data) {
+    tjs.vehicleData(options, null, function (err, data) {
         if (data.drive_state) {
-            var latitude = data.drive_state.latitude || 0;
-            var longitude = data.drive_state.longitude || 0;
+            var latitude = data.drive_state.latitude ?? 0;
+            var longitude = data.drive_state.longitude ?? 0;
 
             console.log("\nHomelink devices: " + data.vehicle_state.homelink_device_count);
             console.log("Homelink nearby: " + data.vehicle_state.homelink_nearby);
 
-            tjs.homelink(options, latitude, longitude, function (err, result) {
+            tjs.homelink(options, { lat: latitude, long: longitude }, function (err, result) {
                 if (result.result) {
                     console.log("\nHomelink: " + "Door signaled!".bold.green);
                 } else {

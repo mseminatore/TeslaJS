@@ -72,7 +72,7 @@ function compassDirs(heading) {
 //
 //
 function sampleMain(tjs, options) {
-    tjs.driveState(options, function (err, drive_state) {
+    tjs.driveState(options, null, function (err, drive_state) {
         if (drive_state) {
 
             var state = drive_state.shift_state || "Parked";

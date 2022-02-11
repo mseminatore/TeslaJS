@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.startCharge(options, function (err, result) {
+    tjs.startCharge(options, null, function (err, result) {
         if (result.result) {
             console.log("\nCharging will begin shortly!");
         } else {

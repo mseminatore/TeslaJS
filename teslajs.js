@@ -35,7 +35,7 @@ var websocket = require('ws');
 var streamingPortal = "wss://streaming.vn.teslamotors.com/streaming/";
 exports.streamingPortal = streamingPortal;
 
-var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
+var streamingBaseURI = process.env.TESLAJS_STREAMING ?? streamingPortal;
 
 //===========================
 // New OAuth-based API portal
@@ -47,7 +47,7 @@ var streamingBaseURI = process.env.TESLAJS_STREAMING || streamingPortal;
 var portal = "https://owner-api.teslamotors.com";
 exports.portal = portal;
 
-var portalBaseURI = process.env.TESLAJS_SERVER || portal;
+var portalBaseURI = process.env.TESLAJS_SERVER ?? portal;
 
 //=======================
 // Log levels
@@ -108,7 +108,7 @@ exports.API_RESPONSE_LEVEL = API_RESPONSE_LEVEL;
 var API_LOG_ALL = 255;	// this value must be the last
 exports.API_LOG_ALL = API_LOG_ALL;
 
-var logLevel = process.env.TESLAJS_LOG || 0;
+var logLevel = process.env.TESLAJS_LOG ?? 0;
 
 /**
  * Node-style callback function
@@ -307,7 +307,7 @@ exports.getPaintColor = function getPaintColor(vehicle) {
 
     var paintColor = vehicle.option_codes.match(/PBCW|PBSB|PMAB|PMBL|PMMB|PMMR|PPMR|PMNG|PMSG|PMSS|PPSB|PPSR|PPSW|PPTI|PMTG/);
 
-    return colors[paintColor] || "black";
+    return colors[paintColor] ?? "black";
 }
 
 /**
@@ -356,8 +356,8 @@ exports.login = function login(credentials, callback) {
         callback = arguments[2];
     }
     
-    credentials = credentials || {};
-    callback = callback || function (err, result) { /* do nothing! */ }
+    credentials = credentials ?? {};
+    callback = callback ?? function (err, result) { /* do nothing! */ }
 
     if (!credentials.username || !credentials.password) {
         callback("login() requires username and password", null);
@@ -368,7 +368,7 @@ exports.login = function login(credentials, callback) {
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
         log(API_RESPONSE_LEVEL, "\nBody: " + JSON.stringify(body));
 
-        var loginResult = body || {};
+        var loginResult = body ?? {};
 
         callback(error, { error: error, response: response, body: body, authToken: loginResult.access_token, refreshToken: loginResult.refresh_token });
 
@@ -397,7 +397,7 @@ exports.loginAsync = Promise.denodeify(exports.login);
 exports.refreshToken = function refreshToken(refresh_token, callback) {
     log(API_CALL_LEVEL, "TeslaJS.refreshToken()");
     
-    callback = callback || function (err, result) { /* do nothing! */ }
+    callback = callback ?? function (err, result) { /* do nothing! */ }
 
     if (!refresh_token) {
         callback("refreshToken() requires a refresh_token", null);
@@ -441,12 +441,15 @@ exports.refreshTokenAsync = Promise.denodeify(exports.refreshToken);
 exports.logout = function logout(authToken, callback) {
     log(API_CALL_LEVEL, "TeslaJS.logout()");
 
-    callback = callback || function (err, result) { /* do nothing! */ }
+    callback = callback ?? function (err, result) { /* do nothing! */ }
 
     request({
+        headers: {
+            "Authorization": `Bearer ${options.authToken}`,
+            "Content-Type": "application/json; charset=utf-8"
+        },
         method: 'POST',
         url: portalBaseURI + '/oauth/revoke',
-        headers: { Authorization: "Bearer " + authToken, 'Content-Type': 'application/json; charset=utf-8' }
     }, function (error, response, body) {
 
         callback(error, { error: error, response: response, body: JSON.stringify(body) });
@@ -464,22 +467,27 @@ exports.logout = function logout(authToken, callback) {
 exports.logoutAsync = Promise.denodeify(exports.logout);
 
 /**
- * Return vehicle information on the requested vehicle
- * @function vehicle
+ * Do an authentivated GET request to the portal
+ * @function get
  * @param {optionsType} options - options object
- * @param {object} args - command arguments
+ * @param {string} serviceURL - Service URL starting with '/'
+ * @param {object} qs - Query string parameters
  * @param {nodeBack} callback - Node-style callback
- * @returns {Vehicle} vehicle JSON data
+ * @returns {object} JSON data
  */
-exports.vehicle = function vehicle(options, args, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.vehicle()");
+exports.get = function get(options, serviceURL, qs, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.get()");
 
-    callback = callback || function (err, vehicle) { /* do nothing! */ }
+    callback = callback ?? function (err, body) { /* do nothing! */ }
 
     var req = {
+        headers: {
+            "Authorization": `Bearer ${options.authToken}`,
+            "Content-Type": "application/json; charset=utf-8"
+        },
         method: 'GET',
-        url: portalBaseURI + '/api/1/vehicles',
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
+        url: portalBaseURI + serviceURL,
+        qs: qs,
     };
 
     log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
@@ -498,18 +506,117 @@ exports.vehicle = function vehicle(options, args, callback) {
         log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
 
         try {
-            body = body.response[options.carIndex || 0];
+            body = body.response;
+            
+            callback(null, body);
+        } catch (e) {
+            log(API_ERR_LEVEL, `Error parsing ${serviceURL} response`);
+            callback(e, null);
+        }
+
+        log(API_RETURN_LEVEL, `\nGET request: ${serviceURL} completed.`);
+    });
+}
+
+/**
+ * Do an authentivated GET request to the portal
+ * @function get
+ * @param {optionsType} options - options object
+ * @param {string} serviceURL - Service URL starting with '/'
+ * @param {object} qs - Query string parameters
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} result
+ */
+exports.getAsync = Promise.denodeify(exports.get);
+
+/**
+ * Do an authentivated POST request to the portal
+ * @function get
+ * @param {optionsType} options - options object
+ * @param {string} serviceURL - Service URL starting with '/'
+ * @param {object} qs - Query string parameters
+ * @param {object} body - Body
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {object} JSON data
+ */
+exports.post = function post(options, serviceURL, qs, body, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.post()");
+
+    callback = callback ?? function (err, body) { /* do nothing! */ }
+
+    var req = {
+        headers: {
+            "Authorization": `Bearer ${options.authToken}`,
+            "Content-Type": "application/json; charset=utf-8"
+        },
+        method: 'POST',
+        url: portalBaseURI + serviceURL,
+        qs: qs,
+        body: body,
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+    request(req, function (error, response, body) {
+        if (error) {
+            log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
+        }
+
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+        try {
+            body = body.response;
+            
+            callback(null, body);
+        } catch (e) {
+            log(API_ERR_LEVEL, `Error parsing ${serviceURL} response`);
+            callback(e, null);
+        }
+
+        log(API_RETURN_LEVEL, `\nPOST request: ${serviceURL} completed.`);
+    });
+}
+
+/**
+ * Do an authentivated GET request to the portal
+ * @function get
+ * @param {optionsType} options - options object
+ * @param {string} serviceURL - Service URL starting with '/'
+ * @param {object} qs - Query string parameters
+ * @param {object} body - Body
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} result
+ */
+exports.postAsync = Promise.denodeify(exports.post);
+
+/**
+ * Return vehicle information on the requested vehicle
+ * @function vehicle
+ * @param {optionsType} options - options object
+ * @param {object} args - command arguments
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Vehicle} vehicle JSON data
+ */
+exports.vehicle = function vehicle(options, args, callback) {
+    callback = callback ?? function (err, vehicle) { /* do nothing! */ }
+    exports.get(options, '/api/1/vehicles', null, function (err, body) {
+        if (err) return callback(err, null)
+        try {
+            body = body.response[options.carIndex ?? 0];
             body.id = body.id_s;
             options.vehicleID = body.id;
-            
             callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);
-        }
-
-        log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
-    });
+        }        
+    })
 }
 
 /**
@@ -531,42 +638,7 @@ exports.vehicleAsync = Promise.denodeify(exports.vehicle);
  * @returns {Vehicle} vehicle JSON data
  */
 exports.vehicleById = function vehicle(options, args, callback) {
-  log(API_CALL_LEVEL, "TeslaJS.vehicleById()");
-
-  callback = callback || function (err, vehicle) { /* do nothing! */ }
-
-  var req = {
-      method: 'GET',
-      url: portalBaseURI + '/api/1/vehicles/' + options.vehicleID,
-      headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
-  };
-
-  log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-  request(req, function (error, response, body) {
-      if (error) {
-          log(API_ERR_LEVEL, error);
-          return callback(error, null);
-      }
-
-      if (response.statusCode != 200) {
-          return callback(response.statusMessage, null);
-      }
-
-      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-      try {
-        body = body.response;
-        
-        callback(null, body);
-    } catch (e) {
-        log(API_ERR_LEVEL, 'Error parsing vehicle response');
-        callback(e, null);
-    }
-
-      log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles/" + options.vehicleID + " completed.");
-  });
+    exports.get(options, `/api/1/vehicles/${options.vehicleID}`, null, callback)
 }
 
 /**
@@ -588,42 +660,7 @@ exports.vehicleByIdAsync = Promise.denodeify(exports.vehicleById);
  * @returns {Vehicles[]} array of vehicle JSON data
  */
 exports.vehicles = function vehicles(options, args, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.vehicles()");
-
-    callback = callback || function (err, vehicle) { /* do nothing! */ }
-
-    var req = {
-        method: 'GET',
-        url: portalBaseURI + '/api/1/vehicles',
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8' }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function (error, response, body) {
-        if (error) {
-            log(API_ERR_LEVEL, error);
-            return callback(error, null);
-        }
-
-        if (response.statusCode != 200) {
-            return callback(response.statusMessage, null);
-        }
-
-        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-        try {
-            body = body.response;
-            
-            callback(null, body);
-        } catch (e) {
-            log(API_ERR_LEVEL, 'Error parsing vehicles response');
-            callback(e, null);
-        }
-
-        log(API_RETURN_LEVEL, "\nGET request: " + "/vehicles" + " completed.");
-    });
+    exports.get(options, '/api/1/vehicles', null, callback);
 }
 
 /**
@@ -645,46 +682,7 @@ exports.vehiclesAsync = Promise.denodeify(exports.vehicles);
  */
 exports.get_command = get_command;
 function get_command(options, command, qs, callback) {
-    log(API_CALL_LEVEL, "GET call: " + command + " start.");
-
-    callback = callback || function (err, data) { /* do nothing! */ }
-
-    var req = {
-        method: "GET",
-        url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
-        qs: qs,
-        headers: { Authorization: "Bearer " + options.authToken, 'Content-Type': 'application/json; charset=utf-8'}
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function (error, response, body) {
-        if (error) {
-            log(API_ERR_LEVEL, error);
-            return callback(error, null);
-        }
-
-        if (response.statusCode != 200) {
-            var str = "Error response: " + response.statusCode;
-            log(API_ERR_LEVEL, str);
-            return callback(str, null);
-        }
-
-        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-        try {
-            body = body.response;
-
-            callback(null, body);
-        } catch (e) {
-            log(API_ERR_LEVEL, 'Error parsing GET call response');
-            log(API_ERR_LEVEL, e);
-            callback(e, null);
-        }
-
-        log(API_RETURN_LEVEL, "\nGET request: " + command + " completed.");
-    });
+    exports.get(options, `/api/1/vehicles/${options.vehicleID}/${command}`, qs, callback)
 }
 
 /**
@@ -708,46 +706,7 @@ exports.get_commandAsync = Promise.denodeify(exports.get_command);
  */
 exports.post_command = post_command;
 function post_command(options, command, qs, body, callback) {
-    log(API_CALL_LEVEL, "POST call: " + command + " start.");
-
-    callback = callback || function (err, data) { /* do nothing! */ }
-
-    var cmd = {
-        method: "POST",
-        url: portalBaseURI + "/api/1/vehicles/" + options.vehicleID + "/" + command,
-        qs: qs,
-        headers: { Authorization: "Bearer " + options.authToken, 'content-type': 'application/json; charset=UTF-8' },
-        body: body || null
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(cmd));
-
-    request(cmd, function (error, response, body) {
-        if (error) {
-            log(API_ERR_LEVEL, error);
-            return callback(error, null);
-        }
-
-        if (response.statusCode != 200) {
-            var str = "Error response: " + response.statusCode;
-            log(API_ERR_LEVEL, str);
-            return callback(str, null);
-        }
-
-        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-        try {
-            body = body.response;
-
-            callback(null, body);
-        } catch (e) {
-            log(API_ERR_LEVEL, 'Error parsing POST call response');
-            callback(e, null);
-        }
-
-        log(API_RETURN_LEVEL, "\nPOST command: " + command + " completed.");
-    });
+    exports.post(options, `/api/1/vehicles/${options.vehicleID}/${command}`, qs, body, callback)
 }
 
 /**
@@ -1136,7 +1095,7 @@ exports.navigationRequest = function navigationRequest(options, args, callback) 
         "type": "share_ext_content_raw",
         "value": {
             "android.intent.ACTION": "android.intent.action.SEND",
-            "android.intent.TYPE": "text\/plain",
+            "android.intent.TYPE": "text/plain",
             "android.intent.extra.SUBJECT": args?.subject,
             "android.intent.extra.TEXT": args?.text
         },
@@ -1316,7 +1275,7 @@ exports.mediaVolumeDownAsync = Promise.denodeify(exports.mediaVolumeDown);
  * @returns {object} result
  */
 exports.speedLimitActivate = function speedLimitActivate(options, args, callback) {
-    post_command(options, "command/speed_limit_activate", null, { pin: args?.pin }, callback);
+    post_command(options, "command/speed_limit_activate", null, args, callback);
 }
 
 /**
@@ -1339,7 +1298,7 @@ exports.speedLimitActivateAsync = Promise.denodeify(exports.speedLimitActivate);
  * @returns {object} result
  */
 exports.speedLimitDeactivate = function speedLimitDeactivate(options, args, callback) {
-    post_command(options, "command/speed_limit_deactivate", null, { pin: args?.pin }, callback);
+    post_command(options, "command/speed_limit_deactivate", null, args, callback);
 }
 
 /**
@@ -1362,7 +1321,7 @@ exports.speedLimitDeactivateAsync = Promise.denodeify(exports.speedLimitDeactiva
  * @returns {object} result
  */
 exports.speedLimitClearPin = function speedLimitClearPin(options, args, callback) {
-    post_command(options, "command/speed_limit_clear_pin", null, { pin: args?.pin }, callback);
+    post_command(options, "command/speed_limit_clear_pin", null, args, callback);
 }
 
 /**
@@ -1431,7 +1390,7 @@ exports.setSentryModeAsync = Promise.denodeify(exports.setSentryMode);
  * @returns {object} result
  */
 exports.seatHeater = function seatHeater(options, args, callback) {
-    post_command(options, "command/remote_seat_heater_request", null, { "heater": args?.heater, "level": args?.level }, callback);
+    post_command(options, "command/remote_seat_heater_request", null, args, callback);
 }
 
 /**
@@ -1637,7 +1596,7 @@ exports.setChargingAmpsAsync = Promise.denodeify(exports.setChargingAmps);
  * @returns {object} result
  */
 exports.setScheduledCharging = function setScheduledCharging(options, args, callback) {
-    post_command(options, "command/set_scheduled_charging", null, { enable: args?.enable, time: args?.time }, callback);
+    post_command(options, "command/set_scheduled_charging", null, args, callback);
 }
 
 /**
@@ -1666,14 +1625,7 @@ exports.setScheduledChargingAsync = Promise.denodeify(exports.setScheduledChargi
  * @returns {object} result
  */
 exports.setScheduledDeparture = function setScheduledDeparture(options, args, callback) {
-    post_command(options, "command/set_scheduled_departure", null, {
-	    "enable": args?.enable,
-	    "departure_time": args?.departure_time,
-	    "preconditioning_enabled": args?.preconditioning_enabled,
-	    "preconditioning_weekdays_only": args?.preconditioning_weekdays_only,
-	    "off_peak_charging_enabled": args?.off_peak_charging_enabled,
-	    "off_peak_charging_weekdays_only": args?.off_peak_charging_weekdays_only,
-	    "end_off_peak_time": args?.end_off_peak_time }, callback);
+    post_command(options, "command/set_scheduled_departure", null, args, callback);
 }
 
 /**
@@ -1791,7 +1743,7 @@ exports.SUNROOF_CLOSED = "close";
  * @returns {object} result
  */
 exports.sunRoofControl = function sunRoofControl(options, args, callback) {
-    post_command(options, "command/sun_roof_control", null, { "state": args?.state }, callback);
+    post_command(options, "command/sun_roof_control", null, args, callback);
 }
 
 /**
@@ -2080,51 +2032,8 @@ exports.homelinkAsync = Promise.denodeify(exports.homelink);
  * @returns {products[]} array of products JSON data
  */
 exports.products = function products(options, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.products()");
-
-    callback =
-      callback ||
-      function(err, products) {
-        /* do nothing! */
-      };
-
-    var req = {
-      method: "GET",
-      url: portalBaseURI + "/api/1/products",
-      headers: {
-        Authorization: "Bearer " + options.authToken,
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function(error, response, body) {
-      if (error) {
-        log(API_ERR_LEVEL, error);
-        return callback(error, null);
-      }
-
-      if (response.statusCode != 200) {
-        return callback(response.statusMessage, null);
-      }
-
-      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-      try {
-        body = body.response;
-
-        callback(null, body);
-      } catch (e) {
-        console.log(e);
-        log(API_ERR_LEVEL, "Error parsing products response");
-        callback(e, null);
-      }
-
-      log(API_RETURN_LEVEL, "\nGET request: " + "/products" + " completed.");
-    });
-  };
+    exports.get("/api/1/products", null, callback);
+}
 
 /**
  * Return list of products
@@ -2143,50 +2052,8 @@ exports.productsAsync = Promise.denodeify(exports.products);
  * @returns {solarStatus} solarStatus JSON data
  */
 exports.solarStatus = function solarStatus(options, callback) {
-    log(API_CALL_LEVEL, "TeslaJS.solarStatus()");
-
-    callback =
-      callback ||
-      function(err, solarStatus) {
-        /* do nothing! */
-      };
-
-    var req = {
-      method: "GET",
-      url: portalBaseURI + "/api/1/energy_sites/" + options.siteId + "/live_status",
-      headers: {
-        Authorization: "Bearer " + options.authToken,
-        "Content-Type": "application/json; charset=utf-8"
-      }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function(error, response, body) {
-      if (error) {
-        log(API_ERR_LEVEL, error);
-        return callback(error, null);
-      }
-
-      if (response.statusCode != 200) {
-        return callback(response.statusMessage, null);
-      }
-
-      log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
-      log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
-
-      try {
-        body = body.response;
-
-        callback(null, body);
-      } catch (e) {
-        log(API_ERR_LEVEL, "Error parsing solarStatus response");
-        callback(e, null);
-      }
-
-      log(API_RETURN_LEVEL, "\nGET request: " + "/solarStatus" + " completed.");
-    });
-  };
+    exports.get(`/api/1/energy_sites/${options.siteId}/live_status`, null, callback);
+}
 
 /**
  * Return solar status information
@@ -2264,10 +2131,10 @@ exports.streamingColumns = ['elevation', 'est_heading', 'est_lat', 'est_lng', 'e
 exports.startStreaming = function startStreaming(options, callback, onDataCb) {
     log(API_CALL_LEVEL, "TeslaJS.startStreaming()");
 
-    callback = callback || function (error, response, body) { /* do nothing! */ }
-    onDataCb = onDataCb || function (data) { /* do nothing! */ }
+    callback = callback ?? function (error, response, body) { /* do nothing! */ }
+    onDataCb = onDataCb ?? function (data) { /* do nothing! */ }
 
-    options.values = options.values || exports.streamingColumns;
+    options.values = options.values ?? exports.streamingColumns;
 
     var ws = new websocket(streamingBaseURI, {
         perMessageDeflate: false

@@ -1873,7 +1873,7 @@ exports.openTrunk = function openTrunk(options, args, callback) {
  * @function openTrunkAsync
  * @param {optionsType} options - options object
  * @param {object} args - command arguments
- * @param {string} args.which - one of "trunk", "frunk"
+ * @param {string} args.which - FRUNK or TRUNK constant
  * @returns {Promise} result
  */
 exports.openTrunkAsync = Promise.denodeify(exports.openTrunk);

@@ -610,7 +610,7 @@ exports.vehicle = function vehicle(options, args, callback) {
         try {
             body = body.response[options.carIndex ?? 0];
             body.id = body.id_s;
-            options.vehicleID = body.id;
+            options.vehicleID = body.id; // This API updates options object
             callback(null, body);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');

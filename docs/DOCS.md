@@ -907,7 +907,7 @@ GET all vehicle data in a single call
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| endpoints | Endpoints to query | Defaults to "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config" |
+| endpoints | Endpoints to query "climate_state", "charge_state", "drive_state", "gui_settings", "vehicle_state", "vehicle_config", "location_state", "closures_state" | Defaults to  \[ "climate_state", "charge_state", "drive_state", "gui_settings", "vehicle_state", "vehicle_config" \] |
 | let_sleep | The call shall let the car sleep if it wants to | Defaults to true |
 | callback | [<code>nodeBack</code>](#nodeBack) | Node-style callback |
 
@@ -922,8 +922,8 @@ Async version to GET all vehicle data in a single call
 | Param | Type | Description |
 | --- | --- | --- |
 | options | [<code>optionsType</code>](#optionsType) | options object |
-| endpoints | Endpoints to query | Defaults to "climate_state%3Bcharge_state%3Bdrive_state%3Bgui_settings%3Bvehicle_state%3Bvehicle_config" |
-| let_sleep | The call shall let the car sleep if it wants to | Defaults to true |
+| endpoints | Endpoints to query "climate_state", "charge_state", "drive_state", "gui_settings", "vehicle_state", "vehicle_config", "location_state", "closures_state" | Defaults to  \[ "climate_state", "charge_state", "drive_state", "gui_settings", "vehicle_state", "vehicle_config" \] |
+ | let_sleep | The call shall let the car sleep if it wants to | Defaults to true |
 
 <a name="vehicleConfig"></a>
 

@@ -1511,8 +1511,8 @@ exports.CHARGE_RANGE    = 100;
  * @returns {object} result
  */
 exports.setChargeLimit = function setChargeLimit(options, args, callback) {
-    amt = clamp(amt, exports.CHARGE_STORAGE, exports.CHARGE_RANGE);
-    post_command(options, "command/set_charge_limit", null, { percent: args?.amt }, callback);
+    var amt = clamp(args?.amt ?? exports.CHARGE_DAILY, exports.CHARGE_STORAGE, exports.CHARGE_RANGE);
+    post_command(options, "command/set_charge_limit", null, { percent: amt }, callback);
 }
 
 /**
@@ -1810,7 +1810,7 @@ exports.setTemps = function setTemps(options, args, callback) {
     args.driver = clamp(args.driver, exports.MIN_TEMP, exports.MAX_TEMP);
     args.pass = clamp(args.pass, exports.MIN_TEMP, exports.MAX_TEMP);
 
-    post_command(options, "command/set_temps", null, { driver_temp: args?.driver, passenger_temp: args?.pass }, callback);
+    post_command(options, "command/set_temps", null, { driver_temp: args.driver, passenger_temp: args.pass }, callback);
 }
 
 /**

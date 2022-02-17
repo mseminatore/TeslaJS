@@ -77,5 +77,5 @@
     "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
     "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose"
   },
-  "version": "4.11.0-4"
+  "version": "4.11.0-5"
 }

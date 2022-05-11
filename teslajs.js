@@ -2055,7 +2055,7 @@ exports.solarHistory = function solarHistory(options, period, kind, callback) {
 
     var req = {
         method: "GET",
-        url: portalBaseURI + "/api/1/energy_sites/" + options.siteId + "/history?kind="+kind+"&period="+period,
+        url: portalBaseURI + "/api/1/energy_sites/" + options.siteId + "/calendar_history?kind="+kind+"&period="+period,
         headers: {
             Authorization: "Bearer " + options.authToken,
             "Content-Type": "application/json; charset=utf-8"

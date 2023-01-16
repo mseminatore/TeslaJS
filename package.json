@@ -16,7 +16,7 @@
   "description": "Full-featured Tesla REST API NodeJS package",
   "devDependencies": {
     "colors": "^1.4.0",
-    "commander": "^9.0.0",
+    "commander": "^10.0.0",
     "coveralls": "^3.0.11",
     "istanbul": "^0.4.5",
     "jsdoc-to-markdown": "^7.0.0",

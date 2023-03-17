@@ -304,6 +304,9 @@ exports.getPaintColor = function getPaintColor(vehicle) {
         "PPTI": "titanium",
         "PMTG": "metallic grey"   // dolphin grey
     };
+    if (!vehicle || !vehicle.option_codes) {
+        return "unknown";
+    }
 
     var paintColor = vehicle.option_codes.match(/PBCW|PBSB|PMAB|PMBL|PMMB|PMMR|PPMR|PMNG|PMSG|PMSS|PPSB|PPSR|PPSW|PPTI|PMTG/);
 

@@ -1,6 +1,11 @@
 {
-  "_from": "@gaphi/teslajs@^4.10.1-1",
-  "_id": "@gaphi/teslajs@4.10.1-1",
+  "_args": [
+    [
+      "@gaphi/teslajs@4.11.0-5",
+      "/data"
+    ]
+  ],
+  "_from": "@gaphi/teslajs@4.11.0-5",
   "_inBundle": false,
   "_integrity": "sha512-vj44fBwrAZiac4wbEP7rRES5hCjEOdzpsUb3oEzITD+fu0I/o/558CvB5vjlu3aH94xzC0TvCeYjl14g0eEaKQ==",
   "_location": "/@gaphi/teslajs",
@@ -8,21 +13,21 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "@gaphi/teslajs@^4.10.1-1",
+    "raw": "@gaphi/teslajs@4.11.0-5",
     "name": "@gaphi/teslajs",
     "escapedName": "@gaphi%2fteslajs",
     "scope": "@gaphi",
-    "rawSpec": "^4.10.1-1",
+    "rawSpec": "4.11.0-5",
     "saveSpec": null,
-    "fetchSpec": "^4.10.1-1"
+    "fetchSpec": "4.11.0-5"
   },
   "_requiredBy": [
     "/@gaphi/node-red-contrib-tesla"
   ],
-  "_resolved": "https://registry.npmjs.org/@gaphi/teslajs/-/teslajs-4.10.1-1.tgz",
+  "_resolved": "https://registry.npmjs.org/@gaphi/teslajs/-/teslajs-4.11.0-5.tgz",
   "_shasum": "c5d008fa5d86a966b0f4c2e5d15d781dacc8c336",
-  "_spec": "@gaphi/teslajs@^4.10.1-1",
-  "_where": "/data/node_modules/@gaphi/node-red-contrib-tesla",
+  "_spec": "4.11.0-5",
+  "_where": "/data",
   "author": {
     "name": "Mark Seminatore",
     "url": "https://github.com/mseminatore/TeslaJS"
@@ -77,5 +82,5 @@
     "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
     "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose"
   },
-  "version": "4.11.0-5"
+  "version": "4.11.0-7"
 }

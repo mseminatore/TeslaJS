@@ -150,6 +150,12 @@ To download and install the library and all of its dependencies to a local
 project directory use the following:
 
     npm install teslajs
+
+If you are building an npm package that depends upon this library then you 
+will want to use the **--save** parameter in order to update the 
+**package.json** file for your project. For example:
+
+    npm install teslajs --save
     
 If you prefer to download and install the library globally for all future 
 node projects you may use:

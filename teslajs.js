@@ -1,3 +1,4 @@
+/* jshint esversion: 11 */
 /**
  * @file This is a Node.js module encapsulating the unofficial Tesla API set
  * 
@@ -445,7 +446,7 @@ exports.logout = function logout(authToken, callback) {
 
     request({
         headers: {
-            "Authorization": `Bearer ${options.authToken}`,
+            "Authorization": `Bearer ${authToken}`,
             "Content-Type": "application/json; charset=utf-8"
         },
         method: 'POST',
@@ -606,7 +607,7 @@ exports.postAsync = Promise.denodeify(exports.post);
 exports.vehicle = function vehicle(options, args, callback) {
     callback = callback ?? function (err, vehicle) { /* do nothing! */ }
     exports.get(options, '/api/1/vehicles', null, function (err, body) {
-        if (err) return callback(err, null)
+        if (err) { return callback(err, null); }
         try {
             body = body.response[options.carIndex ?? 0];
             body.id = body.id_s;
@@ -742,7 +743,7 @@ exports.vehicleData = function vehicleData(options, args, callback){
       - vehicle_config
     */
     var endpoints = args?.endpoints ?? [ 'climate_state', 'charge_state', 'drive_state', 'gui_settings', 'vehicle_state', 'vehicle_config' ]
-    if (Array.isArray(endpoints)) endpoints = endpoints.join(';')
+    if (Array.isArray(endpoints)) { endpoints = endpoints.join(';'); }
     /*
       null or true
     */
@@ -1436,7 +1437,7 @@ exports.steeringHeaterAsync = Promise.denodeify(exports.steeringHeater);
  * @param {nodeBack} callback - Node-style callback
  * @returns {object} result
  */
-exports.maxDefrost = function maxDefrost(options, onoff, callback) {
+exports.maxDefrost = function maxDefrost(options, args, callback) {
     post_command(options, "command/set_preconditioning_max", null, { "on": args?.onoff }, callback);
 }
 

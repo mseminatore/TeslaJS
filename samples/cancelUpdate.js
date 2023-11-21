@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.cancelSoftwareUpdate(options, function (err, result) {
+    tjs.cancelSoftwareUpdate(options, null, function (err, result) {
         if (err) {
             console.error("\ncancelSoftwareUpdate command: " + "Failed!".red);
         } else {

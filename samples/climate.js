@@ -35,7 +35,7 @@ function ctof(degc) {
 //
 //
 function sampleMain(tjs, options) {
-    tjs.climateState(options, function (err, climate_state) {
+    tjs.climateState(options, null, function (err, climate_state) {
         var str = climate_state.is_auto_conditioning_on ? "ON".red : "OFF".green;
         console.log("\nClimate is currently: " + str);
 

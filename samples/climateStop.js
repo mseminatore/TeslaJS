@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.climateStop(options, function (err, result) {
+    tjs.climateStop(options, null, function (err, result) {
         if (result.result) {
             console.log("\nClimate is now: " + "OFF".green);
         } else {

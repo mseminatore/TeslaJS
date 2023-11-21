@@ -46,7 +46,7 @@ function sampleMain(tjs, options) {
         amt = 50;
     }
 
-    tjs.setChargeLimit(options, amt, function (err, result) {
+    tjs.setChargeLimit(options, { amt }, function (err, result) {
         if (result.result) {
             var str = (amt + "%").green;
             console.log("\nCharge limit successfully set to: " + str);

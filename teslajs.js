@@ -606,13 +606,11 @@ exports.postAsync = Promise.denodeify(exports.post);
  */
 exports.vehicle = function vehicle(options, args, callback) {
     callback = callback ?? function (err, vehicle) { /* do nothing! */ }
-    exports.get(options, '/api/1/vehicles', null, function (err, body) {
+    exports.vehicles(options, args, function (err, vehicles) {
         if (err) { return callback(err, null); }
         try {
-            body = body.response[options.carIndex ?? 0];
-            body.id = body.id_s;
-            options.vehicleID = body.id; // This API updates options object
-            callback(null, body);
+            let vehicle = vehicles[args?.carIndex ?? 0];
+            callback(null, vehicle);
         } catch (e) {
             log(API_ERR_LEVEL, 'Error parsing vehicles response');
             callback(e, null);

@@ -7,11 +7,11 @@
   ],
   "_from": "@gaphi/teslajs@4.11.0-5",
   "_inBundle": false,
-  "_integrity": "sha512-vj44fBwrAZiac4wbEP7rRES5hCjEOdzpsUb3oEzITD+fu0I/o/558CvB5vjlu3aH94xzC0TvCeYjl14g0eEaKQ==",
+  "_integrity": "sha512-b2bQYNNO1qkj4L27UBvSsLnc2FJK5XaHPtAmTrb0kz/brhKqVHslJwumZ5nbUalfmJoxMfEllDTJWjJQEFechA==",
   "_location": "/@gaphi/teslajs",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
     "raw": "@gaphi/teslajs@4.11.0-5",
     "name": "@gaphi/teslajs",
@@ -82,5 +82,5 @@
     "prepublishOnly": "uglifyjs teslajs.js -c -m --comments -o teslajs.min.js",
     "test": "jshint teslajs.js samples && ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose"
   },
-  "version": "4.11.0-7"
+  "version": "4.11.0-8"
 }

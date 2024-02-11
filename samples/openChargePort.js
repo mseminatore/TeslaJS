@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.openChargePort(options, function (err, result) {
+    tjs.openChargePort(options, null, function (err, result) {
         if (result) {
             console.log("\nCharge port: " + "OPEN".green);
         } else {

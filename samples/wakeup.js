@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.wakeUp(options, function (err, result) {
+    tjs.wakeUp(options, null, function (err, result) {
         if (err) {
             console.error("\nWakeUp command: " + "Failed!".red);
         } else {

@@ -37,7 +37,7 @@ function sampleMain(tjs, options) {
         program.help();
     }
 
-    tjs.scheduleSoftwareUpdate(options, offset, function (err, result) {
+    tjs.scheduleSoftwareUpdate(options, { offset }, function (err, result) {
         if (err) {
             console.error("\nscheduleSoftwareUpdate command: " + "Failed!".red);
         } else {

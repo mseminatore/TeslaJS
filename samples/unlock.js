@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.doorUnlock(options, function (err, result) {
+    tjs.doorUnlock(options, null, function (err, result) {
         if (err) {
             console.log("Door unlock failed!".red);
             return;

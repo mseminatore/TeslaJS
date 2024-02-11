@@ -48,7 +48,7 @@ function addCommas(str)
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleState(options, function (err, vehicle_state) {
+    tjs.vehicleState(options, null, function (err, vehicle_state) {
         console.log("\nOdometer");
 		console.log("--------");
 		

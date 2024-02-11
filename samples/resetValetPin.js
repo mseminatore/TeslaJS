@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.resetValetPin(options, function (err, result) {
+    tjs.resetValetPin(options, null, function (err, result) {
         if (result.result) {
             console.log("\nPIN reset completed successfully!");
         } else {

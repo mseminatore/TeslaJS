@@ -44,7 +44,7 @@ function sampleMain(tjs, options) {
         program.help();
     }
 
-    tjs.setTemps(options, f2c(temp), null, function (err, result) {
+    tjs.setTemps(options, { driver: f2c(temp) }, function (err, result) {
         if (result.result) {
             var str = (temp + " Deg.F").green;
             console.log("\nTemperature successfully set to: " + str);

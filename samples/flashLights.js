@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.flashLights(options, function (err, result) {
+    tjs.flashLights(options, null, function (err, result) {
         if (result.result) {
             console.log("\nWere you watching?! " + "flash!".bold.green);
         } else {

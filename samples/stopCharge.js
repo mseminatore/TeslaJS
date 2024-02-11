@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.stopCharge(options, function (err, result) {
+    tjs.stopCharge(options, null, function (err, result) {
         if (result.result) {
             console.log("\nCharging will stop shortly!");
         } else {

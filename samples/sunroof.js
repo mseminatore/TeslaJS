@@ -46,7 +46,7 @@ function sampleMain(tjs, options) {
         program.help();
     }
 
-    tjs.sunRoofControl(options, state, function (err, result) {
+    tjs.sunRoofControl(options, { state }, function (err, result) {
         if (result && result.result) {
             console.log("\nSunroof successfully moved to : " + state.bgGreen);
         } else {

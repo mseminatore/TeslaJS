@@ -57,31 +57,31 @@ function sampleMain(tjs, options) {
     
     switch(cmd) {
         case "toggle":
-            tjs.mediaTogglePlayback(options, cb);
+            tjs.mediaTogglePlayback(options, null, cb);
             break;
 
         case "next":
-            tjs.mediaPlayNext(options, cb);
+            tjs.mediaPlayNext(options, null, cb);
             break;
 
         case "prev":
-            tjs.mediaPlayPrevious(options, cb);
+            tjs.mediaPlayPrevious(options, null, cb);
             break;
 
         case "next_fav":
-            tjs.mediaPlayNextFavorite(options, cb);
+            tjs.mediaPlayNextFavorite(options, null, cb);
             break;
 
         case "prev_fav":
-            tjs.mediaPlayPreviousFavorite(options, cb);
+            tjs.mediaPlayPreviousFavorite(options, null, cb);
             break;
     
         case "up":
-            tjs.mediaVolumeUp(options, cb);
+            tjs.mediaVolumeUp(options, null, cb);
             break;
 
         case "down":
-            tjs.mediaVolumeDown(options, cb);
+            tjs.mediaVolumeDown(options, null, cb);
             break;
 
         default:

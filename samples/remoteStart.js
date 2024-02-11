@@ -32,7 +32,7 @@ sample.run();
 //
 function sampleMain(tjs, options) {
 
-    tjs.remoteStart(options, function (err, result) {
+    tjs.remoteStart(options, null, function (err, result) {
         if (err) {
             console.log(err);
             return;

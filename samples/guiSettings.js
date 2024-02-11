@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.guiSettings(options, function (err, guiSettings) {
+    tjs.guiSettings(options, null, function (err, guiSettings) {
         if (!guiSettings) {
             console.error("\nError: " + "No response to guiSettings() query!".red);
             return;

@@ -314,7 +314,7 @@ describe('TeslaJS', function () {
 
 	describe('#vehicleData()', function () {
 	    it('should succeed returning vehicle data', function (done) {
-	        tjs.vehicleData(options, function (err, vehicle) {
+	        tjs.vehicleData(options, null, function (err, vehicle) {
 	            if (vehicle.vehicle_id) {
 	                done();
 	            } else {
@@ -324,14 +324,14 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicleData(options);
+	        tjs.vehicleData(options, null, null);
 	        done();
 	    });
 	});
 
 	describe('#vehicleDataAsync()', function () {
 	    it('should succeed returning vehicle data', function () {
-	        return tjs.vehicleDataAsync(options).then(function (result) {
+	        return tjs.vehicleDataAsync(options, null).then(function (result) {
 	            assert(result.vehicle_id);
 	        });
 	    });
@@ -339,7 +339,7 @@ describe('TeslaJS', function () {
 
 	describe('#vehicle()', function () {
 	    it('should succeed getting the vehicle', function (done) {
-	        tjs.vehicle(options, function (err, vehicle) {
+	        tjs.vehicle(options, null, function (err, vehicle) {
 	            if (vehicle.vehicle_id) {
 	                done();
 	            } else {
@@ -349,14 +349,14 @@ describe('TeslaJS', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicle(options);
+	        tjs.vehicle(options, null);
 	        done();
 	    });
 	});
 
 	describe('#vehicleAsync()', function () {
 	    it('should succeed getting the vehicle', function () {
-	        return tjs.vehicleAsync(options).then(function (result) {
+	        return tjs.vehicleAsync(options, null).then(function (result) {
 	            assert(result.vehicle_id);
 	        });
 	    });
@@ -364,7 +364,7 @@ describe('TeslaJS', function () {
 
   describe('#vehicleById()', function () {
     it('should succeed getting the vehicle', function (done) {
-        tjs.vehicleById(options, function (err, vehicle) {
+        tjs.vehicleById(options, null, function (err, vehicle) {
             if (vehicle.vehicle_id) {
                 done();
             } else {
@@ -374,14 +374,14 @@ describe('TeslaJS', function () {
     });
 
     it('should succeed with no callback', function (done) {
-        tjs.vehicleById(options);
+        tjs.vehicleById(options, null);
         done();
     });
 });
 
 describe('#vehicleByIdAsync()', function () {
     it('should succeed getting the vehicle', function () {
-        return tjs.vehicleByIdAsync(options).then(function (result) {
+        return tjs.vehicleByIdAsync(options, null).then(function (result) {
             assert(result.vehicle_id);
         });
     });
@@ -389,7 +389,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#vehicles()', function () {
 	    it('should succeed enumerating vehicles', function (done) {
-	        tjs.vehicles(options, function (err, vehicles) {
+	        tjs.vehicles(options, null, function (err, vehicles) {
 	            if (vehicles[0]) {
 	                done();
 	            } else {
@@ -399,14 +399,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicles(options);
+	        tjs.vehicles(options, null);
 	        done();
 	    });
 	});
 
 	describe('#vehiclesAsync()', function () {
 	    it('should succeed enumerating vehicles', function () {
-	        return tjs.vehiclesAsync(options).then(function (result) {
+	        return tjs.vehiclesAsync(options, null).then(function (result) {
 	            assert(result[0]);
 	        });
 	    });
@@ -414,7 +414,7 @@ describe('#vehicleByIdAsync()', function () {
 
     describe('#vehicleById()', function () {
         it('should succeed getting the vehicle', function (done) {
-            tjs.vehicleById(options, function (err, vehicle) {
+            tjs.vehicleById(options, null, function (err, vehicle) {
                 if (vehicle.vehicle_id) {
                     done();
                 } else {
@@ -424,14 +424,14 @@ describe('#vehicleByIdAsync()', function () {
         });
 
         it('should succeed with no callback', function (done) {
-            tjs.vehicleById(options);
+            tjs.vehicleById(options, null);
             done();
         });
     });
 
     describe('#vehicleByIdAsync()', function () {
         it('should succeed getting the vehicle', function () {
-            return tjs.vehicleByIdAsync(options).then(function (result) {
+            return tjs.vehicleByIdAsync(options, null).then(function (result) {
                 assert(result.vehicle_id);
             });
         });
@@ -439,7 +439,7 @@ describe('#vehicleByIdAsync()', function () {
 
     describe('#vehicleConfig()', function () {
         it('should return vehicle config', function (done) {
-            tjs.vehicleConfig(options, function (err, result) {
+            tjs.vehicleConfig(options, null, function (err, result) {
                 if (result.exterior_color) {
                     done();
                 } else {
@@ -449,14 +449,14 @@ describe('#vehicleByIdAsync()', function () {
         });
 
         it('should succeed with no callback', function (done) {
-            tjs.vehicleConfig(options);
+            tjs.vehicleConfig(options, null);
             done();
         });
     });
 
     describe('#vehicleConfigAsync()', function () {
         it('should return vehicle config', function () {
-            return tjs.vehicleConfigAsync(options).then(function (result) {
+            return tjs.vehicleConfigAsync(options, null).then(function (result) {
                 assert(result.exterior_color);
             });
         });
@@ -464,7 +464,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#vehicleState()', function () {
 	    it('should return vehicle state', function (done) {
-	        tjs.vehicleState(options, function (err, result) {
+	        tjs.vehicleState(options, null, function (err, result) {
 	            if (result.car_version) {
 	                done();
 	            } else {
@@ -474,14 +474,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.vehicleState(options);
+	        tjs.vehicleState(options, null);
 	        done();
 	    });
 	});
 
 	describe('#vehicleStateAsync()', function () {
 	    it('should return vehicle state', function () {
-	        return tjs.vehicleStateAsync(options).then(function (result) {
+	        return tjs.vehicleStateAsync(options, null).then(function (result) {
 	            assert(result.car_version);
 	        });
 	    });
@@ -489,7 +489,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateState()', function () {
 	    it('should return climate state', function (done) {
-	        tjs.climateState(options, function (err, result) {
+	        tjs.climateState(options, null, function (err, result) {
 	            if (result.inside_temp) {
 	                done();
 	            } else {
@@ -501,7 +501,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateStateAsync()', function () {
 	    it('should return climate state', function () {
-	        return tjs.climateStateAsync(options).then(function (result) {
+	        return tjs.climateStateAsync(options, null).then(function (result) {
 	            assert(result.inside_temp);
 	        });
 	    });
@@ -509,7 +509,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#driveState()', function () {
 	    it('should return drive state', function (done) {
-	        tjs.driveState(options, function (err, result) {
+	        tjs.driveState(options, null, function (err, result) {
 	            if (result.heading) {
 	                done();
 	            } else {
@@ -521,7 +521,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#driveStateAsync()', function () {
 	    it('should return drive state', function () {
-	        return tjs.driveStateAsync(options).then(function (result) {
+	        return tjs.driveStateAsync(options, null).then(function (result) {
 	            assert(result.heading);
 	        });
 	    });
@@ -529,7 +529,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeState()', function () {
 	    it('should return charge state', function (done) {
-	        tjs.chargeState(options, function (err, result) {
+	        tjs.chargeState(options, null, function (err, result) {
 	            if (result.est_battery_range) {
 	                done();
 	            } else {
@@ -541,7 +541,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeStateAsync()', function () {
 	    it('should return charge state', function () {
-	        return tjs.chargeStateAsync(options).then(function (result) {
+	        return tjs.chargeStateAsync(options, null).then(function (result) {
 	            assert(result.est_battery_range);
 	        });
 	    });
@@ -549,7 +549,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#guiSettings()', function () {
 	    it('should return gui settings', function (done) {
-	        tjs.guiSettings(options, function (err, result) {
+	        tjs.guiSettings(options, null, function (err, result) {
 	            if (result.gui_distance_units) {
 	                done();
 	            } else {
@@ -561,7 +561,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#guiSettingsAsync()', function () {
 	    it('should return gui settings', function () {
-	        return tjs.guiSettingsAsync(options).then(function (result) {
+	        return tjs.guiSettingsAsync(options, null).then(function (result) {
 	            assert(result.gui_distance_units);
 	        });
 	    });
@@ -569,7 +569,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mobileEnabled()', function () {
 	    it('should return true', function (done) {
-	        tjs.mobileEnabled(options, function (err, result) {
+	        tjs.mobileEnabled(options, null, function (err, result) {
 	            if (result) {
 	                done();
 	            } else {
@@ -581,7 +581,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mobileEnabledAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.mobileEnabledAsync(options).then(function (result) {
+	        return tjs.mobileEnabledAsync(options, null).then(function (result) {
 	            assert(result);
 	        });
 	    });
@@ -589,7 +589,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#honkHorn()', function () {
 	    it('should return true', function (done) {
-	        tjs.honkHorn(options, function (err, result) {
+	        tjs.honkHorn(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -599,14 +599,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.honkHorn(options);
+	        tjs.honkHorn(options, null);
 	        done();
 	    });
 	});
 
 	describe('#honkHornAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.honkHornAsync(options).then(function (result) {
+	        return tjs.honkHornAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -614,7 +614,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#flashLights()', function () {
 	    it('should return true', function (done) {
-	        tjs.flashLights(options, function (err, result) {
+	        tjs.flashLights(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -626,7 +626,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#flashLightsAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.flashLightsAsync(options).then(function (result) {
+	        return tjs.flashLightsAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -634,7 +634,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#startCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.startCharge(options, function (err, result) {
+	        tjs.startCharge(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -646,7 +646,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#startChargeAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.startChargeAsync(options).then(function (result) {
+	        return tjs.startChargeAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -654,7 +654,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#stopCharge()', function () {
 	    it('should return true', function (done) {
-	        tjs.stopCharge(options, function (err, result) {
+	        tjs.stopCharge(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -666,7 +666,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#stopChargeAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.stopChargeAsync(options).then(function (result) {
+	        return tjs.stopChargeAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -674,7 +674,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#openChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.openChargePort(options, function (err, result) {
+	        tjs.openChargePort(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -686,7 +686,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#openChargePortAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.openChargePortAsync(options).then(function (result) {
+	        return tjs.openChargePortAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -694,7 +694,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#closeChargePort()', function () {
 	    it('should return true', function (done) {
-	        tjs.closeChargePort(options, function (err, result) {
+	        tjs.closeChargePort(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -706,7 +706,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#closeChargePortAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.closeChargePortAsync(options).then(function (result) {
+	        return tjs.closeChargePortAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -714,7 +714,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setChargeLimit()', function () {
 	    it('CHARGE_STORAGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STORAGE, function (err, result) {
+	        tjs.setChargeLimit(options, { amt: tjs.CHARGE_STORAGE }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -724,7 +724,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('CHARGE_DAILY should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_DAILY, function (err, result) {
+	        tjs.setChargeLimit(options, { amt: tjs.CHARGE_DAILY }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -734,7 +734,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('CHARGE_STANDARD should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_STANDARD, function (err, result) {
+	        tjs.setChargeLimit(options, { amt: tjs.CHARGE_STANDARD }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -744,7 +744,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('CHARGE_RANGE should return true', function (done) {
-	        tjs.setChargeLimit(options, tjs.CHARGE_RANGE, function (err, result) {
+	        tjs.setChargeLimit(options, { amt: tjs.CHARGE_RANGE }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -756,7 +756,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setChargeLimitAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.setChargeLimitAsync(options, tjs.CHARGE_STANDARD).then(function (result) {
+	        return tjs.setChargeLimitAsync(options, { amt: tjs.CHARGE_STANDARD }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -764,7 +764,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeMaxRange()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeMaxRange(options, function (err, result) {
+	        tjs.chargeMaxRange(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -776,7 +776,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeMaxRangeAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.chargeMaxRangeAsync(options).then(function (result) {
+	        return tjs.chargeMaxRangeAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -784,7 +784,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeStandard()', function () {
 	    it('should return true', function (done) {
-	        tjs.chargeStandard(options, function (err, result) {
+	        tjs.chargeStandard(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -796,7 +796,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#chargeStandardAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.chargeStandardAsync(options).then(function (result) {
+	        return tjs.chargeStandardAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -804,7 +804,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#doorUnlock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorUnlock(options, function (err, result) {
+	        tjs.doorUnlock(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -816,7 +816,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#doorUnlockAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.doorUnlockAsync(options).then(function (result) {
+	        return tjs.doorUnlockAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -824,7 +824,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#doorLock()', function () {
 	    it('should return true', function (done) {
-	        tjs.doorLock(options, function (err, result) {
+	        tjs.doorLock(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -836,7 +836,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#doorLockAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.doorLockAsync(options).then(function (result) {
+	        return tjs.doorLockAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -844,7 +844,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.climateStart(options, function (err, result) {
+	        tjs.climateStart(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -856,7 +856,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateStartAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.climateStartAsync(options).then(function (result) {
+	        return tjs.climateStartAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -864,7 +864,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateStop()', function () {
 	    it('should return true', function (done) {
-	        tjs.climateStop(options, function (err, result) {
+	        tjs.climateStop(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -876,7 +876,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#climateStopAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.climateStopAsync(options).then(function (result) {
+	        return tjs.climateStopAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -884,7 +884,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#sunRoofControl()', function () {
 	    it('SUNROOF_VENT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_VENT, function (err, result) {
+	        tjs.sunRoofControl(options, { state: tjs.SUNROOF_VENT }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -894,7 +894,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('SUNROOF_COMFORT should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_COMFORT, function (err, result) {
+	        tjs.sunRoofControl(options, { state: tjs.SUNROOF_COMFORT }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -904,7 +904,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('SUNROOF_OPEN should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_OPEN, function (err, result) {
+	        tjs.sunRoofControl(options, { state: tjs.SUNROOF_OPEN }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -914,7 +914,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('SUNROOF_CLOSED should return true', function (done) {
-	        tjs.sunRoofControl(options, tjs.SUNROOF_CLOSED, function (err, result) {
+	        tjs.sunRoofControl(options, { state: tjs.SUNROOF_CLOSED }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -926,7 +926,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#sunRoofControlAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.sunRoofControlAsync(options, tjs.SUNROOF_CLOSED).then(function (result) {
+	        return tjs.sunRoofControlAsync(options, { state: tjs.SUNROOF_CLOSED }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -934,7 +934,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#sunRoofMove()', function () {
 	    it('move to 50% should return true', function (done) {
-	        tjs.sunRoofMove(options, 50, function (err, result) {
+	        tjs.sunRoofMove(options, { percent: 50 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -944,7 +944,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('move to 100% should return true', function (done) {
-	        tjs.sunRoofMove(options, 100, function (err, result) {
+	        tjs.sunRoofMove(options, { percent: 100 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -954,7 +954,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('move to 0% should return true', function (done) {
-	        tjs.sunRoofMove(options, 0, function (err, result) {
+	        tjs.sunRoofMove(options, { percent: 0 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -966,7 +966,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#sunRoofMoveAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.sunRoofMoveAsync(options, 0).then(function (result) {
+	        return tjs.sunRoofMoveAsync(options, { percent: 0 }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -974,7 +974,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setTemps()', function () {
 	    it('should return true setting both driver and passenger', function (done) {
-	        tjs.setTemps(options, 0, 100, function (err, result) {
+	        tjs.setTemps(options, { driver: 0, pass: 100 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -984,7 +984,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should return true setting just driver', function (done) {
-	        tjs.setTemps(options, 19, undefined, function (err, result) {
+	        tjs.setTemps(options, { driver: 19 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -996,7 +996,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setTempsAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.setTempsAsync(options, 19, 21).then(function (result) {
+	        return tjs.setTempsAsync(options, { driver: 19, pass: 21 }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1004,7 +1004,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#remoteStart()', function () {
 	    it('should return true', function (done) {
-	        tjs.remoteStart(options, function (err, result) {
+	        tjs.remoteStart(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1016,7 +1016,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#remoteStartAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.remoteStartAsync(options).then(function (result) {
+	        return tjs.remoteStartAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1024,7 +1024,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#openTrunk()', function () {
 	    it('Frunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.FRUNK, function (err, result) {
+	        tjs.openTrunk(options, { which: tjs.FRUNK }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1034,7 +1034,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('Trunk should return true', function (done) {
-	        tjs.openTrunk(options, tjs.TRUNK, function (err, result) {
+	        tjs.openTrunk(options, { which: tjs.TRUNK }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1046,7 +1046,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#openTrunkAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.openTrunkAsync(options, tjs.FRUNK).then(function (result) {
+	        return tjs.openTrunkAsync(options, { which: tjs.FRUNK }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1054,7 +1054,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setValetMode()', function () {
 	    it('ON should return true', function (done) {
-	        tjs.setValetMode(options, true, '1234', function (err, result) {
+	        tjs.setValetMode(options, { onoff: true, pin: '1234' }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1064,7 +1064,7 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('OFF should return true', function (done) {
-	        tjs.setValetMode(options, false, '1234', function (err, result) {
+	        tjs.setValetMode(options, {onoff: false, pin: '1234' }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1076,7 +1076,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#setValetModeAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.setValetModeAsync(options, false, '1234').then(function (result) {
+	        return tjs.setValetModeAsync(options, { onoff: false, pin: '1234' }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1084,7 +1084,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#resetValetPin()', function () {
 	    it('should return true', function (done) {
-	        tjs.resetValetPin(options, function (err, result) {
+	        tjs.resetValetPin(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1096,7 +1096,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#resetValetPinAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.resetValetPinAsync(options).then(function (result) {
+	        return tjs.resetValetPinAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1111,7 +1111,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#calendar()', function () {
 	    it('should return true', function (done) {
-	        tjs.calendar(options, tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName"), function(err, result) {
+	        tjs.calendar(options, { entry: tjs.makeCalendarEntry("Event", "location", null, null, "accountName", "phoneName") }, function(err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1123,7 +1123,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#homelink()', function () {
 	    it('should return true', function (done) {
-	        tjs.homelink(options, 75, 34, function (err, result) {
+	        tjs.homelink(options, { lat: 75, long: 34 }, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1135,7 +1135,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#homelinkAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.homelinkAsync(options, 75, 34).then(function (result) {
+	        return tjs.homelinkAsync(options, { lat: 75, long: 34 }).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1143,7 +1143,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#wakeUp()', function () {
 	    it('should return true', function (done) {
-	        tjs.wakeUp(options, function (err, result) {
+	        tjs.wakeUp(options, null, function (err, result) {
 	            if (result.result) {
 	                done();
 	            } else {
@@ -1155,7 +1155,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#wakeUpAsync()', function () {
 	    it('should return true', function () {
-	        return tjs.wakeUpAsync(options).then(function (result) {
+	        return tjs.wakeUpAsync(options, null).then(function (result) {
 	            assert(result.result);
 	        });
 	    });
@@ -1163,7 +1163,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#get_command(err_get)', function () {
 	    it('should fail', function (done) {
-	        tjs.get_command(options, "data_request/err_get", function (err, result) {
+	        tjs.get_command(options, "data_request/err_get", null, function (err, result) {
 	            if (err) {
 	                done();
 	            } else {
@@ -1175,7 +1175,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#post_command(err_post)', function () {
 	    it('should fail', function (done) {
-	        tjs.post_command(options, "command/err_post", null, function (err, result) {
+	        tjs.post_command(options, "command/err_post", null, null, function (err, result) {
 	            if (err) {
 	                done();
 	            } else {
@@ -1209,7 +1209,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#scheduleSoftwareUpdate()', function () {
 	    it('should succeed', function (done) {
-	        tjs.scheduleSoftwareUpdate(options, 0, function (err, result) {
+	        tjs.scheduleSoftwareUpdate(options, { offset: 0 }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1219,14 +1219,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.scheduleSoftwareUpdate(options, 0);
+	        tjs.scheduleSoftwareUpdate(options, { offset: 0 });
 	        done();
 	    });
 	});
 
 	describe('#scheduleSoftwareUpdateAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.scheduleSoftwareUpdateAsync(options, 0).then(function (result) {
+	        return tjs.scheduleSoftwareUpdateAsync(options, { offset: 0 }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1234,7 +1234,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#cancelSoftwareUpdate()', function () {
 	    it('should succeed', function (done) {
-	        tjs.cancelSoftwareUpdate(options, function (err, result) {
+	        tjs.cancelSoftwareUpdate(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1244,14 +1244,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.cancelSoftwareUpdate(options);
+	        tjs.cancelSoftwareUpdate(options, null);
 	        done();
 	    });
 	});
 
 	describe('#cancelSoftwareUpdateAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.cancelSoftwareUpdateAsync(options).then(function (result) {
+	        return tjs.cancelSoftwareUpdateAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1259,7 +1259,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaTogglePlayback()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaTogglePlayback(options, function (err, result) {
+	        tjs.mediaTogglePlayback(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1269,14 +1269,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaTogglePlayback(options);
+	        tjs.mediaTogglePlayback(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaTogglePlaybackAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaTogglePlaybackAsync(options).then(function (result) {
+	        return tjs.mediaTogglePlaybackAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1284,7 +1284,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaPlayNext()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaPlayNext(options, function (err, result) {
+	        tjs.mediaPlayNext(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1294,14 +1294,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaPlayNext(options);
+	        tjs.mediaPlayNext(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaPlayNextAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaPlayNextAsync(options).then(function (result) {
+	        return tjs.mediaPlayNextAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1309,7 +1309,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaPlayPrevious()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaPlayPrevious(options, function (err, result) {
+	        tjs.mediaPlayPrevious(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1319,14 +1319,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaPlayPrevious(options);
+	        tjs.mediaPlayPrevious(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaPlayPreviousAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaPlayPreviousAsync(options).then(function (result) {
+	        return tjs.mediaPlayPreviousAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1334,7 +1334,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaPlayNextFavorite()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaPlayNextFavorite(options, function (err, result) {
+	        tjs.mediaPlayNextFavorite(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1344,14 +1344,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaPlayNextFavorite(options);
+	        tjs.mediaPlayNextFavorite(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaPlayNextFavoriteAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaPlayNextFavoriteAsync(options).then(function (result) {
+	        return tjs.mediaPlayNextFavoriteAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1359,7 +1359,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaPlayPreviousFavorite()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaPlayPreviousFavorite(options, function (err, result) {
+	        tjs.mediaPlayPreviousFavorite(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1369,14 +1369,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaPlayPreviousFavorite(options);
+	        tjs.mediaPlayPreviousFavorite(options), null;
 	        done();
 	    });
 	});
 
 	describe('#mediaPlayPreviousFavoriteAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaPlayPreviousFavoriteAsync(options).then(function (result) {
+	        return tjs.mediaPlayPreviousFavoriteAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1384,7 +1384,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaVolumeUp()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaVolumeUp(options, function (err, result) {
+	        tjs.mediaVolumeUp(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1394,14 +1394,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaVolumeUp(options);
+	        tjs.mediaVolumeUp(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaVolumeUpAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaVolumeUpAsync(options).then(function (result) {
+	        return tjs.mediaVolumeUpAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1409,7 +1409,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#mediaVolumeDown()', function () {
 	    it('should succeed', function (done) {
-	        tjs.mediaVolumeDown(options, function (err, result) {
+	        tjs.mediaVolumeDown(options, null, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1419,14 +1419,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.mediaVolumeDown(options);
+	        tjs.mediaVolumeDown(options, null);
 	        done();
 	    });
 	});
 
 	describe('#mediaVolumeDownAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.mediaVolumeDownAsync(options).then(function (result) {
+	        return tjs.mediaVolumeDownAsync(options, null).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1434,7 +1434,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#speedLimitActivate()', function () {
 	    it('should succeed', function (done) {
-	        tjs.speedLimitActivate(options, "1234", function (err, result) {
+	        tjs.speedLimitActivate(options, { pin: "1234" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1444,14 +1444,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.speedLimitActivate(options, "1234");
+	        tjs.speedLimitActivate(options, { pin: "1234" });
 	        done();
 	    });
 	});
 
 	describe('#speedLimitActivateAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.speedLimitActivateAsync(options, "1234").then(function (result) {
+	        return tjs.speedLimitActivateAsync(options, { pin: "1234" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1459,7 +1459,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#speedLimitDeactivate()', function () {
 	    it('should succeed', function (done) {
-	        tjs.speedLimitDeactivate(options, "1234", function (err, result) {
+	        tjs.speedLimitDeactivate(options, { pin: "1234" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1469,14 +1469,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.speedLimitDeactivate(options, "1234");
+	        tjs.speedLimitDeactivate(options, { pin: "1234" });
 	        done();
 	    });
 	});
 
 	describe('#speedLimitDeactivateAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.speedLimitDeactivateAsync(options, "1234").then(function (result) {
+	        return tjs.speedLimitDeactivateAsync(options, { pin: "1234" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1484,7 +1484,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#speedLimitClearPin()', function () {
 	    it('should succeed', function (done) {
-	        tjs.speedLimitClearPin(options, "1234", function (err, result) {
+	        tjs.speedLimitClearPin(options, { pin: "1234" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1494,14 +1494,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.speedLimitClearPin(options, "1234");
+	        tjs.speedLimitClearPin(options, { pin: "1234" });
 	        done();
 	    });
 	});
 
 	describe('#speedLimitClearPinAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.speedLimitClearPinAsync(options, "1234").then(function (result) {
+	        return tjs.speedLimitClearPinAsync(options, { pin: "1234" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1509,7 +1509,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#speedLimitSetLimit()', function () {
 	    it('should succeed', function (done) {
-	        tjs.speedLimitSetLimit(options, "80.0", function (err, result) {
+	        tjs.speedLimitSetLimit(options, { limit: "80.0" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1519,22 +1519,22 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.speedLimitSetLimit(options, "80.0");
+	        tjs.speedLimitSetLimit(options, { limit: "80.0" });
 	        done();
 	    });
 	});
 
 	describe('#speedLimitSetLimitAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.speedLimitSetLimitAsync(options, "80.0").then(function (result) {
-				assert(result.result, true);
-			});
+	        return tjs.speedLimitSetLimitAsync(options, { limit: "80.0" }).then(function (result) {
+				  assert(result.result, true);
+			    });
 	    });
 	});
 
 	describe('#setSentryMode()', function () {
 	    it('should succeed', function (done) {
-	        tjs.setSentryMode(options, true, function (err, result) {
+	        tjs.setSentryMode(options, { onoff: true }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1544,22 +1544,22 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.setSentryMode(options, true);
+	        tjs.setSentryMode(options, { onoff: true });
 	        done();
 	    });
 	});
 
 	describe('#setSentryModeAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.setSentryModeAsync(options, true).then(function (result) {
-				assert(result.result, true);
+	        return tjs.setSentryModeAsync(options, { onoff: true }).then(function (result) {
+				assert(result.result, { onoff: true });
 			});
 	    });
 	});
 
 	describe('#nearbyChargers()', function () {
 	    it('should succeed', function (done) {
-	        tjs.nearbyChargers(options, function (err, result) {
+	        tjs.nearbyChargers(options, null, function (err, result) {
 				if (result.congestion_sync_time_utc_secs == 1547415712) {
 					done();
 				} else {
@@ -1569,14 +1569,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.nearbyChargers(options);
+	        tjs.nearbyChargers(options, null);
 	        done();
 	    });
 	});
 
 	describe('#nearbyChargersAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.nearbyChargersAsync(options).then(function (result) {
+	        return tjs.nearbyChargersAsync(options, null).then(function (result) {
 				assert(result.congestion_sync_time_utc_secs, 1547415712);
 			});
 	    });
@@ -1584,7 +1584,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#seatHeater()', function () {
 	    it('should succeed', function (done) {
-	        tjs.seatHeater(options, "0", "1", function (err, result) {
+        tjs.seatHeater(options, { heater: "0", level: "1" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1594,14 +1594,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.seatHeater(options, "0", "1");
+	        tjs.seatHeater(options, { heater: "0", level: "1" });
 	        done();
 	    });
 	});
 
 	describe('#seatHeaterAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.seatHeaterAsync(options, "0", "1").then(function (result) {
+	        return tjs.seatHeaterAsync(options, { heater: "0", level: "1" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1609,7 +1609,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#steeringHeater()', function () {
 	    it('should succeed', function (done) {
-	        tjs.steeringHeater(options, "1", function (err, result) {
+	        tjs.steeringHeater(options, { level: "1" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1619,14 +1619,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.steeringHeater(options, "1");
+	        tjs.steeringHeater(options, { level: "1" });
 	        done();
 	    });
 	});
 
 	describe('#steeringHeaterAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.steeringHeaterAsync(options, "1").then(function (result) {
+	        return tjs.steeringHeaterAsync(options, { level: "1" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1634,7 +1634,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#windowControl()', function () {
 	    it('should succeed with "vent"', function (done) {
-	        tjs.windowControl(options, "vent", 0, 0, function (err, result) {
+	        tjs.windowControl(options, { command: "vent", lat: 0, lon: 0 }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1644,7 +1644,7 @@ describe('#vehicleByIdAsync()', function () {
 		});
 		
 	    it('should succeed with "close"', function (done) {
-	        tjs.windowControl(options, "close", 0, 0, function (err, result) {
+	        tjs.windowControl(options, { command: "close", lat: 0, lon: 0 }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1654,25 +1654,25 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with "vent" and no callback', function (done) {
-	        tjs.windowControl(options, "vent", 0, 0);
+	        tjs.windowControl(options, { command: "vent", lat: 0, lon: 0 });
 	        done();
 	    });
 
 	    it('should succeed with "close" and no callback', function (done) {
-	        tjs.windowControl(options, "close", 0, 0);
+	        tjs.windowControl(options, { command: "close", lat: 0, lon: 0 });
 	        done();
 	    });
 	});
 
 	describe('#windowControlAsync()', function () {
 	    it('should succeed with "vent"', function () {
-	        return tjs.windowControlAsync(options, "vent", 0, 0).then(function (result) {
+	        return tjs.windowControlAsync(options, { command: "vent", lat: 0, lon: 0 }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
 
 		it('should succeed with "close"', function () {
-	        return tjs.windowControlAsync(options, "close", 0, 0).then(function (result) {
+	        return tjs.windowControlAsync(options, { command: "close", lat: 0, lon: 0 }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1680,7 +1680,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#navigationRequest()', function () {
 	    it('should succeed', function (done) {
-	        tjs.navigationRequest(options, "subject", "text", "locale", function (err, result) {
+	        tjs.navigationRequest(options, { subject: "subject", text: "text", locale: "locale" }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1690,14 +1690,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.navigationRequest(options, "subject", "text", "locale");
+	        tjs.navigationRequest(options, { subject: "subject", text: "text", locale: "locale" });
 	        done();
 	    });
 	});
 
 	describe('#navigationRequestAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.navigationRequestAsync(options, "subject", "text", "locale").then(function (result) {
+	        return tjs.navigationRequestAsync(options, { subject: "subject", text: "text", locale: "locale" }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });
@@ -1705,7 +1705,7 @@ describe('#vehicleByIdAsync()', function () {
 
 	describe('#maxDefrost()', function () {
 	    it('should succeed', function (done) {
-	        tjs.maxDefrost(options, true, function (err, result) {
+	        tjs.maxDefrost(options, { onoff: true }, function (err, result) {
 				if (result.result) {
 					done();
 				} else {
@@ -1715,14 +1715,14 @@ describe('#vehicleByIdAsync()', function () {
 	    });
 
 	    it('should succeed with no callback', function (done) {
-	        tjs.maxDefrost(options, true);
+	        tjs.maxDefrost(options, { onoff: true });
 	        done();
 	    });
 	});
 
 	describe('#maxDefrostAsync()', function () {
 	    it('should succeed', function () {
-	        return tjs.maxDefrostAsync(options, true).then(function (result) {
+	        return tjs.maxDefrostAsync(options, { onoff: true }).then(function (result) {
 				assert(result.result, true);
 			});
 	    });

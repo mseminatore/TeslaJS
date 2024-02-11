@@ -43,7 +43,7 @@ function sampleMain(tjs, options) {
 
     console.log(JSON.stringify(entry));
 
-    tjs.calendar(options, entry, function (err, result) {
+    tjs.calendar(options, { entry }, function (err, result) {
         if (result.result) {
             console.log("\nCalendar updated! ".bold.green);
         } else {

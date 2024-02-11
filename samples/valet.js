@@ -45,7 +45,7 @@ function sampleMain(tjs, options) {
         mode = false;
     }
 
-    tjs.setValetMode(options, mode, pin, function (err, response) {
+    tjs.setValetMode(options, { onoff: mode, pin }, function (err, response) {
         if (response.result) {
             var str = mode ? "ENABLED" : "DISABLED";
             console.log("\nValet mode: " + str.bgGreen);

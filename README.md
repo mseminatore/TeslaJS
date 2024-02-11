@@ -219,7 +219,7 @@ vehicle for the account:
 
 ```javascript
     var options = { authToken: result.authToken };
-    tjs.vehicle(options, function (err, vehicle) {
+    tjs.vehicle(options, null, function (err, vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
     });
 ```
@@ -227,7 +227,7 @@ vehicle for the account:
 Or using the Async Promise-based calls:
 
 ```javascript
-    tjs.vehicleAsync(options).done(function(vehicle) {
+    tjs.vehicleAsync(options, null).done(function(vehicle) {
         console.log("Vehicle " + vehicle.vin + " is: " + vehicle.state);
     });
 ```
@@ -239,7 +239,7 @@ make other Tesla REST calls:
 
 ```javascript
     var options = { authToken: result.authToken, vehicleID: vehicle.id_s };
-    tjs.chargeState(options, function (err, chargeState) {
+    tjs.chargeState(options, null, function (err, chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
 ```
@@ -247,7 +247,7 @@ make other Tesla REST calls:
 And using the Async Promise-based calls:
 
 ```javascript
-    tjs.chargeStateAsync(options).done(function(chargeState) {
+    tjs.chargeStateAsync(options, null).done(function(chargeState) {
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });
 ```
@@ -255,7 +255,7 @@ And using the Async Promise-based calls:
 Or using the Async version of the `vehicleData()` API call:
 
 ```javascript
-    tjs.vehicleDataAsync(options).done(function(vehicleData) {
+    tjs.vehicleDataAsync(options, null).done(function(vehicleData) {
         var chargeState = vehicleData.charge_state;
         console.log("Current charge level: " + chargeState.battery_level + '%');
     });

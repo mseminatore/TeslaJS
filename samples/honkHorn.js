@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.honkHorn(options, function (err, result) {
+    tjs.honkHorn(options, null, function (err, result) {
         if (result.result) {
             console.log("\nDid you hear it?! " + "beep beep".green);
         } else {

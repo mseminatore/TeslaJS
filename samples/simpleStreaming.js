@@ -41,7 +41,7 @@ function sampleMain(tjs, options) {
 
     console.log("Columns: timestamp," + tjs.streamingColumns.toString());
 
-    tjs.startStreaming(streamingOptions, function (error, response, body) {
+    tjs.startStreaming(streamingOptions, null, function (error, response, body) {
         if (error) {
             console.log(error);
             return;

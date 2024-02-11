@@ -41,7 +41,7 @@ function sampleMain(tjs, options) {
         program.help();
     }
 
-    tjs.navigationRequest(options, subject, text, locale, function (err, result) {
+    tjs.navigationRequest(options, { subject, text, locale }, function (err, result) {
         if (err) {
             console.error("\nnavigationRequest command: " + "Failed!".red + "\n");
         } else {

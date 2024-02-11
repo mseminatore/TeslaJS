@@ -407,22 +407,17 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
         return;
     }
 
-    var req = {
-        method: 'POST',
-        url: portalBaseURI + '/oauth/token',
-        body: {
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token
-        }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function (error, response, body) {
+    
+    require('./src/auth').refresh(refresh_token, function (error, response, body) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        if (error) {
+            callback(error)
+        }
+        else {
+            callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        }
 
         log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
     });
@@ -2042,6 +2037,72 @@ exports.solarStatus = function solarStatus(options, callback) {
  */
 exports.solarStatusAsync = Promise.denodeify(exports.solarStatus);
 
+
+
+/**
+ * Return historical data for solar installation
+ * @function solarHistory
+ * @param {optionsType} options - options object
+ * @param {string} period - time period
+ * @param {string} kind - kind (i.e. 'energy')
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {solarStatus} solarHistory JSON data
+ */
+exports.solarHistory = function solarHistory(options, period, kind, callback) {
+    log(API_CALL_LEVEL, "TeslaJS.solarHistory()");
+
+    // Default Values
+    callback = callback || function(err, solarHistory) { }; /* do nothing! */
+    period = period || "day";
+    kind = kind || "energy";
+
+    var req = {
+        method: "GET",
+        url: portalBaseURI + "/api/1/energy_sites/" + options.siteId + "/calendar_history?kind="+kind+"&period="+period,
+        headers: {
+            Authorization: "Bearer " + options.authToken,
+            "Content-Type": "application/json; charset=utf-8"
+        }
+    };
+
+    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
+
+    request(req, function(error, response, body) {
+        if (error) {
+            log(API_ERR_LEVEL, error);
+            return callback(error, null);
+        }
+
+        if (response.statusCode != 200) {
+            return callback(response.statusMessage, null);
+        }
+
+        log(API_BODY_LEVEL, "\nBody: " + JSON.stringify(body));
+        log(API_RESPONSE_LEVEL, "\nResponse: " + JSON.stringify(response));
+
+        try {
+            body = body.response;
+
+            callback(null, body);
+        } catch (e) {
+            log(API_ERR_LEVEL, "Error parsing solarHistory response");
+            callback(e, null);
+        }
+
+        log(API_RETURN_LEVEL, "\nGET request: " + "/solarHistory" + " completed.");
+    });
+};
+
+/**
+ * Return historical data for solar installation
+ * @function solarHistoryAsync
+ * @param {optionsType} options - options object
+ * @param {string} period - time period
+ * @param {string} kind - kind (i.e. 'energy')
+ * @param {nodeBack} callback - Node-style callback
+ * @returns {Promise} solarHistory JSON data
+ */
+exports.solarHistoryAsync = Promise.denodeify(exports.solarHistory);
 
 /*
 //

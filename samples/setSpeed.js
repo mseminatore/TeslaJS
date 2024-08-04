@@ -32,14 +32,14 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    var speed = program.args[0];
-    if (!speed) {
+    var limit = program.args[0];
+    if (!limit) {
         program.help();
     }
 
-    tjs.speedLimitSetLimit(options, speed, function (err, result) {
+    tjs.speedLimitSetLimit(options, { limit }, function (err, result) {
         if (result.result) {
-            var str = (speed + " MPH").green;
+            var str = (limit + " MPH").green;
             console.log("\nSpeed limit successfully set to: " + str);
         } else {
             console.log(result.reason.red);

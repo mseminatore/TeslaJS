@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.mobileEnabled(options, function (err, result) {
+    tjs.mobileEnabled(options, null, function (err, result) {
         if (!result) {
             console.error("\nError: " + "No response to mobileEnabled() query!".red);
             return;

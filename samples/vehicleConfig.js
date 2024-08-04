@@ -31,7 +31,7 @@ sample.run();
 //
 //
 function sampleMain(tjs, options) {
-    tjs.vehicleConfigAsync(options).then( function (vehicle_config) {
+    tjs.vehicleConfigAsync(options, null).then( function (vehicle_config) {
         console.log("\nCar type: " + vehicle_config.car_type.toUpperCase().green);
         console.log("Exterior color: " + vehicle_config.exterior_color.green);
         if (vehicle_config.eu_vehicle) {

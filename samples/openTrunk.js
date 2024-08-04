@@ -44,7 +44,7 @@ function sampleMain(tjs, options) {
         which = tjs.TRUNK;
     }
 
-    tjs.openTrunk(options, which, function (err, response) {
+    tjs.openTrunk(options, { which }, function (err, response) {
         if (response.result) {
             var str = which.toUpperCase();
             console.log("\n" + str.bgGreen + " actuated.");

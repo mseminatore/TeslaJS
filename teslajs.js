@@ -407,22 +407,17 @@ exports.refreshToken = function refreshToken(refresh_token, callback) {
         return;
     }
 
-    var req = {
-        method: 'POST',
-        url: portalBaseURI + '/oauth/token',
-        body: {
-            "grant_type": "refresh_token",
-            "refresh_token": refresh_token
-        }
-    };
-
-    log(API_REQUEST_LEVEL, "\nRequest: " + JSON.stringify(req));
-
-    request(req, function (error, response, body) {
+    
+    require('./src/auth').refresh(refresh_token, function (error, response, body) {
 
         log(API_RESPONSE_LEVEL, "\nResponse: " + body);
 
-        callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        if (error) {
+            callback(error)
+        }
+        else {
+            callback(error, { error: error, response: response, body: JSON.stringify(body), authToken: body.access_token, refreshToken: body.refresh_token });
+        }
 
         log(API_RETURN_LEVEL, "TeslaJS.refreshToken() completed.");
     });
